@@ -1,6 +1,6 @@
 import '../../assets/css/signUpSignIn.css';
 import Nav from '../../components/navDesktop.jsx';
-import React, { Component } from 'react'
+import React, { Fragment, Component } from 'react'
 
 export class signIn extends Component {
   render() {
