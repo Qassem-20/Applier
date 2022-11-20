@@ -1,0 +1,77 @@
+@import url(//fonts.googleapis.com/css?family=Lora);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import "admin.css";
+@import "company.css";
+@import "medicalStudent.css";
+@import "nav.css";
+@import "consumer.css";
+@import "welcoming.css";
+@import "signUpSignIn.css";
+@import "feedback.css";
+h1{
+  font-family: Lora;
+}
+p{
+  font-family: Roboto;
+  font-size: large;
+}
+
+* {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+box-sizing: border-box;
+list-style: none;
+text-decoration: none;
+}
+
+:root{
+  --color-bg: white;
+  --color-primary: #F0F0F2;
+  --color-secondary: #333439;
+  --color-button: #485089;
+  --color-button-secondary: #F5F6FF;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+body{
+  background-image: url(../images/texture.webp);
+}
+.btn{
+  width: max-content;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px;
+}
+
+section{
+margin-top: 4rem ;
+}
+
+img{
+  display: block;
+  object-fit: cover;
+}
+.primaryButton{
+  width: 6rem;
+  background: #485089;
+  border-radius: 25px;
+  color: white;
+}
+.secondaryButton{
+  width: 6rem;
+  background: #F5F6FF;
+  border-radius: 25px;
+  color: #485089;
+}
+
+.company_logo{
+  height: 60px;
+}
