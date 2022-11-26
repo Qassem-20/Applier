@@ -4,7 +4,41 @@ import React, { Component, Fragment } from 'react'
 export class Opportunities extends Component {
   render() {
     return (
-      <Fragment>Opportunities</Fragment>
+      <Fragment>
+      <Container>
+
+      </Container>
+
+      <Container>
+        <Row>
+          <Col>
+          </Col>
+          
+          <Col>
+          </Col>
+
+          <Col>
+          </Col>
+
+          <Col>
+          </Col>
+        </Row>
+      </Container>
+
+
+      <Container>
+        <Row>
+          <Col>
+          </Col>
+
+          <Col>
+          </Col>
+
+          <Col>
+          </Col>
+        </Row>
+      </Container>
+    </Fragment>
     )
   }
 }

@@ -12,19 +12,24 @@ export class adminHomePage extends Component {
           <Row>
             <Col xl={3} md={6} sm={12}>
             <p>Total Companies:</p>
+            <p>234234</p>
             </Col>
             <Col xl={3} md={6} sm={12}>
             <p>Total Medical Students:</p>
+            <p>234234</p>
             </Col>
             <Col xl={3} md={6} sm={12}>
               <p>Total Opportunities:</p>
+              <p>234342</p>
             </Col>
             <Col xl={3} md={6} sm={12}>
               <p>Total active Trainee:</p>
+              <p>14343</p>
             </Col>
           </Row>
           <Row>
             <p>Opportunity Statics</p>
+            <p>8457</p>
           </Row>
         </Container>
       </Fragment>

@@ -5,9 +5,40 @@ export class medicalStudent extends Component {
   render() {
     return (
       <Fragment>
-        
+      <Container>
 
-      </Fragment>
+      </Container>
+
+      <Container>
+        <Row>
+          <Col>
+          </Col>
+          
+          <Col>
+          </Col>
+
+          <Col>
+          </Col>
+
+          <Col>
+          </Col>
+        </Row>
+      </Container>
+
+
+      <Container>
+        <Row>
+          <Col>
+          </Col>
+
+          <Col>
+          </Col>
+
+          <Col>
+          </Col>
+        </Row>
+      </Container>
+    </Fragment>
     )
   }
 }
