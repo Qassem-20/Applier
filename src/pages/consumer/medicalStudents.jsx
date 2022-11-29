@@ -4,7 +4,12 @@ import React, { Component, Fragment } from 'react'
 export class medicalStudents extends Component {
   render() {
     return (
-      <Fragment>medicalStudents</Fragment>
+      <Fragment>
+        <Container>
+
+
+        </Container>
+      </Fragment>
     )
   }
 }
