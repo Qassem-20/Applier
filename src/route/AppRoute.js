@@ -12,9 +12,11 @@ class AppRoute extends Component {
             <Route exact path="/">
             <HomePage/>
             </Route>
+
             <Route exact path="/signIn">
             <SignIn/>
             </Route>
+            
           </Switch>
         </Router>
       </Fragment>
