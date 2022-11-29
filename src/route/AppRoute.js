@@ -7,11 +7,16 @@ class AppRoute extends Component {
   render() {
     return (
       <Fragment>
-        <Switch>
-          <Route exact path = "/" component={HomePage} />
-
-          <Route exact path='signIn' component={SignIn}/>
-        </Switch>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+            <HomePage/>
+            </Route>
+            <Route exact path="/signIn">
+            <SignIn/>
+            </Route>
+          </Switch>
+        </Router>
       </Fragment>
     )
   }
