@@ -17,7 +17,7 @@ export class navDesktop extends Component {
               </Col>
 
               <Col lg={3} md={4} sm={12} xs={12}>
-                <Link className='btn' to='signIn'><i><span>signIn/SignUp</span></i></Link>
+                <Link className='btn' to='/signIn'><i><span>signIn/SignUp</span></i></Link>
               </Col>
               
               <Col lg={3} md={4} sm={12} xs={12}>

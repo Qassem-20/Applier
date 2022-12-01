@@ -7,7 +7,6 @@ class AppRoute extends Component {
   render() {
     return (
       <Fragment>
-        <Router>
           <Switch>
             <Route exact path="/">
             <HomePage/>
@@ -18,7 +17,6 @@ class AppRoute extends Component {
             </Route>
             
           </Switch>
-        </Router>
       </Fragment>
     )
   }
