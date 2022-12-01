@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Router, Route, Switch } from 'react-router';
+import { Route, Switch } from 'react-router';
 import HomePage from '../pages/HomePage';
 import SignIn from '../pages/signIn-signUp/signIn';
 
