@@ -1,19 +1,53 @@
-import '../../assets/css/admin.css';
-import React, { Fragment } from 'react'
-const adminNav = () => {
-  return (
-    <Fragment>
-      <nav>
-        <ul>
-          <li><a href="/">Companies</a></li>
-          <li><a href="#About">Consumers</a></li>
-          <li id='CoName'>Applier</li>
-          <li><a href="/SignIn">Medical Students</a></li>
-          <li><a href="#Services">Opportunities</a></li>
-        </ul>
-      </nav>
+import SidebarMenu from 'react-bootstrap-sidebar-menu';
+import React, { Component } from 'react'
+
+export class adminNav extends Component {
+  render() {
+    return (
+      <Fragment>
+      <SidebarMenu>
+      <SidebarMenu.Header>
+        <SidebarMenu.Brand>
+          {/* Your brand icon */}
+        </SidebarMenu.Brand>
+        <SidebarMenu.Toggle />
+      </SidebarMenu.Header>
+      <SidebarMenu.Body>
+        <SidebarMenu.Nav>
+          <SidebarMenu.Nav.Link>
+            <SidebarMenu.Nav.Icon>
+              {/* Menu item icon */}
+            </SidebarMenu.Nav.Icon>
+            <SidebarMenu.Nav.Title>
+              {/* Menu item title */}
+            </SidebarMenu.Nav.Title>
+          </SidebarMenu.Nav.Link>
+        <SidebarMenu.Nav/>
+        <SidebarMenu.Sub>
+          <SidebarMenu.Sub.Toggle>
+            <SidebarMenu.Nav.Icon />
+            <SidebarMenu.Nav.Title>
+              {/* Submenu title */}
+            </SidebarMenu.Nav.Title>
+          </SidebarMenu.Sub.Toggle>
+          <SidebarMenu.Sub.Collapse>
+            <SidebarMenu.Nav>
+              <SidebarMenu.Nav.Link>
+                <SidebarMenu.Nav.Icon>
+                  {/* Submenu item icon */}
+                </SidebarMenu.Nav.Icon>
+                <SidebarMenu.Nav.Title>
+                  {/* Submenu item title */}
+                </SidebarMenu.Nav.Title>
+              </SidebarMenu.Nav.Link>
+            </SidebarMenu.Nav>
+          </SidebarMenu.Sub.Collapse>
+        </SidebarMenu.Sub>
+      <SidebarMenu.Body/>
+    </SidebarMenu>
     </Fragment>
-  )
+        )
+  }
 }
 
 export default adminNav
