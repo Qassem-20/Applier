@@ -1,5 +1,5 @@
-import React from 'react';
-import '../../style/admin.css';
+import '../../assets/css/admin.css';
+import React, { Fragment } from 'react'
 const adminNav = () => {
   return (
     <Fragment>

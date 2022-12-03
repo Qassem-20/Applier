@@ -1,6 +1,6 @@
 import '../../assets/css/signUpSignIn.css';
-import traineeBackground from '../../assets/traineeBackground.png';
-import companyBackground from '../../assets/companyBackground.png';
+import traineeBackground from '../../assets/images/traineeBackground.png';
+import companyBackground from '../../assets/images/companyBackground.png';
 import Nav from '../../components/navDesktop.jsx';
 
 import React, { Component, Fragment } from 'react'

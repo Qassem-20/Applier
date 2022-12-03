@@ -1,5 +1,5 @@
 import '../../assets/css/admin.css';
-import React, { Component, Fragment } from 'react'
+import React, { Fragment, Col, Row,Component, Container } from 'react'
 
 export class Opportunities extends Component {
   render() {

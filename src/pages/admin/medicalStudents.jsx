@@ -1,7 +1,7 @@
 import '../../assets/css/admin.css';
-import React, { Component, Fragment } from 'react'
+import React, { Component,Fragment,Container,Row,Col } from 'react'
 
-export class trainee extends Component {
+export class medicalStudents extends Component {
   render() {
     return (
       <Fragment>
@@ -43,4 +43,4 @@ export class trainee extends Component {
   }
 }
 
-export default trainee
+export default medicalStudents

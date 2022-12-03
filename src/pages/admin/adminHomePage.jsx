@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
 import '../../assets/css/admin.css';
 import Nav from './adminNav.jsx';
-import React, { Component } from 'react'
+import React, { Fragment, Col, Row,Component, Container } from 'react'
 
 export class adminHomePage extends Component {
   render() {

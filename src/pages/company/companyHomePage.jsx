@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from'./navCompany';
-import EditOpportunities from '../../assets/customizeIcon.png';
-import EyeIcon from '../../assets/eyeIcon.webp';
+import EditOpportunities from '../../assets/images/customizeIcon.png';
+import EyeIcon from '../../assets/images/eyeIcon.webp';
 const companyHomePage = () => {
   return (
 <div>

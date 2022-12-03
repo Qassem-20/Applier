@@ -1,7 +1,7 @@
 import '../../assets/css/consumer.css';
-import Nav from './navConsumer';
-import Profile from'../../assets/profileIcon.png';
-import React, { Component } from 'react'
+import Nav from '../../components/navDesktop';
+import Profile from'../../assets/images/profileIcon.png';
+import React, { Fragment, Component } from 'react'
 
 export class editProfile extends Component {
   render() {

@@ -1,6 +1,6 @@
 import '../../assets/css/consumer.css';
 import React, { Component, Fragment } from 'react'
-import { Col, Container } from 'react-bootstrap';
+import { Card,Button,Row,Col, Container } from 'react-bootstrap';
 
 export class medicalStudents extends Component {
   render() {

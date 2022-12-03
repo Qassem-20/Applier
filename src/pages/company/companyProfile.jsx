@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from './navCompany';
-import Profile from '../../assets/profileIcon.png';
-import '../../style/company.css';
+import Profile from '../../assets/images/profileIcon.png';
+import '../../assets/css/company.css';
 const companyProfile = () => {
   return (
     <div>

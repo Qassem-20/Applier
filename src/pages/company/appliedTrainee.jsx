@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../style/company.css';
-import ShareIcon from'../../assets/ShareIcon.png';
-import CustomizeIcon from '../../assets/customizeIcon.png';
-import OptionIcon from '../../assets/optionIcon.png';
-import EyeIcon from '../../assets/eyeIcon.webp';
+import '../../assets/css/company.css';
+import ShareIcon from'../../assets/images/ShareIcon.png';
+import CustomizeIcon from '../../assets/images/customizeIcon.png';
+import OptionIcon from '../../assets/images/optionIcon.png';
+import EyeIcon from '../../assets/images/eyeIcon.webp';
 import Nav from './navCompany';
 
 const opportunity = () => {

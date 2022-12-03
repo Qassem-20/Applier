@@ -1,6 +1,5 @@
 import '../../assets/css/admin.css';
-import React, { Component, Fragment } from 'react'
-import { Container } from 'react-bootstrap';
+import React, { Container, Component, Fragment, Col, Row } from 'react'
 
 export class companies extends Component {
   render() {

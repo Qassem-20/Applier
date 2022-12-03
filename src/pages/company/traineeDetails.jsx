@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../style/company.css';
-import Profile from '../../assets/profileIcon.png';
+import '../../assets/css/company.css';
+import Profile from '../../assets/images/profileIcon.png';
 import Nav from './navCompany'
 const traineeDetails = () => {
   return (

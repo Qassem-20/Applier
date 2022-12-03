@@ -1,7 +1,7 @@
 import React from 'react';
-import Logo from '../../assets/profileIcon.png';
+import Logo from '../../assets/images/profileIcon.png';
 import Nav from './navCompany';
-import '../../style/company.css';
+import '../../assets/css/company.css';
 const editOpportunity = () => {
   return (
     <div>

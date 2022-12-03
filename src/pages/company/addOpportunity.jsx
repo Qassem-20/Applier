@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from './navCompany';
-import '../../style/company.css';
+import '../../assets/css/company.css';
 const addOpportunity = () => {
   return (
     <div>

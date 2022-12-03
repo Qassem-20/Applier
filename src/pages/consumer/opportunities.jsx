@@ -1,6 +1,6 @@
 import '../../assets/css/consumer.css';
-import InfoIcon from'../../assets/infoIcon.png';
-import Nav from "./navConsumer";
+import InfoIcon from'../../assets/images/infoIcon.png';
+import Nav from '../../components/navDesktop.jsx';
 
 import React, { Component } from 'react'
 

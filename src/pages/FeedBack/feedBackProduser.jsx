@@ -1,5 +1,5 @@
 import '../../assets/css/feedback.css';
-import React, { Component } from 'react'
+import React, { Component,Row,Col,Container,Fragment } from 'react'
 
 export class feedBackProduser extends Component {
   render() {
