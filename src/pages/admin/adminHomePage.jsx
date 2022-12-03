@@ -1,34 +1,34 @@
 import '../../assets/css/admin.css';
-import Nav from './adminNav.jsx';
-import React, { Fragment, Col, Row,Component, Container } from 'react'
+import React, { Fragment,Component } from 'react'
+import {Container, Row, Col} from 'react-bootstrap';
+import BarChart from '../../components/charts/adminBarChart';
 
 export class adminHomePage extends Component {
   render() {
     return (
       <Fragment>
-        <Nav/>
         <Container>
           <Row>
-            <Col xl={3} md={6} sm={12}>
+            <Col xl={3} md={6} sm={12} className='containerData m-2'>
             <p>Total Companies:</p>
-            <p>234234</p>
+            <p className='text-center'>234234 <span className='shadowWord'>Trainee</span></p> 
             </Col>
-            <Col xl={3} md={6} sm={12}>
-            <p>Total Medical Students:</p>
-            <p>234234</p>
+            <Col xl={3} md={6} sm={12} className='containerData m-2'>
+            <p className='ml-2'>Total Medical Students:</p>
+            <p className='text-center'>234234 <span className='shadowWord'>Trainee</span></p>
             </Col>
-            <Col xl={3} md={6} sm={12}>
-              <p>Total Opportunities:</p>
-              <p>234342</p>
+            <Col xl={3} md={6} sm={12} className='containerData m-2'>
+              <p className='ml-10'>Total Opportunities:</p>
+              <p className='text-center'>234342  <span className='shadowWord'>Trainee</span></p>
             </Col>
-            <Col xl={3} md={6} sm={12}>
-              <p>Total active Trainee:</p>
-              <p>14343</p>
+            <Col xl={2} md={6} sm={12} className='containerData m-2'>
+              <p className='ml-2'>Total active Trainee:</p>
+              <p className='text-center'>14343 <span className='shadowWord'>Trainee</span></p>
             </Col>
           </Row>
-          <Row>
+          <Row className='containerData m-2'>
             <p>Opportunity Statics</p>
-            <p>8457</p>
+            <BarChart />
           </Row>
         </Container>
       </Fragment>

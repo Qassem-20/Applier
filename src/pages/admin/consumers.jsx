@@ -1,5 +1,6 @@
 import '../../assets/css/admin.css';
-import React, { Fragment, Col, Row,Component, Container } from 'react'
+import React, { Fragment,Component } from 'react'
+import {Container, Row, Col} from 'react-bootstrap';
 
 export class trainee extends Component {
   render() {

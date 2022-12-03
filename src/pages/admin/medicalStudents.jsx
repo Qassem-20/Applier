@@ -1,5 +1,6 @@
 import '../../assets/css/admin.css';
-import React, { Component,Fragment,Container,Row,Col } from 'react'
+import React, { Component,Fragment } from 'react'
+import {Container, Row, Col} from 'react-bootstrap';
 
 export class medicalStudents extends Component {
   render() {

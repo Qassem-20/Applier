@@ -75,3 +75,10 @@ img{
 .company_logo{
   height: 60px;
 }
+
+.containerData{
+background-color: white;
+border-radius: 25px;
+box-shadow: #333439;
+
+}
