@@ -1,0 +1,22 @@
+import React from "react";
+import  {Navbar} from "react-bootstrap";
+
+class HeaderBar extends React.Component {
+  render() {
+    return (
+      <div className="topnav">
+        <Navbar
+          fixed="top"
+          expand="lg"
+          bg="dark"
+          variant="dark"
+          className="topnav"
+        >
+          <Navbar.Brand href="">V-Canteen</Navbar.Brand>
+        </Navbar>
+      </div>
+    );
+  }
+}
+
+export default HeaderBar;
