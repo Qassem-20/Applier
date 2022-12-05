@@ -1,14 +1,16 @@
 import '../../assets/css/feedback.css';
-import React, { Component, Fragment,Row,Col,Container } from 'react'
+import profileIcon from '../../assets/images/profileIcon.png';
+import React, { Component, Fragment } from 'react'
+import {Container, Row, Col} from 'react-bootstrap';
 
 export class feedBackConsumer extends Component {
   render() {
     return (
       <Fragment>
-      <Container>
+      <Container className='mt-5 p-5 bg-white'>
         <Row>
           <Col>
-          <img src='' />
+          <img src={profileIcon} alt='Profile image' />
           </Col>
 
           <Col>
@@ -26,38 +28,51 @@ export class feedBackConsumer extends Component {
       </Container>
 
       <Container>
-        <h1>Review</h1>
+        <h1>Add Review</h1>
         <p>Rate</p>
-        <div class="Rating" aria-label="Rating of this item is 3 out of 5">
-          <img src="" class="Rating--Star Rating--Star__active" />
-          <img src="" class="Rating--Star Rating--Star__active" />
-          <img src="" class="Rating--Star Rating--Star__active" />
-          <img src="" class="Rating--Star" />
-          <img src="" class="Rating--Star" />
-        </div>          
-        
-        <p>Review</p>
-        <input type="text" name="" value="" />
+        <div class="rate">
+          <input type="radio" id="star5" name="rate" value="5" />
+          <label for="star5" title="text">5 stars</label>
+          <input type="radio" id="star4" name="rate" value="4" />
+          <label for="star4" title="text">4 stars</label>
+          <input type="radio" id="star3" name="rate" value="3" />
+          <label for="star3" title="text">3 stars</label>
+          <input type="radio" id="star2" name="rate" value="2" />
+          <label for="star2" title="text">2 stars</label>
+          <input type="radio" id="star1" name="rate" value="1" />
+          <label for="star1" title="text">1 star</label>
+        </div>           
+      <input className='inputStyling' type="text"  />
+      <a className="btn login" href="/feedBackConsumer">Submit</a>
       </Container>
 
       <Container>
-      <h1>Rate of the medical student</h1>
-      <Container>
-        <Row>
-        <Col>
-        <img src="" alt="" />
-        <p>Name of the person who wrote the feedback</p>
+      <Container className='mt-3'>
+          <Row>
+            <Col sm={6}><h1>Reviews</h1></Col>
+            <Col className='mt-5' sm={4}>
+              <select className='inputStyling' name="" placeholder=''>
+                <option value=""></option>
+                <option value="">Highly Rated</option>
+                <option value="">Recently Rated</option>
+                <option value="">Lowest Rated</option>
+              </select>
+            </Col>
+          </Row>
+        </Container>
+      <Container className='mt-4 rounded bg-white border border-dark p-2'>
+      <Row>
+        <Col sm={3}>
+          <img className='m-auto' src={profileIcon} alt="" />
+          <p className='text-center'>Ahmed</p>
+        </Col>  
+        <Col sm={7}>
+          <p>feiubrgbveiruibviure;auv;erbuvae;ribveira;buver;av</p>
         </Col>
-        
-        <Col>
-        <p>The Feedback</p>
-        </Col>
-
-        <Col>
-        <span>Rate</span>
-        <img src="" alt="" />
-        </Col>
-        </Row>
+        <Col className='m-auto' sm={2}>
+          <span>3 <span>&#11088;</span></span>
+       </Col>
+      </Row>
       </Container>
       </Container>
     </Fragment>   

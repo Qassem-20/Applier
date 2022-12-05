@@ -29,7 +29,7 @@ import OpportunitiesPanel from '../pages/admin/opportunities';
 import MedicalStudent from '../pages/admin/medicalStudents';
 
 import FeedBackConsumer  from '../pages/FeedBack/feedBackConsumer';
-import FeedBackProduser from '../pages/FeedBack/feedBackProduser';
+import FeedBackProducer from '../pages/FeedBack/feedBackProducer';
 
 class AppRoute extends Component {
   render() {
@@ -111,8 +111,8 @@ class AppRoute extends Component {
             <Route path="/feedBackConsumer" >
             <FeedBackConsumer />
             </Route>
-            <Route path="/feedBackProduser" >
-            <FeedBackProduser />
+            <Route path="/feedBackProducer" >
+            <FeedBackProducer />
             </Route>
           </Switch>
       </Fragment>
