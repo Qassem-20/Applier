@@ -4,3 +4,6 @@
 .textShadow{
     opacity: 60%;
 }
+.signInWidth{
+    max-width: 60%;
+}

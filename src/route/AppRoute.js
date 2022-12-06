@@ -10,7 +10,7 @@ import SignUpCompany from '../pages/signIn-signUp/signUpCompany';
 import SignUpConsumer from '../pages/signIn-signUp/signUpConsumer';
 import ForgottenPassword from '../pages/signIn-signUp/forgottenPassword';
 
-import ConusmerProfile from '../pages/consumer/editProfile';
+import ConsumerProfile from '../pages/consumer/editProfile';
 import Opportunities from '../pages/consumer/opportunities';
 import MedicalStudents from '../pages/consumer/medicalStudents';
 import CompanyInfo from '../pages/consumer/companyInfo';
@@ -23,13 +23,19 @@ import EditOpportunity from '../pages/company/editOpportunity';
 import TraineeDetails from '../pages/company/traineeDetails';
 
 import AdminHomePage from '../pages/admin/adminHomePage';
+import UnauthorizedMiddleWare from '../pages/admin/unauthorizedMiddleWare';
 import Consumers from '../pages/admin/consumers';
 import Companies from '../pages/admin/companies';
 import OpportunitiesPanel from '../pages/admin/opportunities';
 import MedicalStudent from '../pages/admin/medicalStudents';
+import AdminSignIn from '../pages/admin/adminSignIn';
+import AddAdmin from '../pages/admin/addAdmin';
+import ReportedFeedBack from '../pages/admin/reportedFeedBack';
+import AdminForgottenPassword from '../pages/admin/adminForgottenPassword';
 
 import FeedBackConsumer  from '../pages/FeedBack/feedBackConsumer';
 import FeedBackProducer from '../pages/FeedBack/feedBackProducer';
+import { reportedFeedBack } from '../pages/admin/reportedFeedBack';
 
 class AppRoute extends Component {
   render() {
@@ -59,8 +65,8 @@ class AppRoute extends Component {
             <ForgottenPassword />
             </Route>
 
-            <Route path="/conusmerProfile" >
-            <ConusmerProfile />
+            <Route path="/consumerProfile" >
+            <ConsumerProfile />
             </Route>
             <Route path="/opportunities" >
             <Opportunities />
@@ -93,6 +99,21 @@ class AppRoute extends Component {
 
             <Route path="/adminHomePage" >
             <AdminHomePage />
+            </Route>
+            <Route path="/adminSignIn" >
+            <AdminSignIn />
+            </Route>
+            <Route path="/unauthorizedMiddleWare" >
+            <UnauthorizedMiddleWare />
+            </Route>
+            <Route path="/adminForgottenPassword" >
+            <AdminForgottenPassword />
+            </Route>
+            <Route path="/reportedFeedBack" >
+            <ReportedFeedBack />
+            </Route>
+            <Route path="/addAdmin" >
+            <AddAdmin />
             </Route>
             <Route path="/consumers" >
             <Consumers />
