@@ -1,14 +1,13 @@
 import '../../assets/css/admin.css';
+import AdminNav from '../../components/Nav/adminNav';
 import React, { Fragment,Component } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
-import BarChart from '../../components/charts/adminBarChart';
-import HeaderBar from './HeaderBar';
 export class adminHomePage extends Component {
   render() {
     return (
       <Fragment>
-      <HeaderBar />
-        <Container>
+        <AdminNav />
+        <Container className='mt-5'>
           <Row>
             <Col xl={3} md={5} sm={12} className='containerData m-2'>
             <p>Total Companies:</p>
@@ -29,7 +28,7 @@ export class adminHomePage extends Component {
           </Row>
           <Row className='containerData m-2'>
             <p>Opportunity Statics</p>
-            <BarChart />
+            BarChart
           </Row>
         </Container>
       </Fragment>

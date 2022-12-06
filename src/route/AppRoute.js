@@ -32,10 +32,10 @@ import AdminSignIn from '../pages/admin/adminSignIn';
 import AddAdmin from '../pages/admin/addAdmin';
 import ReportedFeedBack from '../pages/admin/reportedFeedBack';
 import AdminForgottenPassword from '../pages/admin/adminForgottenPassword';
+import AdminPanel from '../pages/admin/adminPanel';
 
 import FeedBackConsumer  from '../pages/FeedBack/feedBackConsumer';
 import FeedBackProducer from '../pages/FeedBack/feedBackProducer';
-import { reportedFeedBack } from '../pages/admin/reportedFeedBack';
 
 class AppRoute extends Component {
   render() {
@@ -127,7 +127,9 @@ class AppRoute extends Component {
             <Route path="/medicalStudent" >
             <MedicalStudent />
             </Route>
-
+            <Route path="/adminPanel" >
+            <AdminPanel />
+            </Route>
 
             <Route path="/feedBackConsumer" >
             <FeedBackConsumer />

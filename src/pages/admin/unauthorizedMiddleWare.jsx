@@ -2,7 +2,6 @@ import '../../assets/css/admin.css';
 import unauthorized from '../../assets/images/unauthorizedAdmin.png';
 import React, { Component,Fragment } from 'react'
 import {Container} from 'react-bootstrap';
-import HomePage from '../HomePage';
 
 export class unauthorizedMiddleWare extends Component {
   render() {

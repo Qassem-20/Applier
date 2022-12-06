@@ -1,4 +1,6 @@
 import '../../assets/css/admin.css';
+import AdminNav from '../../components/Nav/adminNav';
+
 import React, { Fragment,Component } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
 
@@ -6,7 +8,8 @@ export class adminPanel extends Component {
   render() {
     return (
       <Fragment>
-        <Container>
+        <AdminNav />
+        <Container className=''>
             <h1>Admin Panel</h1>
         </Container>
         <Container fluid>

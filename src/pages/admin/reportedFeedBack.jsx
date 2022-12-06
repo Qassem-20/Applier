@@ -1,12 +1,12 @@
 import '../../assets/css/admin.css';
-
+import AdminNav from '../../components/Nav/adminNav';
 import React, { Fragment, Component } from 'react'
-import {Container, Row, Col} from 'react-bootstrap';
 
 export class reportedFeedBack extends Component {
   render() {
     return (
-      <Fragment>
+      <Fragment>  
+        <AdminNav />
       
       </Fragment>
     )
