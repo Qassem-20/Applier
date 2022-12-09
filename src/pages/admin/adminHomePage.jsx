@@ -1,5 +1,6 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
+import adminBarChart from '../../components/charts/adminBarChart';
 import React, { Fragment,Component } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
 export class adminHomePage extends Component {
@@ -28,7 +29,7 @@ export class adminHomePage extends Component {
           </Row>
           <Row className='containerData m-2'>
             <p>Opportunity Statics</p>
-            BarChart
+            <adminBarChart />
           </Row>
         </Container>
       </Fragment>
