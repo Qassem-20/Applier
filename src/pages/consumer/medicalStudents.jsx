@@ -1,4 +1,5 @@
 import '../../assets/css/consumer.css';
+import ConsumerNav from '../../components/Nav/consumerNav';
 import React, { Component, Fragment } from 'react'
 import { Card,Button,Row,Col, Container } from 'react-bootstrap';
 
@@ -6,13 +7,14 @@ export class medicalStudents extends Component {
   render() {
     return (
       <Fragment>
+        <ConsumerNav />
         <Container>
-        <h1>Medical Students</h1>
-        <input type="" name="" value="" />
-        <input type="" name="" value="" />
-        <input type="" name="" value="" />
-        <input type="" name="" value="" />
-        <input type="" name="" value="" />
+          <h1>Medical Students</h1>
+          <input type="" name="" value="" />
+          <input type="" name="" value="" />
+          <input type="" name="" value="" />
+          <input type="" name="" value="" />
+          <input type="" name="" value="" />
         </Container>
         <Container>
         <Row>

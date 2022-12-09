@@ -1,12 +1,12 @@
 import '../../assets/css/signUpSignIn.css';
-import Nav from '../../components/navDesktop.jsx';
+import WelcomeNav from '../../components/Nav/welcomeNav';
 import React, { Fragment, Component } from 'react'
 
 export class signIn extends Component {
   render() {
     return (
         <Fragment>
-        <Nav />
+        <WelcomeNav />
         <div className='container' id='SignIn'> 
             <div className='row'>
                 <div className='col-2'></div>
@@ -19,7 +19,7 @@ export class signIn extends Component {
                 <input className="inputStyling" type="" name="" value="" />
                 </div>
                 <div>
-                <a className="btn login" href="/TraineeHome">LogIn</a>
+                <a className="btn login" href="/consumerProfile">LogIn</a>
                 <a id="ForgottenPassword" href='/ForgottenPassword'>Forget Password?</a> 
                 </div>
                     <div className='alignmentCenter'>

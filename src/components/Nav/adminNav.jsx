@@ -1,7 +1,5 @@
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import React, { Component, Fragment } from 'react'
-import {Container} from 'react-bootstrap';
+import {Container, Nav, Navbar } from 'react-bootstrap';
+import React, { Component, Fragment } from 'react';
 
 export class adminNav extends Component {
   render() {
@@ -12,7 +10,7 @@ export class adminNav extends Component {
                 <Navbar.Brand href="#home">Applier</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
+                  <Nav>
                     <Nav.Link href="/adminHomePage">Home</Nav.Link>
                     <Nav.Link href="/reportedFeedBack">Reported FeedBack</Nav.Link>
                     <Nav.Link href="/companies">Companies</Nav.Link>

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import Nav from '../components/navDesktop.jsx';
+import WelcomeNav from '../components/Nav/welcomeNav';
 import Header from '../components/homePage/header';
 import Services from '../components/homePage/services.jsx';
 import Achievements from '../components/homePage/achievements.jsx';
@@ -9,7 +9,7 @@ class HomePage extends Component {
   render() {
     return (
       <Fragment>
-        <Nav />
+        <WelcomeNav />
         <section>
         <Header />
         </section>

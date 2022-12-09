@@ -1,6 +1,6 @@
 import '../../assets/css/consumer.css';
 import InfoIcon from'../../assets/images/infoIcon.png';
-import Nav from '../../components/navDesktop.jsx';
+import ConsumerNav from '../../components/Nav/consumerNav';
 
 import React, { Component } from 'react'
 
@@ -8,7 +8,7 @@ export class opportunities extends Component {
   render() {
     return (
       <div>
-      <Nav />
+      <ConsumerNav />
       <section>
       <div className='container '>
         <div className='row'>

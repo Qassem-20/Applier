@@ -1,12 +1,12 @@
 import '../../assets/css/signUpSignIn.css';
-import Nav from '../../components/navDesktop';
+import WelcomeNav from '../../components/Nav/welcomeNav';
 import React, { Fragment ,Component } from 'react'
 
 export class forgottenPassword extends Component {
   render() {
     return (
       <Fragment>
-        <Nav />
+        <WelcomeNav />
         <div className='container SignUpFormat'>
         <p>Enter your Email</p>
         <input type="email" name="" value="" />

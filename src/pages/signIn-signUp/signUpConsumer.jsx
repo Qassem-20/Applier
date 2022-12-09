@@ -1,13 +1,12 @@
 import '../../assets/css/signUpSignIn.css';
-import Nav from '../../components/navDesktop.jsx';
-
+import WelcomeNav from '../../components/Nav/welcomeNav';
 import React, { Fragment, Component } from 'react'
 
 export class signUpConsumer extends Component {
   render() {
     return (
       <Fragment>
-      <Nav />
+      <WelcomeNav />
       <div className='SignUpFormat container'>
         <h1>Welcome to Applier</h1>
         <p>Register your account</p>
