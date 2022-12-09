@@ -10,9 +10,9 @@ const addOpportunity = () => {
         <div className='row'>
           <div className='col-sm-12 col-md-6'>
           <p className='labelTag'>Job Role</p>
-          <input type="input" className='inputUser' name="" value="" />
+          <input type="input" className='inputStyling' name="" value="" />
           <p className='labelTag'>Job Description</p>
-          <input type="text" className='inputUser'name="" value="" />
+          <input type="text" className='inputStyling'name="" value="" />
           <p className='labelTag'>Departments looking for</p>
           <select>
             <option value=""></option>
@@ -28,7 +28,7 @@ const addOpportunity = () => {
             <option value=""></option>
           </select>
           <p className='labelTag'>Training Duration</p>
-          <input type="number" className='inputUser'name="" value="" />
+          <input type="number" className='inputStyling'name="" value="" />
         </div>  
           <div className='col-sm-12 col-md-6'>
             <p className='labelTag'>Type of Job</p>
@@ -40,10 +40,10 @@ const addOpportunity = () => {
             <input type="checkbox" name="" value="" /> 
             </div>
             <div>
-            <input type="text" className='inputUser' name="" value="" />          
+            <input type="text" className='inputStyling' name="" value="" />          
             </div>
             <p className='labelTag'>Place of the Job</p>
-            <input type="text" className='inputUser' name="" value="" />
+            <input type="text" className='inputStyling' name="" value="" />
             <div>
             <button className='primaryButton' type="submit">add opportunity</button>
             </div>
