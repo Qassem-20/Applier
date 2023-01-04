@@ -95,12 +95,11 @@
   }
   
   /* Style the back side */
-  .flip-card-back {
-    background-color: dodgerblue;
-    color: white;
-    transform: rotateY(180deg);
-  }
-
+.flip-card-back {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
+}
 .hiddenTransition{
     display: none;
 }
