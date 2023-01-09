@@ -1,34 +1,57 @@
 import '../../assets/css/signUpSignIn.css';
 import WelcomeNav from '../../components/Nav/welcomeNav';
 import React, { Fragment, Component } from 'react'
+import { Container, Row, Col } from 'react-bootstrap';
 
 export class signIn extends Component {
   render() {
     return (
         <Fragment>
         <WelcomeNav />
-        <div className='container' id='SignIn'> 
-            <div className='row'>
-                <div className='col-2'></div>
-                <div className='col-8 signInBox'>
+        <Container> 
+            <Row>
+                <Container className='bg-white p-4 rounded' m-auto>
                 <h1 className='alignmentCenter'>Welcome to Applier</h1>
+                <hr />
+                <Row className='mt-3 mb-3'>
+                    <Col xl={5} sm={12} className='mx-3' m-auto>
+                    <p className='labelTag'>Email</p>
+                    <input className="inputStyling" type="" name="" value="" />
+                    <div>
+                        <p className='labelTag'>Password</p>
+                        <input className="inputStyling" type="" name="" value="" />
+                    </div>
+                    <Row>
+                        <Col mr-5><a className="btn login" href="/consumerProfile">LogIn</a></Col>
+                        <Col><a href='/ForgottenPassword'>Forget Password?</a></Col> 
+                    </Row>
+                        <div className='alignmentCenter mt-2'>
+                            <a href='/SignUp'>Don’t have an Account?  Register</a>
+                        </div>
+                </Col>
+                <Col xl={1}>
+                    <div id='verticalLine'>
+                    </div>
+                </Col>
+                <Col xl={5} sm={12} className='mx-3' m-auto>
                 <p className='labelTag'>Email</p>
                 <input className="inputStyling" type="" name="" value="" />
                 <div>
-                <p className='labelTag'>Password</p>
-                <input className="inputStyling" type="" name="" value="" />
+                    <p className='labelTag'>Password</p>
+                    <input className="inputStyling" type="" name="" value="" />
                 </div>
-                <div>
-                <a className="btn login" href="/consumerProfile">LogIn</a>
-                <a id="ForgottenPassword" href='/ForgottenPassword'>Forget Password?</a> 
-                </div>
-                    <div className='alignmentCenter'>
+                <Row>
+                    <Col mr-5><a className="btn login" href="/companyProfile">LogIn</a></Col>
+                    <Col><a href='/ForgottenPassword'>Forget Password?</a></Col> 
+                </Row>
+                    <div className='alignmentCenter mt-2'>
                         <a href='/SignUp'>Don’t have an Account?  Register</a>
                     </div>
-                </div>
-                <div className='col-2'></div> 
-            </div>
-        </div>
+                </Col>
+                </Row>
+                </Container>
+            </Row>
+        </Container>
     </Fragment>
     )
   }

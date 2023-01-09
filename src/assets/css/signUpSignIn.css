@@ -1,13 +1,5 @@
 @import url(//fonts.googleapis.com/css?family=Lora);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-.signInBox{
-background-color: white;
-border-radius: 5px;
-padding: 1rem;
-padding-left: 2rem;
-}
-
-
 .inputUser{
     background: #FFFFFF;
     border: 1px solid #000000;
@@ -24,10 +16,6 @@ width: 6rem;
 background: #485089;
 border-radius: 25px;
 }
-#ForgottenPassword{
-    position: absolute;
-    right: 28% ;
-}
 .alignmentCenter{
     text-align: center;
 }
@@ -35,4 +23,9 @@ border-radius: 25px;
 background-color: white;
 border-radius: 4px;
 padding: 1rem;
+}
+#verticalLine{
+    border-left: 3px solid gray;
+    margin-left: 2rem;
+    height: 100%;
 }
