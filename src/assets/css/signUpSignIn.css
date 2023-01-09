@@ -29,3 +29,9 @@ padding: 1rem;
     margin-left: 2rem;
     height: 100%;
 }
+.hideCompanySignIn{
+    display: none;
+}
+.hideMedicalSignIn{
+    display: none;
+}

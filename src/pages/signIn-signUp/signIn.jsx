@@ -34,6 +34,10 @@ export class signIn extends Component {
                     </div>
                 </Col>
                 <Col xl={5} sm={12} className='mx-3' m-auto>
+                    <Container><button className='login' >Medical Student</button></Container>
+                    <Container><button className='login' >Company</button></Container>
+                </Col>
+                <Col xl={5} sm={12} className='mx-3 hideMedicalSignIn' m-auto>
                 <p className='labelTag'>Email</p>
                 <input className="inputStyling" type="" name="" value="" />
                 <div>
@@ -41,7 +45,22 @@ export class signIn extends Component {
                     <input className="inputStyling" type="" name="" value="" />
                 </div>
                 <Row>
-                    <Col mr-5><a className="btn login" href="/companyProfile">LogIn</a></Col>
+                    <Col mr-5><a className="btn login" href="/medicalStudents">LogIn</a></Col>
+                    <Col><a href='/ForgottenPassword'>Forget Password?</a></Col> 
+                </Row>
+                    <div className='alignmentCenter mt-2'>
+                        <a href='/SignUp'>Don’t have an Account?  Register</a>
+                    </div>
+                </Col>
+                <Col xl={5} sm={12} className='mx-3 hideCompanySignIn' m-auto>
+                <p className='labelTag'>Email</p>
+                <input className="inputStyling" type="" name="" value="" />
+                <div>
+                    <p className='labelTag'>Password</p>
+                    <input className="inputStyling" type="" name="" value="" />
+                </div>
+                <Row>
+                    <Col mr-5><a className="btn login" href="/companyHomePage">LogIn</a></Col>
                     <Col><a href='/ForgottenPassword'>Forget Password?</a></Col> 
                 </Row>
                     <div className='alignmentCenter mt-2'>
