@@ -1,4 +1,5 @@
 import {Container, Nav, Navbar } from 'react-bootstrap';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import React, { Component, Fragment } from 'react';
 
 export class adminNav extends Component {
@@ -7,17 +8,21 @@ export class adminNav extends Component {
         <Fragment>
             <Navbar bg="white" expand="lg" className='pt-2 pb-3 mb-5'>
               <Container>
-                <Navbar.Brand href="#home">Applier</Navbar.Brand>
+                <Navbar.Brand href="/">Applier</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav>
                     <Nav.Link href="/adminHomePage">Home</Nav.Link>
                     <Nav.Link href="/reportedFeedBack">Reported FeedBack</Nav.Link>
-                    <Nav.Link href="/companies">Companies</Nav.Link>
-                    <Nav.Link href="/medicalStudent">Medical Students</Nav.Link>
-                    <Nav.Link href="/consumers">Consumers</Nav.Link>
                     <Nav.Link href="/opportunitiesPanel">Opportunities Panel</Nav.Link>
                     <Nav.Link href="/adminPanel">Admin Panel</Nav.Link>
+                    <NavDropdown title="Users" id="basic-nav-dropdown">
+                      <NavDropdown.Item href="/companies">Companies</NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item href="/medicalStudent">Medical Students</NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item href="/consumers">Consumers</NavDropdown.Item>
+                    </NavDropdown>
                   </Nav>
                 </Navbar.Collapse>
               </Container>

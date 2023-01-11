@@ -1,14 +1,16 @@
-import React from 'react';
 import '../../assets/css/company.css';
 import ShareIcon from'../../assets/images/ShareIcon.png';
 import CustomizeIcon from '../../assets/images/customizeIcon.png';
 import OptionIcon from '../../assets/images/optionIcon.png';
 import EyeIcon from '../../assets/images/eyeIcon.webp';
-import Nav from './navCompany';
+import Nav from '../../components/Nav/companyNav';
 
-const opportunity = () => {
-  return (
-    <div>
+import React, { Fragment,Component } from 'react'
+
+export class appliedTrainee extends Component {
+  render() {
+    return (
+      <Fragment>
       <Nav />
       <div className='row'>
         <div className='col-sm-12 col-md-6 col-lg-3'>
@@ -93,8 +95,9 @@ const opportunity = () => {
           <a href='/traineeDetails'><img className='iconSize' src={OptionIcon} alt="OptionIcon" /></a>
         </div>
     </div>
-    </div>
-  )
+    </Fragment>
+    )
+  }
 }
 
-export default opportunity
+export default appliedTrainee

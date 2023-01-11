@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from './navCompany';
+import Nav from '../../components/Nav/companyNav';
 import '../../assets/css/company.css';
 const addOpportunity = () => {
   return (

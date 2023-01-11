@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../assets/css/company.css';
 import Profile from '../../assets/images/profileIcon.png';
-import Nav from './navCompany'
+import Nav from '../../components/Nav/companyNav';
 const traineeDetails = () => {
   return (
     <div>

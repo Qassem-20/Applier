@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../../assets/images/profileIcon.png';
-import Nav from './navCompany';
+import Nav from '../../components/Nav/companyNav';
 import '../../assets/css/company.css';
 const editOpportunity = () => {
   return (

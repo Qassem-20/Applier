@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from'./navCompany';
+import Nav from '../../components/Nav/companyNav';
 import EditOpportunities from '../../assets/images/customizeIcon.png';
 import EyeIcon from '../../assets/images/eyeIcon.webp';
 const companyHomePage = () => {
@@ -37,7 +37,7 @@ const companyHomePage = () => {
         <span className='col-1 opportunitiesTags'>duration</span>
         <span className='col-2 opportunitiesTags'>12/2/2022</span>
         <div className='col-1 d-flex justify-content-center'>
-         <a href='/opportunityDetail'><img className='infoImg' src={EyeIcon} alt="view Applications" /></a>
+         <a href='/appliedTrainee'><img className='infoImg' src={EyeIcon} alt="view Applications" /></a>
         </div>
         <div className='col-1 d-flex justify-content-center'>
             <a href='/editOpportunity'><img className='infoImg' src={EditOpportunities} alt="Edit Opportunity" /></a>
@@ -50,7 +50,7 @@ const companyHomePage = () => {
       <span className='col-1 opportunitiesTags'>duration</span>
       <span className='col-2 opportunitiesTags'>10/01/2022</span>
         <div className='col-1 d-flex justify-content-center'>
-            <a href='/opportunityDetail'><img className='infoImg' src={EyeIcon} alt="view Applications" /></a>
+            <a href='/appliedTrainee'><img className='infoImg' src={EyeIcon} alt="view Applications" /></a>
         </div>
          <div className='col-1 d-flex justify-content-center'>
             <a href='/editOpportunity'><img className='infoImg' src={EditOpportunities} alt="Edit Opportunities" /></a>

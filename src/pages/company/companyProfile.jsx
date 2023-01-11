@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from './navCompany';
+import Nav from '../../components/Nav/companyNav';
 import Profile from '../../assets/images/profileIcon.png';
 import '../../assets/css/company.css';
 const companyProfile = () => {
