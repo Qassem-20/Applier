@@ -12,8 +12,8 @@ export class routeSignUp extends Component {
       <WelcomeNav />
         <div className='container'> 
           <div className='row'>
-          <a className='col-6' href="/StudentSignUp"><img className="img-fluid" src={traineeBackground} alt="" /></a>
-          <a className='col-6' href="/TrainerSignUp"><img className="img-fluid" src={companyBackground} alt="" /></a>
+          <a className='col-6' href="/signUpConsumer"><img className="img-fluid" src={traineeBackground} alt="" /></a>
+          <a className='col-6' href="/signUpCompany"><img className="img-fluid" src={companyBackground} alt="" /></a>
           </div>       
         </div>
       </Fragment>

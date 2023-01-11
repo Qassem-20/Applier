@@ -13,7 +13,7 @@ export class signIn extends Component {
                 <Container className='bg-white p-4 rounded' m-auto>
                 <h1 className='alignmentCenter'>Welcome to Applier</h1>
                 <hr />
-                <Row className='mt-3 mb-3'>
+                <Row className='mt-4 mb-3'>
                     <Col xl={5} sm={12} className='mx-3' m-auto>
                     <p className='labelTag'>Email</p>
                     <input className="inputStyling" type="" name="" value="" />
@@ -26,16 +26,16 @@ export class signIn extends Component {
                         <Col><a href='/ForgottenPassword'>Forget Password?</a></Col> 
                     </Row>
                         <div className='alignmentCenter mt-2'>
-                            <a href='/SignUp'>Don’t have an Account?  Register</a>
+                            <a href='/routeSignUp'>Don’t have an Account?  Register</a>
                         </div>
                 </Col>
                 <Col xl={1}>
                     <div id='verticalLine'>
                     </div>
-                </Col>
-                <Col xl={5} sm={12} className='mx-3' m-auto>
-                    <Container><button className='login' >Medical Student</button></Container>
-                    <Container><button className='login' >Company</button></Container>
+                </Col>            
+                <Col xl={5} sm={12} className='routeBox'>
+                    <div className='mt-5 centerB' m-auto><button className='medicalLog'>Medical Student</button></div>
+                    <div className='mt-5 centerB' m-auto><button className='companyLog'>Company</button></div>
                 </Col>
                 <Col xl={5} sm={12} className='mx-3 hideMedicalSignIn' m-auto>
                 <p className='labelTag'>Email</p>

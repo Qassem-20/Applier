@@ -12,7 +12,8 @@ export class welcomeNav extends Component {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav>
                 <Nav.Link href="/welcomePage">Home</Nav.Link>
-                <Nav.Link href="/signIn">SignIn/SignUp</Nav.Link>
+                <Nav.Link href="/signIn">SignIn</Nav.Link>
+                <Nav.Link href="/routeSignUp">SignUp</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
