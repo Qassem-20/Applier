@@ -13,9 +13,9 @@ const editOpportunity = () => {
       <div className='row'>
         <div className='col-sm-12 col-md-6'>
           <p className='labelTag'>Full name</p>
-          <input type="name" className='inputUser' name="" value="" />
+          <input type="name" className='inputStyling' name="" value="" />
           <p className='labelTag'>Date of Birth</p>
-          <input type="date" className='inputUser'name="" value="" />
+          <input type="date" className='inputStyling'name="" value="" />
           <p className='labelTag'>Nationality</p>
           <select>
             <option value=""></option>
@@ -24,9 +24,9 @@ const editOpportunity = () => {
             <option value=""></option>
           </select>
           <p className='labelTag'>Phone Number</p>
-          <input type="phone" className='inputUser'name="" value="" />
+          <input type="phone" className='inputStyling'name="" value="" />
           <p className='labelTag'>GBA</p>
-          <input type="number" className='inputUser'name="" value="" />
+          <input type="number" className='inputStyling'name="" value="" />
           <span>out of</span>
           <select>
             <option value=""></option>
@@ -46,7 +46,7 @@ const editOpportunity = () => {
           <input type="checkbox" name="" value="" /> 
           </div>
           <div>
-          <input type="text" className='inputUser' name="" value="" />          
+          <input type="text" className='inputStyling' name="" value="" />          
           </div>
         </div>
         <div className='col-sm-12 col-md-6'>
@@ -66,13 +66,13 @@ const editOpportunity = () => {
           </select>
           <br />
           <p className='labelTag'>CV</p>
-          <input type="file" className='inputUser' name="" value="" />
+          <input type="file" className='inputStyling' name="" value="" />
           <p className='labelTag'>Identification Letter <span>(IF EXISTS)</span></p>
-          <input type="file" className='inputUser' name="" value="" /> 
+          <input type="file" className='inputStyling' name="" value="" /> 
           <p className='labelTag'>LinkedIn Profile<span>(IF EXISTS)</span></p>
-          <input type="link" className='inputUser' name="" value="" />
+          <input type="link" className='inputStyling' name="" value="" />
           <p className='labelTag'>Profile Picture<span>(IF EXISTS)</span></p>
-          <input type="file" className='inputUser' name="" value="" />
+          <input type="file" className='inputStyling' name="" value="" />
         </div>
       </div>
     </div>
