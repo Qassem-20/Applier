@@ -27,10 +27,10 @@ app.use('/api/v1/panel',adminPanelRouter)
 // assign a port for the server
 const port = process.env.PORT || 4000;
 
-// DB connection to mongoose atlas
+// DB connection to mongoose atlas /*the URL in env file*/
 const start = async () =>{
   try{
-    await connectDB(/*the URL in env file*/process.env.MONGO_URL)
+    await connectDB(process.env.MONGO_URL)
       app.listen(port, () => {
         console.log(`Server is listening on port ${port}..., and Data base is connected`);
       });
