@@ -1,12 +1,20 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
-import connectDB from './db/connect.js';
 const app = express();
+//db authentication
+import connectDB from './db/connect.js';
+
+//admin router
+import authRouter from'./routes/admin/authRoutes.js';
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('Welcome!');
 });
+
+app.use('/api/v1/auth',authRouter)
 
 // assign a port for the server
 const port = process.env.PORT || 4000;
