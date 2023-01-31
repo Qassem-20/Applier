@@ -1,14 +1,7 @@
 import mongoose from 'mongoose'
 import validator from 'validator'
 
-const UserSchema = new mongoose.Schema({
-    id:{
-        type:String,
-        required:[true, 'Provide a name'], 
-        minlength:3, 
-        maxlength:20,
-        trim:true,
-    },
+const adminSchema = new mongoose.Schema({
     name:{
         type:String,
         required:[true, 'Provide a name'], 
@@ -19,23 +12,21 @@ const UserSchema = new mongoose.Schema({
     Password:{
         type:String,
         required:[true, 'Please enter password'], 
-        minlength:3, 
+        minlength:6, 
         maxlength:20,
         trim:true
     },
     email:{
         type:String,
         required:[true, 'Please enter the email'], 
-        minlength:3, 
-        maxlength:20,
-        trim:true
+        unique:true    
     },
     type:{
         type:String,
-        required:[true, 'Please select a type'], 
-        minlength:3, 
-        maxlength:20,
-        trim:true
+        enum: ['main-admin', 'sub-admin'],
+        default: 'sub-admin',
     },
 
-})
+});
+
+export default mongoose.model('admin', adminSchema)
