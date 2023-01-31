@@ -1,8 +1,7 @@
 import mongoose from 'mongoose'
 import validator from 'validator'
-//you can find all validation here -> [Validator Package](https://www.npmjs.com/package/validator)
 
-const adminSchema = new mongoose.Schema({
+const companySchema = new mongoose.Schema({
     name:{
         type:String,
         required:[true, 'Provide a name'], 
@@ -20,10 +19,6 @@ const adminSchema = new mongoose.Schema({
     email:{
         type:String,
         required:[true, 'Please enter the email'], 
-        validate:{
-            validator:validator.isEmail,
-            message:'Please provide a valid email'
-        },
         unique:true    
     },
     type:{
@@ -34,4 +29,4 @@ const adminSchema = new mongoose.Schema({
 
 });
 
-export default mongoose.model('admin', adminSchema);
+export default mongoose.model('company', companySchema);
