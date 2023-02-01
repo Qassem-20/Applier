@@ -12,7 +12,6 @@ import authRouter from'./routes/admin/authRoutes.js';
 import adminPanelRouter from'./routes/admin/adminPanelRoutes.js';
 import reviewRouter from'./routes/admin/reviewRoutes.js';
 import userRouter from'./routes/admin/usersRoutes.js';
-import mongoose from 'mongoose';
 
 
 app.use(express.json());
@@ -30,23 +29,20 @@ app.use('/api/v1/panel',adminPanelRouter)
 // assign a port for the server
 const port = process.env.PORT || 4000;
 
-/*
-app.listen(4000,()=> {
-  console.log('server is started on port 4000')
-})
-using another method to connect db
-const uri = 'mongodb+srv://Applier:BxgZfhoTOE2MVVl5@applier.dvrqop4.mongodb.net/applier?retryWrites=true&w=majority'
+// connection to the front end
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import path from 'path';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.resolve(__dirname, './client/build')));
 
-async function connect(){ 
-  try{
-    await mongoose.connect(uri);
-    console.log("DB is connected")
-  }catch(error){
-    console.error(error);
-  }
-}
-connect();
-*/
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+});
+
+//middleware
+import notFoundMiddleware from './middleware/not-found.js';
+app.use(notFoundMiddleware);
 
 // DB connection to mongoose atlas the URL in env file
 const start = async () => {
