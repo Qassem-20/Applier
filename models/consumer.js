@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import validator from 'validator'
 
 const consumerSchema = new mongoose.Schema({
+    // -activated by (id_admin)    
     name:{
         type:String,
         required:[true, 'Provide a name'], 
@@ -18,13 +19,36 @@ const consumerSchema = new mongoose.Schema({
     },
     email:{
         type:String,
-        required:[true, 'Please enter the email'], 
+        required:[true, 'Please enter the email'],
+        validate:{
+            validator:validator.isEmail,
+            message:'Please provide a valid email'
+        }, 
         unique:true    
     },
-    type:{
+    createdAt:{
+        type:Date,
+        min: '2023-01-01'
+    },
+    phone_number:{
         type:String,
-        enum: ['main-admin', 'sub-admin'],
-        default: 'sub-admin',
+        required:[true, 'Please enter your phone number'],
+        validate:{
+            validator:validator.isMobilePhone,
+            // add more instruction after testing
+            message:'Please provide a valid phone number'
+        },
+    },
+    nationality:{
+        type:String,
+        required:[true, 'Please enter your nationality'],
+        enum: ['Saudi', 'foreign'],
+        default: 'Saudi',
+    },
+    statue:{
+        type:String,
+        enum: ['suspend', 'unsuspend'],
+        default: 'unsuspend',
     },
 
 });

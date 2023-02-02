@@ -2,31 +2,33 @@ import mongoose from 'mongoose'
 import validator from 'validator'
 
 const reviewSchema = new mongoose.Schema({
-    name:{
+    //add review by (consumer_id)
+    rate:{
         type:String,
-        required:[true, 'Provide a name'], 
+        required:[true, 'Please enter the rate'],
+        enum: ['1', '2','3','4','5']
+    },
+    description:{
+        type:String,
+        required:[true, 'Please provide a description'],
         minlength:3, 
-        maxlength:20,
-        trim:true
+        maxlength:500,
+        trim:true    
     },
-    Password:{
+    statue:{
         type:String,
-        required:[true, 'Please enter password'], 
-        minlength:6, 
-        maxlength:20,
-        trim:true
+        enum: ['shown', 'hidden'],
+        default:['shown']
     },
-    email:{
+    isReported:{
         type:String,
-        required:[true, 'Please enter the email'], 
-        unique:true    
+        enum: ['yes', 'no'],
+        default:['no']
     },
-    type:{
-        type:String,
-        enum: ['main-admin', 'sub-admin'],
-        default: 'sub-admin',
-    },
-
+    createdAt:{
+        type:Date,
+        min: '2023-01-01'
+    }, 
 });
 
 export default mongoose.model('review', reviewSchema);
