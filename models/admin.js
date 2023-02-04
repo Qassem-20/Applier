@@ -36,6 +36,7 @@ const adminSchema = new mongoose.Schema({
 
 });
 
+// hashing the password
 adminSchema.pre('save', async function () {
     // console.log(this.modifiedPaths())
     if (!this.isModified('password')) return
