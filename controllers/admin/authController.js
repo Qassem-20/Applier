@@ -1,5 +1,12 @@
+import admin from '../../models/admin.js';
+import { StatusCodes } from 'http-status-codes';
 const register = async(req,res) => {
-    res.send('register user')
+    try{
+        const admin = await admin.create(req.body);
+        res.status(StatusCodes.OK).json({admin})
+    }catch(error){
+        next(error)
+    }
 }
 const login = async(req,res) => {
     res.send('login user')

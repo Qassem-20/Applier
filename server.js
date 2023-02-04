@@ -7,6 +7,9 @@ const app = express();
 //db authentication
 import connectDB from './db/connect.js';
 
+// to handle the errors
+import 'express-async-errors';
+
 //admin routes
 import authRouter from'./routes/admin/authRoutes.js';
 import adminPanelRouter from'./routes/admin/adminPanelRoutes.js';
@@ -42,7 +45,9 @@ app.get('*', (req, res) => {
 
 //middleware
 import notFoundMiddleware from './middleware/not-found.js';
+import errorHandlerMiddleware from './middleware/error-handler.js';
 app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 // DB connection to mongoose atlas the URL in env file
 const start = async () => {
