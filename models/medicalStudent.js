@@ -20,8 +20,7 @@ const medicalStudentSchema = new mongoose.Schema({
         type:String,
         required:[true, 'Please enter password'], 
         minlength:6, 
-        maxlength:20,
-        trim:true
+        select: false
     },
     email:{
         type:String,
