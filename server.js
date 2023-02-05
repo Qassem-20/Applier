@@ -50,9 +50,11 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 // DB connection to mongoose atlas the URL in env file
+// 1- npm i dotenv
+// 2- create file named (.env), then write MONGO_URL=your connection link
 const start = async () => {
   try {
-    await connectDB(process.env.MONGO_URL);
+    await connectDB(process.env.MONGO_URL, {useUnifiedTopology:true,useNewUrlParser:true});
     app.listen(port, () => {
       console.log(`Server is listening on port ${port}...`);
     });
