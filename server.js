@@ -23,7 +23,7 @@ app.get('', (req, res) => {
   res.send('Welcome to Applier project');
 });
 
-//admin
+//admin routes
 app.use('/api/v1/auth',authRouter)
 app.use('/api/v1/reviews',reviewRouter)
 app.use('/api/v1/users',userRouter)
@@ -32,7 +32,7 @@ app.use('/api/v1/panel',adminPanelRouter)
 // assign a port for the server
 const port = process.env.PORT || 4000;
 
-// connection to the front end
+/* connection to the front end
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -42,7 +42,7 @@ app.use(express.static(path.resolve(__dirname, './client/build')));
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
 });
-
+*/
 //middleware
 import notFoundMiddleware from './middleware/not-found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
@@ -56,7 +56,7 @@ const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL, {useUnifiedTopology:true,useNewUrlParser:true});
     app.listen(port, () => {
-      console.log(`Server is listening on port ${port}...`);
+      console.log(`Server is listening on port ${port}, ans DB is connected`);
     });
   } catch (error) {
     console.log(error);

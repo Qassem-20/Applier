@@ -8,9 +8,9 @@ export class header extends Component {
       <Fragment>
         <Container className=' header_container' >
           <p className='textStyling'>
-          "A venue where trainee can get
-          opportunity with a corporation, 
-          and where companies found the trainee."
+          "A venue where university students can get
+          opportunity with a corporation or patients, 
+          and where companies and patients found the trainee."
           </p>
           <div className=' d-flex justify-content-center'>
           <a href='/SignIn' className='btn active' id='signInButton'>start your journey with Applier</a>  

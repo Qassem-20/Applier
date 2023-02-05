@@ -17,7 +17,7 @@ export class services extends Component {
                 <div className='card' id='card1'>
                 <img src={Service1} alt="Service4" className='ServicesImgs' />
                 <div class="card-body">
-                <p>Get the right trainer</p>
+                <p>Get the right trainee</p>
                 </div>
                 </div>
               </Col>
