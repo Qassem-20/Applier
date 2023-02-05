@@ -28,6 +28,11 @@ app.use('/api/v1/auth',authRouter)
 app.use('/api/v1/reviews',reviewRouter)
 app.use('/api/v1/users',userRouter)
 app.use('/api/v1/panel',adminPanelRouter)
+//company routes
+
+//medicalStudents routes
+
+//consumer routes
 
 // assign a port for the server
 const port = process.env.PORT || 4000;
