@@ -3,6 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 const register = async(req,res) => {
     try{
         const admin = await admin.create(req.body);
+        res.status(StatusCodes.OK).json({admin})
     }catch(error){
         next(error)
     }
