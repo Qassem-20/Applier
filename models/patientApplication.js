@@ -10,9 +10,10 @@ const patientApplicationSchema = new mongoose.Schema({
         enum:['','','',''],
         default:'none'
     },
-    createdAt:{
-        type:Date,
-        min: '2023-01-01'
+    createdBy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Company',
+        required: [true, 'Please provide Consumer'],
     }, 
     /*
     allergies:{
@@ -23,6 +24,8 @@ const patientApplicationSchema = new mongoose.Schema({
         default:'none'
     },
     */
-});
+},
+{ timestamps: true }
+);
 
 export default mongoose.model('patientApplication', patientApplicationSchema);

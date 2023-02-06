@@ -53,11 +53,14 @@ const traineeApplicationSchema = new mongoose.Schema({
         required:[true, 'Please enter your experience'],
         enum: ['none','less than a year','an year','2 years','more than 2 years'],
         default:'none'
-    },
-    createdAt:{
-        type:Date,
-        min: '2023-01-01'
     }, 
-});
+    createdBy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Consumer',
+        required: [true, 'Please provide Consumer'],
+    }
+},
+{ timestamps: true }
+);
 
 export default mongoose.model('traineeApplication', traineeApplicationSchema);

@@ -25,10 +25,13 @@ const reviewSchema = new mongoose.Schema({
         enum: ['yes', 'no'],
         default:['no']
     },
-    createdAt:{
-        type:Date,
-        min: '2023-01-01'
-    }, 
-});
+    createdBy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Consumer',
+        required: [true, 'Please provide Consumer'],
+    }
+},
+{ timestamps: true }
+);
 
 export default mongoose.model('review', reviewSchema);

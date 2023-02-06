@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 import validator from 'validator'
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 const medicalStudentSchema = new mongoose.Schema({
     // -activated by (id_admin)    
@@ -35,25 +37,6 @@ const medicalStudentSchema = new mongoose.Schema({
         type:Date,
         min: '2023-01-01'
     },
-    nationality:{
-        type:String,
-        required:[true, 'Please enter your nationality'],
-        enum: ['Saudi', 'foreign'],
-        default: 'Saudi'
-    },
-    city:{
-        type:String,
-        required:[true, 'Please enter your city'],
-        //enter the rest from this link (https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Saudi_Arabia)
-        enum: ['Abha','Ad-Dilam','Al-Abwa','Al Artaweeiyah','Al Bukayriyah','Badr','Baljurashi','Bisha','Bareq','Buraydah',
-        'Al Bahah','Buqaa','Dammam','Dhahran','Dhurma','Dahaban','Duba','Dumat Al-Jandal','Dawadmi','Farasan','Gatgat',
-        'Gerrha','Ghawiyah',"Al-Gwei'iyyah",'Hautat Sudair','Habaala','Hajrah','Haql','','','','','','','','','','','','',]
-    },
-    gender:{
-        type:String,
-        required:[true, 'Please enter your gender'],
-        enum: ['male', 'female'],
-    },
     phone_number:{
         type:String,
         required:[true, 'Please enter your phone number'],
@@ -68,23 +51,14 @@ const medicalStudentSchema = new mongoose.Schema({
         enum: ['active', 'inactive'],
         default: 'inactive',
     },
-    profile_visibility:{
-        type:String,
-        enum: ['shown', 'hidden'],
-        default: 'shown',
-    },
-    main_major:{
-        type:String,
-        enum: ['Dentist', 'Doctor'],
-        default: 'Doctor',
-    },    
-    specialty:{
-        type:String,
-        //need to questionnaire medical students
-        enum: [''],
-        default: '',
-    },
-});
+    activatedBy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Admin',
+        required: [true, 'Please provide admin'],
+    }
+},
+{ timestamps: true }
+);
 
 // hashing the password
 adminSchema.pre('save', async function () {

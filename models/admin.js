@@ -34,8 +34,9 @@ const adminSchema = new mongoose.Schema({
         enum: ['main-admin', 'sub-admin'],
         default: 'sub-admin',
     },
-
-});
+},
+{ timestamps: true }
+);
 
 // hashing the password
 adminSchema.pre('save', async function () {

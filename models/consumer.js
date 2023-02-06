@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 import validator from 'validator'
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 const consumerSchema = new mongoose.Schema({
     // -activated by (id_admin)    
@@ -25,10 +27,6 @@ const consumerSchema = new mongoose.Schema({
         }, 
         unique:true    
     },
-    createdAt:{
-        type:Date,
-        min: '2023-01-01'
-    },
     phone_number:{
         type:String,
         required:[true, 'Please enter your phone number'],
@@ -49,8 +47,14 @@ const consumerSchema = new mongoose.Schema({
         enum: ['suspend', 'unsuspend'],
         default: 'unsuspend',
     },
-
-});
+    suspendBy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Admin',
+        required: [true, 'Please provide admin'],
+    }
+},
+{ timestamps: true }
+);
 
 // hashing the password
 adminSchema.pre('save', async function () {

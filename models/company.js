@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 import validator from 'validator'
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 const companySchema = new mongoose.Schema({
     organization_name:{
@@ -87,16 +89,19 @@ const companySchema = new mongoose.Schema({
         'Al Bahah','Buqaa','Dammam','Dhahran','Dhurma','Dahaban','Duba','Dumat Al-Jandal','Dawadmi','Farasan','Gatgat',
         'Gerrha','Ghawiyah',"Al-Gwei'iyyah",'Hautat Sudair','Habaala','Hajrah','Haql','','','','','','','','','','','','',],
     },
-    createdAt:{
-        type:Date,
-        min: '2023-01-01'
-    },
     statue:{
         type:String,
         enum: ['active', 'inactive'],
         default: 'inactive',
     },
-});
+    activatedBy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Admin',
+        required: [true, 'Please provide admin'],
+    }
+},
+{ timestamps: true }
+);
 
 // hashing the password
 adminSchema.pre('save', async function () {
