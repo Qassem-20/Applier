@@ -1,12 +1,11 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
-import React, { Component,Fragment } from 'react'
+import React, { Fragment } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
 
-export class medicalStudents extends Component {
-  render() {
-    return (
-      <Fragment>
+const medicalStudents = () => {
+  return (
+    <Fragment>
         <AdminNav />
         <Container className='mt-3 mb-2'>
           <h1>Medical Students</h1>
@@ -45,8 +44,7 @@ export class medicalStudents extends Component {
           </Row>
         </Container>
     </Fragment>
-    )
-  }
+  )
 }
 
 export default medicalStudents

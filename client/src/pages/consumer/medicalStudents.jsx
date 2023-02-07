@@ -5,14 +5,12 @@ import DIcon from '../../assets/images/dentalIcon.png';
 import Profile from'../../assets/images/profileIcon.png';
 import CallIcon from'../../assets/images/callIcon.png';
 import WhatsAppIcon from'../../assets/images/whatsAppIcon.png';
-
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Row, Col, Container, Card } from 'react-bootstrap';
 
-export class medicalStudents extends Component {
-  render() {
-    return (
-      <Fragment>
+const medicalStudents = () => {
+  return (
+    <Fragment>
         <ConsumerNav />
         <Container>
           <h1>Medical Students</h1>
@@ -91,8 +89,7 @@ export class medicalStudents extends Component {
           </Row>
         </Container>
       </Fragment>
-    )
-  }
+  )
 }
 
 export default medicalStudents

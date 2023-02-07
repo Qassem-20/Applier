@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Nav from '../../components/Nav/companyNav';
 import EditOpportunities from '../../assets/images/customizeIcon.png';
 import EyeIcon from '../../assets/images/eyeIcon.webp';
+
 const companyHomePage = () => {
   return (
-<div>
+    <Fragment>
     <Nav />
     <section>
     <div className='container '>
@@ -56,7 +57,7 @@ const companyHomePage = () => {
             <a href='/editOpportunity'><img className='infoImg' src={EditOpportunities} alt="Edit Opportunities" /></a>
         </div>
     </div>
-</div>
+  </Fragment>
   )
 }
 

@@ -1,16 +1,14 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
-import React, { Fragment, Component } from 'react'
+import React, { Fragment } from 'react'
 
-export class reportedFeedBack extends Component {
-  render() {
-    return (
-      <Fragment>  
+const reportedFeedBack = () => {
+  return (
+    <Fragment>  
         <AdminNav />
       
       </Fragment>
-    )
-  }
+  )
 }
 
 export default reportedFeedBack

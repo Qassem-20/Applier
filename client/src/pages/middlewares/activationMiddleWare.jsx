@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React, { Fragment } from 'react'
 
-export class activationMiddleWare extends Component {
-  render() {
-    return (
-      <Fragment>activationMiddleWare</Fragment>
-    )
-  }
+const activationMiddleWare = () => {
+  return (
+    <Fragment>activationMiddleWare</Fragment>
+  )
 }
 
 export default activationMiddleWare

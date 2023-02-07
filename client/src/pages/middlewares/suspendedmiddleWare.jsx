@@ -1,11 +1,10 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
+import React from 'react'
 
-export class suspendmiddleWare extends Component {
-  render() {
-    return (
-      <Fragment>suspendmiddleWare</Fragment>
-    )
-  }
+const suspendedmiddleWare = () => {
+  return (
+    <Fragment>suspendedmiddleWare</Fragment>
+  )
 }
 
-export default suspendmiddleWare
+export default suspendedmiddleWare

@@ -5,12 +5,11 @@ import OptionIcon from '../../assets/images/optionIcon.png';
 import EyeIcon from '../../assets/images/eyeIcon.webp';
 import Nav from '../../components/Nav/companyNav';
 import CompanyChart from '../../components/charts/companyChart.jsx';
-import React, { Fragment,Component } from 'react'
+import React, { Fragment } from 'react'
 
-export class appliedTrainee extends Component {
-  render() {
-    return (
-      <Fragment>
+const appliedTrainee = () => {
+  return (
+    <Fragment>
       <Nav />
       <div className='row'>
         <div className='col-sm-12 col-md-6 col-lg-3'>
@@ -96,8 +95,7 @@ export class appliedTrainee extends Component {
         </div>
     </div>
     </Fragment>
-    )
-  }
+  )
 }
 
 export default appliedTrainee

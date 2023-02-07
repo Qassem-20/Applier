@@ -1,10 +1,9 @@
 import '../../assets/css/medicalStudent.css';
-import React, { Component, Container,Fragment } from 'react'
+import React, { Container,Fragment } from 'react'
 
-export class homePageMedicalStudent extends Component {
-  render() {
-    return (
-      <Fragment>
+const homePageMedicalStudent = () => {
+  return (
+    <Fragment>
         <Container>
           <Row>
             <Col>
@@ -41,8 +40,7 @@ export class homePageMedicalStudent extends Component {
           </Row>
         </Container>
       </Fragment>
-    )
-  }
+  )
 }
 
 export default homePageMedicalStudent

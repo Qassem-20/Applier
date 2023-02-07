@@ -1,12 +1,11 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
-import React, { Fragment,Component } from 'react'
+import React, { Fragment } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
 
-export class trainee extends Component {
-  render() {
-    return (
-      <Fragment>
+const consumers = () => {
+  return (
+  <Fragment>
         <AdminNav />
         <Container className='mt-3 mb-2'>
         <h1>Consumers</h1>
@@ -45,8 +44,7 @@ export class trainee extends Component {
         </Row>
       </Container>
     </Fragment>
-    )
-  }
+  )
 }
 
-export default trainee
+export default consumers

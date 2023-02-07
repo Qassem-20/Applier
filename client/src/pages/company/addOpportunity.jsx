@@ -1,9 +1,10 @@
-import React from 'react';
 import Nav from '../../components/Nav/companyNav';
 import '../../assets/css/company.css';
+import React, { Fragment } from 'react'
+
 const addOpportunity = () => {
   return (
-    <div>
+    <Fragment>
     <Nav />
     <section>
       <div className='container backgroundAdd'>
@@ -51,7 +52,7 @@ const addOpportunity = () => {
         </div>
       </div>
     </section>
-    </div>
+    </Fragment>
   )
 }
 

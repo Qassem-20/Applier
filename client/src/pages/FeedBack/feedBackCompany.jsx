@@ -2,13 +2,13 @@ import '../../assets/css/feedback.css';
 import profileImg from '../../assets/images/profileIcon.png';
 import flagIcon from '../../assets/images/flagIcon.png';
 import replyIcon from '../../assets/images/replyIcon.webp';
-import React, { Component,Fragment } from 'react'
+import React, { Fragment } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
 
-export class feedBackProducer extends Component {
-  render() {
-    return (
-      <Fragment>
+
+const feedBackCompany = () => {
+  return (
+    <Fragment>
         <Container className='mt-5'>
           <Row>
             <Col sm={6}><h1>My Reviews</h1></Col>
@@ -38,9 +38,8 @@ export class feedBackProducer extends Component {
            </Col>
           </Row>
         </Container>
-      </Fragment>       
-        )
-  }
+      </Fragment>  
+  )
 }
 
-export default feedBackProducer
+export default feedBackCompany

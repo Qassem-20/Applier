@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Logo from '../../assets/images/profileIcon.png';
 import Nav from '../../components/Nav/companyNav';
 import '../../assets/css/company.css';
+
 const editOpportunity = () => {
   return (
-    <div>
+   <Fragment>
     <Nav />
     <div className='container'>
         <img src={Logo} className='mx-auto' id='Logo' alt='Change Profile' />
@@ -76,7 +77,7 @@ const editOpportunity = () => {
         </div>
       </div>
     </div>
-</div>
+  </Fragment>
   )
 }
 

@@ -2,12 +2,11 @@ import '../../assets/css/consumer.css';
 import InfoIcon from'../../assets/images/infoIcon.png';
 import ConsumerNav from '../../components/Nav/consumerNav';
 
-import React, { Component } from 'react'
+import React, { Fragment } from 'react'
 
-export class opportunities extends Component {
-  render() {
-    return (
-      <div>
+const opportunities = () => {
+  return (
+    <Fragment>
       <ConsumerNav />
       <section>
       <div className='container '>
@@ -46,9 +45,8 @@ export class opportunities extends Component {
         <img className='infoImg' src={InfoIcon} alt="InfoIcon" />
         </div>
       </div>
-    </div>
-    )
-  }
+    </Fragment>
+  )
 }
 
 export default opportunities

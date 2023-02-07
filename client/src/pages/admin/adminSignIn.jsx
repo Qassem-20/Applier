@@ -1,11 +1,10 @@
 import '../../assets/css/admin.css';
-import React, { Component,Fragment } from 'react'
+import React, {Fragment } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
 
-export class adminSignIn extends Component {
-  render() {
-    return (
-      <Fragment>
+const adminSignIn = () => {
+  return (
+    <Fragment>
         <Container className='m-auto bg-white mt-5 signInWidth pt-3 pb-4 rounded shadow'>
             <h3 className='text-center'>Welcome to Applier Dashboard</h3>
             <Col className='m-auto' xl={8}>
@@ -30,8 +29,7 @@ export class adminSignIn extends Component {
             </Col>
         </Container>
       </Fragment>
-    )
-  }
+  )
 }
 
 export default adminSignIn

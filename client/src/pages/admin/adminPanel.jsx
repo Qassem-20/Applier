@@ -1,13 +1,11 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
-
-import React, { Fragment,Component } from 'react'
+import React, { Fragment } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
 
-export class adminPanel extends Component {
-  render() {
-    return (
-      <Fragment>
+const adminPanel = () => {
+  return (
+<Fragment>
         <AdminNav />
         <Container className='mb-2'>
             <Row>
@@ -33,8 +31,7 @@ export class adminPanel extends Component {
             </Row>
         </Container>
       </Fragment>
-    )
-  }
+  )
 }
 
 export default adminPanel

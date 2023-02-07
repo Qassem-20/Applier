@@ -1,12 +1,12 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
 import AdminChart from '../../components/charts/adminBarChart.jsx';
-import React, { Fragment,Component } from 'react'
+import React, { Fragment } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
-export class adminHomePage extends Component {
-  render() {
-    return (
-      <Fragment>
+
+const adminHomePage = () => {
+  return (
+    <Fragment>
         <AdminNav />
         <Container className='mt-5'>
           <Row>
@@ -33,8 +33,7 @@ export class adminHomePage extends Component {
           </Row>
         </Container>
       </Fragment>
-    )
-  }
+  )
 }
 
 export default adminHomePage

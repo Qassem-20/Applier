@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import '../../assets/css/company.css';
 import Profile from '../../assets/images/profileIcon.png';
 import Nav from '../../components/Nav/companyNav';
+
 const traineeDetails = () => {
   return (
-    <div>
+    <Fragment>
     <Nav />
     <div className='container'>
             <img src={Profile} className='mx-auto' id='imgProfile' alt='Change Profile' />
@@ -76,7 +77,7 @@ const traineeDetails = () => {
             </div>
           </div>
         </div>
-        </div>
+      </Fragment>
   )
 }
 

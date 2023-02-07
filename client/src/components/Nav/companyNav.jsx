@@ -13,6 +13,7 @@ export class companyNav extends Component {
                 <Nav className="me-auto">
                 <Nav.Link href="/companyHomePage">Home</Nav.Link>
                 <Nav.Link href="/CompanyProfile">Company Profile</Nav.Link>
+                <Nav.Link href="/feedBackCompany">Feedback</Nav.Link>
                 <Nav.Link href="/addOpportunity">Add Opportunity</Nav.Link>
                 <Nav.Link href="/">Medical Students</Nav.Link>
               </Nav>
