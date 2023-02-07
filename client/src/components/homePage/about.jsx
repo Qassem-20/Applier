@@ -1,6 +1,5 @@
 import '../../assets/css/welcoming.css'
 import React, { Component } from 'react'
-import { Container } from 'react-bootstrap'
 
 export class about extends Component {
   render() {

@@ -10,7 +10,7 @@ export class feedBackConsumer extends Component {
       <Container className='mt-5 p-5 bg-white'>
         <Row>
           <Col>
-          <img src={profileIcon} alt='Profile image' />
+          <img src={profileIcon} alt='Profile' />
           </Col>
 
           <Col>

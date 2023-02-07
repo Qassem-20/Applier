@@ -5,7 +5,10 @@ import React, { Component, Fragment } from 'react'
 export class companyInfo extends Component {
   render() {
     return (
-      <Fragment>companyInfo</Fragment>
+      <Fragment>
+        <ConsumerNav />
+
+      </Fragment>
     )
   }
 }
