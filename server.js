@@ -37,7 +37,7 @@ app.use('/api/v1/panel',adminPanelRouter)
 // assign a port for the server
 const port = process.env.PORT || 4000;
 
-//connection to the front end
+/*connection to the front end
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -47,7 +47,7 @@ app.use(express.static(path.resolve(__dirname, './client/build')));
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
 });
-
+*/
 //middleware
 import notFoundMiddleware from './middleware/not-found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
@@ -59,7 +59,7 @@ app.use(errorHandlerMiddleware);
 // 2- create file named (.env), then write MONGO_URL=your connection link
 const start = async () => {
   try {
-    await connectDB(process.env.MONGO_URL, {useUnifiedTopology:true,useNewUrlParser:true});
+    await connectDB(process.env.MONGO_URL, {useUnifiedTopology:true, useNewUrlParser:true});
     app.listen(port, () => {
       console.log(`Server is listening on port ${port}, ans DB is connected`);
     });
