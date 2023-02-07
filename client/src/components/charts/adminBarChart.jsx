@@ -1,14 +1,25 @@
-import React, {Fragment, Component } from 'react'
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts'
 
-export class adminBarChart extends Component {
-  render() {
-      
-    return (
-    <Fragment>
-    
-    </Fragment>    
-    )
-  }
+const BarChartComponent = () => {
+  return (
+    <ResponsiveContainer width='100%' height={300}>
+      <BarChart  margin={{ top: 50 }}>
+        <CartesianGrid strokeDasharray='3 3 ' />
+        <XAxis dataKey='date' />
+        <YAxis allowDecimals={false} />
+        <Tooltip />
+        <Bar dataKey='count' fill='#2cb1bc' barSize={75} />
+      </BarChart>
+    </ResponsiveContainer>
+  )
 }
 
-export default adminBarChart
+export default BarChartComponent

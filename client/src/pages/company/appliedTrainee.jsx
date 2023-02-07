@@ -4,7 +4,7 @@ import CustomizeIcon from '../../assets/images/customizeIcon.png';
 import OptionIcon from '../../assets/images/optionIcon.png';
 import EyeIcon from '../../assets/images/eyeIcon.webp';
 import Nav from '../../components/Nav/companyNav';
-
+import CompanyChart from '../../components/charts/companyChart.jsx';
 import React, { Fragment,Component } from 'react'
 
 export class appliedTrainee extends Component {
@@ -19,7 +19,7 @@ export class appliedTrainee extends Component {
           <p>200</p>
         </div>
         <div className='col-sm-12 col-md-6 col-lg-3'>
-          <h1>Showing statues data about the applied students</h1>
+          <CompanyChart />
         </div>
         <div className='col-sm-12 col-md-6 col-lg-6'>
           <div className='row'>
