@@ -11,10 +11,10 @@ const apiLimiter = rateLimiter({
 });
 
 //exports from the controller
-import {register,login,updateUser} from '../../controllers/admin/authController.js';
+import {register,login,logout,updateAdmin,getCurrentAdmin} from '../../controllers/admin/authController.js';
 //
 router.route('/register').post(apiLimiter, register);
 router.route('/login').post(apiLimiter, login);
 
 /*router.route('/updateUser').post(updateUser)*/
-export default router
+export default router;
