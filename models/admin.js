@@ -13,7 +13,7 @@ const adminSchema = new mongoose.Schema({
         maxlength:20,
         trim:true
     },
-    Password:{
+    password:{
         type:String,
         required:[true, 'Please enter password'], 
         minlength:6, 
@@ -34,7 +34,7 @@ const adminSchema = new mongoose.Schema({
         enum: ['main-admin', 'sub-admin'],
         default: 'sub-admin',
     },
-    phone_number:{
+    phone:{
         type:String,
         required:[true, 'Please enter your phone number'],
         validate:{

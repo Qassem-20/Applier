@@ -1,27 +1,56 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
 
-const addAdmin = () => {
+const AddAdmin = () => {
+  //use state
+  const [name,setName] = useState("")
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
+  const [type,setType] = useState('')
+  const [phone,setPhone] = useState('')
+
+  async function registerAdmin(event){
+    event.preventDefault()
+     const response = await fetch('http://localhost:4000/api/v1/auth' ,  {
+     method:"POST", 
+     headers: {
+        "Content-Type" : "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+        type,
+      }),
+    })
+    const data = await response.json();
+    console.log(data) 
+  }
+  
   return (
     <Fragment>
     <AdminNav />
     <Container className='bg-white rounded p-3' >
       <Row>
         <Col>
-          <p className='mb-1'>Name:</p>
-          <input className='inputStyling' type="" name="" value="" />
-          <p className='mb-1'>Email:</p>
-          <input className='inputStyling' type="" name="" value="" />
-          <p className='mb-1'>Phone Number:</p>
-          <input className='inputStyling' type="" name="" value="" />
-          <p className='mb-1'>Type of the admin:</p>
-          <select className='inputStyling' name="cars" placeholder='Status'>
-            <option value="">Sub-Admin</option>
-            <option value="">Main Admin</option>
-          </select>
-          <button type="button" className='btn login'>Add admin</button>
+        <form onSubmit={registerAdmin}>
+            <p className='mb-1'>Name:</p>
+            <input className='inputStyling' type="text" placeholder='Name' value={name} onChange= {(e) => setName(e.target.value)} />
+            <p className='mb-1'>Email:</p>
+            <input className='inputStyling' type="email" placeholder='Email' value={email} onChange= {(e) => setEmail(e.target.value)} />
+            <p className='mb-1'>Phone Number:</p>
+            <input className='inputStyling' type="number" placeholder='Phone number' value={phone} onChange= {(e) => setPhone(e.target.value)} />
+            <p className='mb-1'>Password:</p>
+            <input className='inputStyling' type="password" placeholder='Password' value={password} onChange= {(e) => setPassword(e.target.value)} />
+            <p className='mb-1'>Type of the admin:</p>
+            <select className='inputStyling' name="type" placeholder='type' value={type} onChange= {(e) => setType(e.target.value)}>
+              <option value="sub-admin">Sub</option>
+              <option value="main-admin">Main</option>
+            </select>
+            <input type="submit" className='btn login' value="Register" />
+          </form>
         </Col>
       </Row>
     </Container>
@@ -29,4 +58,4 @@ const addAdmin = () => {
   )
 }
 
-export default addAdmin
+export default AddAdmin

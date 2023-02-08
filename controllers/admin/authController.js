@@ -1,4 +1,4 @@
-import Admin from '../../models/Admin.js';
+//import Admin from '../../models/Admin.js';
 import { StatusCodes } from 'http-status-codes';
 
 const register = async (req, res) => {

@@ -16,6 +16,9 @@ import adminPanelRouter from'./routes/admin/adminPanelRoutes.js';
 import reviewRouter from'./routes/admin/reviewRoutes.js';
 import userRouter from'./routes/admin/usersRoutes.js';
 
+//cors middleware
+import cors from 'cors';
+app.use(cors());
 
 app.use(express.json());
 
@@ -24,10 +27,29 @@ app.get('', (req, res) => {
 });
 
 //admin routes
-app.use('/api/v1/auth',authRouter)
+//app.use('/api/v1/auth',authRouter)
 app.use('/api/v1/reviews',reviewRouter)
 app.use('/api/v1/users',userRouter)
 app.use('/api/v1/panel',adminPanelRouter)
+
+import Admin from './models/admin.js';
+
+app.post('/api/v1/auth', async (req, res) => {
+	console.log(req.body)
+	try {
+		const newPassword = await bcrypt.hash(req.body.password, 10)
+		await Admin.create({
+			name: req.body.name,
+			email: req.body.email,
+			password: newPassword,
+      phone: newPhone,
+      type: newType,
+		})
+		res.json({ status: 'ok' })
+	} catch (err) {
+		res.json({ status: 'error', error: 'Duplicate email' })
+	}
+})
 //company routes
 
 //medicalStudents routes
