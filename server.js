@@ -37,7 +37,7 @@ import Admin from './models/admin.js';
 app.post('/api/v1/auth', async (req, res) => {
 	console.log(req.body)
 	try {
-		const newPassword = await bcrypt.hash(req.body.password, 10)
+		const newPassword = await bcrypt.hash(req.body.password, 10);
 		await Admin.create({
 			name: req.body.name,
 			email: req.body.email,

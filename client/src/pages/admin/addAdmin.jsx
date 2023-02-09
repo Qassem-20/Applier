@@ -2,9 +2,13 @@ import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
 import React, { Fragment, useState } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
+import { useHistory } from 'react-router-dom'
 
 const AddAdmin = () => {
-  //use state
+  //route
+  const history = useHistory()
+
+  //inputs
   const [name,setName] = useState("")
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
@@ -25,8 +29,17 @@ const AddAdmin = () => {
         type,
       }),
     })
-    const data = await response.json();
-    console.log(data) 
+    const data = await response.json()
+    //const adminAlreadyExists = await Admin.findOne({ email });
+		if (data.status === 'ok') {
+			history.push('/adminPanel')
+		}
+    else if(!name || !email || !password || !type){
+      console.log('please provide all values')
+    }
+    else{
+      console.log('Email already in use')
+    }
   }
   
   return (
@@ -46,8 +59,8 @@ const AddAdmin = () => {
             <input className='inputStyling' type="password" placeholder='Password' value={password} onChange= {(e) => setPassword(e.target.value)} />
             <p className='mb-1'>Type of the admin:</p>
             <select className='inputStyling' name="type" placeholder='type' value={type} onChange= {(e) => setType(e.target.value)}>
-              <option value="sub-admin">Sub</option>
-              <option value="main-admin">Main</option>
+              <option value="sub-admin">sub admin</option>
+              <option value="main-admin">main admin</option>
             </select>
             <input type="submit" className='btn login' value="Register" />
           </form>
