@@ -44,7 +44,6 @@ const adminSchema = new mongoose.Schema({
         },
     }
 },
-{ timestamps: true }
 );
 
 // hashing the password
@@ -62,9 +61,10 @@ adminSchema.methods.createJWT = function () {
     })
 }
   
+/*
 adminSchema.methods.comparePassword = async function (candidatePassword) {
     const isMatch = await bcrypt.compare(candidatePassword, this.password)
     return isMatch
 }
-
+*/
 export default mongoose.model('admin', adminSchema);

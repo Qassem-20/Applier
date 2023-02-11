@@ -59,7 +59,7 @@ app.post('/api/v1/auth', async (req, res) => {
 // assign a port for the server
 const port = process.env.PORT || 4000;
 
-/*connection to the front end
+//connection to the front end
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -69,7 +69,7 @@ app.use(express.static(path.resolve(__dirname, './client/build')));
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
 });
-*/
+
 //middleware
 import notFoundMiddleware from './middleware/not-found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';

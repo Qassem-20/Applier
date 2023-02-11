@@ -26,6 +26,7 @@ const AddAdmin = () => {
         name,
         email,
         password,
+        phone,
         type,
       }),
     })
