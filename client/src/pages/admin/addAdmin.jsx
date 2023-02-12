@@ -17,7 +17,7 @@ const AddAdmin = () => {
 
   async function registerAdmin(event){
     event.preventDefault()
-     const response = await fetch('http://localhost:4000/api/v1/auth' ,  {
+     const response = await fetch('https://localhost:4000/api/v1/registerAdmin' ,  {
      method:"POST", 
      headers: {
         "Content-Type" : "application/json",
@@ -60,6 +60,7 @@ const AddAdmin = () => {
             <input className='inputStyling' type="password" placeholder='Password' value={password} onChange= {(e) => setPassword(e.target.value)} />
             <p className='mb-1'>Type of the admin:</p>
             <select className='inputStyling' name="type" placeholder='type' value={type} onChange= {(e) => setType(e.target.value)}>
+              <option value='null'>type</option>
               <option value="sub-admin">sub admin</option>
               <option value="main-admin">main admin</option>
             </select>

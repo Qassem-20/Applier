@@ -11,10 +11,8 @@ import connectDB from './db/connect.js';
 import 'express-async-errors';
 
 //admin routes
-import authRouter from'./routes/admin/authRoutes.js';
-import adminPanelRouter from'./routes/admin/adminPanelRoutes.js';
-import reviewRouter from'./routes/admin/reviewRoutes.js';
-import userRouter from'./routes/admin/usersRoutes.js';
+//import authRouter from'./routes/adminRoutes.js';
+
 
 //cors middleware
 import cors from 'cors';
@@ -27,29 +25,13 @@ app.get('', (req, res) => {
 });
 
 //admin routes
-//app.use('/api/v1/auth',authRouter)
-app.use('/api/v1/reviews',reviewRouter)
-app.use('/api/v1/users',userRouter)
-app.use('/api/v1/panel',adminPanelRouter)
+import {fetchAdmins, fetchAdmin, createAdmin, updateAdmin, deleteAdmin} from './controllers/adminController.js';
+app.get("/admins", fetchAdmins);
+app.get("/admin/:id", fetchAdmin);
+app.post("/api/v1/registerAdmin", createAdmin);
+app.put("/admin/:id", updateAdmin);
+app.delete("/admin/:id", deleteAdmin);
 
-import Admin from './models/admin.js';
-
-app.post('/api/v1/auth', async (req, res) => {
-	console.log(req.body)
-	try {
-		const newPassword = await bcrypt.hash(req.body.password, 10);
-		await Admin.create({
-			name: req.body.name,
-			email: req.body.email,
-			password: newPassword,
-      phone: newPhone,
-      type: newType,
-		})
-		res.json({ status: 'ok' })
-	} catch (err) {
-		res.json({ status: 'error', error: 'Duplicate email' })
-	}
-})
 //company routes
 
 //medicalStudents routes
@@ -73,6 +55,7 @@ app.get('*', (req, res) => {
 //middleware
 import notFoundMiddleware from './middleware/not-found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
+import { request } from 'http';
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
