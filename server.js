@@ -26,11 +26,11 @@ app.get('', (req, res) => {
 
 //admin routes
 import {fetchAdmins, fetchAdmin, createAdmin, updateAdmin, deleteAdmin} from './controllers/adminController.js';
-app.get("/admins", fetchAdmins);
-app.get("/admin/:id", fetchAdmin);
+app.get("/api/v1/admins", fetchAdmins);
+app.get("/api/v1/admin/:id", fetchAdmin);
 app.post("/api/v1/registerAdmin", createAdmin);
-app.put("/admin/:id", updateAdmin);
-app.delete("/admin/:id", deleteAdmin);
+app.put("/api/v1/admin/:id", updateAdmin);
+app.delete("/api/v1/admin/:id", deleteAdmin);
 
 //company routes
 
