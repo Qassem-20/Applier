@@ -1,9 +1,22 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
-import React, { Fragment } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
+import axios from "axios";
 
-const adminPanel = () => {
+const AdminPanel = () => {
+  const[admins, setAdmins] = useState(null);
+  useEffect(()=>{
+      fetchadmins();
+    },
+    []
+  );
+
+  const fetchadmins = async =>{
+    const res = axios.get("http://localhost:4000/api/v1/admins");
+    setAdmins(res.data.admins);
+  };
+
   return (
 <Fragment>
         <AdminNav />
@@ -21,6 +34,7 @@ const adminPanel = () => {
             <Col md={1} xs={2}><p className='opportunitiesMainTags'>Status</p></Col>
             </Row>
         </Container>
+
         <Container fluid>
             <Row className='opportunitiesT'>
               <Col md={3} xs={3}><p className='opportunitiesTags'>Faisal</p></Col>
@@ -34,4 +48,4 @@ const adminPanel = () => {
   )
 }
 
-export default adminPanel
+export default AdminPanel

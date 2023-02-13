@@ -1,19 +1,25 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
-import { useHistory } from 'react-router-dom'
+import axios from "axios";
+//import { useHistory } from 'react-router-dom'
 
 const AddAdmin = () => {
-  //route
-  const history = useHistory()
-
   //inputs
   const [name,setName] = useState("")
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [type,setType] = useState('')
   const [phone,setPhone] = useState('')
+
+  const registerAdmin = async =>{
+    //api
+    //const res = await axios.post("localhost:4000/api/v1/registerAdmin");
+  }
+
+  /*route
+  const history = useHistory()
 
   async function registerAdmin(event){
     event.preventDefault()
@@ -42,7 +48,7 @@ const AddAdmin = () => {
       console.log('Email already in use')
     }
   }
-  
+  */
   return (
     <Fragment>
     <AdminNav />
