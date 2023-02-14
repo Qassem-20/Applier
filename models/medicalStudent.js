@@ -3,7 +3,7 @@ import validator from 'validator'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
-const medicalStudentSchema = new mongoose.Schema({
+const MedicalStudentSchema = new mongoose.Schema({
     // -activated by (id_admin)    
     name:{
         type:String,
@@ -12,12 +12,12 @@ const medicalStudentSchema = new mongoose.Schema({
         maxlength:20,
         trim:true
     },
-    identification_letter:{
+    /*identification_letter:{
         file: { type: Buffer, required: true },
         filename: { type: String, required: true },
         mimetype: { type: String, required: true },
         required:[true, 'Provide your identification letter from your university']
-    },
+    },*/
     Password:{
         type:String,
         required:[true, 'Please enter password'], 
@@ -61,7 +61,7 @@ const medicalStudentSchema = new mongoose.Schema({
 );
 
 // hashing the password
-medicalStudentSchema.pre('save', async function () {
+MedicalStudentSchema.pre('save', async function () {
     // console.log(this.modifiedPaths())
     if (!this.isModified('password')) return
     const salt = await bcrypt.genSalt(10)
@@ -69,15 +69,15 @@ medicalStudentSchema.pre('save', async function () {
   }
 )
   
-medicalStudentSchema.methods.createJWT = function () {
+MedicalStudentSchema.methods.createJWT = function () {
     return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_LIFETIME,
     })
 }
   
-medicalStudentSchema.methods.comparePassword = async function (candidatePassword) {
+MedicalStudentSchema.methods.comparePassword = async function (candidatePassword) {
     const isMatch = await bcrypt.compare(candidatePassword, this.password)
     return isMatch
 }
 
-export default mongoose.model('medicalStudent', medicalStudentSchema);
+export default mongoose.model('medicalStudent', MedicalStudentSchema);

@@ -1,7 +1,6 @@
 import mongoose from 'mongoose'
-import validator from 'validator'
 
-const medicalStudentSchema = new mongoose.Schema({
+const ProfileMedicalStudentSchema = new mongoose.Schema({
     nationality:{
         type:String,
         required:[true, 'Please enter your nationality'],
@@ -46,4 +45,4 @@ const medicalStudentSchema = new mongoose.Schema({
 { timestamps: true }
 );
 
-export default mongoose.model('medicalStudent', medicalStudentSchema);
+export default mongoose.model('ProfileMedicalStudentSchema', ProfileMedicalStudentSchema);

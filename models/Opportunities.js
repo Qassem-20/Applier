@@ -67,7 +67,7 @@ const opportunitySchema = new mongoose.Schema({
         enum:['2 months','4 months','6 months']
     },    
     city:{        
-        type: mongoose.SchemaTypes.Url,
+        type: String,
         required:[true, 'Please enter your location url'],
         minlength:3,
         maxlength:100

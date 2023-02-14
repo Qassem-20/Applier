@@ -1,4 +1,4 @@
-import MedicalProfile from '../models/MedicalStudentProfile.js';
+import MedicalProfile from '../models/ProfileMedicalStudent.js';
 
 const fetchMedicalProfiles = async (req, res) => {
 

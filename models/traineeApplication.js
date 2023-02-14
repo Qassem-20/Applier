@@ -43,7 +43,7 @@ const traineeApplicationSchema = new mongoose.Schema({
         mimetype: { type: String, required: true }
     },
     linkedIn_profile:{
-        type: mongoose.SchemaTypes.Url,
+        type: String,
         minlength:3, 
         maxlength:100,
         trim:true
