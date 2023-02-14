@@ -46,7 +46,7 @@ const fetchAdmins = async (req, res) => {
   const deleteAdmin = async (req, res) => {
     const adminId = req.params.id;
   
-    await Admin.deleteOne({ id: adminId });
+    await Admin.findByIdAndDelete(adminId);
   
     res.json({ success: "Record deleted" });
   };
