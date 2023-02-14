@@ -29,7 +29,7 @@ const fetchTraineeApplications = async (req, res) => {
     res.json({ traineeApplication });
   };
   
-  const updatePatientApplication = async (req, res) => {
+  const updateTraineeApplication = async (req, res) => {
     const traineeApplicationId = req.params.id;
   
     const { type } = req.body;

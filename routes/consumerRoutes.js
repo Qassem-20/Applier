@@ -1,0 +1,21 @@
+import express from 'express';
+const router = express.Router();
+
+//limit trails access for the user
+import rateLimiter from 'express-rate-limit';
+const apiLimiter = rateLimiter({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10,
+  message: 'Too many requests from this IP, please try again after 15 minutes',
+});
+
+//exports from the controller
+import {fetchMedicalProfiles, fetchConsumer, createConsumer, updateConsumer, deleteConsumer} from '../controllers/consumerController.js';
+//routes of the Consumer from the controllers
+router.route('/consumers').get(fetchMedicalProfiles);
+router.route('/consumers/:id').get(fetchConsumer);
+router.route('/registerConsumer').post(apiLimiter,createConsumer);
+router.route('/consumers/:id').put(updateConsumer);
+router.route('/consumers/:id').delete(deleteConsumer);
+
+export default router;

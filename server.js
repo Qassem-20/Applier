@@ -10,10 +10,6 @@ import connectDB from './db/connect.js';
 // to handle the errors
 import 'express-async-errors';
 
-//admin routes
-//import authRouter from'./routes/adminRoutes.js';
-
-
 //cors middleware
 import cors from 'cors';
 app.use(cors());
@@ -28,12 +24,33 @@ app.get('', (req, res) => {
 import adminRoutes from './routes/adminRoutes.js';
 app.use('/api/v1', adminRoutes);
 
-
 //company routes
-
-//medicalStudents routes
+import companyRoutes from './routes/companyRoutes.js';
+app.use('/api/v1', companyRoutes);
 
 //consumer routes
+import consumerRoutes from './routes/consumerRoutes.js';
+app.use('/api/v1', consumerRoutes);
+
+//medicalStudents routes
+import medicalStudentsRoutes from './routes/medicalStudentsRoutes.js';
+app.use('/api/v1', medicalStudentsRoutes);
+
+//review routes
+import reviewRoutes from './routes/reviewRoutes.js';
+app.use('/api/v1', reviewRoutes);
+
+//applications routes
+import medicalApplicationRoutes from './routes/medicalApplicationRoutes.js';
+import patientApplicationRoutes from './routes/patientApplicationRoutes.js';
+import traineeApplicationRoutes from './routes/traineeApplicationRoutes.js';
+app.use('/api/v1', medicalApplicationRoutes);
+app.use('/api/v1', patientApplicationRoutes);
+app.use('/api/v1', traineeApplicationRoutes);
+
+//opportunity routes
+import opportunitiesRoutes from './routes/opportunitiesRoutes.js';
+app.use('/api/v1', opportunitiesRoutes);
 
 // assign a port for the server
 const port = process.env.PORT || 4000;
