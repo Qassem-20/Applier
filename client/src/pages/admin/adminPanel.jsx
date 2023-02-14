@@ -1,21 +1,12 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
-import axios from "axios";
+
 
 const AdminPanel = () => {
-  const[admins, setAdmins] = useState(null);
-  useEffect(()=>{
-      fetchadmins();
-    },
-    []
-  );
 
-  const fetchadmins = async =>{
-    const res = axios.get("http://localhost:4000/api/v1/admins");
-    setAdmins(res.data.admins);
-  };
+
 
   return (
 <Fragment>

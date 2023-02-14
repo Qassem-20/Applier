@@ -1,71 +1,29 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
-import axios from "axios";
-//import { useHistory } from 'react-router-dom'
+import AdminOperations from '../../context/AdminOperations.js';
 
 const AddAdmin = () => {
-  //inputs
-  const [name,setName] = useState("")
-  const [email,setEmail] = useState('')
-  const [password,setPassword] = useState('')
-  const [type,setType] = useState('')
-  const [phone,setPhone] = useState('')
+  const admin = AdminOperations();
 
-  const registerAdmin = async =>{
-    //api
-    //const res = await axios.post("localhost:4000/api/v1/registerAdmin");
-  }
-
-  /*route
-  const history = useHistory()
-
-  async function registerAdmin(event){
-    event.preventDefault()
-     const response = await fetch('https://localhost:4000/api/v1/registerAdmin' ,  {
-     method:"POST", 
-     headers: {
-        "Content-Type" : "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-        phone,
-        type,
-      }),
-    })
-    const data = await response.json()
-    //const adminAlreadyExists = await Admin.findOne({ email });
-		if (data.status === 'ok') {
-			history.push('/adminPanel')
-		}
-    else if(!name || !email || !password || !type){
-      console.log('please provide all values')
-    }
-    else{
-      console.log('Email already in use')
-    }
-  }
-  */
   return (
     <Fragment>
     <AdminNav />
     <Container className='bg-white rounded p-3' >
       <Row>
         <Col>
-        <form onSubmit={registerAdmin}>
+        <form onSubmit={admin.create}>
             <p className='mb-1'>Name:</p>
-            <input className='inputStyling' type="text" placeholder='Name' value={name} onChange= {(e) => setName(e.target.value)} />
+            <input className='inputStyling' type="text" placeholder='Name' value={admin.create.name} onChange= {admin.updateCreateFormField} />
             <p className='mb-1'>Email:</p>
-            <input className='inputStyling' type="email" placeholder='Email' value={email} onChange= {(e) => setEmail(e.target.value)} />
+            <input className='inputStyling' type="email" placeholder='Email' value={admin.create.email} onChange= {admin.updateCreateFormField} />
             <p className='mb-1'>Phone Number:</p>
-            <input className='inputStyling' type="number" placeholder='Phone number' value={phone} onChange= {(e) => setPhone(e.target.value)} />
+            <input className='inputStyling' type="number" placeholder='Phone number' value={admin.create.phone} onChange= {admin.updateCreateFormField} />
             <p className='mb-1'>Password:</p>
-            <input className='inputStyling' type="password" placeholder='Password' value={password} onChange= {(e) => setPassword(e.target.value)} />
+            <input className='inputStyling' type="password" placeholder='Password' value={admin.create.password} onChange= {admin.updateCreateFormField} />
             <p className='mb-1'>Type of the admin:</p>
-            <select className='inputStyling' name="type" placeholder='type' value={type} onChange= {(e) => setType(e.target.value)}>
+            <select className='inputStyling' name="type" placeholder='type' value={admin.create.type} onChange= {admin.updateCreateFormField}>
               <option value='null'>type</option>
               <option value="sub-admin">sub admin</option>
               <option value="main-admin">main admin</option>
