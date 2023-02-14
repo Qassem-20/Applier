@@ -104,7 +104,7 @@ const companySchema = new mongoose.Schema({
 );
 
 // hashing the password
-adminSchema.pre('save', async function () {
+companySchema.pre('save', async function () {
     // console.log(this.modifiedPaths())
     if (!this.isModified('password')) return
     const salt = await bcrypt.genSalt(10)
@@ -112,13 +112,13 @@ adminSchema.pre('save', async function () {
   }
 )
   
-adminSchema.methods.createJWT = function () {
+companySchema.methods.createJWT = function () {
     return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_LIFETIME,
     })
 }
   
-adminSchema.methods.comparePassword = async function (candidatePassword) {
+companySchema.methods.comparePassword = async function (candidatePassword) {
     const isMatch = await bcrypt.compare(candidatePassword, this.password)
     return isMatch
 }
