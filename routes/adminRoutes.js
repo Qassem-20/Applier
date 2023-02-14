@@ -1,5 +1,4 @@
 import express from 'express';
-//router import from express
 const router = express.Router();
 
 //limit trails access for the user
@@ -11,10 +10,12 @@ const apiLimiter = rateLimiter({
 });
 
 //exports from the controller
-import {register,login,logout,updateAdmin,getCurrentAdmin} from '../../controllers/admin/authController.js';
-//
-router.route('/register').post(apiLimiter, register);
-router.route('/login').post(apiLimiter, login);
+import {fetchAdmins, fetchAdmin, createAdmin, updateAdmin, deleteAdmin} from '../controllers/adminController.js';
+//routes of the admin from the controllers
+router.route('/admins').get(fetchAdmins);
+router.route('/admins/:id').get(fetchAdmin);
+router.route('/registerAdmin').post(apiLimiter,createAdmin);
+router.route('/admins/:id').put(updateAdmin);
+router.route('/admins/:id').delete(deleteAdmin);
 
-/*router.route('/updateUser').post(updateUser)*/
 export default router;
