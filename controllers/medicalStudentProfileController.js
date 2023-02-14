@@ -46,7 +46,7 @@ const fetchMedicalProfiles = async (req, res) => {
   const deleteMedicalProfile = async (req, res) => {
     const medicalProfileId = req.params.id;
   
-    await MedicalProfile.deleteOne({ id: medicalProfileId });
+    await MedicalProfile.findByIdAndDelete( medicalProfileId );
   
     res.json({ success: "Record deleted" });
   };

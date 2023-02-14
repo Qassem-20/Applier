@@ -46,7 +46,7 @@ const fetchConsumers = async (req, res) => {
   const deleteConsumer = async (req, res) => {
     const consumerId = req.params.id;
   
-    await Consumer.deleteOne({ id: consumerId });
+    await Consumer.findByIdAndDelete( consumerId );
   
     res.json({ success: "Record deleted" });
   };

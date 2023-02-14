@@ -46,7 +46,7 @@ const fetchOpportunities = async (req, res) => {
   const deleteOpportunity = async (req, res) => {
     const opportunityId = req.params.id;
   
-    await Opportunity.deleteOne({ id: opportunityId });
+    await Opportunity.findByIdAndDelete(opportunityId);
   
     res.json({ success: "Record deleted" });
   };

@@ -46,7 +46,7 @@ const fetchReviews = async (req, res) => {
   const deleteReview = async (req, res) => {
     const reviewId = req.params.id;
   
-    await Review.deleteOne({ id: reviewId });
+    await Review.findByIdAndDelete( reviewId );
   
     res.json({ success: "Record deleted" });
   };

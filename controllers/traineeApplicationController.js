@@ -46,7 +46,7 @@ const fetchTraineeApplications = async (req, res) => {
   const deleteTraineeApplication = async (req, res) => {
     const traineeApplicationId = req.params.id;
   
-    await TraineeApplication.deleteOne({ id: traineeApplicationId });
+    await TraineeApplication.findByIdAndDelete( traineeApplicationId );
   
     res.json({ success: "Record deleted" });
   };

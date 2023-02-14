@@ -46,7 +46,7 @@ const fetchCompanies = async (req, res) => {
   const deleteCompany = async (req, res) => {
     const companyId = req.params.id;
   
-    await Company.deleteOne({ id: companyId });
+    await Company.findByIdAndDelete( companyId );
   
     res.json({ success: "Record deleted" });
   };

@@ -46,7 +46,7 @@ const fetchPatientApplications = async (req, res) => {
   const deletePatientApplication = async (req, res) => {
     const patientApplicationId = req.params.id;
   
-    await PatientApplication.deleteOne({ id: patientApplicationId });
+    await PatientApplication.findByIdAndDelete( patientApplicationId );
   
     res.json({ success: "Record deleted" });
   };
