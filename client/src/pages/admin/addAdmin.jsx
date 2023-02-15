@@ -10,7 +10,7 @@ const AddAdmin = () => {
     const [password,setPassword] = useState('')
     const [type,setType] = useState('')
     const [phone,setPhone] = useState('')
-  
+
     async function registerAdmin(event){
       event.preventDefault()
        const response = await fetch('http://localhost:4000/api/v1/registerAdmin' ,  {
@@ -27,7 +27,7 @@ const AddAdmin = () => {
         }),
       })
       const data = await response.json();
-      console.log(data) 
+        console.log("Account is registered", data);
     }
   return (
     <Fragment>
@@ -36,6 +36,7 @@ const AddAdmin = () => {
       <Row>
         <Col>
         <form onSubmit={registerAdmin}>
+            <p className='error_msg' >validation</p>
             <p className='mb-1'>Name:</p>
             <input className='inputStyling' type="text" placeholder='Name' value={name} onChange= {(e) => setName(e.target.value)} />
             <p className='mb-1'>Email:</p>
@@ -46,7 +47,7 @@ const AddAdmin = () => {
             <input className='inputStyling' type="password" placeholder='Password' value={password} onChange= {(e) => setPassword(e.target.value)} />
             <p className='mb-1'>Type of the admin:</p>
             <select className='inputStyling' name="type" placeholder='type' value={type} onChange= {(e) => setType(e.target.value)}>
-              <option value="default">type</option>
+              <option disabled>type</option>
               <option value="sub-admin" selected>sub-admin</option>
               <option value="main-admin">main-admin</option>
             </select>

@@ -28,7 +28,7 @@ import Consumers from '../pages/admin/consumers';
 import Companies from '../pages/admin/companies';
 import OpportunitiesPanel from '../pages/admin/opportunities';
 import MedicalStudent from '../pages/admin/medicalStudents';
-import AdminSignIn from '../pages/admin/adminSignIn';
+import AdminSignIn from '../pages/admin/AdminSignIn';
 import AddAdmin from '../pages/admin/AddAdmin';
 import ReportedFeedBack from '../pages/admin/reportedFeedBack';
 import AdminForgottenPassword from '../pages/admin/adminForgottenPassword';

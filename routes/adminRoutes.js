@@ -10,11 +10,12 @@ const apiLimiter = rateLimiter({
 });
 
 //exports from the controller
-import {fetchAdmins, fetchAdmin, createAdmin, updateAdmin, deleteAdmin} from '../controllers/adminController.js';
+import {fetchAdmins, fetchAdmin, createAdmin, loginAdmin, updateAdmin, deleteAdmin} from '../controllers/adminController.js';
 //routes of the admin from the controllers
 router.route('/admins').get(fetchAdmins);
 router.route('/admins/:id').get(fetchAdmin);
 router.route('/registerAdmin').post(apiLimiter,createAdmin);
+router.route('/loginAdmin').post(apiLimiter,loginAdmin);
 router.route('/admins/:id').put(updateAdmin);
 router.route('/admins/:id').delete(deleteAdmin);
 

@@ -1,4 +1,7 @@
 import Admin from '../models/Admin.js';
+import { StatusCodes } from 'http-status-codes';
+import { BadRequestError, UnAuthenticatedError } from '../errors/index.js';
+import attachCookie from '../utils/attachCookie.js';
 
 const fetchAdmins = async (req, res) => {
 
@@ -17,7 +20,7 @@ const fetchAdmins = async (req, res) => {
   
   const createAdmin = async (req, res) => {
     const { name, email, password, type, phone } = req.body;
-  
+    
     const admin = await Admin.create({
       name,
       email,
@@ -26,8 +29,27 @@ const fetchAdmins = async (req, res) => {
       phone, 
     });
   
+    const token = admin.createJWT();
+    attachCookie({ res, token });
+
     res.json({ admin });
   };
+
+  const loginAdmin = async (req, res) => {
+    const { email, password } = req.body;
+
+    const admin = await Admin.findOne({ email }).select('+password');
+
+    const isPasswordCorrect = await admin.comparePassword(password);
+    if (!isPasswordCorrect) {
+      throw new UnAuthenticatedError('Invalid Credentials');
+    }
+
+    const token = admin.createJWT();
+    attachCookie({ res, token });
+    res.status(StatusCodes.OK).json({ admin, location: admin.location });
+
+  }
   
   const updateAdmin = async (req, res) => {
     const adminId = req.params.id;
@@ -55,6 +77,7 @@ const fetchAdmins = async (req, res) => {
     fetchAdmins,
     fetchAdmin,
     createAdmin,
+    loginAdmin,
     updateAdmin,
     deleteAdmin,
   };
