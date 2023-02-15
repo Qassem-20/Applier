@@ -1,12 +1,25 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
-import React, { Fragment } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
+import React, { Fragment, useState, useEffect } from 'react'
 
 
 const AdminPanel = () => {
+    //use state
+    const [admins, setAdmins] = useState(null)
 
-
+    useEffect(() => {
+      const fetchAdmins = async () => {
+        const response = await fetch('http://localhost:4000/api/v1/admins')
+        const json = await response.json()
+  
+        if (response.ok) {
+          setAdmins(json)
+        }
+      }
+  
+      fetchAdmins()
+    }, []);
 
   return (
 <Fragment>
