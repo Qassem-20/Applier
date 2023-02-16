@@ -3,7 +3,6 @@ import AdminNav from '../../components/Nav/adminNav';
 import {Container, Row, Col} from 'react-bootstrap';
 import React, { Fragment, useState, useEffect } from 'react'
 
-
 const AdminPanel = () => {
     //use state
     const [admins, setAdmins] = useState(null)
