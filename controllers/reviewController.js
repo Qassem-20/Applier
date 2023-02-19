@@ -16,14 +16,12 @@ const fetchReviews = async (req, res) => {
   };
   
   const createReview = async (req, res) => {
-    const { name, email, password, type, phone } = req.body;
+    const { rate, description, statue, isReported, createdBy } = req.body;
   
     const review = await Review.create({
-      name,
-      email,
-      password,
-      type,
-      phone, 
+    rate, 
+    description, 
+    isReported, 
     });
   
     res.json({ review });
@@ -32,10 +30,11 @@ const fetchReviews = async (req, res) => {
   const updateReview = async (req, res) => {
     const reviewId = req.params.id;
   
-    const { type } = req.body;
+    const { rate, description } = req.body;
   
     await Review.findByIdAndUpdate(reviewId, {
-      type,
+      rate, 
+      description, 
     });
   
     const review = await Review.findById(reviewId);

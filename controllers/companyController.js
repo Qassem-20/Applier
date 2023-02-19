@@ -16,14 +16,22 @@ const fetchCompanies = async (req, res) => {
   };
   
   const createCompany = async (req, res) => {
-    const { name, email, password, type, phone } = req.body;
+    const { organization_name, register_number, organization_phone, organization_website, organization_bio, Supervisor_name, Password, organization_email, email, supervisor_phone, city, statue, activatedBy, Country } = req.body;
   
     const company = await Company.create({
-      name,
+      organization_name,
+      register_number,
+      organization_phone,
+      organization_bio,
+      Supervisor_name,
+      Password,
+      organization_email,
       email,
-      password,
-      type,
-      phone, 
+      supervisor_phone,
+      Country,
+      city,
+      statue,
+      activatedBy, 
     });
   
     res.json({ company });
@@ -32,10 +40,20 @@ const fetchCompanies = async (req, res) => {
   const updateCompany = async (req, res) => {
     const companyId = req.params.id;
   
-    const { type } = req.body;
+    const {  organization_name, register_number, organization_phone, organization_website, organization_bio, Supervisor_name, Password, organization_email, email, supervisor_phone, Country, city } = req.body;
   
     await Company.findByIdAndUpdate(companyId, {
-      type,
+      organization_name,
+      register_number,
+      organization_phone,
+      organization_bio,
+      Supervisor_name,
+      Password,
+      organization_email,
+      email,
+      supervisor_phone,
+      Country,
+      city,
     });
   
     const company = await Company.findById(companyId);

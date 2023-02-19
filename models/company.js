@@ -81,6 +81,10 @@ const companySchema = new mongoose.Schema({
             message:'Please provide a valid phone number'
         },
     },
+    Country:{
+        type:String,
+        required:[true, 'Please enter your Country'],
+    },
     city:{
         type:String,
         required:[true, 'Please enter your city'],

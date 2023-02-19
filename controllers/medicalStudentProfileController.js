@@ -16,14 +16,15 @@ const fetchMedicalProfiles = async (req, res) => {
   };
   
   const createMedicalProfile = async (req, res) => {
-    const { name, email, password, type, phone } = req.body;
+    const { nationality, city, gender, profile_visibility, main_major, specialty } = req.body;
   
     const medicalProfile = await MedicalProfile.create({
-      name,
-      email,
-      password,
-      type,
-      phone, 
+    nationality, 
+    city, 
+    gender, 
+    profile_visibility, 
+    main_major, 
+    specialty,
     });
   
     res.json({ medicalProfile });
@@ -32,10 +33,15 @@ const fetchMedicalProfiles = async (req, res) => {
   const updateMedicalProfile = async (req, res) => {
     const medicalProfileId = req.params.id;
   
-    const { type } = req.body;
+    const { nationality, city, gender, profile_visibility, main_major, specialty } = req.body;
   
     await MedicalProfile.findByIdAndUpdate(medicalProfileId, {
-      type,
+      nationality, 
+      city, 
+      gender, 
+      profile_visibility, 
+      main_major, 
+      specialty,
     });
   
     const medicalProfile = await medicalProfile.findById(medicalProfileId);

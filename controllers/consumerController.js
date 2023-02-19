@@ -16,14 +16,15 @@ const fetchConsumers = async (req, res) => {
   };
   
   const createConsumer = async (req, res) => {
-    const { name, email, password, type, phone } = req.body;
+    const { name, email, password, phone_number, nationality, statue , suspendBy} = req.body;
   
     const consumer = await Consumer.create({
-      name,
-      email,
-      password,
-      type,
-      phone, 
+    name,
+    email,
+    password, 
+    phone_number, 
+    nationality, 
+ 
     });
   
     res.json({ consumer });
@@ -32,10 +33,14 @@ const fetchConsumers = async (req, res) => {
   const updateConsumer = async (req, res) => {
     const consumerId = req.params.id;
   
-    const { type } = req.body;
+    const { name, email, password, phone_number, nationality } = req.body;
   
     await Consumer.findByIdAndUpdate(consumerId, {
-      type,
+    name,
+    email,
+    password, 
+    phone_number, 
+    nationality, 
     });
   
     const consumer = await Consumer.findById(consumerId);

@@ -16,14 +16,14 @@ const fetchMedicalStudents = async (req, res) => {
   };
   
   const createMedicalStudent = async (req, res) => {
-    const { name, email, password, type, phone } = req.body;
+    const { name, email, password, createdAt, phone_number } = req.body;
   
     const medicalStudent = await MedicalStudent.create({
       name,
       email,
       password,
-      type,
-      phone, 
+      createdAt,
+      phone_number, 
     });
   
     res.json({ medicalStudent });
@@ -32,10 +32,14 @@ const fetchMedicalStudents = async (req, res) => {
   const updateMedicalStudent = async (req, res) => {
     const medicalStudentId = req.params.id;
   
-    const { type } = req.body;
+    const { name, email, password, createdAt, phone_number } = req.body;
   
     await MedicalStudent.findByIdAndUpdate(medicalStudentId, {
-      type,
+      name,
+      email,
+      password,
+      createdAt,
+      phone_number, 
     });
   
     const medicalStudent = await MedicalStudent.findById(medicalStudentId);

@@ -16,14 +16,18 @@ const fetchTraineeApplications = async (req, res) => {
   };
   
   const createTraineeApplication = async (req, res) => {
-    const { name, email, password, type, phone } = req.body;
+    const { university, major, gpa, gpa_statue, concentrated_major, skills, cv, linkedIn_profile, experience } = req.body;
   
     const traineeApplication = await TraineeApplication.create({
-      name,
-      email,
-      password,
-      type,
-      phone, 
+    university, 
+    major, 
+    gpa, 
+    gpa_statue, 
+    concentrated_major, 
+    skills, 
+    cv, 
+    linkedIn_profile, 
+    experience, 
     });
   
     res.json({ traineeApplication });
@@ -32,11 +36,18 @@ const fetchTraineeApplications = async (req, res) => {
   const updateTraineeApplication = async (req, res) => {
     const traineeApplicationId = req.params.id;
   
-    const { type } = req.body;
+    const { university, major, gpa, gpa_statue, concentrated_major, skills, cv, linkedIn_profile, experience } = req.body;
   
     await TraineeApplication.findByIdAndUpdate(traineeApplicationId, {
-      type,
-    });
+      university, 
+      major, 
+      gpa, 
+      gpa_statue, 
+      concentrated_major, 
+      skills, 
+      cv, 
+      linkedIn_profile, 
+      experience,     });
   
     const traineeApplication = await TraineeApplication.findById(traineeApplicationId);
   

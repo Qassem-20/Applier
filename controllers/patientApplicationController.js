@@ -16,14 +16,10 @@ const fetchPatientApplications = async (req, res) => {
   };
   
   const createPatientApplication = async (req, res) => {
-    const { name, email, password, type, phone } = req.body;
+    const { symptoms, createdBy} = req.body;
   
     const patientApplication = await PatientApplication.create({
-      name,
-      email,
-      password,
-      type,
-      phone, 
+      symptoms, 
     });
   
     res.json({ patientApplication });
@@ -32,10 +28,10 @@ const fetchPatientApplications = async (req, res) => {
   const updatePatientApplication = async (req, res) => {
     const patientApplicationId = req.params.id;
   
-    const { type } = req.body;
+    const { symptoms } = req.body;
   
     await PatientApplication.findByIdAndUpdate(patientApplicationId, {
-      type,
+      symptoms,
     });
   
     const patientApplication = await PatientApplication.findById(patientApplicationId);
