@@ -1,11 +1,11 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
 import {Container, Row, Col} from 'react-bootstrap';
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment } from 'react'
 
 const AdminPanel = () => {
     //use state
-    const [admins, setAdmins] = useState(null)
+   /*const [admins, setAdmins] = useState(null)
 
     useEffect(() => {
       const fetchAdmins = async () => {
@@ -19,7 +19,7 @@ const AdminPanel = () => {
   
       fetchAdmins()
     }, []);
-
+*/
   return (
 <Fragment>
         <AdminNav />

@@ -3,8 +3,12 @@ import AdminNav from '../../components/Nav/adminNav';
 import React, { Fragment, useState } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
 
+
 const AddAdmin = () => {
-    //use state
+
+
+
+    /*use state
     const [name,setName] = useState("")
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
@@ -29,6 +33,7 @@ const AddAdmin = () => {
       const data = await response.json();
         console.log("Account is registered", data);
     }
+    */
   return (
     <Fragment>
     <AdminNav />
