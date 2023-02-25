@@ -1,11 +1,18 @@
 import Consumer from '../models/Consumer.js';
 
 const fetchConsumers = async (req, res) => {
-
+  
     const consumers = await Consumer.find();
 
       res.json({ consumers });
   };
+
+const sortConsumers = async (req, res) => {
+  
+  const consumers = await Consumer.find().sort({ name: 1 })
+
+  res.json({consumers});
+}
   
   const fetchConsumer = async (req, res) => {
     const consumerId = req.params.id;
@@ -16,12 +23,12 @@ const fetchConsumers = async (req, res) => {
   };
   
   const createConsumer = async (req, res) => {
-    const { name, email, password, phone_number, nationality, statue , suspendBy} = req.body;
+    const { name, email, Password, phone_number, nationality, statue , suspendBy} = req.body;
   
     const consumer = await Consumer.create({
     name,
     email,
-    password, 
+    Password, 
     phone_number, 
     nationality, 
  
@@ -62,4 +69,5 @@ const fetchConsumers = async (req, res) => {
     createConsumer,
     updateConsumer,
     deleteConsumer,
+    sortConsumers,
   };

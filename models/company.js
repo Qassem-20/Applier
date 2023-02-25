@@ -101,7 +101,7 @@ const companySchema = new mongoose.Schema({
     activatedBy: {
         type: mongoose.Types.ObjectId,
         ref: 'Admin',
-        required: [true, 'Please provide admin'],
+        // required: [true, 'Please provide admin'],
     }
 },
 { timestamps: true }

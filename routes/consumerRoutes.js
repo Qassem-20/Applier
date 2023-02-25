@@ -10,9 +10,10 @@ const apiLimiter = rateLimiter({
 });
 
 //exports from the controller
-import {fetchConsumers, fetchConsumer, createConsumer, updateConsumer, deleteConsumer} from '../controllers/consumerController.js';
+import {fetchConsumers, fetchConsumer, createConsumer, updateConsumer, deleteConsumer, sortConsumers} from '../controllers/consumerController.js';
 //routes of the Consumer from the controllers
 router.route('/consumers').get(fetchConsumers);
+router.route('/sortConsumers').get(sortConsumers);
 router.route('/consumers/:id').get(fetchConsumer);
 router.route('/registerConsumer').post(apiLimiter,createConsumer);
 router.route('/consumers/:id').put(updateConsumer);

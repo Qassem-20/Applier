@@ -38,7 +38,7 @@ export class services extends Component {
                 </div>
               </Col>
               <Col xl={3} md={6} sm={12}>
-                <div className='card'id='card4'>
+                <div  className='card'id='card4'>
                 <img src={Service4} alt="Service4" className='ServicesImgs' />
                   <div class="card-body">
                     <p>Share your CV</p>

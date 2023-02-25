@@ -16,7 +16,7 @@ const fetchCompanies = async (req, res) => {
   };
   
   const createCompany = async (req, res) => {
-    const { organization_name, register_number, organization_phone, organization_website, organization_bio, Supervisor_name, Password, organization_email, email, supervisor_phone, city, statue, activatedBy, Country } = req.body;
+    const { organization_name, register_number, organization_phone, organization_website, organization_bio, Supervisor_name, Password, organization_email, email, supervisor_phone, city, statue, Country } = req.body;
   
     const company = await Company.create({
       organization_name,
@@ -30,8 +30,6 @@ const fetchCompanies = async (req, res) => {
       supervisor_phone,
       Country,
       city,
-      statue,
-      activatedBy, 
     });
   
     res.json({ company });

@@ -14,7 +14,7 @@ const consumerSchema = new mongoose.Schema({
     },
     Password:{
         type:String,
-        required:[true, 'Please enter password'], 
+        // required:[true, 'Please enter password'], 
         minlength:6, 
         select: false
     },
@@ -50,7 +50,7 @@ const consumerSchema = new mongoose.Schema({
     suspendBy: {
         type: mongoose.Types.ObjectId,
         ref: 'Admin',
-        required: [true, 'Please provide admin'],
+        // required: [true, 'Please provide admin'],
     }
 },
 { timestamps: true }
