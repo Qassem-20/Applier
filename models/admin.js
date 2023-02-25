@@ -44,6 +44,7 @@ const adminSchema = new mongoose.Schema({
         },
     }
 },
+{ timestamps: true }
 );
 
 // hashing the password
