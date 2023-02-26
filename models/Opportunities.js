@@ -21,7 +21,6 @@ const opportunitySchema = new mongoose.Schema({
         type:String,
         required:[true, 'Provide at least one skill'], 
         //provide all skills for all majors
-        enum: ['']
     },
     job_type:{
         type:String,
@@ -38,18 +37,17 @@ const opportunitySchema = new mongoose.Schema({
         type:String,
         required:[true, 'Provide your major'],
         //add all majors 
-        enum: ['']
     },
     availability_seats:{
         type:String,
         required:[true, 'Please provide number of available seats'], 
-        minlength:3, 
+        minlength:1, 
         maxlength:5,
         trim:true
     },
     salary:{
         type:String,
-        minlength:3, 
+        minlength:1, 
         maxlength:5,
         trim:true
     },
@@ -80,7 +78,12 @@ const opportunitySchema = new mongoose.Schema({
     createdBy: {
         type: mongoose.Types.ObjectId,
         ref: 'Company',
-        required: [true, 'Please provide Company'],
+        required: [false, 'Please provide Company'],
+    },
+    appliedBy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'traineeApplication',
+        required: [false, 'Please provide trainee'],
     }
 },
 { timestamps: true }

@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router';
 
 import WelcomePage from '../pages/HomePage';
 
-import SignIn from '../pages/signIn-signUp/signIn';
+import SignIn from '../pages/signIn-signUp/SignIn';
 import RouteSignUp from '../pages/signIn-signUp/routeSignUp';
 import SignUpMedicalStudent from '../pages/signIn-signUp/signUpMedicalStudent';
 import SignUpCompany from '../pages/signIn-signUp/signUpCompany';

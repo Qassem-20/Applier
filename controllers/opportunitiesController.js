@@ -28,7 +28,6 @@ const createOpportunity = async (req, res) => {
     duration,
     city,
     visibility,
-    createdBy,
   } = req.body;
 
   const opportunity = await Opportunity.create({
@@ -44,7 +43,6 @@ const createOpportunity = async (req, res) => {
     duration,
     city,
     visibility,
-    createdBy,
   });
 
   res.json({ opportunity });
