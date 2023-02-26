@@ -16,12 +16,11 @@ const fetchReviews = async (req, res) => {
   };
   
   const createReview = async (req, res) => {
-    const { rate, description, statue, isReported, createdBy } = req.body;
+    const { rate, description } = req.body;
   
     const review = await Review.create({
     rate, 
-    description, 
-    isReported, 
+    description 
     });
   
     res.json({ review });
@@ -42,6 +41,34 @@ const fetchReviews = async (req, res) => {
     res.json({ review });
   };
   
+  const hideReview = async (req, res) => {
+    const reviewId = req.params.id;
+  
+    const { statue } = req.body;
+  
+    await Review.findByIdAndUpdate(reviewId, {
+      statue,
+    });
+  
+    const review = await Review.findById(reviewId);
+  
+    res.json({ review });
+  };
+
+  const reportReview = async (req, res) => {
+    const reviewId = req.params.id;
+  
+    const { isReported } = req.body;
+  
+    await Review.findByIdAndUpdate(reviewId, {
+      isReported,
+    });
+  
+    const review = await Review.findById(reviewId);
+  
+    res.json({ review });
+  };
+
   const deleteReview = async (req, res) => {
     const reviewId = req.params.id;
   
@@ -56,4 +83,6 @@ const fetchReviews = async (req, res) => {
     createReview,
     updateReview,
     deleteReview,
+    hideReview,
+    reportReview,
   };

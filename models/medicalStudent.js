@@ -4,7 +4,6 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
 const MedicalStudentSchema = new mongoose.Schema({
-    // -activated by (id_admin)    
     name:{
         type:String,
         required:[true, 'Provide a name'], 
@@ -33,10 +32,6 @@ const MedicalStudentSchema = new mongoose.Schema({
         },
         unique:true    
     },
-    createdAt:{
-        type:Date,
-        min: '2023-01-01'
-    },
     phone_number:{
         type:String,
         required:[true, 'Please enter your phone number'],
@@ -54,7 +49,7 @@ const MedicalStudentSchema = new mongoose.Schema({
     activatedBy: {
         type: mongoose.Types.ObjectId,
         ref: 'Admin',
-        required: [true, 'Please provide admin'],
+        required: [false, 'Please provide admin'],
     }
 },
 { timestamps: true }

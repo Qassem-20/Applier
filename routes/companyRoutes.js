@@ -11,11 +11,15 @@ const apiLimiter = rateLimiter({
 
 //exports from the controller
 import {fetchCompanies, fetchCompany, createCompany, updateCompany, deleteCompany} from '../controllers/companyController.js';
+import {reportReview} from '../controllers/reviewController.js';
 //routes of the Company from the controllers
 router.route('/companies').get(fetchCompanies);
 router.route('/companies/:id').get(fetchCompany);
 router.route('/registerCompany').post(apiLimiter,createCompany);
 router.route('/companies/:id').put(updateCompany);
 router.route('/companies/:id').delete(deleteCompany);
+
+//report Review
+router.route('/companies/reportReview/:id').put(reportReview);
 
 export default router;

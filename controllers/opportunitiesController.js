@@ -64,6 +64,20 @@ const updateOpportunity = async (req, res) => {
   res.json({ opportunity });
 };
 
+const hideOpportunity = async (req, res) => {
+  const opportunityId = req.params.id;
+
+  const { visibility } = req.body;
+
+  await Opportunity.findByIdAndUpdate(opportunityId, {
+    visibility,
+  });
+
+  const opportunity = await Opportunity.findById(opportunityId);
+
+  res.json({ opportunity });
+};
+
 const deleteOpportunity = async (req, res) => {
   const opportunityId = req.params.id;
 
@@ -78,4 +92,5 @@ export {
   createOpportunity,
   updateOpportunity,
   deleteOpportunity,
+  hideOpportunity,
 };

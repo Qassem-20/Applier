@@ -54,6 +54,20 @@ const sortConsumers = async (req, res) => {
   
     res.json({ consumer });
   };
+
+  const suspendConsumer = async (req, res) => {
+    const consumerId = req.params.id;
+  
+    const { statue } = req.body;
+  
+    await Consumer.findByIdAndUpdate(consumerId, {
+      statue,
+    });
+  
+    const consumer = await Consumer.findById(consumerId);
+  
+    res.json({ consumer });
+  };
   
   const deleteConsumer = async (req, res) => {
     const consumerId = req.params.id;
@@ -70,4 +84,5 @@ const sortConsumers = async (req, res) => {
     updateConsumer,
     deleteConsumer,
     sortConsumers,
+    suspendConsumer,
   };

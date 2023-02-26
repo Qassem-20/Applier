@@ -44,11 +44,11 @@ const fetchMedicalProfiles = async (req, res) => {
       specialty,
     });
   
-    const medicalProfile = await medicalProfile.findById(medicalProfileId);
+    const medicalProfile = await MedicalProfile.findById(medicalProfileId);
   
     res.json({ medicalProfile });
   };
-  
+
   const deleteMedicalProfile = async (req, res) => {
     const medicalProfileId = req.params.id;
   

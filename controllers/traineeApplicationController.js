@@ -47,7 +47,8 @@ const fetchTraineeApplications = async (req, res) => {
       skills, 
       cv, 
       linkedIn_profile, 
-      experience,     });
+      experience,     
+    });
   
     const traineeApplication = await TraineeApplication.findById(traineeApplicationId);
   

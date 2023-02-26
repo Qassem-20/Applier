@@ -118,6 +118,20 @@ const fetchCompanies = async (req, res) => {
   
     res.json({ success: "Record deleted" });
   };
+
+  const activateCompany = async (req, res) => {
+    const companyId = req.params.id;
+  
+    const { statue } = req.body;
+  
+    await Company.findByIdAndUpdate(companyId, {
+      statue,
+    });
+  
+    const company = await Company.findById(companyId);
+  
+    res.json({ company });
+  };
   
   export {
     fetchCompanies,
@@ -125,4 +139,5 @@ const fetchCompanies = async (req, res) => {
     createCompany,
     updateCompany,
     deleteCompany,
+    activateCompany,
   };

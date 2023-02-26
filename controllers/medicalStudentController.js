@@ -46,6 +46,20 @@ const fetchMedicalStudents = async (req, res) => {
   
     res.json({ medicalStudent });
   };
+
+  const activateMedicalStudent = async (req, res) => {
+    const medicalStudentId = req.params.id;
+  
+    const { statue } = req.body;
+  
+    await MedicalStudent.findByIdAndUpdate(medicalStudentId, {
+      statue,
+    });
+  
+    const medicalStudent = await MedicalStudent.findById(medicalStudentId);
+  
+    res.json({ medicalStudent });
+  };
   
   const deleteMedicalStudent = async (req, res) => {
     const medicalStudentId = req.params.id;
@@ -61,4 +75,5 @@ const fetchMedicalStudents = async (req, res) => {
     createMedicalStudent,
     updateMedicalStudent,
     deleteMedicalStudent,
+    activateMedicalStudent,
   };
