@@ -1,18 +1,9 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
-import Alert from '../../components/validation/Alert';
 import React, { Fragment, useState, useEffect } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
 import { useAppContext } from '../../context/appContext.js';
-
-const initialState = {
-  name:'',
-  email:'',
-  type:'',
-  phone:'',
-  password:'',
-  showAlert: false,
-}
+import axios from 'axios';
 
 const AddAdmin = () => {
    /*use state
@@ -40,7 +31,8 @@ const AddAdmin = () => {
       const data = await response.json();
         console.log("Account is registered", data);
     }
-    */
+    
+    //using appContext 
 
     const [values, setValues] = useState(initialState)
     const { displayAlert, setupUser } = useAppContext();
@@ -53,7 +45,7 @@ const AddAdmin = () => {
       const { name, email, password, type, phone } = values;
       if (!email || !password || !name || !phone || !type) {
         displayAlert();
-        return;
+        return; 
       }
       const currentUser = { name, email, type, phone, password };
         setupUser({
@@ -62,24 +54,47 @@ const AddAdmin = () => {
           alertText: 'Admin Created! Redirecting...',
         });
     };
+    */
+
+
+    const [values, setValues] = useState({
+      name:'',
+      email:'',
+      type:'',
+      phone:'',
+      password:'',
+    })
+
+    //to view the enabled value
+    const handleChange = (e) => {
+      const {name, value} = e.target;
+      setValues({
+        ...setValues,
+        [name]:value
+      })
+    }
+    const registerAdmin = async (e) => {
+      e.preventDefault();
+      const res = await axios.post("http://localhost:4000/api/v1/admins/registerAdmin", setValues);
+      console.log(res)
+    }
   return (
     <Fragment>
     <AdminNav />
     <Container className='bg-white rounded p-3' >
       <Row>
         <Col>
-        <form onSubmit={onSubmit} className='form'>
-            {values.showAlert && <Alert />}
+        <form onSubmit={registerAdmin}>
             <p className='mb-1'>Name:</p>
-            <input className='inputStyling' type="text" placeholder='Name' value={values.name} onChange= {handleChange} />
+            <input className='inputStyling' type="text" placeholder='Name' value={values.name} onChange={handleChange}/>
             <p className='mb-1'>Email:</p>
-            <input className='inputStyling' type="email" placeholder='Email' value={values.email} onChange= {handleChange} />
+            <input className='inputStyling' type="email" placeholder='Email' value={values.email} onChange={handleChange}/>
             <p className='mb-1'>Phone Number:</p>
-            <input className='inputStyling' type="number" placeholder='Phone number' value={values.phone} onChange= {handleChange} />
+            <input className='inputStyling' type="number" placeholder='Phone number' value={values.phone} onChange={handleChange}/>
             <p className='mb-1'>Password:</p>
-            <input className='inputStyling' type="password" placeholder='Password' value={values.password} onChange= {handleChange} />
+            <input className='inputStyling' type="password" placeholder='Password' value={values.password} onChange={handleChange}/>
             <p className='mb-1'>Type of the admin:</p>
-            <select className='inputStyling' name="type" placeholder='type' value={values.type} onChange= {handleChange}>
+            <select className='inputStyling' name="type" placeholder='type' value={values.type} onChange={handleChange}>
               <option disabled>type</option>
               <option value="sub-admin">sub-admin</option>
               <option value="main-admin">main-admin</option>

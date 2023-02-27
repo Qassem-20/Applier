@@ -20,7 +20,7 @@ import {deleteOpportunity} from '../controllers/opportunitiesController.js';
 //routes of the admin from the controllers
 router.route('/admins').get(fetchAdmins);
 router.route('/admins/:id').get(fetchAdmin);
-router.route('/registerAdmin').post(apiLimiter,createAdmin);
+router.route('/admins/registerAdmin').post(apiLimiter,createAdmin);
 router.route('/loginAdmin').post(apiLimiter,loginAdmin);
 router.route('/admins/:id').put(updateAdmin);
 router.route('/admins/:id').delete(deleteAdmin);

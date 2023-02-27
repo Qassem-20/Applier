@@ -1,25 +1,26 @@
 import '../../assets/css/admin.css';
 import AdminNav from '../../components/Nav/adminNav';
 import {Container, Row, Col} from 'react-bootstrap';
-import React, { Fragment } from 'react'
+import adminsStore from "../../stores/AdminsStore.js";
+import React, { Fragment, useState, useEffect } from 'react'
+import axios from 'axios';
 
 const AdminPanel = () => {
-    //use state
-   /*const [admins, setAdmins] = useState(null)
+  const store = adminsStore();
 
-    useEffect(() => {
-      const fetchAdmins = async () => {
-        const response = await fetch('http://localhost:4000/api/v1/admins')
-        const json = await response.json()
-  
-        if (response.ok) {
-          setAdmins(json)
-        }
-      }
-  
-      fetchAdmins()
-    }, []);
-*/
+  const [admins, setAdmins] = useState(null)
+
+  useEffect(() => {
+    fetchAdmins();
+  },[])
+
+  const fetchAdmins = async () => {
+    const res = await axios.get("http://localhost:4000/api/v1/admins");
+    // Set to state
+    setAdmins(res.data.admins);
+  }
+
+
   return (
 <Fragment>
         <AdminNav />
@@ -31,24 +32,26 @@ const AdminPanel = () => {
         </Container>
         <Container fluid>
             <Row className='opportunitiesTag'>
-            <Col md={3} xs={3}><p className='opportunitiesMainTags'>Name</p></Col>
-            <Col md={3} xs={3}><p className='opportunitiesMainTags'>Email</p></Col>
-            <Col md={3} xs={2}><p className='opportunitiesMainTags'>Phone Number</p></Col>
-            <Col md={2} xs={1}><p className='opportunitiesMainTags'>type</p></Col>
-            <Col md={1} xs={1}><p className='opportunitiesMainTags'>Status</p></Col>
+            <Col xl={3} md={2} xs={3}><p className='opportunitiesMainTags'>Name</p></Col>
+            <Col xl={3} md={3} xs={3}><p className='opportunitiesMainTags'>Email</p></Col>
+            <Col xl={3} md={3} xs={2}><p className='opportunitiesMainTags'>Phone Number</p></Col>
+            <Col xl={1} md={1} xs={1}><p className='opportunitiesMainTags'>type</p></Col>
+            <Col xl={2} md={1} xs={1}><p className='opportunitiesMainTags'>Status</p></Col>
             </Row>
         </Container>
-
-        <Container fluid>
-            <Row className='opportunitiesT'>
-              <Col md={3} xs={3}><p className='opportunitiesTags'>Faisal</p></Col>
-              <Col md={3} xs={3}><p className='opportunitiesTags'>wneow@gmail.com</p></Col>
-              <Col md={3} xs={2}><p className='opportunitiesTags'>+9663746356</p></Col>
-              <Col md={2} xs={1}><p className='opportunitiesTags'>sub-admin</p></Col>
-              <Col md={1} xs={1} ><input className='opportunitiesTags' type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off" />
-                <label class="btn btn-outline-danger" for="btn-check-outlined">Delete</label></Col>
-            </Row>
-        </Container>
+        {admins && 
+        admins.map((admin) => {
+          return <Container fluid key={admin._id} >
+              <Row className='opportunitiesT'>
+                <Col xl={3} md={2} xs={3}><p className='opportunitiesTags'>{admin.name}</p></Col>
+                <Col xl={3} md={3} xs={3}><p className='opportunitiesTags'>{admin.email}</p></Col>
+                <Col xl={3} md={3} xs={2}><p className='opportunitiesTags'>{admin.phone}</p></Col>
+                <Col xl={2} md={1} xs={1}><button className='opportunitiesTags'>{admin.type}</button></Col>
+                <Col xl={1} md={1} xs={1} ><input className='opportunitiesTags' type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off" /><label class="btn btn-outline-danger" for="btn-check-outlined">Delete</label>
+                </Col>
+              </Row>
+          </Container>
+        })}
       </Fragment>
   )
 }
