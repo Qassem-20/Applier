@@ -3,6 +3,7 @@ import AdminNav from '../../components/Nav/adminNav';
 import Alert from '../../components/validation/Alert';
 import React, { Fragment, useState, useEffect } from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
+import { useAppContext } from '../../context/appContext.js';
 
 const initialState = {
   name:'',
@@ -42,14 +43,24 @@ const AddAdmin = () => {
     */
 
     const [values, setValues] = useState(initialState)
-
+    const { displayAlert, setupUser } = useAppContext();
     const handleChange = (e) =>{
       setValues({ ...values, [e.target.name]: e.target.value });
     }
 
     const onSubmit = (e) => {
       e.preventDefault();
-      console.log(e.target);
+      const { name, email, password, type, phone } = values;
+      if (!email || !password || !name || !phone || !type) {
+        displayAlert();
+        return;
+      }
+      const currentUser = { name, email, type, phone, password };
+        setupUser({
+          currentUser,
+          endPoint: 'registerAdmin',
+          alertText: 'Admin Created! Redirecting...',
+        });
     };
   return (
     <Fragment>
@@ -57,7 +68,7 @@ const AddAdmin = () => {
     <Container className='bg-white rounded p-3' >
       <Row>
         <Col>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className='form'>
             {values.showAlert && <Alert />}
             <p className='mb-1'>Name:</p>
             <input className='inputStyling' type="text" placeholder='Name' value={values.name} onChange= {handleChange} />
