@@ -2,41 +2,14 @@ import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
 import { Container, Row, Col } from "react-bootstrap";
 import adminsStore from "../../stores/AdminsStore.js";
-import React, { Fragment, useState, useEffect } from "react";
-import axios from "axios";
+import React, { Fragment, useEffect } from "react";
 
 const AdminPanel = () => {
   const store = adminsStore();
 
-  //show Admins
-  const [admins, showAdmins] = useState(null);
-
-  //update Admins
-  const [updateType, setUpdateType] = useState({
-    _id: null,
-    type: "",
+  const storeDelete = adminsStore((storeDelete) => {
+    return { deleteAdmin: storeDelete.deleteAdmin };
   });
-
-  useEffect(() => {
-    fetchAdmins();
-  }, []);
-
-  const fetchAdmins = async () => {
-    const res = await axios.get("http://localhost:4000/api/v1/admins");
-    // Set to state
-    showAdmins(res.data.admins);
-  };
-
-  const deleteAdmin = async (_id) => {
-    const res = await axios.delete(
-      "http://localhost:4000/api/v1/admins/" + _id
-    );
-    //update page;
-    const newAdmins = [...admins].filter((admin) => {
-      return admin._id !== _id;
-    });
-    showAdmins(newAdmins);
-  };
 
   /* this to get current value int tags (input)
   const getUpdateAdminType = (e) => {
@@ -46,32 +19,11 @@ const AdminPanel = () => {
       [name]: value,
     });
   };
-
-  const toggle = (admin) => {
-    setUpdateType({
-      type: admin.type,
-      _id: admin._id,
-    });
-  };
   */
-  const updateAdminType = async (e) => {
-    e.preventDefault();
-    const { type } = updateType;
-    //send a request
-    const res = await axios.put(
-      "http://localhost:4000/api/v1/admins/" + updateType._id,
-      {
-        type,
-      }
-    );
-    //update the page
-    const updatedAdmin = [...admins];
-    const adminIndex = admins.findIndex((admin) => {
-      return admin._id === updateType._id;
-    });
-    updatedAdmin[adminIndex] = res.data.admin;
-    setUpdateType(updatedAdmin);
-  };
+
+  useEffect(() => {
+    store.fetchAdmins();
+  }, []);
   return (
     <Fragment>
       <AdminNav />
@@ -106,8 +58,8 @@ const AdminPanel = () => {
           </Col>
         </Row>
       </Container>
-      {admins &&
-        admins.map((admin) => {
+      {store.admins &&
+        store.admins.map((admin) => {
           return (
             <Container fluid key={admin._id}>
               <Row className="opportunitiesT">
@@ -121,17 +73,18 @@ const AdminPanel = () => {
                   <p className="opportunitiesTags">{admin.phone}</p>
                 </Col>
                 <Col xl={2} md={1} xs={1}>
-                  <form onChange={updateAdminType}>
+                  <form onSubmit={store.updateAdminType}>
                     <select name="type" defaultValue={admin.type}>
                       <option value="sub-admin">sub-admin</option>
                       <option value="main-admin">main-admin</option>
                     </select>
+                    <button type="submit">.</button>
                   </form>
                 </Col>
                 <Col xl={1} md={1} xs={1}>
                   <button
                     className="deleteBtn"
-                    onClick={() => deleteAdmin(admin._id)}
+                    onClick={() => storeDelete.deleteAdmin(admin._id)}
                   >
                     Delete
                   </button>

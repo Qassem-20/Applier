@@ -41,14 +41,14 @@ const companySchema = new mongoose.Schema({
         maxlength:500,
         trim:true
     },
-    Supervisor_name:{
+    supervisor_name:{
         type:String,
         required:[true, 'Provide a name'], 
         minlength:3, 
         maxlength:20,
         trim:true
     },
-    Password:{
+    password:{
         type:String,
         required:[true, 'Please enter password'], 
         minlength:6, 
@@ -81,7 +81,7 @@ const companySchema = new mongoose.Schema({
             message:'Please provide a valid phone number'
         },
     },
-    Country:{
+    country:{
         type:String,
         required:[true, 'Please enter your Country'],
     },

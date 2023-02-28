@@ -125,12 +125,12 @@ const updateCompany = async (req, res) => {
     organization_phone,
     organization_website,
     organization_bio,
-    Supervisor_name,
-    Password,
+    supervisor_name,
+    password,
     organization_email,
     email,
     supervisor_phone,
-    Country,
+    country,
     city,
   });
 
