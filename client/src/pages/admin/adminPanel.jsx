@@ -38,7 +38,8 @@ const AdminPanel = () => {
     showAdmins(newAdmins);
   };
 
-  const updateAdminType = (e) => {
+  /* this to get current value int tags (input)
+  const getUpdateAdminType = (e) => {
     const { value, name } = e.target;
     setUpdateType({
       ...updateType,
@@ -46,6 +47,31 @@ const AdminPanel = () => {
     });
   };
 
+  const toggle = (admin) => {
+    setUpdateType({
+      type: admin.type,
+      _id: admin._id,
+    });
+  };
+  */
+  const updateAdminType = async (e) => {
+    e.preventDefault();
+    const { type } = updateType;
+    //send a request
+    const res = await axios.put(
+      "http://localhost:4000/api/v1/admins/" + updateType._id,
+      {
+        type,
+      }
+    );
+    //update the page
+    const updatedAdmin = [...admins];
+    const adminIndex = admins.findIndex((admin) => {
+      return admin._id === updateType._id;
+    });
+    updatedAdmin[adminIndex] = res.data.admin;
+    setUpdateType(updatedAdmin);
+  };
   return (
     <Fragment>
       <AdminNav />
@@ -95,15 +121,15 @@ const AdminPanel = () => {
                   <p className="opportunitiesTags">{admin.phone}</p>
                 </Col>
                 <Col xl={2} md={1} xs={1}>
-                  <input
-                    type="text"
-                    value={admin.type}
-                    onChange={updateAdminType}
-                  />
+                  <form onChange={updateAdminType}>
+                    <select name="type" defaultValue={admin.type}>
+                      <option value="sub-admin">sub-admin</option>
+                      <option value="main-admin">main-admin</option>
+                    </select>
+                  </form>
                 </Col>
                 <Col xl={1} md={1} xs={1}>
                   <button
-                    ml-0
                     className="deleteBtn"
                     onClick={() => deleteAdmin(admin._id)}
                   >

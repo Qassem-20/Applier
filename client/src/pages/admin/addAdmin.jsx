@@ -132,7 +132,7 @@ const AddAdmin = () => {
                 value={values.type}
                 onChange={handleChange}
               >
-                <option disabled>type</option>
+                <option>Please select a type</option>
                 <option value="sub-admin">sub-admin</option>
                 <option value="main-admin">main-admin</option>
               </select>
