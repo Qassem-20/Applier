@@ -8,82 +8,87 @@
 @import "welcoming.css";
 @import "signUpSignIn.css";
 @import "feedback.css";
-h1, h2, h3, h4, h5, h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: Lora;
 }
 
-p{
+p {
   font-family: Roboto;
   font-size: large;
 }
 
 * {
-margin: 0;
-padding: 0;
-border: 0;
-outline: 0;
-box-sizing: border-box;
-list-style: none;
-text-decoration: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
 }
 
-:root{
+:root {
   --color-bg: white;
-  --color-primary: #F0F0F2;
+  --color-primary: #f0f0f2;
   --color-secondary: #333439;
   --color-button: #485089;
-  --color-button-secondary: #F5F6FF;
+  --color-button-secondary: #f5f6ff;
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
-body{
+body {
   background-image: url(../images/texture.webp);
 }
-.btn{
+.btn {
   width: max-content;
   display: inline-block;
   cursor: pointer;
   border: 1px;
 }
 
-section{
-margin-top: 4rem ;
+section {
+  margin-top: 4rem;
 }
 
-img{
+img {
   display: block;
   object-fit: cover;
 }
-.primaryButton{
+.primaryButton {
   width: 6rem;
   background: #485089;
   border-radius: 25px;
   color: white;
 }
-.secondaryButton{
+.secondaryButton {
   width: 6rem;
-  background: #F5F6FF;
+  background: #f5f6ff;
   border-radius: 25px;
   color: #485089;
 }
 
-.company_logo{
+.company_logo {
   height: 60px;
 }
 
-.containerData{
-background-color: white;
-border-radius: 25px;
-box-shadow: #333439;
+.containerData {
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: #333439;
 }
 
-.inputStyling{
+.inputStyling {
   box-sizing: border-box;
   width: 98%;
   height: 35px;
@@ -94,11 +99,11 @@ box-shadow: #333439;
   margin-bottom: 1rem;
   padding-left: 3px;
 }
-.inputStyling:focus{
+.inputStyling:focus {
   background: white;
   border-radius: 2px;
 }
-.error_msg{
+.error_msg {
   color: rgb(171, 34, 34);
   font-size: large;
   font-style: italic;
@@ -121,4 +126,19 @@ box-shadow: #333439;
 .alert-success {
   color: var(--green-dark);
   background: var(--green-light);
+}
+
+.deleteBtn {
+  color: white;
+  background-color: rgba(172, 18, 18, 0.82);
+  padding: 6px 8px;
+  border-radius: 5px;
+}
+
+.updateBtn {
+  color: white;
+  background-color: rgba(18, 41, 172, 0.82);
+  padding: 6px 8px;
+  margin: 0;
+  border-radius: 5px;
 }
