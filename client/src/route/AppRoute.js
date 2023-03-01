@@ -1,151 +1,150 @@
-import React, { Component, Fragment } from 'react';
-import { Route, Switch } from 'react-router';
+import React, { Component, Fragment } from "react";
+import { Route, Switch } from "react-router";
 
-import WelcomePage from '../pages/HomePage';
+import WelcomePage from "../pages/HomePage";
 
-import SignIn from '../pages/signIn-signUp/SignIn';
-import RouteSignUp from '../pages/signIn-signUp/routeSignUp';
-import SignUpMedicalStudent from '../pages/signIn-signUp/signUpMedicalStudent';
-import SignUpCompany from '../pages/signIn-signUp/signUpCompany';
-import SignUpConsumer from '../pages/signIn-signUp/signUpConsumer';
-import ForgottenPassword from '../pages/signIn-signUp/forgottenPassword';
+import SignIn from "../pages/signIn-signUp/signIn";
+import RouteSignUp from "../pages/signIn-signUp/routeSignUp";
+import SignUpMedicalStudent from "../pages/signIn-signUp/signUpMedicalStudent";
+import SignUpCompany from "../pages/signIn-signUp/signUpCompany";
+import SignUpConsumer from "../pages/signIn-signUp/signUpConsumer";
+import ForgottenPassword from "../pages/signIn-signUp/forgottenPassword";
 
-import ConsumerProfile from '../pages/consumer/editProfile';
-import Opportunities from '../pages/consumer/opportunities';
-import MedicalStudents from '../pages/consumer/medicalStudents';
-import CompanyInfo from '../pages/consumer/companyInfo';
+import ConsumerProfile from "../pages/consumer/editProfile";
+import Opportunities from "../pages/consumer/opportunities";
+import MedicalStudents from "../pages/consumer/medicalStudents";
+import CompanyInfo from "../pages/consumer/companyInfo";
 
-import AddOpportunity from '../pages/company/addOpportunity';
-import AppliedTrainee from '../pages/company/appliedTrainee';
-import CompanyHomePage from '../pages/company/companyHomePage';
-import CompanyProfile from '../pages/company/companyProfile';
-import EditOpportunity from '../pages/company/editOpportunity';
-import TraineeDetails from '../pages/company/traineeDetails';
+import AddOpportunity from "../pages/company/addOpportunity";
+import AppliedTrainee from "../pages/company/appliedTrainee";
+import CompanyHomePage from "../pages/company/companyHomePage";
+import CompanyProfile from "../pages/company/companyProfile";
+import EditOpportunity from "../pages/company/editOpportunity";
+import TraineeDetails from "../pages/company/traineeDetails";
 
-import AdminHomePage from '../pages/admin/adminHomePage';
-import UnauthorizedMiddleWare from '../pages/admin/unauthorizedMiddleWare';
-import Consumers from '../pages/admin/consumers';
-import Companies from '../pages/admin/companies';
-import OpportunitiesPanel from '../pages/admin/opportunities';
-import MedicalStudent from '../pages/admin/medicalStudents';
-import AdminSignIn from '../pages/admin/AdminSignIn';
-import AddAdmin from '../pages/admin/AddAdmin';
-import ReportedFeedBack from '../pages/admin/reportedFeedBack';
-import AdminForgottenPassword from '../pages/admin/adminForgottenPassword';
-import AdminPanel from '../pages/admin/AdminPanel';
+import AdminHomePage from "../pages/admin/adminHomePage";
+import UnauthorizedMiddleWare from "../pages/admin/unauthorizedMiddleWare";
+import Consumers from "../pages/admin/consumers";
+import Companies from "../pages/admin/companies";
+import OpportunitiesPanel from "../pages/admin/opportunities";
+import MedicalStudent from "../pages/admin/medicalStudents";
+import AdminSignIn from "../pages/admin/adminSignIn";
+import AddAdmin from "../pages/admin/addAdmin";
+import ReportedFeedBack from "../pages/admin/reportedFeedBack";
+import AdminForgottenPassword from "../pages/admin/adminForgottenPassword";
+import AdminPanel from "../pages/admin/adminPanel";
 
-import FeedBackConsumer  from '../pages/FeedBack/feedBackConsumer';
-import FeedBackCompany from '../pages/FeedBack/feedBackCompany';
-import FeedBackMedical from '../pages/FeedBack/feedBackMedical';
-
+import FeedBackConsumer from "../pages/FeedBack/feedBackConsumer";
+import FeedBackCompany from "../pages/FeedBack/feedBackCompany";
+import FeedBackMedical from "../pages/FeedBack/feedBackMedical";
 
 class AppRoute extends Component {
   render() {
     return (
       <Fragment>
-          <Switch>
-            <Route exact path="/">
+        <Switch>
+          <Route exact path="/">
             <WelcomePage />
-            </Route>
+          </Route>
 
-            <Route path="/signIn" >
+          <Route path="/signIn">
             <SignIn />
-            </Route>
-            <Route path="/signUpMedicalStudent" >
+          </Route>
+          <Route path="/signUpMedicalStudent">
             <SignUpMedicalStudent />
-            </Route>
-            <Route path="/routeSignUp" >
+          </Route>
+          <Route path="/routeSignUp">
             <RouteSignUp />
-            </Route>
-            <Route path="/signUpCompany" >
+          </Route>
+          <Route path="/signUpCompany">
             <SignUpCompany />
-            </Route>
-            <Route path="/signUpConsumer" >
+          </Route>
+          <Route path="/signUpConsumer">
             <SignUpConsumer />
-            </Route>
-            <Route path="/forgottenPassword" >
+          </Route>
+          <Route path="/forgottenPassword">
             <ForgottenPassword />
-            </Route>
+          </Route>
 
-            <Route path="/consumerProfile" >
+          <Route path="/consumerProfile">
             <ConsumerProfile />
-            </Route>
-            <Route path="/opportunities" >
+          </Route>
+          <Route path="/opportunities">
             <Opportunities />
-            </Route>
-            <Route path="/medicalStudents" >
+          </Route>
+          <Route path="/medicalStudents">
             <MedicalStudents />
-            </Route> 
-            <Route path="/companyInfo" >
+          </Route>
+          <Route path="/companyInfo">
             <CompanyInfo />
-            </Route>
+          </Route>
 
-            <Route path="/addOpportunity" >
+          <Route path="/addOpportunity">
             <AddOpportunity />
-            </Route>
-            <Route path="/appliedTrainee" >
+          </Route>
+          <Route path="/appliedTrainee">
             <AppliedTrainee />
-            </Route>
-            <Route path="/companyHomePage" >
+          </Route>
+          <Route path="/companyHomePage">
             <CompanyHomePage />
-            </Route>
-            <Route path="/companyProfile" >
+          </Route>
+          <Route path="/companyProfile">
             <CompanyProfile />
-            </Route>
-            <Route path="/editOpportunity" >
+          </Route>
+          <Route path="/editOpportunity">
             <EditOpportunity />
-            </Route>
-            <Route path="/traineeDetails" >
+          </Route>
+          <Route path="/traineeDetails">
             <TraineeDetails />
-            </Route>
+          </Route>
 
-            <Route path="/adminHomePage" >
+          <Route path="/adminHomePage">
             <AdminHomePage />
-            </Route>
-            <Route path="/adminSignIn" >
+          </Route>
+          <Route path="/adminSignIn">
             <AdminSignIn />
-            </Route>
-            <Route path="/unauthorizedMiddleWare" >
+          </Route>
+          <Route path="/unauthorizedMiddleWare">
             <UnauthorizedMiddleWare />
-            </Route>
-            <Route path="/adminForgottenPassword" >
+          </Route>
+          <Route path="/adminForgottenPassword">
             <AdminForgottenPassword />
-            </Route>
-            <Route path="/reportedFeedBack" >
+          </Route>
+          <Route path="/reportedFeedBack">
             <ReportedFeedBack />
-            </Route>
-            <Route path="/addAdmin" >
+          </Route>
+          <Route path="/addAdmin">
             <AddAdmin />
-            </Route>
-            <Route path="/consumers" >
+          </Route>
+          <Route path="/consumers">
             <Consumers />
-            </Route>
-            <Route path="/companies" >
+          </Route>
+          <Route path="/companies">
             <Companies />
-            </Route>
-            <Route path="/opportunitiesPanel" >
+          </Route>
+          <Route path="/opportunitiesPanel">
             <OpportunitiesPanel />
-            </Route>
-            <Route path="/medicalStudent" >
+          </Route>
+          <Route path="/medicalStudent">
             <MedicalStudent />
-            </Route>
-            <Route path="/adminPanel" >
+          </Route>
+          <Route path="/adminPanel">
             <AdminPanel />
-            </Route>
+          </Route>
 
-            <Route path="/feedBackConsumer" >
+          <Route path="/feedBackConsumer">
             <FeedBackConsumer />
-            </Route>
-            <Route path="/feedBackMedical" >
+          </Route>
+          <Route path="/feedBackMedical">
             <FeedBackMedical />
-            </Route>
-            <Route path="/feedBackCompany" >
+          </Route>
+          <Route path="/feedBackCompany">
             <FeedBackCompany />
-            </Route>
-          </Switch>
+          </Route>
+        </Switch>
       </Fragment>
-    )
+    );
   }
 }
 
-export default AppRoute
+export default AppRoute;
