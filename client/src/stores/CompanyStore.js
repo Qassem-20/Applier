@@ -21,7 +21,7 @@ const CompanyStores = create((set) => ({
         const newCompanies = [...companies].filter((company) => {
           return company._id !== _id;
         });
-        set({ company: newCompanies });
+        set({ companies: newCompanies });
       },
 
       updateType: {

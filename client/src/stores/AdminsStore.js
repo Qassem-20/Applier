@@ -22,7 +22,7 @@ const AdminsStore = create((set) => ({
         const newAdmins = [...admins].filter((admin) => {
           return admin._id !== _id;
         });
-        set({ admin: newAdmins });
+        set({ admins: newAdmins });
       },
 
       updateType: {
