@@ -75,37 +75,38 @@ const Consumers = () => {
           </Col>
         </Row>
       </Container>
-      <Container fluid>
-        <Row className="opportunitiesT">
-          <Col xl={2}>
-            <p className="opportunitiesTags">ahmed</p>
-          </Col>
-          <Col xl={2}>
-            <p className="opportunitiesTags">software engineer</p>
-          </Col>
-          <Col xl={2}>
-            <p className="opportunitiesTags">+9663746356</p>
-          </Col>
-          <Col xl={3}>
-            <p className="opportunitiesTags">Dammam</p>
-          </Col>
-          <Col xl={2}>
-            <p className="opportunitiesTags">whjfbrwbfhrf.com</p>
-          </Col>
-          <Col xl={1}>
-            <input
-              className="opportunitiesTags"
-              type="checkbox"
-              class="btn-check"
-              id="btn-check-outlined"
-              autocomplete="off"
-            />
-            <label class="btn btn-outline-danger" for="btn-check-outlined">
-              Suspend
-            </label>
-          </Col>
-        </Row>
-      </Container>
+      {store.consumers &&
+        store.consumers.map((consumer) => {
+          return (
+            <Container fluid>
+              <Row className="opportunitiesT">
+                <Col xl={2}>
+                  <p className="opportunitiesTags">{consumer.name}</p>
+                </Col>
+                <Col xl={2}>
+                  <p className="opportunitiesTags">{consumer.major}</p>
+                </Col>
+                <Col xl={2}>
+                  <p className="opportunitiesTags">{consumer.phone}</p>
+                </Col>
+                <Col xl={3}>
+                  <p className="opportunitiesTags">{consumer.city}</p>
+                </Col>
+                <Col xl={2}>
+                  <p className="opportunitiesTags">consumer</p>
+                </Col>
+                <Col xl={1}>
+                  <form onSubmit={store.updateConsumer}>
+                    <select name="statue" defaultValue={consumer.statue}>
+                      <option value="suspend">suspend</option>
+                      <option value="unsuspend">unsuspend</option>
+                    </select>
+                  </form>
+                </Col>
+              </Row>
+            </Container>
+          );
+        })}
     </Fragment>
   );
 };

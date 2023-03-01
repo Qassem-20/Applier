@@ -1,50 +1,120 @@
-import '../../assets/css/admin.css';
-import AdminNav from '../../components/Nav/adminNav';
-import React, { Fragment } from 'react'
-import {Container, Row, Col} from 'react-bootstrap';
+import "../../assets/css/admin.css";
+import AdminNav from "../../components/Nav/adminNav";
+import React, { Fragment, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import OpportunityStore from "../../stores/OpportunityStore";
 
-const opportunities = () => {
+const Opportunities = () => {
+  const store = OpportunityStore();
+
+  const storeDelete = opportunitiesStore((storeDelete) => {
+    return { deleteOpportunity: storeDelete.deleteOpportunity };
+  });
+
+  useEffect(() => {
+    store.fetchOpportunities();
+  }, []);
+
   return (
     <Fragment>
-        <AdminNav />
-        <Container className='mt-3 mb-2'>
-          <h1>Opportunities</h1>
-          <Row className='m-auto pt-3 pb-1'> 
-            <Col xl={3} md={6} sm={12}><input className='inputStyling' type="search" name="" value="" placeholder='Phone Number ' /></Col>
-            <Col xl={3} md={6} sm={12}><input className='inputStyling' type="search" name="" value="" placeholder='Trainee Name' /></Col>
-            <Col xl={3} md={6} sm={12}><input className='inputStyling' type="date" name="" value="" placeholder='Joined Date' /></Col>
-            <Col xl={3} md={6} sm={12}>
-              <select className='inputStyling' name="cars" placeholder='Status'>
-                <option value="saab">Null</option>
-                <option value="volvo">Unsuspend</option>
-                <option value="saab">Suspended</option>
-              </select>
-            </Col>
-          </Row>
-        </Container>
-        <Container fluid>
-          <Row className='opportunitiesTag'>
-            <Col xl={2}><p className='opportunitiesMainTags'>Name</p></Col>
-            <Col xl={2}><p className='opportunitiesMainTags'>Major</p></Col>
-            <Col xl={2}><p className='opportunitiesMainTags'>Phone Number</p></Col>
-            <Col xl={3}><p className='opportunitiesMainTags'>Location</p></Col>
-            <Col xl={2}><p className='opportunitiesMainTags'>CV</p></Col>
-            <Col xl={1}><p className='opportunitiesMainTags'>Status</p></Col>
-          </Row>
-        </Container>
-        <Container fluid>
-          <Row className='opportunitiesT'>
-            <Col xl={2}><p className='opportunitiesTags'>ahmed</p></Col>
-            <Col xl={2}><p className='opportunitiesTags'>software engineer</p></Col>
-            <Col xl={2}><p className='opportunitiesTags'>+9663746356</p></Col>
-            <Col xl={3}><p className='opportunitiesTags'>Dammam</p></Col>
-            <Col xl={2}><p className='opportunitiesTags'>whjfbrwbfhrf.com</p></Col>
-            <Col xl={1}><input className='opportunitiesTags' type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off" />
-            <label class="btn btn-outline-danger" for="btn-check-outlined">Suspend</label></Col>
-          </Row>
-        </Container>
-      </Fragment>
-  )
-}
+      <AdminNav />
+      <Container className="mt-3 mb-2">
+        <h1>Opportunities</h1>
+        <Row className="m-auto pt-3 pb-1">
+          <Col xl={3} md={6} sm={12}>
+            <input
+              className="inputStyling"
+              type="search"
+              name=""
+              value=""
+              placeholder="Phone Number "
+            />
+          </Col>
+          <Col xl={3} md={6} sm={12}>
+            <input
+              className="inputStyling"
+              type="search"
+              name=""
+              value=""
+              placeholder="Trainee Name"
+            />
+          </Col>
+          <Col xl={3} md={6} sm={12}>
+            <input
+              className="inputStyling"
+              type="date"
+              name=""
+              value=""
+              placeholder="Joined Date"
+            />
+          </Col>
+          <Col xl={3} md={6} sm={12}>
+            <select className="inputStyling" name="cars" placeholder="Status">
+              <option value="saab">Null</option>
+              <option value="volvo">Unsuspend</option>
+              <option value="saab">Suspended</option>
+            </select>
+          </Col>
+        </Row>
+      </Container>
+      <Container fluid>
+        <Row className="opportunitiesTag">
+          <Col xl={2}>
+            <p className="opportunitiesMainTags">Job Role</p>
+          </Col>
+          <Col xl={2}>
+            <p className="opportunitiesMainTags">Duration</p>
+          </Col>
+          <Col xl={2}>
+            <p className="opportunitiesMainTags">CreatedAt</p>
+          </Col>
+          <Col xl={3}>
+            <p className="opportunitiesMainTags">Location</p>
+          </Col>
+          <Col xl={2}>
+            <p className="opportunitiesMainTags">type</p>
+          </Col>
+          <Col xl={1}>
+            <p className="opportunitiesMainTags">Status</p>
+          </Col>
+        </Row>
+      </Container>
+      {store.opportunities &&
+        store.opportunities.map((opportunity) => {
+          return (
+            <Container fluid>
+              <Row className="opportunitiesT">
+                <Col xl={2}>
+                  <p className="opportunitiesTags">{opportunity.job_role}</p>
+                </Col>
+                <Col xl={2}>
+                  <p className="opportunitiesTags">{opportunity.duration}</p>
+                </Col>
+                <Col xl={2}>
+                  <p className="opportunitiesTags">{opportunity.createdAt}</p>
+                </Col>
+                <Col xl={3}>
+                  <p className="opportunitiesTags">{opportunity.city}</p>
+                </Col>
+                <Col xl={2}>
+                  <p className="opportunitiesTags">{opportunity.job_type}</p>
+                </Col>
+                <Col xl={1}>
+                  <button
+                    className="deleteBtn"
+                    onClick={() =>
+                      storeDelete.deleteOpportunity(opportunity._id)
+                    }
+                  >
+                    Delete
+                  </button>
+                </Col>
+              </Row>
+            </Container>
+          );
+        })}
+    </Fragment>
+  );
+};
 
-export default opportunities
+export default Opportunities;
