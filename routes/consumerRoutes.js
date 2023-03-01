@@ -22,7 +22,7 @@ import {
 router.route("/consumers").get(fetchConsumers);
 router.route("/sortConsumers").get(sortConsumers);
 router.route("/consumers/:id").get(fetchConsumer);
-router.route("/registerConsumer").post(apiLimiter, createConsumer);
+router.route("/consumers/registerConsumer").post(apiLimiter, createConsumer);
 router.route("/consumers/:id").put(updateConsumer);
 router.route("/consumers/:id").delete(deleteConsumer);
 

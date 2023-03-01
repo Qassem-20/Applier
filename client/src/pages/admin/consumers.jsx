@@ -1,9 +1,16 @@
 import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import ConsumerStore from "../../stores/ConsumerStore.js";
 
-const consumers = () => {
+const Consumers = () => {
+  const store = ConsumerStore();
+
+  useEffect(() => {
+    store.fetchConsumers();
+  }, []);
+
   return (
     <Fragment>
       <AdminNav />
@@ -103,4 +110,4 @@ const consumers = () => {
   );
 };
 
-export default consumers;
+export default Consumers;

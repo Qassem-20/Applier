@@ -1,12 +1,15 @@
 import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import companyStores from "../../stores/CompanyStore";
+import CompanyStore from "../../stores/CompanyStore.js";
 
-const companies = () => {
-  const store = companyStores();
+const Companies = () => {
+  const store = CompanyStore();
 
+  useEffect(() => {
+    store.fetchCompanies();
+  }, []);
   return (
     <Fragment>
       <AdminNav />
@@ -105,7 +108,6 @@ const companies = () => {
                       <option value="inactive">inactive</option>
                       <option value="active">active</option>
                     </select>
-                    <button type="submit">.</button>
                   </form>
                 </Col>
               </Row>
@@ -116,4 +118,4 @@ const companies = () => {
   );
 };
 
-export default companies;
+export default Companies;

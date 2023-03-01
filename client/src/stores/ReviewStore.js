@@ -1,28 +1,28 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const CompanyStore = create((set) => ({
-  companies: null,
+const ReviewStore = create((set) => ({
+  reviews: null,
 
-  fetchCompanies: async () => {
-    // Fetch the companies
-    const res = await axios.get("http://localhost:4000/api/v1/companies");
+  fetchReviews: async () => {
+    // Fetch the reviews
+    const res = await axios.get("http://localhost:4000/api/v1/reviews");
     // Set to state
-    set({ companies: res.data.companies });
+    set({ reviews: res.data.reviews });
   },
 
-  deleteCompany: async (_id) => {
+  deleteReview: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/companies/" + _id
+      "http://localhost:4000/api/v1/reviews/" + _id
     );
 
-    const { companies } = CompanyStore.getState();
+    const { reviews } = ReviewStore.getState();
 
     //update page;
-    const newCompanies = [...companies].filter((company) => {
-      return company._id !== _id;
+    const newReviews = [...reviews].filter((review) => {
+      return review._id !== _id;
     });
-    set({ companies: newCompanies });
+    set({ reviews: newReviews });
   },
 
   updateStatue: {
@@ -30,31 +30,28 @@ const CompanyStore = create((set) => ({
     statue: "",
   },
 
-  updateStatueCompany: async (e) => {
+  updateReview: async (e) => {
     e.preventDefault();
 
     const {
       updateStatue: { statue, _id },
-      companies,
-    } = CompanyStore.getState();
+      reviews,
+    } = ReviewStore.getState();
 
     // Send the update request
-    const res = await axios.put(
-      `http://localhost:4000/api/v1/companies/${_id}`,
-      {
-        statue,
-      }
-    );
+    const res = await axios.put(`http://localhost:4000/api/v1/reviews/${_id}`, {
+      statue,
+    });
 
     // Update state
-    const newCompanies = [...companies];
-    const companyIndex = companies.findIndex((company) => {
-      return company._id === _id;
+    const newReviews = [...reviews];
+    const reviewIndex = reviews.findIndex((review) => {
+      return review._id === _id;
     });
-    newCompanies[companyIndex] = res.data.company;
+    newReviews[reviewIndex] = res.data.review;
 
     set({
-      companies: newCompanies,
+      reviews: newReviews,
       updateType: {
         _id: null,
         organization_name: "",
@@ -88,17 +85,17 @@ const CompanyStore = create((set) => ({
     city: "",
   },
 
-  registerCompany: async (e) => {
+  registerReview: async (e) => {
     e.preventDefault();
-    const { values, companies } = CompanyStore.getState();
+    const { values, reviews } = ReviewStore.getState();
 
-    // add company
+    // add review
     const res = await axios.post(
-      "http://localhost:4000/api/v1/companies/registerCompany",
+      "http://localhost:4000/api/v1/reviews/registerReview",
       values
     );
     set({
-      companies: [...companies, res.data.company],
+      reviews: [...reviews, res.data.review],
       values: {
         organization_name: "",
         register_number: "",
@@ -130,4 +127,4 @@ const CompanyStore = create((set) => ({
   },
 }));
 
-export default CompanyStore;
+export default ReviewStore;

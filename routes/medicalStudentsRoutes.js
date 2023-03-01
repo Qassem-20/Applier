@@ -19,9 +19,11 @@ import {
 } from "../controllers/medicalStudentController.js";
 //routes of the medicalStudent from the controllers
 router.route("/medicalStudents").get(fetchMedicalStudents);
-router.route("/medicalStudent/:id").get(fetchMedicalStudent);
-router.route("/registerMedical").post(apiLimiter, createMedicalStudent);
-router.route("/medicalStudent/:id").put(updateMedicalStudent);
-router.route("/medicalStudent/:id").delete(deleteMedicalStudent);
+router.route("/medicalStudents/:id").get(fetchMedicalStudent);
+router
+  .route("/medicalStudents/registerMedical")
+  .post(apiLimiter, createMedicalStudent);
+router.route("/medicalStudents/:id").put(updateMedicalStudent);
+router.route("/medicalStudents/:id").delete(deleteMedicalStudent);
 
 export default router;

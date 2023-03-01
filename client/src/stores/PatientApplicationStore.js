@@ -1,28 +1,32 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const CompanyStore = create((set) => ({
-  companies: null,
+const PatientApplicationStore = create((set) => ({
+  patientApplications: null,
 
-  fetchCompanies: async () => {
-    // Fetch the companies
-    const res = await axios.get("http://localhost:4000/api/v1/companies");
+  fetchPatientApplications: async () => {
+    // Fetch the patientApplications
+    const res = await axios.get(
+      "http://localhost:4000/api/v1/patientApplications"
+    );
     // Set to state
-    set({ companies: res.data.companies });
+    set({ patientApplications: res.data.patientApplications });
   },
 
-  deleteCompany: async (_id) => {
+  deletePatientApplication: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/companies/" + _id
+      "http://localhost:4000/api/v1/patientApplications/" + _id
     );
 
-    const { companies } = CompanyStore.getState();
+    const { patientApplications } = PatientApplicationStore.getState();
 
     //update page;
-    const newCompanies = [...companies].filter((company) => {
-      return company._id !== _id;
-    });
-    set({ companies: newCompanies });
+    const newPatientApplications = [...patientApplications].filter(
+      (patientApplication) => {
+        return patientApplication._id !== _id;
+      }
+    );
+    set({ patientApplications: newPatientApplications });
   },
 
   updateStatue: {
@@ -30,31 +34,34 @@ const CompanyStore = create((set) => ({
     statue: "",
   },
 
-  updateStatueCompany: async (e) => {
+  updatePatientApplication: async (e) => {
     e.preventDefault();
 
     const {
       updateStatue: { statue, _id },
-      companies,
-    } = CompanyStore.getState();
+      patientApplications,
+    } = PatientApplicationStore.getState();
 
     // Send the update request
     const res = await axios.put(
-      `http://localhost:4000/api/v1/companies/${_id}`,
+      `http://localhost:4000/api/v1/patientApplications/${_id}`,
       {
         statue,
       }
     );
 
     // Update state
-    const newCompanies = [...companies];
-    const companyIndex = companies.findIndex((company) => {
-      return company._id === _id;
-    });
-    newCompanies[companyIndex] = res.data.company;
+    const newPatientApplications = [...patientApplications];
+    const patientApplicationIndex = patientApplications.findIndex(
+      (patientApplication) => {
+        return patientApplication._id === _id;
+      }
+    );
+    newPatientApplications[patientApplicationIndex] =
+      res.data.patientApplication;
 
     set({
-      companies: newCompanies,
+      patientApplications: newPatientApplications,
       updateType: {
         _id: null,
         organization_name: "",
@@ -88,17 +95,20 @@ const CompanyStore = create((set) => ({
     city: "",
   },
 
-  registerCompany: async (e) => {
+  registerPatientApplication: async (e) => {
     e.preventDefault();
-    const { values, companies } = CompanyStore.getState();
+    const { values, patientApplications } = PatientApplicationStore.getState();
 
-    // add company
+    // add PatientApplication
     const res = await axios.post(
-      "http://localhost:4000/api/v1/companies/registerCompany",
+      "http://localhost:4000/api/v1/patientApplications/registerPatientApplication",
       values
     );
     set({
-      companies: [...companies, res.data.company],
+      patientApplications: [
+        ...patientApplications,
+        res.data.patientApplication,
+      ],
       values: {
         organization_name: "",
         register_number: "",
@@ -130,4 +140,4 @@ const CompanyStore = create((set) => ({
   },
 }));
 
-export default CompanyStore;
+export default PatientApplicationStore;

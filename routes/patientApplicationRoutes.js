@@ -12,7 +12,9 @@ import {
 //routes of the patientApplication from the controllers
 router.route("/patientApplications").get(fetchPatientApplications);
 router.route("/patientApplications/:id").get(fetchPatientApplication);
-router.route("/addPatientApplications").post(createPatientApplication);
+router
+  .route("/patientApplications/registerPatientApplications")
+  .post(createPatientApplication);
 router.route("/patientApplications/:id").put(updatePatientApplication);
 router.route("/patientApplications/:id").delete(deletePatientApplication);
 

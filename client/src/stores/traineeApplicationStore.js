@@ -1,28 +1,32 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const CompanyStore = create((set) => ({
-  companies: null,
+const TraineeApplicationStore = create((set) => ({
+  traineeApplications: null,
 
-  fetchCompanies: async () => {
-    // Fetch the companies
-    const res = await axios.get("http://localhost:4000/api/v1/companies");
+  fetchTraineeApplications: async () => {
+    // Fetch the traineeApplications
+    const res = await axios.get(
+      "http://localhost:4000/api/v1/traineeApplications"
+    );
     // Set to state
-    set({ companies: res.data.companies });
+    set({ traineeApplications: res.data.traineeApplications });
   },
 
-  deleteCompany: async (_id) => {
+  deleteTraineeApplication: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/companies/" + _id
+      "http://localhost:4000/api/v1/traineeApplications/" + _id
     );
 
-    const { companies } = CompanyStore.getState();
+    const { traineeApplications } = TraineeApplicationStore.getState();
 
     //update page;
-    const newCompanies = [...companies].filter((company) => {
-      return company._id !== _id;
-    });
-    set({ companies: newCompanies });
+    const newTraineeApplications = [...traineeApplications].filter(
+      (traineeApplication) => {
+        return traineeApplication._id !== _id;
+      }
+    );
+    set({ traineeApplications: newTraineeApplications });
   },
 
   updateStatue: {
@@ -30,31 +34,34 @@ const CompanyStore = create((set) => ({
     statue: "",
   },
 
-  updateStatueCompany: async (e) => {
+  updateTraineeApplication: async (e) => {
     e.preventDefault();
 
     const {
       updateStatue: { statue, _id },
-      companies,
-    } = CompanyStore.getState();
+      traineeApplications,
+    } = TraineeApplicationStore.getState();
 
     // Send the update request
     const res = await axios.put(
-      `http://localhost:4000/api/v1/companies/${_id}`,
+      `http://localhost:4000/api/v1/traineeApplications/${_id}`,
       {
         statue,
       }
     );
 
     // Update state
-    const newCompanies = [...companies];
-    const companyIndex = companies.findIndex((company) => {
-      return company._id === _id;
-    });
-    newCompanies[companyIndex] = res.data.company;
+    const newTraineeApplications = [...traineeApplications];
+    const traineeApplicationIndex = traineeApplications.findIndex(
+      (traineeApplication) => {
+        return traineeApplication._id === _id;
+      }
+    );
+    newTraineeApplications[traineeApplicationIndex] =
+      res.data.traineeApplication;
 
     set({
-      companies: newCompanies,
+      traineeApplications: newTraineeApplications,
       updateType: {
         _id: null,
         organization_name: "",
@@ -88,17 +95,20 @@ const CompanyStore = create((set) => ({
     city: "",
   },
 
-  registerCompany: async (e) => {
+  registerTraineeApplication: async (e) => {
     e.preventDefault();
-    const { values, companies } = CompanyStore.getState();
+    const { values, traineeApplications } = TraineeApplicationStore.getState();
 
-    // add company
+    // add traineeApplication
     const res = await axios.post(
-      "http://localhost:4000/api/v1/companies/registerCompany",
+      "http://localhost:4000/api/v1/traineeApplications/registerTraineeApplication",
       values
     );
     set({
-      companies: [...companies, res.data.company],
+      traineeApplications: [
+        ...traineeApplications,
+        res.data.traineeApplication,
+      ],
       values: {
         organization_name: "",
         register_number: "",
@@ -130,4 +140,4 @@ const CompanyStore = create((set) => ({
   },
 }));
 
-export default CompanyStore;
+export default TraineeApplicationStore;

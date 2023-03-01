@@ -1,28 +1,28 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const CompanyStore = create((set) => ({
-  companies: null,
+const OpportunityStore = create((set) => ({
+  opportunities: null,
 
-  fetchCompanies: async () => {
-    // Fetch the companies
-    const res = await axios.get("http://localhost:4000/api/v1/companies");
+  fetchOpportunities: async () => {
+    // Fetch the opportunities
+    const res = await axios.get("http://localhost:4000/api/v1/opportunities");
     // Set to state
-    set({ companies: res.data.companies });
+    set({ opportunities: res.data.opportunities });
   },
 
-  deleteCompany: async (_id) => {
+  deleteOpportunity: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/companies/" + _id
+      "http://localhost:4000/api/v1/opportunities/" + _id
     );
 
-    const { companies } = CompanyStore.getState();
+    const { opportunities } = OpportunityStore.getState();
 
     //update page;
-    const newCompanies = [...companies].filter((company) => {
-      return company._id !== _id;
+    const newOpportunities = [...opportunities].filter((opportunity) => {
+      return opportunity._id !== _id;
     });
-    set({ companies: newCompanies });
+    set({ opportunities: newOpportunities });
   },
 
   updateStatue: {
@@ -30,31 +30,31 @@ const CompanyStore = create((set) => ({
     statue: "",
   },
 
-  updateStatueCompany: async (e) => {
+  updateOpportunity: async (e) => {
     e.preventDefault();
 
     const {
       updateStatue: { statue, _id },
-      companies,
-    } = CompanyStore.getState();
+      opportunities,
+    } = OpportunityStore.getState();
 
     // Send the update request
     const res = await axios.put(
-      `http://localhost:4000/api/v1/companies/${_id}`,
+      `http://localhost:4000/api/v1/opportunities/${_id}`,
       {
         statue,
       }
     );
 
     // Update state
-    const newCompanies = [...companies];
-    const companyIndex = companies.findIndex((company) => {
-      return company._id === _id;
+    const newOpportunities = [...opportunities];
+    const opportunityIndex = opportunities.findIndex((opportunity) => {
+      return opportunity._id === _id;
     });
-    newCompanies[companyIndex] = res.data.company;
+    newOpportunities[opportunity] = res.data.opportunity;
 
     set({
-      companies: newCompanies,
+      opportunities: newOpportunities,
       updateType: {
         _id: null,
         organization_name: "",
@@ -88,17 +88,17 @@ const CompanyStore = create((set) => ({
     city: "",
   },
 
-  registerCompany: async (e) => {
+  registerOpportunity: async (e) => {
     e.preventDefault();
-    const { values, companies } = CompanyStore.getState();
+    const { values, opportunities } = OpportunityStore.getState();
 
-    // add company
+    // add opportunity
     const res = await axios.post(
-      "http://localhost:4000/api/v1/companies/registerCompany",
+      "http://localhost:4000/api/v1/opportunities/registerOpportunity",
       values
     );
     set({
-      companies: [...companies, res.data.company],
+      opportunities: [...opportunities, res.data.opportunity],
       values: {
         organization_name: "",
         register_number: "",
@@ -130,4 +130,4 @@ const CompanyStore = create((set) => ({
   },
 }));
 
-export default CompanyStore;
+export default OpportunityStore;

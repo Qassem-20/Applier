@@ -12,7 +12,7 @@ import {
 //routes of the medicalProfile from the controllers
 router.route("/,medicalProfiles").get(fetchMedicalProfiles);
 router.route("/,medicalProfiles/:id").get(fetchMedicalProfile);
-router.route("/addMedicalProfile").post(createMedicalProfile);
+router.route("/registerMedicalProfile").post(createMedicalProfile);
 router.route("/,medicalProfiles/:id").put(updateMedicalProfile);
 router.route("/,medicalProfiles/:id").delete(deleteMedicalProfile);
 

@@ -1,28 +1,28 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const CompanyStore = create((set) => ({
-  companies: null,
+const MedicalProfileStore = create((set) => ({
+  medicalProfiles: null,
 
-  fetchCompanies: async () => {
-    // Fetch the companies
-    const res = await axios.get("http://localhost:4000/api/v1/companies");
+  fetchMedicalProfiles: async () => {
+    // Fetch the medicalProfiles
+    const res = await axios.get("http://localhost:4000/api/v1/medicalProfiles");
     // Set to state
-    set({ companies: res.data.companies });
+    set({ medicalProfiles: res.data.medicalProfiles });
   },
 
-  deleteCompany: async (_id) => {
+  deleteMedicalProfile: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/companies/" + _id
+      "http://localhost:4000/api/v1/medicalProfiles/" + _id
     );
 
-    const { companies } = CompanyStore.getState();
+    const { medicalProfiles } = MedicalProfileStore.getState();
 
     //update page;
-    const newCompanies = [...companies].filter((company) => {
-      return company._id !== _id;
+    const newMedicalProfiles = [...medicalProfiles].filter((medicalProfile) => {
+      return medicalProfile._id !== _id;
     });
-    set({ companies: newCompanies });
+    set({ medicalProfiles: newMedicalProfiles });
   },
 
   updateStatue: {
@@ -30,31 +30,31 @@ const CompanyStore = create((set) => ({
     statue: "",
   },
 
-  updateStatueCompany: async (e) => {
+  updateMedicalProfile: async (e) => {
     e.preventDefault();
 
     const {
       updateStatue: { statue, _id },
-      companies,
-    } = CompanyStore.getState();
+      medicalProfiles,
+    } = MedicalProfileStore.getState();
 
     // Send the update request
     const res = await axios.put(
-      `http://localhost:4000/api/v1/companies/${_id}`,
+      `http://localhost:4000/api/v1/medicalProfiles/${_id}`,
       {
         statue,
       }
     );
 
     // Update state
-    const newCompanies = [...companies];
-    const companyIndex = companies.findIndex((company) => {
-      return company._id === _id;
+    const newMedicalProfiles = [...medicalProfiles];
+    const medicalProfileIndex = medicalProfiles.findIndex((medicalProfile) => {
+      return medicalProfile._id === _id;
     });
-    newCompanies[companyIndex] = res.data.company;
+    newMedicalProfiles[medicalProfileIndex] = res.data.medicalProfile;
 
     set({
-      companies: newCompanies,
+      medicalProfiles: newMedicalProfiles,
       updateType: {
         _id: null,
         organization_name: "",
@@ -88,17 +88,17 @@ const CompanyStore = create((set) => ({
     city: "",
   },
 
-  registerCompany: async (e) => {
+  registerMedicalProfile: async (e) => {
     e.preventDefault();
-    const { values, companies } = CompanyStore.getState();
+    const { values, medicalProfiles } = MedicalProfileStore.getState();
 
-    // add company
+    // add medicalProfile
     const res = await axios.post(
-      "http://localhost:4000/api/v1/companies/registerCompany",
+      "http://localhost:4000/api/v1/medicalProfiles/registerMedicalProfile",
       values
     );
     set({
-      companies: [...companies, res.data.company],
+      medicalProfiles: [...medicalProfiles, res.data.medicalProfile],
       values: {
         organization_name: "",
         register_number: "",
@@ -130,4 +130,4 @@ const CompanyStore = create((set) => ({
   },
 }));
 
-export default CompanyStore;
+export default MedicalProfileStore;

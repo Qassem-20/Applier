@@ -12,7 +12,7 @@ import {
 //routes of the review from the controllers
 router.route("/reviews").get(fetchReviews);
 router.route("/reviews/:id").get(fetchReview);
-router.route("/addReview").post(createReview);
+router.route("/reviews/registerReview").post(createReview);
 router.route("/reviews/:id").put(updateReview);
 router.route("/reviews/:id").delete(deleteReview);
 
