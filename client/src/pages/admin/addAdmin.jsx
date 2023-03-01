@@ -1,11 +1,40 @@
 import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import adminsStore from "../../stores/AdminsStore.js";
 
+const showValidation = {
+  isValid: true,
+};
+
 const AddAdmin = () => {
   const store = adminsStore();
+
+  const [values, setValidation] = useState(showValidation);
+
+  const msg = "";
+
+  const validate = () => {
+    setValidation({ ...values, isValid: !values.isValid });
+    if (
+      store.name ||
+      store.email ||
+      store.password ||
+      store.type ||
+      store.phone
+    ) {
+      return (msg = "Successfully created...");
+    } else if (
+      !store.name ||
+      !store.email ||
+      !store.password ||
+      !store.type ||
+      !store.phone
+    ) {
+      return (msg = "Please provide all values");
+    }
+  };
 
   return (
     <Fragment>
@@ -13,6 +42,7 @@ const AddAdmin = () => {
       <Container className="bg-white rounded p-3">
         <Row>
           <Col>
+            {!values.isValid && <p>{msg}</p>}
             <form onSubmit={store.registerAdmin}>
               <p className="mb-1">Name:</p>
               <input
@@ -62,7 +92,7 @@ const AddAdmin = () => {
                 <option value="sub-admin">sub-admin</option>
                 <option value="main-admin">main-admin</option>
               </select>
-              <button type="submit" className="btn login">
+              <button type="submit" className="btn login" onClick={validate}>
                 submit
               </button>
             </form>
