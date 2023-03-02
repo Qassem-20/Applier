@@ -2,11 +2,12 @@ import "../../assets/css/consumer.css";
 import Profile from "../../assets/images/profileIcon.png";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import React, { Fragment, useEffect } from "react";
-import TraineeApplicationStore from "../../stores/TraineeApplicationStore";
+import TraineeApplicationStore from "../../stores/traineeApplicationStore";
 import PatientApplicationStore from "../../stores/PatientApplicationStore";
 import ConsumerStore from "../../stores/ConsumerStore";
+import { Container } from "react-bootstrap";
 
-const editProfile = () => {
+const EditProfile = () => {
   const traineeApplicationStore = TraineeApplicationStore();
   const patientApplicationStore = PatientApplicationStore();
   const consumerStore = ConsumerStore();
@@ -107,4 +108,4 @@ const editProfile = () => {
   );
 };
 
-export default editProfile;
+export default EditProfile;

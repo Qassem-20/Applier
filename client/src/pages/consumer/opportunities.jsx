@@ -3,9 +3,9 @@ import InfoIcon from "../../assets/images/infoIcon.png";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import OpportunityStore from "../../stores/OpportunityStore";
 
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 
-const opportunities = () => {
+const Opportunities = () => {
   const opportunityStore = OpportunityStore();
 
   useEffect(() => {
@@ -66,4 +66,4 @@ const opportunities = () => {
   );
 };
 
-export default opportunities;
+export default Opportunities;

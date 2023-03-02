@@ -13,7 +13,6 @@ import ForgottenPassword from "../pages/signIn-signUp/forgottenPassword";
 import ConsumerProfile from "../pages/consumer/editProfile";
 import Opportunities from "../pages/consumer/opportunities";
 import MedicalStudents from "../pages/consumer/medicalStudents";
-import CompanyInfo from "../pages/consumer/companyInfo";
 
 import AddOpportunity from "../pages/company/addOpportunity";
 import AppliedTrainee from "../pages/company/appliedTrainee";
@@ -75,9 +74,6 @@ class AppRoute extends Component {
           </Route>
           <Route path="/medicalStudents">
             <MedicalStudents />
-          </Route>
-          <Route path="/companyInfo">
-            <CompanyInfo />
           </Route>
 
           <Route path="/addOpportunity">

@@ -65,7 +65,6 @@ export {
   fetchReviews,
   fetchReview,
   createReview,
-  updateReview,
   deleteReview,
   hideReview,
   reportReview,
