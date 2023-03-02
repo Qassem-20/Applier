@@ -51,7 +51,7 @@ const OpportunityStore = create((set) => ({
     const opportunityIndex = opportunities.findIndex((opportunity) => {
       return opportunity._id === _id;
     });
-    newOpportunities[opportunity] = res.data.opportunity;
+    newOpportunities[opportunityIndex] = res.data.opportunity;
 
     set({
       opportunities: newOpportunities,
