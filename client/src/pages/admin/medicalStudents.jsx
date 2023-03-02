@@ -97,7 +97,7 @@ const MedicalStudents = () => {
                 </Col>
                 <Col xl={1}>
                   <form onSubmit={store.updateMedicalStudents}>
-                    <select name="statue" defaultValue={company.statue}>
+                    <select name="statue" defaultValue={medicalStudent.statue}>
                       <option value="inactive">inactive</option>
                       <option value="active">active</option>
                     </select>

@@ -2,12 +2,12 @@ import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
 import React, { Fragment, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import OpportunityStore from "../../stores/OpportunityStore";
+import OpportunityStore from "../../stores/OpportunityStore.js";
 
 const Opportunities = () => {
   const store = OpportunityStore();
 
-  const storeDelete = opportunitiesStore((storeDelete) => {
+  const storeDelete = OpportunityStore((storeDelete) => {
     return { deleteOpportunity: storeDelete.deleteOpportunity };
   });
 

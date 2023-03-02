@@ -78,8 +78,10 @@ const createCompany = async (req, res) => {
     organization_email,
     email,
     supervisor_phone,
-    city,
     country,
+    city,
+    statue,
+    Country,
   } = req.body;
 
   const company = await Company.create({
@@ -95,6 +97,8 @@ const createCompany = async (req, res) => {
     supervisor_phone,
     country,
     city,
+    statue,
+    activatedBy,
   });
 
   res.json({ company });
@@ -109,12 +113,15 @@ const updateCompany = async (req, res) => {
     organization_phone,
     organization_website,
     organization_bio,
-    supervisor_name,
+    Supervisor_name,
+    Password,
     organization_email,
     email,
     supervisor_phone,
     country,
     city,
+    statue,
+    activatedBy,
   } = req.body;
 
   await Company.findByIdAndUpdate(companyId, {
@@ -129,6 +136,8 @@ const updateCompany = async (req, res) => {
     supervisor_phone,
     country,
     city,
+    statue,
+    activatedBy,
   });
 
   const company = await Company.findById(companyId);
