@@ -39,9 +39,12 @@ const ReviewStore = create((set) => ({
     } = ReviewStore.getState();
 
     // Send the update request
-    const res = await axios.put(`http://localhost:4000/api/v1/reviews/${_id}`, {
-      statue,
-    });
+    const res = await axios.put(
+      `http://localhost:4000/api/v1/admins/hideReview/:id${_id}`,
+      {
+        statue,
+      }
+    );
 
     // Update state
     const newReviews = [...reviews];
@@ -54,35 +57,14 @@ const ReviewStore = create((set) => ({
       reviews: newReviews,
       updateType: {
         _id: null,
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
-        email: "",
-        supervisor_phone: "",
-        country: "",
-        city: "",
+        statue: "",
       },
     });
   },
 
   values: {
-    organization_name: "",
-    register_number: "",
-    organization_phone: "",
-    organization_website: "",
-    organization_bio: "",
-    supervisor_name: "",
-    password: "",
-    organization_email: "",
-    email: "",
-    supervisor_phone: "",
-    country: "",
-    city: "",
+    rate: "",
+    description: "",
   },
 
   registerReview: async (e) => {
@@ -97,18 +79,8 @@ const ReviewStore = create((set) => ({
     set({
       reviews: [...reviews, res.data.review],
       values: {
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
-        email: "",
-        supervisor_phone: "",
-        country: "",
-        city: "",
+        rate: "",
+        description: "",
       },
     });
   },

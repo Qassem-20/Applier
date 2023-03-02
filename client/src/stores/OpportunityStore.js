@@ -27,14 +27,39 @@ const OpportunityStore = create((set) => ({
 
   updateStatue: {
     _id: null,
-    statue: "",
+    job_role: "",
+    description: "",
+    skills: "",
+    job_type: "",
+    departments_preferred: "",
+    major_preferred: "",
+    availability_seats: "",
+    salary: "",
+    start_date: "",
+    duration: "",
+    city: "",
+    visibility: "",
   },
 
   updateOpportunity: async (e) => {
     e.preventDefault();
 
     const {
-      updateStatue: { statue, _id },
+      updateStatue: {
+        job_role,
+        description,
+        skills,
+        job_type,
+        departments_preferred,
+        major_preferred,
+        availability_seats,
+        salary,
+        start_date,
+        duration,
+        city,
+        visibility,
+        _id,
+      },
       opportunities,
     } = OpportunityStore.getState();
 
@@ -42,7 +67,18 @@ const OpportunityStore = create((set) => ({
     const res = await axios.put(
       `http://localhost:4000/api/v1/opportunities/${_id}`,
       {
-        statue,
+        job_role,
+        description,
+        skills,
+        job_type,
+        departments_preferred,
+        major_preferred,
+        availability_seats,
+        salary,
+        start_date,
+        duration,
+        city,
+        visibility,
       }
     );
 
@@ -51,41 +87,41 @@ const OpportunityStore = create((set) => ({
     const opportunityIndex = opportunities.findIndex((opportunity) => {
       return opportunity._id === _id;
     });
-    newOpportunities[opportunity] = res.data.opportunity;
+    newOpportunities[opportunityIndex] = res.data.opportunity;
 
     set({
       opportunities: newOpportunities,
       updateType: {
         _id: null,
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
-        email: "",
-        supervisor_phone: "",
-        country: "",
+        job_role: "",
+        description: "",
+        skills: "",
+        job_type: "",
+        departments_preferred: "",
+        major_preferred: "",
+        availability_seats: "",
+        salary: "",
+        start_date: "",
+        duration: "",
         city: "",
+        visibility: "",
       },
     });
   },
 
   values: {
-    organization_name: "",
-    register_number: "",
-    organization_phone: "",
-    organization_website: "",
-    organization_bio: "",
-    supervisor_name: "",
-    password: "",
-    organization_email: "",
-    email: "",
-    supervisor_phone: "",
-    country: "",
+    job_role: "",
+    description: "",
+    skills: "",
+    job_type: "",
+    departments_preferred: "",
+    major_preferred: "",
+    availability_seats: "",
+    salary: "",
+    start_date: "",
+    duration: "",
     city: "",
+    visibility: "",
   },
 
   registerOpportunity: async (e) => {
@@ -100,18 +136,18 @@ const OpportunityStore = create((set) => ({
     set({
       opportunities: [...opportunities, res.data.opportunity],
       values: {
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
-        email: "",
-        supervisor_phone: "",
-        country: "",
+        job_role: "",
+        description: "",
+        skills: "",
+        job_type: "",
+        departments_preferred: "",
+        major_preferred: "",
+        availability_seats: "",
+        salary: "",
+        start_date: "",
+        duration: "",
         city: "",
+        visibility: "",
       },
     });
   },

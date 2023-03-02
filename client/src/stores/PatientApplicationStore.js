@@ -31,14 +31,14 @@ const PatientApplicationStore = create((set) => ({
 
   updateStatue: {
     _id: null,
-    statue: "",
+    symptoms: "",
   },
 
   updatePatientApplication: async (e) => {
     e.preventDefault();
 
     const {
-      updateStatue: { statue, _id },
+      updateStatue: { symptoms, _id },
       patientApplications,
     } = PatientApplicationStore.getState();
 
@@ -46,7 +46,7 @@ const PatientApplicationStore = create((set) => ({
     const res = await axios.put(
       `http://localhost:4000/api/v1/patientApplications/${_id}`,
       {
-        statue,
+        symptoms,
       }
     );
 
@@ -64,35 +64,13 @@ const PatientApplicationStore = create((set) => ({
       patientApplications: newPatientApplications,
       updateType: {
         _id: null,
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
-        email: "",
-        supervisor_phone: "",
-        country: "",
-        city: "",
+        symptoms: "",
       },
     });
   },
 
   values: {
-    organization_name: "",
-    register_number: "",
-    organization_phone: "",
-    organization_website: "",
-    organization_bio: "",
-    supervisor_name: "",
-    password: "",
-    organization_email: "",
-    email: "",
-    supervisor_phone: "",
-    country: "",
-    city: "",
+    symptoms: "",
   },
 
   registerPatientApplication: async (e) => {
@@ -110,18 +88,7 @@ const PatientApplicationStore = create((set) => ({
         res.data.patientApplication,
       ],
       values: {
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
-        email: "",
-        supervisor_phone: "",
-        country: "",
-        city: "",
+        symptoms: "",
       },
     });
   },

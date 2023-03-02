@@ -25,16 +25,19 @@ const ConsumerStore = create((set) => ({
     set({ consumers: newConsumers });
   },
 
-  updateStatue: {
+  updateProfile: {
     _id: null,
-    statue: "",
+    name: "",
+    email: "",
+    phone_number: "",
+    nationality: "",
   },
 
   updateConsumer: async (e) => {
     e.preventDefault();
 
     const {
-      updateStatue: { statue, _id },
+      updateProfile: { name, email, phone_number, nationality, _id },
       consumers,
     } = ConsumerStore.getState();
 
@@ -42,7 +45,10 @@ const ConsumerStore = create((set) => ({
     const res = await axios.put(
       `http://localhost:4000/api/v1/consumers/${_id}`,
       {
-        statue,
+        name,
+        email,
+        phone_number,
+        nationality,
       }
     );
 
@@ -55,37 +61,22 @@ const ConsumerStore = create((set) => ({
 
     set({
       consumers: newConsumers,
-      updateType: {
+      updateProfile: {
         _id: null,
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
+        name: "",
         email: "",
-        supervisor_phone: "",
-        country: "",
-        city: "",
+        phone_number: "",
+        nationality: "",
       },
     });
   },
 
   values: {
-    organization_name: "",
-    register_number: "",
-    organization_phone: "",
-    organization_website: "",
-    organization_bio: "",
-    supervisor_name: "",
-    password: "",
-    organization_email: "",
+    name: "",
     email: "",
-    supervisor_phone: "",
-    country: "",
-    city: "",
+    password: "",
+    phone_number: "",
+    nationality: "",
   },
 
   registerConsumer: async (e) => {
@@ -100,18 +91,11 @@ const ConsumerStore = create((set) => ({
     set({
       consumers: [...consumers, res.data.consumer],
       values: {
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
+        name: "",
         email: "",
-        supervisor_phone: "",
-        country: "",
-        city: "",
+        password: "",
+        phone_number: "",
+        nationality: "",
       },
     });
   },

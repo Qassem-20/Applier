@@ -31,14 +31,33 @@ const TraineeApplicationStore = create((set) => ({
 
   updateStatue: {
     _id: null,
-    statue: "",
+    university: "",
+    major: "",
+    gpa: "",
+    gpa_statue: "",
+    concentrated_major: "",
+    skills: "",
+    cv: "",
+    linkedIn_profile: "",
+    experience: "",
   },
 
   updateTraineeApplication: async (e) => {
     e.preventDefault();
 
     const {
-      updateStatue: { statue, _id },
+      updateStatue: {
+        university,
+        major,
+        gpa,
+        gpa_statue,
+        concentrated_major,
+        skills,
+        cv,
+        linkedIn_profile,
+        experience,
+        _id,
+      },
       traineeApplications,
     } = TraineeApplicationStore.getState();
 
@@ -46,7 +65,15 @@ const TraineeApplicationStore = create((set) => ({
     const res = await axios.put(
       `http://localhost:4000/api/v1/traineeApplications/${_id}`,
       {
-        statue,
+        university,
+        major,
+        gpa,
+        gpa_statue,
+        concentrated_major,
+        skills,
+        cv,
+        linkedIn_profile,
+        experience,
       }
     );
 
@@ -64,35 +91,29 @@ const TraineeApplicationStore = create((set) => ({
       traineeApplications: newTraineeApplications,
       updateType: {
         _id: null,
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
-        email: "",
-        supervisor_phone: "",
-        country: "",
-        city: "",
+        university: "",
+        major: "",
+        gpa: "",
+        gpa_statue: "",
+        concentrated_major: "",
+        skills: "",
+        cv: "",
+        linkedIn_profile: "",
+        experience: "",
       },
     });
   },
 
   values: {
-    organization_name: "",
-    register_number: "",
-    organization_phone: "",
-    organization_website: "",
-    organization_bio: "",
-    supervisor_name: "",
-    password: "",
-    organization_email: "",
-    email: "",
-    supervisor_phone: "",
-    country: "",
-    city: "",
+    university: "",
+    major: "",
+    gpa: "",
+    gpa_statue: "",
+    concentrated_major: "",
+    skills: "",
+    cv: "",
+    linkedIn_profile: "",
+    experience: "",
   },
 
   registerTraineeApplication: async (e) => {
@@ -110,18 +131,15 @@ const TraineeApplicationStore = create((set) => ({
         res.data.traineeApplication,
       ],
       values: {
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
-        email: "",
-        supervisor_phone: "",
-        country: "",
-        city: "",
+        university: "",
+        major: "",
+        gpa: "",
+        gpa_statue: "",
+        concentrated_major: "",
+        skills: "",
+        cv: "",
+        linkedIn_profile: "",
+        experience: "",
       },
     });
   },

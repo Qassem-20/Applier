@@ -27,14 +27,27 @@ const MedicalProfileStore = create((set) => ({
 
   updateStatue: {
     _id: null,
-    statue: "",
+    nationality: "",
+    city: "",
+    gender: "",
+    profile_visibility: "",
+    main_major: "",
+    specialty: "",
   },
 
   updateMedicalProfile: async (e) => {
     e.preventDefault();
 
     const {
-      updateStatue: { statue, _id },
+      updateStatue: {
+        nationality,
+        city,
+        gender,
+        profile_visibility,
+        main_major,
+        specialty,
+        _id,
+      },
       medicalProfiles,
     } = MedicalProfileStore.getState();
 
@@ -42,7 +55,12 @@ const MedicalProfileStore = create((set) => ({
     const res = await axios.put(
       `http://localhost:4000/api/v1/medicalProfiles/${_id}`,
       {
-        statue,
+        nationality,
+        city,
+        gender,
+        profile_visibility,
+        main_major,
+        specialty,
       }
     );
 
@@ -57,35 +75,23 @@ const MedicalProfileStore = create((set) => ({
       medicalProfiles: newMedicalProfiles,
       updateType: {
         _id: null,
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
-        email: "",
-        supervisor_phone: "",
-        country: "",
+        nationality: "",
         city: "",
+        gender: "",
+        profile_visibility: "",
+        main_major: "",
+        specialty: "",
       },
     });
   },
 
   values: {
-    organization_name: "",
-    register_number: "",
-    organization_phone: "",
-    organization_website: "",
-    organization_bio: "",
-    supervisor_name: "",
-    password: "",
-    organization_email: "",
-    email: "",
-    supervisor_phone: "",
-    country: "",
+    nationality: "",
     city: "",
+    gender: "",
+    profile_visibility: "",
+    main_major: "",
+    specialty: "",
   },
 
   registerMedicalProfile: async (e) => {
@@ -100,18 +106,12 @@ const MedicalProfileStore = create((set) => ({
     set({
       medicalProfiles: [...medicalProfiles, res.data.medicalProfile],
       values: {
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
-        email: "",
-        supervisor_phone: "",
-        country: "",
+        nationality: "",
         city: "",
+        gender: "",
+        profile_visibility: "",
+        main_major: "",
+        specialty: "",
       },
     });
   },

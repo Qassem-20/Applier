@@ -73,14 +73,13 @@ const createCompany = async (req, res) => {
     organization_phone,
     organization_website,
     organization_bio,
-    Supervisor_name,
-    Password,
+    supervisor_name,
+    password,
     organization_email,
     email,
     supervisor_phone,
     city,
-    statue,
-    Country,
+    country,
   } = req.body;
 
   const company = await Company.create({
@@ -89,12 +88,12 @@ const createCompany = async (req, res) => {
     organization_phone,
     organization_website,
     organization_bio,
-    Supervisor_name,
-    Password,
+    supervisor_name,
+    password,
     organization_email,
     email,
     supervisor_phone,
-    Country,
+    country,
     city,
   });
 
@@ -110,12 +109,11 @@ const updateCompany = async (req, res) => {
     organization_phone,
     organization_website,
     organization_bio,
-    Supervisor_name,
-    Password,
+    supervisor_name,
     organization_email,
     email,
     supervisor_phone,
-    Country,
+    country,
     city,
   } = req.body;
 
@@ -126,7 +124,6 @@ const updateCompany = async (req, res) => {
     organization_website,
     organization_bio,
     supervisor_name,
-    password,
     organization_email,
     email,
     supervisor_phone,

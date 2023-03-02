@@ -25,16 +25,38 @@ const CompanyStore = create((set) => ({
     set({ companies: newCompanies });
   },
 
-  updateStatue: {
+  updateProfile: {
     _id: null,
-    statue: "",
+    organization_name: "",
+    register_number: "",
+    organization_phone: "",
+    organization_website: "",
+    organization_bio: "",
+    supervisor_name: "",
+    organization_email: "",
+    email: "",
+    supervisor_phone: "",
+    country: "",
+    city: "",
   },
 
-  updateStatueCompany: async (e) => {
+  updateProfileCompany: async (e) => {
     e.preventDefault();
 
     const {
-      updateStatue: { statue, _id },
+      updateProfile: {
+        organization_name,
+        register_number,
+        organization_phone,
+        organization_website,
+        organization_bio,
+        supervisor_name,
+        organization_email,
+        supervisor_phone,
+        country,
+        city,
+        _id,
+      },
       companies,
     } = CompanyStore.getState();
 
@@ -42,7 +64,16 @@ const CompanyStore = create((set) => ({
     const res = await axios.put(
       `http://localhost:4000/api/v1/companies/${_id}`,
       {
-        statue,
+        organization_name,
+        register_number,
+        organization_phone,
+        organization_website,
+        organization_bio,
+        supervisor_name,
+        organization_email,
+        supervisor_phone,
+        country,
+        city,
       }
     );
 
@@ -55,7 +86,7 @@ const CompanyStore = create((set) => ({
 
     set({
       companies: newCompanies,
-      updateType: {
+      updateProfile: {
         _id: null,
         organization_name: "",
         register_number: "",

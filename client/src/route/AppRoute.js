@@ -34,9 +34,10 @@ import ReportedFeedBack from "../pages/admin/reportedFeedBack";
 import AdminForgottenPassword from "../pages/admin/adminForgottenPassword";
 import AdminPanel from "../pages/admin/adminPanel";
 
-import FeedBackConsumer from "../pages/FeedBack/feedBackConsumer";
-import FeedBackCompany from "../pages/FeedBack/feedBackCompany";
-import FeedBackMedical from "../pages/FeedBack/feedBackMedical";
+import FeedBackConsumerCompany from "../pages/consumer/feedBackConsumerCompany";
+import FeedBackConsumerMedical from "../pages/consumer/feedBackConsumerMedical";
+import FeedBackMedical from "../pages/medicalStudent/feedBackMedical";
+import FeedBackCompany from "../pages/company/feedBackCompany";
 
 class AppRoute extends Component {
   render() {
@@ -132,8 +133,11 @@ class AppRoute extends Component {
             <AdminPanel />
           </Route>
 
-          <Route path="/feedBackConsumer">
-            <FeedBackConsumer />
+          <Route path="/feedBackConsumerCompany">
+            <FeedBackConsumerCompany />
+          </Route>
+          <Route path="/feedBackConsumerMedical">
+            <FeedBackConsumerMedical />
           </Route>
           <Route path="/feedBackMedical">
             <FeedBackMedical />

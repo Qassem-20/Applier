@@ -1,20 +1,19 @@
-import mongoose from 'mongoose'
-import validator from 'validator'
+import mongoose from "mongoose";
+import validator from "validator";
 
-const patientApplicationSchema = new mongoose.Schema({
-    // -activated by (id_consumer)    
-    symptoms:{
-        type:String,
-        required:[true, 'Provide a name'],
-        // 
-        enum:['','','',''],
-        default:'none'
+const patientApplicationSchema = new mongoose.Schema(
+  {
+    // -activated by (id_consumer)
+    symptoms: {
+      type: String,
+      required: [false],
+      default: "none",
     },
     createdBy: {
-        type: mongoose.Types.ObjectId,
-        ref: 'Company',
-        required: [true, 'Please provide Consumer'],
-    }, 
+      type: mongoose.Types.ObjectId,
+      ref: "Company",
+      required: [true, "Please provide Consumer"],
+    },
     /*
     allergies:{
         type:String,
@@ -24,8 +23,8 @@ const patientApplicationSchema = new mongoose.Schema({
         default:'none'
     },
     */
-},
-{ timestamps: true }
+  },
+  { timestamps: true }
 );
 
-export default mongoose.model('patientApplication', patientApplicationSchema);
+export default mongoose.model("patientApplication", patientApplicationSchema);

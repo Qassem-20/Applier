@@ -25,16 +25,18 @@ const MedicalStore = create((set) => ({
     set({ medicalStudents: newMedicalStudents });
   },
 
-  updateStatue: {
+  updateProfile: {
     _id: null,
-    statue: "",
+    name: "",
+    email: "",
+    phone_number: "",
   },
 
   updateMedicalStudents: async (e) => {
     e.preventDefault();
 
     const {
-      updateStatue: { statue, _id },
+      updateProfile: { name, email, phone_number, _id },
       medicalStudents,
     } = MedicalStore.getState();
 
@@ -42,7 +44,9 @@ const MedicalStore = create((set) => ({
     const res = await axios.put(
       `http://localhost:4000/api/v1/medicalStudents/${_id}`,
       {
-        statue,
+        name,
+        email,
+        phone_number,
       }
     );
 
@@ -55,37 +59,20 @@ const MedicalStore = create((set) => ({
 
     set({
       medicalStudents: newMedicalStudents,
-      updateType: {
+      updateProfile: {
         _id: null,
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
+        name: "",
         email: "",
-        supervisor_phone: "",
-        country: "",
-        city: "",
+        phone_number: "",
       },
     });
   },
 
   values: {
-    organization_name: "",
-    register_number: "",
-    organization_phone: "",
-    organization_website: "",
-    organization_bio: "",
-    supervisor_name: "",
-    password: "",
-    organization_email: "",
+    name: "",
     email: "",
-    supervisor_phone: "",
-    country: "",
-    city: "",
+    phone_number: "",
+    password: "",
   },
 
   registerAdmin: async (e) => {
@@ -100,18 +87,10 @@ const MedicalStore = create((set) => ({
     set({
       medicalStudents: [...medicalStudents, res.data.medicalStudent],
       values: {
-        organization_name: "",
-        register_number: "",
-        organization_phone: "",
-        organization_website: "",
-        organization_bio: "",
-        supervisor_name: "",
-        password: "",
-        organization_email: "",
+        name: "",
         email: "",
-        supervisor_phone: "",
-        country: "",
-        city: "",
+        phone_number: "",
+        password: "",
       },
     });
   },
