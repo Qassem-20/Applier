@@ -6,7 +6,6 @@ import { Container, Row, Col } from "react-bootstrap";
 const initialState = {
   isCompany: true,
   isMedical: true,
-  isRoute: false,
 };
 
 const SignIn = () => {
@@ -18,9 +17,6 @@ const SignIn = () => {
   const showMedical = () => {
     setValues({ ...values, isMedical: !values.isMedical });
   };
-  const hideRoute = () => {
-    setValues({ ...values, isRoute: !values.isRoute });
-  };
   return (
     <Fragment>
       <WelcomeNav />
@@ -28,14 +24,40 @@ const SignIn = () => {
         <Row>
           <Container className="bg-white p-4 rounded" m-auto>
             <h1 className="alignmentCenter">Welcome to Applier</h1>
+            <Row mt-1>
+              <Col xl={8}></Col>
+              <Col>
+                <button className="medicalLog" onClick={showMedical}>
+                  Medical Student
+                </button>
+              </Col>
+              <Col>
+                <button className="companyLog" onClick={showCompany}>
+                  Company
+                </button>
+              </Col>
+            </Row>
             <hr />
             <Row className="mt-4 mb-3">
               <Col xl={5} sm={12} className="mx-3" m-auto>
+                <h4>User</h4>
                 <p className="labelTag">Email</p>
-                <input className="inputStyling" type="" name="" value="" />
+                <input
+                  className="inputStyling"
+                  type=""
+                  placeholder="Fouad28@gmail.com"
+                  name=""
+                  value=""
+                />
                 <div>
                   <p className="labelTag">Password</p>
-                  <input className="inputStyling" type="" name="" value="" />
+                  <input
+                    className="inputStyling"
+                    type=""
+                    placeholder="**********"
+                    name=""
+                    value=""
+                  />
                 </div>
                 <Row>
                   <Col mr-5>
@@ -48,34 +70,33 @@ const SignIn = () => {
                   </Col>
                 </Row>
                 <div className="alignmentCenter mt-2">
-                  <a href="/routeSignUp">Don’t have an Account? Register</a>
+                  <a href="/signUpConsumer">Don’t have an Account? Register</a>
                 </div>
               </Col>
 
               <Col xl={1}>
                 <div id="verticalLine"></div>
               </Col>
-              {!values.isRoute && (
-                <Col xl={5} sm={12} className="routeBox">
-                  <div className="mt-5 centerB" m-auto>
-                    <button className="medicalLog" onClick={showMedical}>
-                      Medical Student
-                    </button>
-                  </div>
-                  <div className="mt-5 centerB" m-auto>
-                    <button className="companyLog" onClick={showCompany}>
-                      Company
-                    </button>
-                  </div>
-                </Col>
-              )}
               {!values.isMedical && (
                 <Col xl={5} sm={12} className="mx-3" m-auto>
+                  <h4>Medical Student</h4>
                   <p className="labelTag">Email</p>
-                  <input className="inputStyling" type="" name="" value="" />
+                  <input
+                    className="inputStyling"
+                    type=""
+                    placeholder="dr.Faisal@gmail.com"
+                    name=""
+                    value=""
+                  />
                   <div>
                     <p className="labelTag">Password</p>
-                    <input className="inputStyling" type="" name="" value="" />
+                    <input
+                      className="inputStyling"
+                      type=""
+                      placeholder="********"
+                      name=""
+                      value=""
+                    />
                   </div>
                   <Row>
                     <Col mr-5>
@@ -88,17 +109,32 @@ const SignIn = () => {
                     </Col>
                   </Row>
                   <div className="alignmentCenter mt-2">
-                    <a href="/SignUp">Don’t have an Account? Register</a>
+                    <a href="/signUpMedicalStudent">
+                      Don’t have an Account? Register
+                    </a>
                   </div>
                 </Col>
               )}
               {!values.isCompany && (
                 <Col xl={5} sm={12} className="mx-3" m-auto>
+                  <h4>Company</h4>
                   <p className="labelTag">Email</p>
-                  <input className="inputStyling" type="" name="" value="" />
+                  <input
+                    className="inputStyling"
+                    type=""
+                    placeholder="Applier@Applier.com"
+                    name=""
+                    value=""
+                  />
                   <div>
                     <p className="labelTag">Password</p>
-                    <input className="inputStyling" type="" name="" value="" />
+                    <input
+                      className="inputStyling"
+                      type=""
+                      placeholder="********"
+                      name=""
+                      value=""
+                    />
                   </div>
                   <Row>
                     <Col mr-5>
@@ -111,7 +147,9 @@ const SignIn = () => {
                     </Col>
                   </Row>
                   <div className="alignmentCenter mt-2">
-                    <a href="/SignUp">Don’t have an Account? Register</a>
+                    <a href="/signUpConsumer">
+                      Don’t have an Account? Register
+                    </a>
                   </div>
                 </Col>
               )}

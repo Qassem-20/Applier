@@ -81,7 +81,6 @@ const createCompany = async (req, res) => {
     country,
     city,
     statue,
-    country,
   } = req.body;
 
   const company = await Company.create({

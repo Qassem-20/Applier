@@ -16,6 +16,14 @@ width: 6rem;
 background: #485089;
 border-radius: 25px;
 }
+.login2{
+    margin-right: 3rem;
+    width: 6rem;
+    height: 2rem;
+    background: #8d8fa2;
+    border-radius: 25px;
+    color: aliceblue;
+}
 .alignmentCenter{
     text-align: center;
 }
