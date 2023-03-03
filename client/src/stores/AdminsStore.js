@@ -6,14 +6,14 @@ const AdminsStore = create((set) => ({
 
     fetchAdmins: async () => {
         // Fetch the admins
-        const res = await axios.get("http://localhost:4000/api/v1/admins");
+        const res = await axios.get("/admins");
         // Set to state
         set({admins: res.data.admins});
       }, 
 
       deleteAdmin: async (_id) => {
         const res = await axios.delete(
-          "http://localhost:4000/api/v1/admins/" + _id
+          "/admins/" + _id
         );
 
         const { admins } = AdminsStore.getState();
@@ -39,7 +39,7 @@ const AdminsStore = create((set) => ({
         } = AdminsStore.getState();
     
         // Send the update request
-        const res = await axios.put(`http://localhost:4000/api/v1/admins/${_id}`, {
+        const res = await axios.put(`/admins/${_id}`, {
           type,
         });
     
@@ -73,7 +73,7 @@ const AdminsStore = create((set) => ({
 
         // add admin
         const res = await axios.post(
-            "http://localhost:4000/api/v1/admins/registerAdmin",
+            "/admins/registerAdmin",
           values
         );
         set({

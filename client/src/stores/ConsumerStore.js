@@ -6,14 +6,14 @@ const ConsumerStore = create((set) => ({
 
   fetchConsumers: async () => {
     // Fetch the consumers
-    const res = await axios.get("http://localhost:4000/api/v1/consumers");
+    const res = await axios.get("/consumers");
     // Set to state
     set({ consumers: res.data.consumers });
   },
 
   deleteConsumer: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/consumers/" + _id
+      "/consumers/" + _id
     );
 
     const { consumers } = ConsumerStore.getState();
@@ -43,7 +43,7 @@ const ConsumerStore = create((set) => ({
 
     // Send the update request
     const res = await axios.put(
-      `http://localhost:4000/api/v1/consumers/${_id}`,
+      `/consumers/${_id}`,
       {
         name,
         email,
@@ -85,7 +85,7 @@ const ConsumerStore = create((set) => ({
 
     // add consumer
     const res = await axios.post(
-      "http://localhost:4000/api/v1/consumers/registerConsumer",
+      "/consumers/registerConsumer",
       values
     );
     set({

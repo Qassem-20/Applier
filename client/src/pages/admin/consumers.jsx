@@ -58,17 +58,17 @@ const Consumers = () => {
           <Col xl={2}>
             <p className="opportunitiesMainTags">Name</p>
           </Col>
-          <Col xl={2}>
-            <p className="opportunitiesMainTags">Major</p>
+          <Col xl={3}>
+            <p className="opportunitiesMainTags">Email</p>
           </Col>
           <Col xl={2}>
             <p className="opportunitiesMainTags">Phone Number</p>
           </Col>
-          <Col xl={3}>
-            <p className="opportunitiesMainTags">Location</p>
+          <Col xl={2}>
+            <p className="opportunitiesMainTags">nationality</p>
           </Col>
           <Col xl={2}>
-            <p className="opportunitiesMainTags">CV</p>
+            <p className="opportunitiesMainTags">suspendBy</p>
           </Col>
           <Col xl={1}>
             <p className="opportunitiesMainTags">Status</p>
@@ -83,14 +83,14 @@ const Consumers = () => {
                 <Col xl={2}>
                   <p className="opportunitiesTags">{consumer.name}</p>
                 </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">{consumer.major}</p>
-                </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">{consumer.phone}</p>
-                </Col>
                 <Col xl={3}>
-                  <p className="opportunitiesTags">{consumer.city}</p>
+                  <p className="opportunitiesTags">{consumer.email}</p>
+                </Col>
+                <Col xl={2}>
+                  <p className="opportunitiesTags">{consumer.phone_number}</p>
+                </Col>
+                <Col xl={2}>
+                  <p className="opportunitiesTags">{consumer.nationality}</p>
                 </Col>
                 <Col xl={2}>
                   <p className="opportunitiesTags">consumer</p>

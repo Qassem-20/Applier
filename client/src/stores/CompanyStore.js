@@ -6,14 +6,14 @@ const CompanyStore = create((set) => ({
 
   fetchCompanies: async () => {
     // Fetch the companies
-    const res = await axios.get("http://localhost:4000/api/v1/companies");
+    const res = await axios.get("/companies");
     // Set to state
     set({ companies: res.data.companies });
   },
 
   deleteCompany: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/companies/" + _id
+      "/companies/" + _id
     );
 
     const { companies } = CompanyStore.getState();
@@ -62,7 +62,7 @@ const CompanyStore = create((set) => ({
 
     // Send the update request
     const res = await axios.put(
-      `http://localhost:4000/api/v1/companies/${_id}`,
+      `/companies/${_id}`,
       {
         organization_name,
         register_number,
@@ -125,7 +125,7 @@ const CompanyStore = create((set) => ({
 
     // add company
     const res = await axios.post(
-      "http://localhost:4000/api/v1/companies/registerCompany",
+      "/companies/registerCompany",
       values
     );
     set({
