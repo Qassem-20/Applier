@@ -28,15 +28,31 @@ const MedicalStore = create((set) => ({
   updateProfile: {
     _id: null,
     name: "",
-    email: "",
     phone_number: "",
+    nationality: "",
+    city: "",
+    gender: "",
+    profile_visibility: "",
+    main_major: "",
+    specialty: "",
   },
 
   updateMedicalStudents: async (e) => {
     e.preventDefault();
 
     const {
-      updateProfile: { name, email, phone_number, _id },
+      updateProfile: {
+        name,
+        email,
+        nationality,
+        city,
+        gender,
+        profile_visibility,
+        main_major,
+        specialty,
+        phone_number,
+        _id,
+      },
       medicalStudents,
     } = MedicalStore.getState();
 
@@ -45,8 +61,13 @@ const MedicalStore = create((set) => ({
       `http://localhost:4000/api/v1/medicalStudents/${_id}`,
       {
         name,
-        email,
         phone_number,
+        nationality,
+        city,
+        gender,
+        profile_visibility,
+        main_major,
+        specialty,
       }
     );
 
@@ -62,8 +83,13 @@ const MedicalStore = create((set) => ({
       updateProfile: {
         _id: null,
         name: "",
-        email: "",
         phone_number: "",
+        nationality: "",
+        city: "",
+        gender: "",
+        profile_visibility: "",
+        main_major: "",
+        specialty: "",
       },
     });
   },
@@ -73,6 +99,12 @@ const MedicalStore = create((set) => ({
     email: "",
     phone_number: "",
     password: "",
+    phone_number: "",
+    nationality: "",
+    city: "",
+    gender: "",
+    main_major: "",
+    specialty: "",
   },
 
   registerAdmin: async (e) => {
@@ -91,6 +123,12 @@ const MedicalStore = create((set) => ({
         email: "",
         phone_number: "",
         password: "",
+        phone_number: "",
+        nationality: "",
+        city: "",
+        gender: "",
+        main_major: "",
+        specialty: "",
       },
     });
   },

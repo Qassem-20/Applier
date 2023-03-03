@@ -22,15 +22,41 @@ export class signUpMedicalStudent extends Component {
           </Row>
           <hr />
           <Container m-5>
-            <p className="labelTag">Full name</p>
-            <input type="name" className="inputStyling" name="" value="" />
-            <p className="labelTag">Phone Number</p>
-            <input type="phone" className="inputStyling" name="" value="" />
-            <p className="labelTag">Email</p>
-            <input type="email" className="inputStyling" name="" value="" />
-            <p className="labelTag">Password</p>
-            <input type="password" className="inputStyling" name="" value="" />
-            <br />
+            <Row>
+              <Col md={6}>
+                <p className="labelTag">Full name</p>
+                <input type="name" className="inputStyling" name="" value="" />
+                <p className="labelTag">Phone Number</p>
+                <input type="phone" className="inputStyling" name="" value="" />
+                <p className="labelTag">Email</p>
+                <input type="email" className="inputStyling" name="" value="" />
+                <p className="labelTag">Password</p>
+                <input
+                  type="password"
+                  className="inputStyling"
+                  name=""
+                  value=""
+                />
+                <p className="labelTag">Nationality</p>
+                <select className="inputStyling">
+                  <option value="Saudi">Saudi</option>
+                  <option value="Foreign">Non-Saudi</option>
+                </select>
+              </Col>
+              <Col md={6}>
+                <p className="labelTag">Gender</p>
+                <select className="inputStyling">
+                  <option value="male">male</option>
+                  <option value="female">female</option>
+                </select>
+                <p className="labelTag">city</p>
+                <input type="phone" className="inputStyling" name="" value="" />
+                <p className="labelTag">Major</p>
+                <input type="email" className="inputStyling" name="" value="" />
+                <p className="labelTag">Specialty</p>
+                <input type="" className="inputStyling" name="" value="" />
+              </Col>
+            </Row>
             <button className="btn login" type="submit">
               submit
             </button>
