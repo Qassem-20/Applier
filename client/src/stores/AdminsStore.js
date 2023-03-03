@@ -6,14 +6,14 @@ const AdminsStore = create((set) => ({
 
     fetchAdmins: async () => {
         // Fetch the admins
-        const res = await axios.get("/admins");
+        const res = await axios.get("http://localhost:4000/api/v1/admins");
         // Set to state
         set({admins: res.data.admins});
       }, 
 
       deleteAdmin: async (_id) => {
         const res = await axios.delete(
-          "/admins/" + _id
+          "http://localhost:4000/api/v1/admins/" + _id
         );
 
         const { admins } = AdminsStore.getState();
@@ -39,7 +39,7 @@ const AdminsStore = create((set) => ({
         } = AdminsStore.getState();
     
         // Send the update request
-        const res = await axios.put(`/admins/${_id}`, {
+        const res = await axios.put(`http://localhost:4000/api/v1/admins/${_id}`, {
           type,
         });
     
@@ -73,7 +73,7 @@ const AdminsStore = create((set) => ({
 
         // add admin
         const res = await axios.post(
-            "/admins/registerAdmin",
+            "http://localhost:4000/api/v1/admins/registerAdmin",
           values
         );
         set({
@@ -86,8 +86,7 @@ const AdminsStore = create((set) => ({
             password: "",
           },
         });
-    },
-      
+      },
       handleChange: async (e) =>{
         const { name, value } = e.target;
 
@@ -99,8 +98,42 @@ const AdminsStore = create((set) => ({
             }
           }
         })
-      }
+      },
 
+      //login
+      loggedIn:null,
+      loginForm:{
+        email:"",
+        password:"",
+      },
+      handleChangeLogin: async (e) =>{
+        const { name, value } = e.target;
+
+        set((state)=>{
+          return{
+            loginForm:{
+              ...state.loginForm,
+              [name]:value,
+            }
+          }
+        })
+      },
+      loginAdmin: async () =>{
+        const {loginForm} = AdminsStore.getState();
+
+        const res = await axios.post("/admins/loginAdmin",loginForm, {withCredentials:true});
+
+        set({loggedIn:true})
+
+      },
+      checkAuth: async () =>{
+        try{
+        const res = await axios.get("/admins/check-auth");
+        set({loggedIn:true})
+      }catch(err){
+        set({loggedIn:false})
+      }
+      },
 }))
 
 export default AdminsStore;

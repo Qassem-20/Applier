@@ -13,10 +13,11 @@ const AddAdmin = () => {
 
   const [values, setValidation] = useState(showValidation);
 
-  const msg = "";
+  //const msg = "";
 
   const validate = () => {
     setValidation({ ...values, isValid: !values.isValid });
+    /*
     if (
       store.name ||
       store.email ||
@@ -32,8 +33,7 @@ const AddAdmin = () => {
       !store.type ||
       !store.phone
     ) {
-      return (msg = "Please provide all values");
-    }
+      return (msg = "Please provide all values");*/
   };
 
   return (
@@ -42,7 +42,7 @@ const AddAdmin = () => {
       <Container className="bg-white rounded p-3">
         <Row>
           <Col>
-            {!values.isValid && <p>{msg}</p>}
+            {!values.isValid && <p>msg</p>}
             <form onSubmit={store.registerAdmin}>
               <p className="mb-1">Name:</p>
               <input
