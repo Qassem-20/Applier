@@ -43,7 +43,6 @@ const MedicalStore = create((set) => ({
     const {
       updateProfile: {
         name,
-        email,
         nationality,
         city,
         gender,
@@ -99,7 +98,6 @@ const MedicalStore = create((set) => ({
     email: "",
     phone_number: "",
     password: "",
-    phone_number: "",
     nationality: "",
     city: "",
     gender: "",
