@@ -1,4 +1,6 @@
 import Consumer from "../models/Consumer.js";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
 const fetchConsumers = async (req, res) => {
   const consumers = await Consumer.find();
@@ -21,18 +23,78 @@ const fetchConsumer = async (req, res) => {
 };
 
 const createConsumer = async (req, res) => {
-  const { name, email, password, phone_number, nationality } = req.body;
+  try {
+    const { name, email, password, phone_number, nationality } = req.body;
 
-  const consumer = await Consumer.create({
-    name,
-    email,
-    password,
-    phone_number,
-    nationality,
-  });
+    //hash the password
+    const hashedPassword = bcrypt.hashSync(password, 8);
 
-  res.json({ consumer });
+    const consumer = await Consumer.create({
+      name,
+      email,
+      password: hashedPassword,
+      phone_number,
+      nationality,
+    });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
+
+const loginConsumer = async (req, res) => {
+  try {
+    // Get the email and password off rq body
+    const { email, password } = req.body;
+
+    // Find the consumer with requested email
+    const consumer = await Consumer.findOne({ email });
+
+    //if consumer isn't exist on DB
+    if (!consumer) return res.sendStatus(401);
+
+    // Compare sent in password with found consumer password hash
+    const passwordMatch = bcrypt.compareSync(password, consumer.password);
+    if (!passwordMatch) return res.sendStatus(401);
+
+    // token is valid for 30 days
+    const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
+    // create a jwt token
+    const token = jwt.sign({ sub: consumer._id, exp }, process.env.JWT_SECRET);
+
+    // Set the cookie
+    res.cookie("Authorization", token, {
+      expires: new Date(exp),
+      httpOnly: true,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+    });
+
+    // send it
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
+};
+
+function logoutConsumer(req, res) {
+  try {
+    res.cookie("Authorization", "", { expires: new Date() });
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
+}
+
+function checkAuthConsumer(req, res) {
+  try {
+    res.sendStatus(200);
+  } catch (err) {
+    return res.sendStatus(400);
+  }
+}
 
 const updateConsumer = async (req, res) => {
   const consumerId = req.params.id;
@@ -77,6 +139,9 @@ export {
   fetchConsumers,
   fetchConsumer,
   createConsumer,
+  loginConsumer,
+  logoutConsumer,
+  checkAuthConsumer,
   updateConsumer,
   deleteConsumer,
   sortConsumers,

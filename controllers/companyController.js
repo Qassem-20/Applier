@@ -1,4 +1,6 @@
 import Company from "../models/Company.js";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
 const fetchCompanies = async (req, res) => {
   const companies = await Company.find();
@@ -67,42 +69,105 @@ const fetchCompany = async (req, res) => {
 };
 
 const createCompany = async (req, res) => {
-  const {
-    organization_name,
-    register_number,
-    organization_phone,
-    organization_website,
-    organization_bio,
-    supervisor_name,
-    password,
-    organization_email,
-    email,
-    supervisor_phone,
-    country,
-    city,
-    statue,
-  } = req.body;
+  try {
+    //get the data
+    const {
+      organization_name,
+      register_number,
+      organization_phone,
+      organization_website,
+      organization_bio,
+      supervisor_name,
+      password,
+      organization_email,
+      email,
+      supervisor_phone,
+      country,
+      city,
+      statue,
+    } = req.body;
 
-  const company = await Company.create({
-    organization_name,
-    register_number,
-    organization_phone,
-    organization_website,
-    organization_bio,
-    supervisor_name,
-    password,
-    organization_email,
-    email,
-    supervisor_phone,
-    country,
-    city,
-    statue,
-    activatedBy,
-  });
+    //hash the password
+    const hashedPassword = bcrypt.hashSync(password, 8);
 
-  res.json({ company });
+    const company = await Company.create({
+      organization_name,
+      register_number,
+      organization_phone,
+      organization_website,
+      organization_bio,
+      supervisor_name,
+      password: hashedPassword,
+      organization_email,
+      email,
+      supervisor_phone,
+      country,
+      city,
+      statue,
+      activatedBy,
+    });
+
+    //respond
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
+const loginCompany = async (req, res) => {
+  try {
+    // Get the email and password off rq body
+    const { email, password } = req.body;
+
+    // Find the company with requested email
+    const company = await Company.findOne({ email });
+
+    //if company isn't exist on DB
+    if (!company) return res.sendStatus(401);
+
+    // Compare sent in password with found company password hash
+    const passwordMatch = bcrypt.compareSync(password, company.password);
+    if (!passwordMatch) return res.sendStatus(401);
+
+    // token is valid for 30 days
+    const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
+    // create a jwt token
+    const token = jwt.sign({ sub: company._id, exp }, process.env.JWT_SECRET);
+
+    // Set the cookie
+    res.cookie("Authorization", token, {
+      expires: new Date(exp),
+      httpOnly: true,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+    });
+
+    // send it
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
+};
+
+function logoutCompany(req, res) {
+  try {
+    res.cookie("Authorization", "", { expires: new Date() });
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
+}
+
+function checkAuthCompany(req, res) {
+  try {
+    res.sendStatus(200);
+  } catch (err) {
+    return res.sendStatus(400);
+  }
+}
 const updateCompany = async (req, res) => {
   const companyId = req.params.id;
 
@@ -170,6 +235,9 @@ export {
   fetchCompanies,
   fetchCompany,
   createCompany,
+  loginCompany,
+  logoutCompany,
+  checkAuthCompany,
   updateCompany,
   deleteCompany,
   activateCompany,

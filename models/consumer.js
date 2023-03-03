@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 import validator from "validator";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 
 const consumerSchema = new mongoose.Schema(
   {
@@ -15,9 +13,8 @@ const consumerSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      // required:[true, 'Please enter password'],
+      required: [true, "Please enter password"],
       minlength: 6,
-      select: false,
     },
     email: {
       type: String,
@@ -27,6 +24,7 @@ const consumerSchema = new mongoose.Schema(
         message: "Please provide a valid email",
       },
       unique: true,
+      lowercase: true,
     },
     phone_number: {
       type: String,
@@ -56,24 +54,5 @@ const consumerSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-// hashing the password
-consumerSchema.pre("save", async function () {
-  // console.log(this.modifiedPaths())
-  if (!this.isModified("password")) return;
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-});
-
-consumerSchema.methods.createJWT = function () {
-  return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_LIFETIME,
-  });
-};
-
-consumerSchema.methods.comparePassword = async function (candidatePassword) {
-  const isMatch = await bcrypt.compare(candidatePassword, this.password);
-  return isMatch;
-};
 
 export default mongoose.model("consumer", consumerSchema);

@@ -9,12 +9,17 @@ const apiLimiter = rateLimiter({
   message: "Too many requests from this IP, please try again after 15 minutes",
 });
 
+//middleware
+import requireAuth from "../middleware/requireAuthAdmin.js";
+
 //exports from the controller
 import {
   fetchAdmins,
   fetchAdmin,
   createAdmin,
   loginAdmin,
+  logoutAdmin,
+  checkAuthAdmin,
   updateAdmin,
   deleteAdmin,
 } from "../controllers/adminController.js";
@@ -28,7 +33,9 @@ import { deleteOpportunity } from "../controllers/opportunitiesController.js";
 router.route("/admins").get(fetchAdmins);
 router.route("/admins/:id").get(fetchAdmin);
 router.route("/admins/registerAdmin").post(apiLimiter, createAdmin);
-router.route("/loginAdmin").post(apiLimiter, loginAdmin);
+router.route("/admins/loginAdmin").post(apiLimiter, loginAdmin);
+router.route("/admins/check-auth").get(requireAuth, checkAuthAdmin);
+router.route("/admins/logoutAdmin").get(logoutAdmin);
 router.route("/admins/:id").put(updateAdmin);
 router.route("/admins/:id").delete(deleteAdmin);
 

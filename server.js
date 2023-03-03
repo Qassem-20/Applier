@@ -50,6 +50,10 @@ app.use("/api/v1", traineeApplicationRoutes);
 import opportunitiesRoutes from "./routes/opportunitiesRoutes.js";
 app.use("/api/v1", opportunitiesRoutes);
 
+//cookie-parser for login
+import cookieParser from "cookie-parser";
+app.use(cookieParser());
+
 // assign a port for the server
 const port = process.env.PORT || 4000;
 
