@@ -73,13 +73,13 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
-//middleware
+/*middleware
 import notFoundMiddleware from "./middleware/not-found.js";
 import errorHandlerMiddleware from "./middleware/error-handler.js";
 import { request } from "http";
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
-
+*/
 // DB connection to mongoose atlas the URL in env file
 // 1- npm i dotenv
 // 2- create file named (.env), then write MONGO_URL=your connection link
