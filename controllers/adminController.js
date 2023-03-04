@@ -60,7 +60,7 @@ async function loginAdmin(req, res) {
     // token is valid for 7 days
     const exp = Date.now() + 1000 * 60 * 60 * 24 * 7;
     // create a jwt token
-    const token = jwt.sign({ sub: admin._id, exp }, process.env.JWT_SECRET);
+    const token = jwt.sign({ sub: admin._id, exp }, process.env.SECRET);
 
     // Set the cookie
     res.cookie("Authorization", token, {

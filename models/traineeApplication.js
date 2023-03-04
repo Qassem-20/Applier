@@ -71,4 +71,4 @@ const traineeApplicationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("traineeApplication", traineeApplicationSchema);
+export default mongoose.model("TraineeApplication", traineeApplicationSchema);

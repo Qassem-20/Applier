@@ -11,6 +11,7 @@ const adminSchema = new mongoose.Schema(
       minlength: 3,
       maxlength: 30,
       trim: true,
+      index:true,
     },
     password: {
       type: String,
@@ -46,4 +47,4 @@ const adminSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("admin", adminSchema);
+export default mongoose.model("Admin", adminSchema);

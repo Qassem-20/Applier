@@ -89,4 +89,4 @@ const opportunitySchema = new mongoose.Schema({
 { timestamps: true }
 );
 
-export default mongoose.model('opportunity', opportunitySchema);
+export default mongoose.model('Opportunity', opportunitySchema);

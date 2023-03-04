@@ -1,7 +1,15 @@
-import Opportunity from "../models/Opportunities.js";
+import Opportunity from "../models/Opportunity.js";
 
+//Consumer and Admin to fetch all Opportunities
 const fetchOpportunities = async (req, res) => {
   const opportunities = await Opportunity.find();
+
+  res.json({ opportunities });
+};
+
+//Company to fetch Opportunities for each company
+const fetchOpportunitiesCompany = async (req, res) => {
+  const opportunities = await Opportunity.find({company:req.company._id});
 
   res.json({ opportunities });
 };
@@ -43,6 +51,7 @@ const createOpportunity = async (req, res) => {
     duration,
     city,
     visibility,
+    company:req.company._id,
   });
 
   res.json({ opportunity });
@@ -53,7 +62,7 @@ const updateOpportunity = async (req, res) => {
 
   const { type } = req.body;
 
-  await Opportunity.findByIdAndUpdate(opportunityId, {
+  await Opportunity.findOneAndUpdate({_id:opportunityId,company:req.company._id,}, {
     type,
   });
 
@@ -67,7 +76,7 @@ const hideOpportunity = async (req, res) => {
 
   const { visibility } = req.body;
 
-  await Opportunity.findByIdAndUpdate(opportunityId, {
+  await Opportunity.findOneAndUpdate({_id:opportunityId,company:req.company._id,}, {
     visibility,
   });
 
@@ -86,6 +95,7 @@ const deleteOpportunity = async (req, res) => {
 
 export {
   fetchOpportunities,
+  fetchOpportunitiesCompany,
   fetchOpportunity,
   createOpportunity,
   updateOpportunity,

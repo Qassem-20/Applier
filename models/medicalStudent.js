@@ -120,13 +120,8 @@ const MedicalStudentSchema = new mongoose.Schema(
       enum: ["active", "inactive"],
       default: "inactive",
     },
-    activatedBy: {
-      type: mongoose.Types.ObjectId,
-      ref: "Admin",
-      required: [false, "Please provide admin"],
-    },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("medicalStudent", MedicalStudentSchema);
+export default mongoose.model("MedicalStudent", MedicalStudentSchema);

@@ -7,7 +7,7 @@ async function requireAuthAdmin(req, res, next) {
     const token = req.cookies.Authorization;
 
     // Decode the token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.SECRET);
 
     // Check expiration
     if (Date.now() > decoded.exp) return res.sendStatus(401);
@@ -26,4 +26,4 @@ async function requireAuthAdmin(req, res, next) {
   }
 }
 
-export default requireAuthAdmin;
+export { requireAuthAdmin};

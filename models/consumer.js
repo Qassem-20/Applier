@@ -51,8 +51,17 @@ const consumerSchema = new mongoose.Schema(
       ref: "Admin",
       // required: [true, 'Please provide admin'],
     },
+    patientApplication:[
+      {type: mongoose.Schema.Types.ObjectId, ref:"PatientApplication"}
+    ],
+    traineeApplication:[
+      {type: mongoose.Schema.Types.ObjectId, ref:"TraineeApplication"}
+    ],
+    review:[
+      {type: mongoose.Schema.Types.ObjectId, ref:"Review"}
+    ],
   },
   { timestamps: true }
 );
 
-export default mongoose.model("consumer", consumerSchema);
+export default mongoose.model("Consumer", consumerSchema);

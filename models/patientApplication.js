@@ -11,8 +11,8 @@ const patientApplicationSchema = new mongoose.Schema(
     },
     createdBy: {
       type: mongoose.Types.ObjectId,
-      ref: "Company",
-      required: [true, "Please provide Consumer"],
+      ref: "Consumer",
+      required: [false, "Please provide Consumer"],
     },
     /*
     allergies:{
@@ -27,4 +27,4 @@ const patientApplicationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("patientApplication", patientApplicationSchema);
+export default mongoose.model("PatientApplication", patientApplicationSchema);

@@ -141,8 +141,11 @@ const companySchema = new mongoose.Schema(
       ref: "Admin",
       // required: [true, 'Please provide admin'],
     },
+    Opportunities:[
+      {type: mongoose.Schema.Types.ObjectId, ref:"Opportunity"}
+    ]
   },
   { timestamps: true }
 );
 
-export default mongoose.model("company", companySchema);
+export default mongoose.model("Company", companySchema);
