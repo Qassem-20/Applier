@@ -57,9 +57,6 @@ const consumerSchema = new mongoose.Schema(
     traineeApplication:[
       {type: mongoose.Schema.Types.ObjectId, ref:"TraineeApplication"}
     ],
-    reviews:[
-      {type: mongoose.Schema.Types.ObjectId, ref:"Review"}
-    ],
   },
   { timestamps: true }
 );

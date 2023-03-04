@@ -25,10 +25,10 @@ const reviewSchema = new mongoose.Schema({
         enum: ['yes', 'no'],
         default:['no']
     },
-    createdBy: {
+    createdOn: {
         type: mongoose.Types.ObjectId,
-        ref: 'Consumer',
-        required: [true, 'Please provide Consumer'],
+        ref: 'Company',
+        required: [true, 'Please provide Company'],
     }
 },
 { timestamps: true }
