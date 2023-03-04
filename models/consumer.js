@@ -57,7 +57,7 @@ const consumerSchema = new mongoose.Schema(
     traineeApplication:[
       {type: mongoose.Schema.Types.ObjectId, ref:"TraineeApplication"}
     ],
-    review:[
+    reviews:[
       {type: mongoose.Schema.Types.ObjectId, ref:"Review"}
     ],
   },
