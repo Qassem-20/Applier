@@ -6,14 +6,14 @@ const AdminsStore = create((set) => ({
 
     fetchAdmins: async () => {
         // Fetch the admins
-        const res = await axios.get("http://localhost:4000/api/v1/admins");
+        const res = await axios.get("/admins");
         // Set to state
         set({admins: res.data.admins});
       }, 
 
       deleteAdmin: async (_id) => {
         const res = await axios.delete(
-          "http://localhost:4000/api/v1/admins/" + _id
+          "/admins/" + _id
         );
 
         const { admins } = AdminsStore.getState();
@@ -39,7 +39,7 @@ const AdminsStore = create((set) => ({
         } = AdminsStore.getState();
     
         // Send the update request
-        const res = await axios.put(`http://localhost:4000/api/v1/admins/${_id}`, {
+        const res = await axios.put(`/admins/${_id}`, {
           type,
         });
     
@@ -73,7 +73,7 @@ const AdminsStore = create((set) => ({
 
         // add admin
         const res = await axios.post(
-            "http://localhost:4000/api/v1/admins/registerAdmin",
+            "/registerAdmin",
           values
         );
         set({
@@ -121,7 +121,7 @@ const AdminsStore = create((set) => ({
       loginAdmin: async () =>{
         const {loginForm} = AdminsStore.getState();
 
-        const res = await axios.post("/admins/loginAdmin",loginForm, {
+        const res = await axios.post("/loginAdmin",loginForm, {
           withCredentials:true,
         });
 
@@ -130,7 +130,7 @@ const AdminsStore = create((set) => ({
       },
       checkAuth: async () =>{
         try{
-        await axios.get("/admins/check-auth");
+        await axios.get("/check-auth");
         set({loggedIn:true})
       }catch(err){
         set({loggedIn:false})

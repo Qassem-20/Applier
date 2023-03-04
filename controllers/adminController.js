@@ -16,7 +16,7 @@ const fetchAdmin = async (req, res) => {
   res.json({ admin });
 };
 
-const createAdmin = async (req, res) => {
+async function createAdmin(req, res) {
   try {
     //get the data
     const { name, email, password, type, phone } = req.body;
@@ -25,7 +25,7 @@ const createAdmin = async (req, res) => {
     const hashedPassword = bcrypt.hashSync(password, 8);
 
     //create an Admin
-    const admin = await Admin.create({
+    await Admin.create({
       name,
       email,
       //send an encrypted password
@@ -42,7 +42,7 @@ const createAdmin = async (req, res) => {
   }
 };
 
-const loginAdmin = async (req, res) => {
+async function loginAdmin(req, res) {
   try {
     // Get the email and password off rq body
     const { email, password } = req.body;
