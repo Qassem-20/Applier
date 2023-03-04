@@ -7,7 +7,7 @@ const companySchema = new mongoose.Schema(
       type: String,
       required: [true, "Provide an organization name"],
       minlength: 3,
-      maxlength: 20,
+      maxlength: 30,
       trim: true,
     },
     register_number: {

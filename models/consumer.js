@@ -8,7 +8,7 @@ const consumerSchema = new mongoose.Schema(
       type: String,
       required: [true, "Provide a name"],
       minlength: 3,
-      maxlength: 20,
+      maxlength: 30,
       trim: true,
     },
     password: {

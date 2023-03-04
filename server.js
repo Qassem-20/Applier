@@ -3,7 +3,10 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 
+// create an express app
 const app = express();
+app.use(express.json());
+
 //db authentication
 import connectDB from "./db/connect.js";
 
@@ -12,14 +15,12 @@ import "express-async-errors";
 
 //cors middleware
 import cors from "cors";
-const corsOptions ={
-  origin:true, 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
-}
+const corsOptions = {
+  origin: true,
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 app.use(cors(corsOptions));
-
-app.use(express.json());
 
 app.get("", (req, res) => {
   res.send("Welcome to Applier project");
@@ -62,7 +63,7 @@ app.use(cookieParser());
 // assign a port for the server
 const port = process.env.PORT || 4000;
 
-//connection to the front end
+/*connection to the front end
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import path from "path";
@@ -73,13 +74,14 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
-/*middleware
+//middleware
 import notFoundMiddleware from "./middleware/not-found.js";
 import errorHandlerMiddleware from "./middleware/error-handler.js";
 import { request } from "http";
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 */
+
 // DB connection to mongoose atlas the URL in env file
 // 1- npm i dotenv
 // 2- create file named (.env), then write MONGO_URL=your connection link
@@ -90,7 +92,7 @@ const start = async () => {
       useNewUrlParser: true,
     });
     app.listen(port, () => {
-      console.log(`Server is listening on port ${port}, ans DB is connected`);
+      console.log(`Server is listening on port ${port}, and DB is connected`);
     });
   } catch (error) {
     console.log(error);

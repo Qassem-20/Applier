@@ -7,7 +7,7 @@ const MedicalStudentSchema = new mongoose.Schema(
       type: String,
       required: [true, "Provide a name"],
       minlength: 3,
-      maxlength: 20,
+      maxlength: 30,
       trim: true,
     },
     /*identification_letter:{

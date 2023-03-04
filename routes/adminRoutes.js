@@ -10,7 +10,7 @@ const apiLimiter = rateLimiter({
 });
 
 //middleware
-import requireAuth from "../middleware/requireAuthAdmin.js";
+import requireAuthAdmin from "../middleware/requireAuthAdmin.js";
 
 //exports from the controller
 import {
@@ -34,7 +34,7 @@ router.route("/admins").get(fetchAdmins);
 router.route("/admins/:id").get(fetchAdmin);
 router.route("/admins/registerAdmin").post(apiLimiter, createAdmin);
 router.route("/admins/loginAdmin").post(apiLimiter, loginAdmin);
-router.route("/admins/check-auth").get(requireAuth, checkAuthAdmin);
+router.route("/admins/check-auth").get(requireAuthAdmin, checkAuthAdmin);
 router.route("/admins/logoutAdmin").get(logoutAdmin);
 router.route("/admins/:id").put(updateAdmin);
 router.route("/admins/:id").delete(deleteAdmin);
