@@ -121,14 +121,16 @@ const AdminsStore = create((set) => ({
       loginAdmin: async () =>{
         const {loginForm} = AdminsStore.getState();
 
-        const res = await axios.post("/admins/loginAdmin",loginForm, {withCredentials:true});
+        const res = await axios.post("/admins/loginAdmin",loginForm, {
+          withCredentials:true,
+        });
 
         set({loggedIn:true})
 
       },
       checkAuth: async () =>{
         try{
-        const res = await axios.get("/admins/check-auth");
+        await axios.get("/admins/check-auth");
         set({loggedIn:true})
       }catch(err){
         set({loggedIn:false})

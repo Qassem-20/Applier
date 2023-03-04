@@ -7,7 +7,7 @@ async function requireAuthMedicalStudent(req, res, next) {
     const token = req.cookies.Authorization;
 
     // Decode the token
-    const decoded = jwt.verify(token, process.env.SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     // Check expiration
     if (Date.now() > decoded.exp) return res.sendStatus(401);

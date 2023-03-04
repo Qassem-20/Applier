@@ -13,34 +13,9 @@ const AdminSignIn = () => {
     e.preventDefault();
     await store.loginAdmin();
     //Navigate
-    navigate("/adminPanel");
+    navigate("/adminHomePage");
   };
 
-  /* to validate
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  async function loginAdmin(event) {
-    event.preventDefault();
-    const response = await fetch("http://localhost:4000/api/v1/loginAdmin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-    const data = await response.json();
-    if (data.user) {
-      localStorage.setItem("token", data.user);
-      alert("Login successful");
-      window.location.href = "/adminSignIn";
-    } else {
-      alert("Please check your username and password");
-    }
-  }
-  */
   return (
     <Fragment>
       <form onSubmit={handleLogin}>

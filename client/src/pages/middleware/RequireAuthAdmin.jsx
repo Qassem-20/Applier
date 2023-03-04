@@ -10,10 +10,11 @@ const RequireAuthAdmin = (props) => {
       store.checkAuth();
     }
   }, []);
+
   if (store.loggedIn === null) {
     return (
       <Container className="m-auto bg-white mt-5 signInWidth pt-3 pb-4 rounded shadow">
-        <p align-center>Loading...</p>
+        <p>Loading...</p>
       </Container>
     );
   }
