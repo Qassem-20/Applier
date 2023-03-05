@@ -63,7 +63,7 @@ async function loginAdmin(req, res) {
     const token = jwt.sign({ sub: admin._id, exp }, process.env.SECRET);
 
     // Set the cookie
-    res.cookie("Authorization", token, {
+    res.cookie("AuthorizationAdmin", token, {
       expires: new Date(exp),
       httpOnly: true,
       sameSite: "lax",
@@ -80,7 +80,7 @@ async function loginAdmin(req, res) {
 
 function logoutAdmin(req, res) {
   try {
-    res.cookie("Authorization", "", { expires: new Date() });
+    res.cookie("AuthorizationAdmin", "", { expires: new Date() });
     res.sendStatus(200);
   } catch (err) {
     console.log(err);
@@ -90,6 +90,7 @@ function logoutAdmin(req, res) {
 
 function checkAuthAdmin(req, res) {
   try {
+    console.log('in Controller')
     res.sendStatus(200);
   } catch (err) {
     return res.sendStatus(400);

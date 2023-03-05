@@ -2,7 +2,13 @@ import jwt from "jsonwebtoken";
 import Admin from "../models/Admin.js";
 
 async function requireAuthAdmin(req, res, next) {
-  try {
+  // Read token off cookies
+  const token = req.cookies.AuthorizationAdmin;
+  
+  console.log("in Middleware")
+  next();
+  
+  /*try {
     // Read token off cookies
     const token = req.cookies.Authorization;
 
@@ -23,7 +29,7 @@ async function requireAuthAdmin(req, res, next) {
     next();
   } catch (err) {
     return res.sendStatus(401);
-  }
+  }*/
 }
 
 export { requireAuthAdmin};
