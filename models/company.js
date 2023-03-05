@@ -70,6 +70,7 @@ const companySchema = new mongoose.Schema(
       },
       unique: true,
       lowercase: true,
+      index: true,
     },
     supervisor_phone: {
       type: String,
@@ -87,7 +88,7 @@ const companySchema = new mongoose.Schema(
     city: {
       type: String,
       required: [true, "Please enter your city"],
-      //enter the rest from this link (https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Saudi_Arabia)
+      /*enter the rest from this link (https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Saudi_Arabia)
       enum: [
         "Abha",
         "Ad-Dilam",
@@ -129,7 +130,7 @@ const companySchema = new mongoose.Schema(
         "",
         "",
         "",
-      ],
+      ],*/
     },
     statue: {
       type: String,
@@ -141,12 +142,10 @@ const companySchema = new mongoose.Schema(
       ref: "Admin",
       // required: [true, 'Please provide admin'],
     },
-    Opportunities:[
-      {type: mongoose.Schema.Types.ObjectId, ref:"Opportunity"}
+    Opportunities: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Opportunity" },
     ],
-    reviews:[
-      {type: mongoose.Schema.Types.ObjectId, ref:"Review"}
-    ],
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
   },
   { timestamps: true }
 );

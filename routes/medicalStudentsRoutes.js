@@ -9,7 +9,7 @@ const apiLimiter = rateLimiter({
   message: "Too many requests from this IP, please try again after 15 minutes",
 });
 //middleware
-import {requireAuthMedicalStudent} from "../middleware/requireAuth.js";
+import { requireAuthMedicalStudent } from "../middleware/requireAuth.js";
 //exports from the controller
 import {
   fetchMedicalStudents,
@@ -24,18 +24,15 @@ import {
 //routes of the medicalStudent from the controllers
 router.route("/medicalStudents").get(fetchMedicalStudents);
 router.route("/medicalStudents/:id").get(fetchMedicalStudent);
-router
-  .route("/registerMedicalStudent")
-  .post(apiLimiter, createMedicalStudent);
-router
-  .route("/loginMedicalStudent")
-  .post(apiLimiter, loginMedicalStudent);
+router.route("/registerMedicalStudent").post(apiLimiter, createMedicalStudent);
+router.route("/loginMedicalStudent").post(apiLimiter, loginMedicalStudent);
 router.route("/logoutMedicalStudent").get(logoutMedicalStudent);
 router
   .route("/checkAuthMedical")
   .get(requireAuthMedicalStudent, checkAuthMedicalStudent);
-
-router.route("/medicalStudents/:id").put(updateMedicalStudent);
+router
+  .route("/medicalStudents/:id")
+  .put(requireAuthMedicalStudent, updateMedicalStudent);
 router.route("/medicalStudents/:id").delete(deleteMedicalStudent);
 
 export default router;

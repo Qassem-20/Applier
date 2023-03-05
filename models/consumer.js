@@ -25,6 +25,7 @@ const consumerSchema = new mongoose.Schema(
       },
       unique: true,
       lowercase: true,
+      index: true,
     },
     phone_number: {
       type: String,
@@ -51,11 +52,11 @@ const consumerSchema = new mongoose.Schema(
       ref: "Admin",
       // required: [true, 'Please provide admin'],
     },
-    patientApplication:[
-      {type: mongoose.Schema.Types.ObjectId, ref:"PatientApplication"}
+    patientApplication: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "PatientApplication" },
     ],
-    traineeApplication:[
-      {type: mongoose.Schema.Types.ObjectId, ref:"TraineeApplication"}
+    traineeApplication: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "TraineeApplication" },
     ],
   },
   { timestamps: true }

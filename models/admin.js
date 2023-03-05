@@ -11,7 +11,6 @@ const adminSchema = new mongoose.Schema(
       minlength: 3,
       maxlength: 30,
       trim: true,
-      index:true,
     },
     password: {
       type: String,
@@ -27,6 +26,7 @@ const adminSchema = new mongoose.Schema(
       },
       lowercase: true,
       unique: true,
+      index: true,
     },
     type: {
       type: String,

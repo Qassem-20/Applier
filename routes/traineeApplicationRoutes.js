@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
-
+//middleware
+import { requireAuthConsumer } from "../middleware/requireAuth.js";
 //exports from the controller
 import {
   fetchTraineeApplications,
@@ -14,8 +15,12 @@ router.route("/traineeApplications").get(fetchTraineeApplications);
 router.route("/traineeApplications/:id").get(fetchTraineeApplication);
 router
   .route("traineeApplications/registerTraineeApplications")
-  .post(createTraineeApplication);
-router.route("/traineeApplications/:id").put(updateTraineeApplication);
-router.route("/traineeApplications/:id").delete(deleteTraineeApplication);
+  .post(requireAuthConsumer, createTraineeApplication);
+router
+  .route("/traineeApplications/:id")
+  .put(requireAuthConsumer, updateTraineeApplication);
+router
+  .route("/traineeApplications/:id")
+  .delete(requireAuthConsumer, deleteTraineeApplication);
 
 export default router;

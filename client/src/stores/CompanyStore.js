@@ -119,17 +119,16 @@ const CompanyStore = create((set) => ({
     city: "",
   },
 
-  registerCompany: async (e) => {
-    e.preventDefault();
-    const { values, companies } = CompanyStore.getState();
+  registerCompany: async () => {
+    const { values } = CompanyStore.getState();
 
     // add company
     const res = await axios.post(
       "http://localhost:4000/api/v1/registerCompany",
-      values
+      values,
+      { withCredentials: true }
     );
     set({
-      companies: [...companies, res.data.company],
       values: {
         organization_name: "",
         register_number: "",
@@ -158,6 +157,50 @@ const CompanyStore = create((set) => ({
         },
       };
     });
+  },
+
+  //login
+  loggedIn: null,
+  loginForm: {
+    emailCompany: "",
+    passwordCompany: "",
+  },
+  handleChangeLogin: async (e) => {
+    const { name, value } = e.target;
+
+    set((state) => {
+      return {
+        loginForm: {
+          ...state.loginForm,
+          [name]: value,
+        },
+      };
+    });
+  },
+  loginCompany: async () => {
+    const { loginForm } = CompanyStore.getState();
+
+    await axios.post("http://localhost:4000/api/v1/loginCompany", loginForm, {
+      withCredentials: true,
+    });
+
+    set({ loggedIn: true });
+  },
+  checkAuth: async () => {
+    try {
+      await axios.get("http://localhost:4000/api/v1/checkAuthCompany", {
+        withCredentials: true,
+      });
+      set({ loggedIn: true });
+    } catch (err) {
+      set({ loggedIn: false });
+    }
+  },
+  logout: async () => {
+    await axios.get("http://localhost:4000/api/v1/logutCompany", {
+      withCredentials: true,
+    });
+    set({ loggedIn: false });
   },
 }));
 

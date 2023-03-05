@@ -6,14 +6,17 @@ const ConsumerStore = create((set) => ({
 
   fetchConsumers: async () => {
     // Fetch the consumers
-    const res = await axios.get("http://localhost:4000/api/v1/consumers");
+    const res = await axios.get("http://localhost:4000/api/v1/consumers", {
+      withCredentials: true,
+    });
     // Set to state
     set({ consumers: res.data.consumers });
   },
 
   deleteConsumer: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/consumers/" + _id
+      "http://localhost:4000/api/v1/consumers/" + _id,
+      { withCredentials: true }
     );
 
     const { consumers } = ConsumerStore.getState();
@@ -49,7 +52,8 @@ const ConsumerStore = create((set) => ({
         email,
         phone_number,
         nationality,
-      }
+      },
+      { withCredentials: true }
     );
 
     // Update state
@@ -79,17 +83,18 @@ const ConsumerStore = create((set) => ({
     nationality: "",
   },
 
-  registerConsumer: async (e) => {
-    e.preventDefault();
-    const { values, consumers } = ConsumerStore.getState();
+  registerConsumer: async () => {
+    const { values } = ConsumerStore.getState();
 
     // add consumer
     const res = await axios.post(
       "http://localhost:4000/api/v1/registerConsumer",
-      values
+      values,
+      {
+        withCredentials: true,
+      }
     );
     set({
-      consumers: [...consumers, res.data.consumer],
       values: {
         name: "",
         email: "",
@@ -111,6 +116,49 @@ const ConsumerStore = create((set) => ({
         },
       };
     });
+  },
+  //login
+  loggedIn: null,
+  loginForm: {
+    emailConsumer: "",
+    passwordConsumer: "",
+  },
+  handleChangeLogin: async (e) => {
+    const { name, value } = e.target;
+
+    set((state) => {
+      return {
+        loginForm: {
+          ...state.loginForm,
+          [name]: value,
+        },
+      };
+    });
+  },
+  loginConsumer: async () => {
+    const { loginForm } = ConsumerStore.getState();
+
+    await axios.post("http://localhost:4000/api/v1/loginConsumer", loginForm, {
+      withCredentials: true,
+    });
+
+    set({ loggedIn: true });
+  },
+  checkAuth: async () => {
+    try {
+      await axios.get("http://localhost:4000/api/v1/checkAuthConsuemr", {
+        withCredentials: true,
+      });
+      set({ loggedIn: true });
+    } catch (err) {
+      set({ loggedIn: false });
+    }
+  },
+  logout: async () => {
+    await axios.get("http://localhost:4000/api/v1/logutConsuemr", {
+      withCredentials: true,
+    });
+    set({ loggedIn: false });
   },
 }));
 

@@ -6,14 +6,22 @@ const MedicalStore = create((set) => ({
 
   fetchMedicalStudents: async () => {
     // Fetch the medicalStudents
-    const res = await axios.get("http://localhost:4000/api/v1/medicalStudents");
+    const res = await axios.get(
+      "http://localhost:4000/api/v1/medicalStudents",
+      {
+        withCredentials: true,
+      }
+    );
     // Set to state
     set({ medicalStudents: res.data.medicalStudents });
   },
 
   deleteMedicalStudent: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/medicalStudents/" + _id
+      "http://localhost:4000/api/v1/medicalStudents/" + _id,
+      {
+        withCredentials: true,
+      }
     );
 
     const { medicalStudents } = MedicalStore.getState();
@@ -58,6 +66,9 @@ const MedicalStore = create((set) => ({
     // Send the update request
     const res = await axios.put(
       `http://localhost:4000/api/v1/medicalStudents/${_id}`,
+      {
+        withCredentials: true,
+      },
       {
         name,
         phone_number,
@@ -105,24 +116,23 @@ const MedicalStore = create((set) => ({
     specialty: "",
   },
 
-  registerAdmin: async (e) => {
-    e.preventDefault();
-    const { values, medicalStudents } = MedicalStore.getState();
+  registerMedical: async () => {
+    const { values } = MedicalStore.getState();
 
     // add medicalStudent
     const res = await axios.post(
-      "http://localhost:4000/api/v1/registerAdmin",
-      values
+      "http://localhost:4000/api/v1/registerMedicalStudent",
+      values,
+      {
+        withCredentials: true,
+      }
     );
     set({
-      medicalStudents: [...medicalStudents, res.data.medicalStudent],
       values: {
         name: "",
         email: "",
         phone_number: "",
         password: "",
-        phone_number: "",
-        nationality: "",
         city: "",
         gender: "",
         main_major: "",
@@ -142,6 +152,51 @@ const MedicalStore = create((set) => ({
         },
       };
     });
+  },
+  loginForm: {
+    emailMedical: "",
+    passwordMedical: "",
+  },
+  handleChangeLogin: async (e) => {
+    const { name, value } = e.target;
+
+    set((state) => {
+      return {
+        loginForm: {
+          ...state.loginForm,
+          [name]: value,
+        },
+      };
+    });
+  },
+  loginMedicalStudent: async () => {
+    const { loginForm } = MedicalStore.getState();
+
+    await axios.post(
+      "http://localhost:4000/api/v1/loginMedicalStudent",
+      loginForm,
+      {
+        withCredentials: true,
+      }
+    );
+
+    set({ loggedIn: true });
+  },
+  checkAuth: async () => {
+    try {
+      await axios.get("http://localhost:4000/api/v1/checkAuthMedicalStudent", {
+        withCredentials: true,
+      });
+      set({ loggedIn: true });
+    } catch (err) {
+      set({ loggedIn: false });
+    }
+  },
+  logout: async () => {
+    await axios.get("http://localhost:4000/api/v1/logutMedicalStudent", {
+      withCredentials: true,
+    });
+    set({ loggedIn: false });
   },
 }));
 

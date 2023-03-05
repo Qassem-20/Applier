@@ -30,28 +30,36 @@ import { hideReview } from "../controllers/reviewController.js";
 import { deleteOpportunity } from "../controllers/opportunitiesController.js";
 
 //routes of the admin from the controllers
-router.route("/admins").get(requireAuthAdmin,fetchAdmins);
-router.route("/admins/:id").get(requireAuthAdmin,fetchAdmin);
-router.route("/registerAdmin").post(requireAuthAdmin,apiLimiter, createAdmin);
+router.route("/admins").get(requireAuthAdmin, fetchAdmins);
+router.route("/admins/:id").get(requireAuthAdmin, fetchAdmin);
+router.route("/registerAdmin").post(requireAuthAdmin, apiLimiter, createAdmin);
 router.route("/loginAdmin").post(apiLimiter, loginAdmin);
 router.route("/checkAuthAdmin").get(requireAuthAdmin, checkAuthAdmin);
 router.route("/logoutAdmin").get(logoutAdmin);
-router.route("/admins/:id").put(requireAuthAdmin,updateAdmin);
-router.route("/admins/:id").delete(requireAuthAdmin,deleteAdmin);
+router.route("/admins/:id").put(requireAuthAdmin, updateAdmin);
+router.route("/admins/:id").delete(requireAuthAdmin, deleteAdmin);
 
 //company activation
-router.route("/admins/activateCompanies/:id").put(activateCompany);
+router
+  .route("/admins/activateCompanies/:id")
+  .put(requireAuthAdmin, activateCompany);
 
 //medicalStudent activation
-router.route("/admins/activateMedicalStudent/:id").put(activateMedicalStudent);
+router
+  .route("/admins/activateMedicalStudent/:id")
+  .put(requireAuthAdmin, activateMedicalStudent);
 
 //consumer suspend
-router.route("/admins/suspendConsumer/:id").put(suspendConsumer);
+router
+  .route("/admins/suspendConsumer/:id")
+  .put(requireAuthAdmin, suspendConsumer);
 
 //hide review
-router.route("/admins/hideReview/:id").put(hideReview);
+router.route("/admins/hideReview/:id").put(requireAuthAdmin, hideReview);
 
 //delete Opportunity
-router.route("/admins/opportunities/:id").delete(deleteOpportunity);
+router
+  .route("/admins/opportunities/:id")
+  .delete(requireAuthAdmin, deleteOpportunity);
 
 export default router;

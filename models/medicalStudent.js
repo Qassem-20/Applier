@@ -30,6 +30,7 @@ const MedicalStudentSchema = new mongoose.Schema(
       },
       unique: true,
       lowercase: true,
+      index: true,
     },
     phone_number: {
       type: String,
@@ -50,7 +51,7 @@ const MedicalStudentSchema = new mongoose.Schema(
     city: {
       type: String,
       required: [true, "Please enter your city"],
-      //enter the rest from this link (https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Saudi_Arabia)
+      /*enter the rest from this link (https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Saudi_Arabia)
       enum: [
         "Abha",
         "Ad-Dilam",
@@ -92,7 +93,7 @@ const MedicalStudentSchema = new mongoose.Schema(
         "",
         "",
         "",
-      ],
+      ],*/
     },
     gender: {
       type: String,
@@ -112,8 +113,8 @@ const MedicalStudentSchema = new mongoose.Schema(
     specialty: {
       type: String,
       //need to questionnaire medical students
-      enum: [""],
-      default: "",
+      //enum: [""],
+      //default: "",
     },
     statue: {
       type: String,

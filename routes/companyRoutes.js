@@ -9,7 +9,7 @@ const apiLimiter = rateLimiter({
   message: "Too many requests from this IP, please try again after 15 minutes",
 });
 //middleware
-import {requireAuthCompany} from "../middleware/requireAuth.js";
+import { requireAuthCompany } from "../middleware/requireAuth.js";
 //exports from the controller
 import {
   fetchCompanies,
@@ -29,10 +29,12 @@ router.route("/registerCompany").post(apiLimiter, createCompany);
 router.route("/loginCompany").post(apiLimiter, loginCompany);
 router.route("/logoutCompany").get(logoutCompany);
 router.route("/checkAuthCompany").get(requireAuthCompany, checkAuthCompany);
-router.route("/companies/:id").put(updateCompany);
+router.route("/companies/:id").put(requireAuthCompany, updateCompany);
 router.route("/companies/:id").delete(deleteCompany);
 
 //report Review
-router.route("/companies/reportReview/:id").put(reportReview);
+router
+  .route("/companies/reportReview/:id")
+  .put(requireAuthCompany, reportReview);
 
 export default router;
