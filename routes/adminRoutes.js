@@ -10,7 +10,7 @@ const apiLimiter = rateLimiter({
 });
 
 //middleware
-import {requireAuthAdmin}  from "../middleware/requireAuthAdmin.js";
+import { requireAuthAdmin } from "../middleware/requireAuthAdmin.js";
 
 //exports from the controller
 import {

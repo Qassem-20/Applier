@@ -7,6 +7,10 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+//cookie-parser for login
+import cookieParser from "cookie-parser";
+app.use(cookieParser());
+
 //db authentication
 import connectDB from "./db/connect.js";
 
@@ -55,10 +59,6 @@ app.use("/api/v1", traineeApplicationRoutes);
 //opportunity routes
 import opportunitiesRoutes from "./routes/opportunitiesRoutes.js";
 app.use("/api/v1", opportunitiesRoutes);
-
-//cookie-parser for login
-import cookieParser from "cookie-parser";
-app.use(cookieParser());
 
 // assign a port for the server
 const port = process.env.PORT || 4000;
