@@ -63,7 +63,7 @@ const loginConsumer = async (req, res) => {
     const token = jwt.sign({ sub: consumer._id, exp }, process.env.JWT_SECRET);
 
     // Set the cookie
-    res.cookie("Authorization", token, {
+    res.cookie("AuthorizationConsumer", token, {
       expires: new Date(exp),
       httpOnly: true,
       sameSite: "lax",
@@ -80,7 +80,7 @@ const loginConsumer = async (req, res) => {
 
 function logoutConsumer(req, res) {
   try {
-    res.cookie("Authorization", "", { expires: new Date() });
+    res.cookie("AuthorizationConsumer", "", { expires: new Date() });
     res.sendStatus(200);
   } catch (err) {
     console.log(err);

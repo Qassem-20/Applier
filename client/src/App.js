@@ -72,21 +72,23 @@ class App extends Component {
             <Route path='/adminSignIn' element={<AdminSignIn />}/>
             <Route path='/adminForgottenPassword' element={<AdminForgottenPassword />} />
 
-            //middleware
             <Route path='/adminPanel' element={
               <RequireAuth>
                 <AdminPanel />
               </RequireAuth>
             }/>
-            
-            <Route path='/addAdmin' element={<AddAdmin />} />
-            <Route path='/adminHomePage' element={<AdminHomePage />} />
+            <Route path='/addAdmin' element={
+              <RequireAuth>
+                <AddAdmin />
+              </RequireAuth>
+            } />
+            <Route path='/adminHomePage' element={<RequireAuth><AdminHomePage /></RequireAuth>} />
             <Route path='/unauthorizedMiddleWare' element={<UnauthorizedMiddleWare />} />
-            <Route path='/consumers' element={<Consumers />} />
-            <Route path='/companies' element={<Companies />} />
-            <Route path='/opportunitiesPanel' element={<OpportunitiesPanel />} />
-            <Route path='/medicalStudent' element={<MedicalStudent />} />
-            <Route path='/reportedFeedBack' element={<ReportedFeedBack />} />
+            <Route path='/consumers' element={<RequireAuth><Consumers /></RequireAuth>} />
+            <Route path='/companies' element={<RequireAuth><Companies /></RequireAuth>} />
+            <Route path='/opportunitiesPanel' element={<RequireAuth><OpportunitiesPanel /></RequireAuth>} />
+            <Route path='/medicalStudent' element={<RequireAuth><MedicalStudent /></RequireAuth>} />
+            <Route path='/reportedFeedBack' element={<RequireAuth><ReportedFeedBack /></RequireAuth>} />
           </Routes>
         </BrowserRouter>
       </Fragment>

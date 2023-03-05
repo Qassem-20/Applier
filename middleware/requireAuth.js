@@ -4,7 +4,7 @@ import Admin from "../models/Admin.js";
 async function requireAuthAdmin(req, res, next) {
   try {
     // Read token off cookies
-    const token = req.cookies.Authorization;
+    const token = req.cookies.AuthorizationAdmin;
 
     // Decode the token
     const decoded = jwt.verify(token, process.env.SECRET);
@@ -28,7 +28,7 @@ async function requireAuthAdmin(req, res, next) {
 async function requireAuthCompany(req, res, next) {
   try {
     // Read token off cookies
-    const token = req.cookies.Authorization;
+    const token = req.cookies.AuthorizationCompany;
 
     // Decode the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -52,7 +52,7 @@ async function requireAuthCompany(req, res, next) {
 async function requireAuthConsumer(req, res, next) {
   try {
     // Read token off cookies
-    const token = req.cookies.Authorization;
+    const token = req.cookies.AuthorizationConsumer;
 
     // Decode the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -76,7 +76,7 @@ async function requireAuthConsumer(req, res, next) {
 async function requireAuthMedicalStudent(req, res, next) {
   try {
     // Read token off cookies
-    const token = req.cookies.Authorization;
+    const token = req.cookies.AuthorizationMedical;
 
     // Decode the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);

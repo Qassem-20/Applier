@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 import AdminsStore from "../../stores/AdminsStore.js";
-const RequireAuthAdmin = (props) => {
+
+export default function RequireAuthAdmin(props) {
   const store = AdminsStore();
 
   useEffect(() => {
@@ -22,6 +23,4 @@ const RequireAuthAdmin = (props) => {
     return <Navigate to="/adminSignIn" />;
   }
   return <div>{props.children}</div>;
-};
-
-export default RequireAuthAdmin;
+}

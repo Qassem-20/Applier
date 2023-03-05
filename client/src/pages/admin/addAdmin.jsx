@@ -1,49 +1,28 @@
 import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import adminsStore from "../../stores/AdminsStore.js";
-
-const showValidation = {
-  isValid: true,
-};
+import { useNavigate } from "react-router-dom";
 
 const AddAdmin = () => {
   const store = adminsStore();
 
-  const [values, setValidation] = useState(showValidation);
+  const navigate = useNavigate();
 
-  //const msg = "";
-
-  const validate = () => {
-    setValidation({ ...values, isValid: !values.isValid });
-    /*
-    if (
-      store.name ||
-      store.email ||
-      store.password ||
-      store.type ||
-      store.phone
-    ) {
-      return (msg = "Successfully created...");
-    } else if (
-      !store.name ||
-      !store.email ||
-      !store.password ||
-      !store.type ||
-      !store.phone
-    ) {
-      return (msg = "Please provide all values");*/
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    await store.registerAdmin();
+    //Navigate
+    navigate("/adminPanel");
   };
-
   return (
     <Fragment>
       <AdminNav />
       <Container className="bg-white rounded p-3">
         <Row>
           <Col>
-            {!values.isValid && <p>msg</p>}
-            <form onSubmit={store.registerAdmin}>
+            <form onSubmit={handleSignUp}>
               <p className="mb-1">Name:</p>
               <input
                 className="inputStyling"
@@ -92,7 +71,7 @@ const AddAdmin = () => {
                 <option value="sub-admin">sub-admin</option>
                 <option value="main-admin">main-admin</option>
               </select>
-              <button type="submit" className="btn login" onClick={validate}>
+              <button type="submit" className="btn login">
                 submit
               </button>
             </form>

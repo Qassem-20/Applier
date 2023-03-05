@@ -74,7 +74,7 @@ const loginMedicalStudent = async (req, res) => {
     );
 
     // Set the cookie
-    res.cookie("Authorization", token, {
+    res.cookie("AuthorizationMedical", token, {
       expires: new Date(exp),
       httpOnly: true,
       sameSite: "lax",
@@ -91,7 +91,7 @@ const loginMedicalStudent = async (req, res) => {
 
 function logoutMedicalStudent(req, res) {
   try {
-    res.cookie("Authorization", "", { expires: new Date() });
+    res.cookie("AuthorizationMedical", "", { expires: new Date() });
     res.sendStatus(200);
   } catch (err) {
     console.log(err);
