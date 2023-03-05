@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { Component, Fragment } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import SignIn from "./pages/signIn-signUp/signIn";
 import RouteSignUp from "./pages/signIn-signUp/routeSignUp";
@@ -19,7 +19,7 @@ import CompanyProfile from "./pages/company/companyProfile";
 import EditOpportunity from "./pages/company/editOpportunity";
 import TraineeDetails from "./pages/company/traineeDetails";
 
-import RequireAuth from "./pages/middleware/RequireAuthAdmin"
+import RequireAuth from "./pages/middleware/RequireAuthAdmin";
 import AdminHomePage from "./pages/admin/adminHomePage";
 import UnauthorizedMiddleWare from "./pages/admin/unauthorizedMiddleWare";
 import Consumers from "./pages/admin/consumers";
@@ -44,56 +44,119 @@ class App extends Component {
       <Fragment>
         <BrowserRouter>
           <Routes>
-            <Route index element={<WelcomePage />}/>
+            <Route index element={<WelcomePage />} />
 
-            <Route path='/signIn' element={<SignIn />}/>
-            <Route path='/routeSignUp' element={<RouteSignUp />}/>
-            <Route path='/signUpMedicalStudent' element={<SignUpMedicalStudent />}/>
-            <Route path='/signUpCompany' element={<SignUpCompany />}/>
-            <Route path='/signUpConsumer' element={<SignUpConsumer />}/>
-            <Route path='/forgottenPassword' element={<ForgottenPassword />}/>
+            <Route path="/signIn" element={<SignIn />} />
+            <Route path="/routeSignUp" element={<RouteSignUp />} />
+            <Route
+              path="/signUpMedicalStudent"
+              element={<SignUpMedicalStudent />}
+            />
+            <Route path="/signUpCompany" element={<SignUpCompany />} />
+            <Route path="/signUpConsumer" element={<SignUpConsumer />} />
+            <Route path="/forgottenPassword" element={<ForgottenPassword />} />
 
-            <Route path='/consumerProfile' element={<ConsumerProfile />}/>
-            <Route path='/opportunities' element={<Opportunities />}/>
-            <Route path='/medicalStudents' element={<MedicalStudents />}/>
+            <Route path="/consumerProfile" element={<ConsumerProfile />} />
+            <Route path="/opportunities" element={<Opportunities />} />
+            <Route path="/medicalStudents" element={<MedicalStudents />} />
 
-            <Route path='/addOpportunity' element={<AddOpportunity />}/>
-            <Route path='/appliedTrainee' element={<AppliedTrainee />}/>
-            <Route path='/companyHomePage' element={<CompanyHomePage />}/>
-            <Route path='/companyProfile' element={<CompanyProfile />}/>
-            <Route path='/editOpportunity' element={<EditOpportunity />}/>
-            <Route path='/traineeDetails' element={<TraineeDetails />}/>
-            
-            <Route path='/feedBackConsumerCompany' element={<FeedBackConsumerCompany />}/>
-            <Route path='/feedBackConsumerMedical' element={<FeedBackConsumerMedical />}/>
-            <Route path='/feedBackMedical' element={<FeedBackMedical />}/>
-            <Route path='/feedBackCompany' element={<FeedBackCompany />}/>
+            <Route path="/addOpportunity" element={<AddOpportunity />} />
+            <Route path="/appliedTrainee" element={<AppliedTrainee />} />
+            <Route path="/companyHomePage" element={<CompanyHomePage />} />
+            <Route path="/companyProfile" element={<CompanyProfile />} />
+            <Route path="/editOpportunity" element={<EditOpportunity />} />
+            <Route path="/traineeDetails" element={<TraineeDetails />} />
 
-            <Route path='/adminSignIn' element={<AdminSignIn />}/>
-            <Route path='/adminForgottenPassword' element={<AdminForgottenPassword />} />
+            <Route
+              path="/feedBackConsumerCompany"
+              element={<FeedBackConsumerCompany />}
+            />
+            <Route
+              path="/feedBackConsumerMedical"
+              element={<FeedBackConsumerMedical />}
+            />
+            <Route path="/feedBackMedical" element={<FeedBackMedical />} />
+            <Route path="/feedBackCompany" element={<FeedBackCompany />} />
 
-            <Route path='/adminPanel' element={
-              <RequireAuth>
-                <AdminPanel />
-              </RequireAuth>
-            }/>
-            <Route path='/addAdmin' element={
-              <RequireAuth>
-                <AddAdmin />
-              </RequireAuth>
-            } />
-            <Route path='/adminHomePage' element={<RequireAuth><AdminHomePage /></RequireAuth>} />
-            <Route path='/unauthorizedMiddleWare' element={<UnauthorizedMiddleWare />} />
-            <Route path='/consumers' element={<RequireAuth><Consumers /></RequireAuth>} />
-            <Route path='/companies' element={<RequireAuth><Companies /></RequireAuth>} />
-            <Route path='/opportunitiesPanel' element={<RequireAuth><OpportunitiesPanel /></RequireAuth>} />
-            <Route path='/medicalStudent' element={<RequireAuth><MedicalStudent /></RequireAuth>} />
-            <Route path='/reportedFeedBack' element={<RequireAuth><ReportedFeedBack /></RequireAuth>} />
+            <Route path="/adminSignIn" element={<AdminSignIn />} />
+            <Route
+              path="/adminForgottenPassword"
+              element={<AdminForgottenPassword />}
+            />
+
+            <Route
+              path="/adminPanel"
+              element={
+                <RequireAuth>
+                  <AdminPanel />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/addAdmin"
+              element={
+                <RequireAuth>
+                  <AddAdmin />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/adminHomePage"
+              element={
+                <RequireAuth>
+                  <AdminHomePage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/unauthorizedMiddleWare"
+              element={<UnauthorizedMiddleWare />}
+            />
+            <Route
+              path="/consumers"
+              element={
+                <RequireAuth>
+                  <Consumers />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/companies"
+              element={
+                <RequireAuth>
+                  <Companies />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/opportunitiesPanel"
+              element={
+                <RequireAuth>
+                  <OpportunitiesPanel />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/medicalStudent"
+              element={
+                <RequireAuth>
+                  <MedicalStudent />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/reportedFeedBack"
+              element={
+                <RequireAuth>
+                  <ReportedFeedBack />
+                </RequireAuth>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </Fragment>
-    )
+    );
   }
 }
 
-export default App
+export default App;
