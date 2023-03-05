@@ -7,7 +7,7 @@ const TraineeApplicationStore = create((set) => ({
   fetchTraineeApplications: async () => {
     // Fetch the traineeApplications
     const res = await axios.get(
-      "/traineeApplications"
+      "http://localhost:4000/api/v1/traineeApplications"
     );
     // Set to state
     set({ traineeApplications: res.data.traineeApplications });
@@ -15,7 +15,7 @@ const TraineeApplicationStore = create((set) => ({
 
   deleteTraineeApplication: async (_id) => {
     const res = await axios.delete(
-      "/traineeApplications/" + _id
+      "http://localhost:4000/api/v1/traineeApplications/" + _id
     );
 
     const { traineeApplications } = TraineeApplicationStore.getState();
@@ -63,7 +63,7 @@ const TraineeApplicationStore = create((set) => ({
 
     // Send the update request
     const res = await axios.put(
-      `/traineeApplications/${_id}`,
+      `http://localhost:4000/api/v1/traineeApplications/${_id}`,
       {
         university,
         major,
@@ -122,7 +122,7 @@ const TraineeApplicationStore = create((set) => ({
 
     // add traineeApplication
     const res = await axios.post(
-      "/traineeApplications/registerTraineeApplication",
+      "http://localhost:4000/api/v1/traineeApplications/registerTraineeApplication",
       values
     );
     set({

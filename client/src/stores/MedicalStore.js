@@ -6,14 +6,14 @@ const MedicalStore = create((set) => ({
 
   fetchMedicalStudents: async () => {
     // Fetch the medicalStudents
-    const res = await axios.get("/medicalStudents");
+    const res = await axios.get("http://localhost:4000/api/v1/medicalStudents");
     // Set to state
     set({ medicalStudents: res.data.medicalStudents });
   },
 
   deleteMedicalStudent: async (_id) => {
     const res = await axios.delete(
-      "/medicalStudents/" + _id
+      "http://localhost:4000/api/v1/medicalStudents/" + _id
     );
 
     const { medicalStudents } = MedicalStore.getState();
@@ -57,7 +57,7 @@ const MedicalStore = create((set) => ({
 
     // Send the update request
     const res = await axios.put(
-      `/medicalStudents/${_id}`,
+      `http://localhost:4000/api/v1/medicalStudents/${_id}`,
       {
         name,
         phone_number,
@@ -111,7 +111,7 @@ const MedicalStore = create((set) => ({
 
     // add medicalStudent
     const res = await axios.post(
-      "/medicalStudents/registerAdmin",
+      "http://localhost:4000/api/v1/registerAdmin",
       values
     );
     set({

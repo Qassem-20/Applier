@@ -13,7 +13,7 @@ const ReviewStore = create((set) => ({
 
   deleteReview: async (_id) => {
     const res = await axios.delete(
-      "/reviews/" + _id
+      "http://localhost:4000/api/v1/reviews/" + _id
     );
 
     const { reviews } = ReviewStore.getState();
@@ -40,7 +40,7 @@ const ReviewStore = create((set) => ({
 
     // Send the update request
     const res = await axios.put(
-      `/admins/hideReview/:id${_id}`,
+      `http://localhost:4000/api/v1/admins/hideReview/:id${_id}`,
       {
         statue,
       }
@@ -73,7 +73,7 @@ const ReviewStore = create((set) => ({
 
     // add review
     const res = await axios.post(
-      "/reviews/registerReview",
+      "http://localhost:4000/api/v1/reviews/registerReview",
       values
     );
     set({

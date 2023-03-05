@@ -6,14 +6,14 @@ const OpportunityStore = create((set) => ({
 
   fetchOpportunities: async () => {
     // Fetch the opportunities
-    const res = await axios.get("/opportunities");
+    const res = await axios.get("http://localhost:4000/api/v1/opportunities");
     // Set to state
     set({ opportunities: res.data.opportunities });
   },
 
   deleteOpportunity: async (_id) => {
     const res = await axios.delete(
-      "/opportunities/" + _id
+      "http://localhost:4000/api/v1/opportunities/" + _id
     );
 
     const { opportunities } = OpportunityStore.getState();
@@ -65,7 +65,7 @@ const OpportunityStore = create((set) => ({
 
     // Send the update request
     const res = await axios.put(
-      `/opportunities/${_id}`,
+      `http://localhost:4000/api/v1/opportunities/${_id}`,
       {
         job_role,
         description,
@@ -130,7 +130,7 @@ const OpportunityStore = create((set) => ({
 
     // add opportunity
     const res = await axios.post(
-      "/opportunities/registerOpportunity",
+      "http://localhost:4000/api/v1/opportunities/registerOpportunity",
       values
     );
     set({
