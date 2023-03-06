@@ -70,7 +70,7 @@ const loginMedicalStudent = async (req, res) => {
     // create a jwt token
     const token = jwt.sign(
       { sub: medicalStudent._id, exp },
-      process.env.JWT_SECRET
+      process.env.SECRET
     );
 
     // Set the cookie

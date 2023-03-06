@@ -17,15 +17,6 @@ const companySchema = new mongoose.Schema(
       maxlength: 20,
       trim: true,
     },
-    organization_phone: {
-      type: String,
-      required: [true, "Provide an organization phone"],
-      validate: {
-        validator: validator.isMobilePhone,
-        // add more instruction after testing
-        message: "Please provide a valid phone number",
-      },
-    },
     organization_website: {
       type: String,
       required: [false, "Provide an organization website"],
@@ -52,15 +43,6 @@ const companySchema = new mongoose.Schema(
       required: [true, "Please enter password"],
       minlength: 6,
     },
-    organization_email: {
-      type: String,
-      required: [true, "Please enter the organization email"],
-      validate: {
-        validator: validator.isEmail,
-        message: "Please provide a valid email",
-      },
-      lowercase: true,
-    },
     email: {
       type: String,
       required: [true, "Please enter the email"],
@@ -72,12 +54,11 @@ const companySchema = new mongoose.Schema(
       lowercase: true,
       index: true,
     },
-    supervisor_phone: {
+    phone: {
       type: String,
-      required: [true, "Please enter your phone number"],
+      required: [false, "Please enter your phone number"],
       validate: {
         validator: validator.isMobilePhone,
-        // add more instruction after testing
         message: "Please provide a valid phone number",
       },
     },

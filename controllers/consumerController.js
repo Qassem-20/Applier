@@ -60,7 +60,7 @@ const loginConsumer = async (req, res) => {
     // token is valid for 30 days
     const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
     // create a jwt token
-    const token = jwt.sign({ sub: consumer._id, exp }, process.env.JWT_SECRET);
+    const token = jwt.sign({ sub: consumer._id, exp }, process.env.SECRET);
 
     // Set the cookie
     res.cookie("AuthorizationConsumer", token, {

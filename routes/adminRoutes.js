@@ -32,7 +32,7 @@ import { deleteOpportunity } from "../controllers/opportunitiesController.js";
 //routes of the admin from the controllers
 router.route("/admins").get(requireAuthAdmin, fetchAdmins);
 router.route("/admins/:id").get(requireAuthAdmin, fetchAdmin);
-router.route("/registerAdmin").post(requireAuthAdmin, apiLimiter, createAdmin);
+router.route("/registerAdmin").post(apiLimiter, createAdmin);
 router.route("/loginAdmin").post(apiLimiter, loginAdmin);
 router.route("/checkAuthAdmin").get(requireAuthAdmin, checkAuthAdmin);
 router.route("/logoutAdmin").get(logoutAdmin);

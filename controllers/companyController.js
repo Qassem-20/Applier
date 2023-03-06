@@ -74,14 +74,12 @@ const createCompany = async (req, res) => {
     const {
       organization_name,
       register_number,
-      organization_phone,
       organization_website,
       organization_bio,
       supervisor_name,
       password,
-      organization_email,
       email,
-      supervisor_phone,
+      phone,
       country,
       city,
       statue,
@@ -93,18 +91,15 @@ const createCompany = async (req, res) => {
     await Company.create({
       organization_name,
       register_number,
-      organization_phone,
       organization_website,
       organization_bio,
       supervisor_name,
-      password: hashedPassword,
-      organization_email,
+      password:hashedPassword,
       email,
-      supervisor_phone,
+      phone,
       country,
       city,
-      statue,
-      activatedBy,
+      statue:'inactive',
     });
 
     //respond
@@ -133,7 +128,7 @@ const loginCompany = async (req, res) => {
     // token is valid for 30 days
     const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
     // create a jwt token
-    const token = jwt.sign({ sub: company._id, exp }, process.env.JWT_SECRET);
+    const token = jwt.sign({ sub: company._id, exp }, process.env.SECRET);
 
     // Set the cookie
     res.cookie("AuthorizationCompany", token, {
@@ -177,9 +172,8 @@ const updateCompany = async (req, res) => {
     organization_phone,
     organization_website,
     organization_bio,
-    Supervisor_name,
-    Password,
-    organization_email,
+    supervisor_name,
+    password,
     email,
     supervisor_phone,
     country,
@@ -195,7 +189,6 @@ const updateCompany = async (req, res) => {
     organization_website,
     organization_bio,
     supervisor_name,
-    organization_email,
     email,
     supervisor_phone,
     country,
