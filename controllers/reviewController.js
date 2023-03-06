@@ -14,6 +14,15 @@ const fetchReview = async (req, res) => {
   res.json({ review });
 };
 
+
+
+const sortReview = async (req, res) => {
+  const review = await Review.find().sort({ rate: 1 });
+
+  res.json({ review });
+};
+
+
 const createReview = async (req, res) => {
   const { rate, description } = req.body;
 
@@ -68,4 +77,5 @@ export {
   deleteReview,
   hideReview,
   reportReview,
+  sortReview,
 };

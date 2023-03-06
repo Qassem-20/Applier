@@ -68,6 +68,22 @@ const fetchCompany = async (req, res) => {
   res.json({ company });
 };
 
+const findCompany =async (req, res) =>{
+  try {
+    const companyName = req.params.name;
+    const findName = await Company.find({organization_name:{ $regex:'.*'+companyName+'.*'} });
+    res.json(findName);
+  } catch (error) {
+    res.json({message: error});        
+  }
+}
+
+const sortCompanies = async (req, res) => {
+  const companies = await Company.find().sort({ organization_name: 1 });
+
+  res.json({ companies });
+};
+
 const createCompany = async (req, res) => {
   try {
     //get the data
@@ -234,4 +250,7 @@ export {
   updateCompany,
   deleteCompany,
   activateCompany,
+  findCompany,
+  sortCompanies,
+  
 };

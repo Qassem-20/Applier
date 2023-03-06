@@ -16,6 +16,22 @@ const fetchMedicalStudent = async (req, res) => {
   res.json({ medicalStudent });
 };
 
+const findMedicalStudent =async (req, res) =>{
+  try {
+    const MedicalStudentName = req.params.name;
+    const findName = await medicalStudent.find({name:{ $regex:'.*'+MedicalStudentName+'.*'} });
+    res.json(findName);
+  } catch (error) {
+    res.json({message: error});        
+  }
+}
+
+const sortMedicalStudent = async (req, res) => {
+  const medicalStudent = await medicalStudent.find().sort({ name: 1 });
+
+  res.json({ medicalStudent });
+};
+
 const createMedicalStudent = async (req, res) => {
   try {
     const {
@@ -171,4 +187,6 @@ export {
   updateMedicalStudent,
   deleteMedicalStudent,
   activateMedicalStudent,
+  sortMedicalStudent,
+  findMedicalStudent,
 };

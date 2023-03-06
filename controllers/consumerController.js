@@ -8,11 +8,7 @@ const fetchConsumers = async (req, res) => {
   res.json({ consumers });
 };
 
-const sortConsumers = async (req, res) => {
-  const consumers = await Consumer.find().sort({ name: 1 });
 
-  res.json({ consumers });
-};
 
 const fetchConsumer = async (req, res) => {
   const consumerId = req.params.id;
@@ -20,6 +16,22 @@ const fetchConsumer = async (req, res) => {
   const consumer = await Consumer.findById(consumerId);
 
   res.json({ consumer });
+};
+
+const findConsumer =async (req, res) =>{
+  try {
+    const companyName = req.params.name;
+    const findName = await Consumer.find({name:{ $regex:'.*'+companyName+'.*'} });
+    res.json(findName);
+  } catch (error) {
+    res.json({message: error});        
+  }
+}
+
+const sortConsumers = async (req, res) => {
+  const consumers = await Consumer.find().sort({ name: 1 });
+
+  res.json({ consumers });
 };
 
 const createConsumer = async (req, res) => {
@@ -144,6 +156,7 @@ export {
   checkAuthConsumer,
   updateConsumer,
   deleteConsumer,
-  sortConsumers,
   suspendConsumer,
+  sortConsumers,
+  findConsumer,
 };

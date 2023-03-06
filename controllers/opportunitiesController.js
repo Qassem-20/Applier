@@ -22,6 +22,22 @@ const fetchOpportunity = async (req, res) => {
   res.json({ opportunity });
 };
 
+const findOpportunity =async (req, res) =>{
+  try {
+    const opportunityName = req.params.name;
+    const findName = await opportunity.find({job_role:{ $regex:'.*'+opportunityName+'.*'} });
+    res.json(findName);
+  } catch (error) {
+    res.json({message: error});        
+  }
+}
+
+const sortOpportunities = async (req, res) => {
+  const opportunities = await opportunity.find().sort({ job_role: 1 });
+
+  res.json({ opportunities });
+};
+
 const createOpportunity = async (req, res) => {
   const {
     job_role,
@@ -107,4 +123,6 @@ export {
   updateOpportunity,
   deleteOpportunity,
   hideOpportunity,
+  sortOpportunities,
+  findOpportunity,
 };

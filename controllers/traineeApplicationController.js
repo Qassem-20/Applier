@@ -14,6 +14,22 @@ const fetchTraineeApplications = async (req, res) => {
     
     res.json({ traineeApplication });
   };
+
+  const findTraineeApplication =async (req, res) =>{
+    try {
+      const traineeApplicationName = req.params.university;
+      const findName = await TraineeApplication.find({university:{ $regex:'.*'+traineeApplicationName+'.*'} });
+      res.json(findName);
+    } catch (error) {
+      res.json({message: error});        
+    }
+  }
+  
+  const sortTraineeApplicationByGPA = async (req, res) => {
+    const sortedGpa = await TraineeApplication.find().sort({ gpa: 1 });
+  
+    res.json({ sortedGpa });
+  };
   
   const createTraineeApplication = async (req, res) => {
     const { university, major, gpa, gpa_statue, concentrated_major, skills, cv, linkedIn_profile, experience } = req.body;
@@ -69,4 +85,6 @@ const fetchTraineeApplications = async (req, res) => {
     createTraineeApplication,
     updateTraineeApplication,
     deleteTraineeApplication,
+    sortTraineeApplicationByGPA, 
+    findTraineeApplication,
   };

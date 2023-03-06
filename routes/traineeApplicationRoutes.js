@@ -9,6 +9,8 @@ import {
   createTraineeApplication,
   updateTraineeApplication,
   deleteTraineeApplication,
+  sortTraineeApplicationByGPA, 
+  findTraineeApplication,
 } from "../controllers/traineeApplicationController.js";
 //routes of the admin from the controllers
 router.route("/traineeApplications").get(fetchTraineeApplications);
@@ -22,5 +24,6 @@ router
 router
   .route("/traineeApplications/:id")
   .delete(requireAuthConsumer, deleteTraineeApplication);
-
+router.route("/sortTraineeApplicationByGPA").get(sortTraineeApplicationByGPA);
+router.route("/findTraineeApplication/:university").get(findTraineeApplication);
 export default router;

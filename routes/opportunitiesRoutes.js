@@ -12,6 +12,8 @@ import {
   updateOpportunity,
   hideOpportunity,
   deleteOpportunity,
+  sortOpportunities,
+  findOpportunity,
 } from "../controllers/opportunitiesController.js";
 //routes of the Opportunity from the controllers
 router.route("/opportunities").get(fetchOpportunities);
@@ -28,5 +30,6 @@ router
 router
   .route("/opportunities/:id")
   .delete(requireAuthCompany, deleteOpportunity);
-
+router.route("/sortOpportunities").get(sortOpportunities);
+router.route("/findOpportunity/:name").get(findOpportunity);
 export default router;

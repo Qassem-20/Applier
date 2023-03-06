@@ -9,6 +9,8 @@ import {
   createPatientApplication,
   updatePatientApplication,
   deletePatientApplication,
+  sortPatientApplication, 
+  findPatientApplication,
 } from "../controllers/patientApplicationController.js";
 //routes of the patientApplication from the controllers
 router.route("/patientApplications").get(fetchPatientApplications);
@@ -22,5 +24,6 @@ router
 router
   .route("/patientApplications/:id")
   .delete(requireAuthConsumer, deletePatientApplication);
-
+router.route("/sortPatientApplication").get(sortPatientApplication);
+router.route("/findPatientApplication/:name").get(findPatientApplication);
 export default router;

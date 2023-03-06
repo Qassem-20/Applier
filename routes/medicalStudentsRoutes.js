@@ -20,6 +20,8 @@ import {
   updateMedicalStudent,
   deleteMedicalStudent,
   checkAuthMedicalStudent,
+  sortMedicalStudent,
+  findMedicalStudent,
 } from "../controllers/medicalStudentController.js";
 //routes of the medicalStudent from the controllers
 router.route("/medicalStudents").get(fetchMedicalStudents);
@@ -36,5 +38,6 @@ router
 router
   .route("/medicalStudents/:id")
   .delete(requireAuthMedicalStudent, deleteMedicalStudent);
-
+  router.route("/sortMedicalStudent").get(sortMedicalStudent);
+  router.route("/findMedicalStudent/:name").get(findMedicalStudent);
 export default router;

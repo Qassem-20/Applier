@@ -14,6 +14,22 @@ const fetchPatientApplications = async (req, res) => {
     
     res.json({ patientApplication });
   };
+
+  const findPatientApplication =async (req, res) =>{
+    try {
+      const symptoms = req.params.symptoms;
+      const findName = await patientApplication.find({symptoms:{ $regex:'.*'+symptoms+'.*'} });
+      res.json(findName);
+    } catch (error) {
+      res.json({message: error});        
+    }
+  }
+  
+  const sortPatientApplication = async (req, res) => {
+    const symptoms = await patientApplication.find().sort({ symptoms: 1 });
+  
+    res.json({ symptoms });
+  };
   
   const createPatientApplication = async (req, res) => {
     const { symptoms, createdBy} = req.body;
@@ -53,4 +69,6 @@ const fetchPatientApplications = async (req, res) => {
     createPatientApplication,
     updatePatientApplication,
     deletePatientApplication,
+    sortPatientApplication, 
+    findPatientApplication,
   };
