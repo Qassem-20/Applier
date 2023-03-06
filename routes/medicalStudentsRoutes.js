@@ -33,6 +33,8 @@ router
 router
   .route("/medicalStudents/:id")
   .put(requireAuthMedicalStudent, updateMedicalStudent);
-router.route("/medicalStudents/:id").delete(deleteMedicalStudent);
+router
+  .route("/medicalStudents/:id")
+  .delete(requireAuthMedicalStudent, deleteMedicalStudent);
 
 export default router;

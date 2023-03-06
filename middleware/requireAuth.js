@@ -4,7 +4,6 @@ import Company from "../models/Company.js";
 import Consumer from "../models/Consumer.js";
 import MedicalStudent from "../models/MedicalStudent.js";
 
-
 async function requireAuthAdmin(req, res, next) {
   try {
     // Read token off cookies
@@ -28,7 +27,7 @@ async function requireAuthAdmin(req, res, next) {
   } catch (err) {
     return res.sendStatus(401);
   }
-};
+}
 async function requireAuthCompany(req, res, next) {
   try {
     // Read token off cookies
@@ -52,7 +51,7 @@ async function requireAuthCompany(req, res, next) {
   } catch (err) {
     return res.sendStatus(401);
   }
-};
+}
 async function requireAuthConsumer(req, res, next) {
   try {
     // Read token off cookies
@@ -76,12 +75,11 @@ async function requireAuthConsumer(req, res, next) {
   } catch (err) {
     return res.sendStatus(401);
   }
-};
+}
 async function requireAuthMedicalStudent(req, res, next) {
   try {
     // Read token off cookies
     const token = req.cookies.AuthorizationMedical;
-    console.log(req.cookies.AuthorizationMedical)
     // Decode the token
     const decoded = jwt.verify(token, process.env.SECRET);
 
@@ -100,5 +98,10 @@ async function requireAuthMedicalStudent(req, res, next) {
   } catch (err) {
     return res.sendStatus(401);
   }
+}
+export {
+  requireAuthAdmin,
+  requireAuthCompany,
+  requireAuthConsumer,
+  requireAuthMedicalStudent,
 };
-export { requireAuthAdmin,requireAuthCompany,requireAuthConsumer,requireAuthMedicalStudent };
