@@ -90,7 +90,7 @@ const createCompany = async (req, res) => {
     //hash the password
     const hashedPassword = bcrypt.hashSync(password, 8);
 
-    const company = await Company.create({
+    await Company.create({
       organization_name,
       register_number,
       organization_phone,

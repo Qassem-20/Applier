@@ -29,7 +29,7 @@ const createConsumer = async (req, res) => {
     //hash the password
     const hashedPassword = bcrypt.hashSync(password, 8);
 
-    const consumer = await Consumer.create({
+    await Consumer.create({
       name,
       email,
       password: hashedPassword,

@@ -33,7 +33,7 @@ const createMedicalStudent = async (req, res) => {
     //hash the password
     const hashedPassword = bcrypt.hashSync(password, 8);
 
-    const medicalStudent = await MedicalStudent.create({
+    await MedicalStudent.create({
       name,
       email,
       password: hashedPassword,
