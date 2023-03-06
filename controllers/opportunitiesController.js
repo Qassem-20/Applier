@@ -9,7 +9,7 @@ const fetchOpportunities = async (req, res) => {
 
 //Company to fetch Opportunities for each company
 const fetchOpportunitiesCompany = async (req, res) => {
-  const opportunities = await Opportunity.find({company:req.company._id});
+  const opportunities = await Opportunity.find({ company: req.company._id });
 
   res.json({ opportunities });
 };
@@ -50,8 +50,8 @@ const createOpportunity = async (req, res) => {
     start_date,
     duration,
     city,
-    visibility,
-    company:req.company._id,
+    visibility: "shown",
+    company: req.company._id,
   });
 
   res.json({ opportunity });
@@ -62,9 +62,12 @@ const updateOpportunity = async (req, res) => {
 
   const { type } = req.body;
 
-  await Opportunity.findOneAndUpdate({_id:opportunityId,company:req.company._id,}, {
-    type,
-  });
+  await Opportunity.findOneAndUpdate(
+    { _id: opportunityId, company: req.company._id },
+    {
+      type,
+    }
+  );
 
   const opportunity = await Opportunity.findById(opportunityId);
 
@@ -76,9 +79,12 @@ const hideOpportunity = async (req, res) => {
 
   const { visibility } = req.body;
 
-  await Opportunity.findOneAndUpdate({_id:opportunityId,company:req.company._id,}, {
-    visibility,
-  });
+  await Opportunity.findOneAndUpdate(
+    { _id: opportunityId, company: req.company._id },
+    {
+      visibility,
+    }
+  );
 
   const opportunity = await Opportunity.findById(opportunityId);
 

@@ -21,7 +21,7 @@ import "express-async-errors";
 import cors from "cors";
 const corsOptions = {
   origin: true,
-  credentials: true, //access-control-allow-credentials:true
+  credentials: true,
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
@@ -73,13 +73,6 @@ app.use(express.static(path.resolve(__dirname, "./client/build")));
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
-
-//middleware
-import notFoundMiddleware from "./middleware/not-found.js";
-import errorHandlerMiddleware from "./middleware/error-handler.js";
-import { request } from "http";
-app.use(notFoundMiddleware);
-app.use(errorHandlerMiddleware);
 */
 
 // DB connection to mongoose atlas the URL in env file

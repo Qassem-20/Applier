@@ -1,7 +1,7 @@
 import "../../assets/css/signUpSignIn.css";
 import WelcomeNav from "../../components/Nav/welcomeNav";
 import { useNavigate } from "react-router-dom";
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { Col, Row } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore";
 
@@ -50,22 +50,6 @@ const SignUpCompany = () => {
                 className="inputStyling"
                 name="register_number"
                 value={store.values.register_number}
-                onChange={store.handleChange}
-              />
-              <p className="labelTag">Organization phone</p>
-              <input
-                type="phone"
-                className="inputStyling"
-                name="organization_phone"
-                value={store.values.organization_phone}
-                onChange={store.handleChange}
-              />
-              <p className="labelTag">Organization email</p>
-              <input
-                type="email"
-                className="inputStyling"
-                name="organization_email"
-                value={store.values.organization_email}
                 onChange={store.handleChange}
               />
               <p className="labelTag">
