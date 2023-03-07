@@ -1,11 +1,11 @@
-import {Container, Nav, Navbar } from 'react-bootstrap';
-import React, { Component, Fragment } from 'react';
+import { Container, Nav, Navbar } from "react-bootstrap";
+import React, { Component, Fragment } from "react";
 
 export class welcomeNav extends Component {
   render() {
     return (
-    <Fragment>
-        <Navbar bg="white" expand="lg" className='pt-2 pb-3 mb-5'>
+      <Fragment>
+        <Navbar bg="white" expand="lg" className="pt-2 pb-3 mb-5">
           <Container>
             <Navbar.Brand href="/">Applier</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -18,9 +18,9 @@ export class welcomeNav extends Component {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-    </Fragment>
-    )
+      </Fragment>
+    );
   }
 }
 
-export default welcomeNav
+export default welcomeNav;

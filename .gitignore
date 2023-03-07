@@ -3,3 +3,5 @@
 .env
 # eslint cache
 .eslintcache
+client/node_modules/.cache/.eslintcache
+
