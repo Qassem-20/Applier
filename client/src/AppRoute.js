@@ -18,6 +18,10 @@ import CompanyProfile from "./pages/company/companyProfile";
 import EditOpportunity from "./pages/company/editOpportunity";
 import TraineeDetails from "./pages/company/traineeDetails";
 
+import MedicalHomePage from "./pages/medicalStudent/homePageMedicalStudent"
+import MedicalProfile from "./pages/medicalStudent/MedicalStudentProfile"
+
+
 import AdminHomePage from "./pages/admin/adminHomePage";
 import UnauthorizedMiddleWare from "./pages/admin/unauthorizedMiddleWare";
 import Consumers from "./pages/admin/consumers";
@@ -38,7 +42,7 @@ import FeedBackCompany from "./pages/company/feedBackCompany";
 import RequireAuthCompany from "./pages/middleware/RequireAuthCompany";
 import RequireAuthAdmin from "./pages/middleware/RequireAuthAdmin";
 import RequireAuthConsumer from "./pages/middleware/RequireAuthConsumer";
-import RequireAuthAMedical from "./pages/middleware/RequireAuthAdmin";
+import RequireAuthMedical from "./pages/middleware/RequireAuthAdmin";
 
 import WelcomePage from "./pages/HomePage";
 import React, { Fragment } from 'react'
@@ -115,6 +119,12 @@ const AppRoute = () => {
       <RequireAuthCompany>
         <TraineeDetails />
         </RequireAuthCompany>
+      </Route>
+
+      <Route path="/medicalHomePage">
+      <RequireAuthMedical>
+        <MedicalHomePage />
+        </RequireAuthMedical>
       </Route>
 
       <Route path="/adminHomePage">

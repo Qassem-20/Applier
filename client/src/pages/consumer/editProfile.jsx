@@ -8,6 +8,7 @@ import ConsumerStore from "../../stores/ConsumerStore";
 import { Container } from "react-bootstrap";
 
 const EditProfile = () => {
+  /*
   const traineeApplicationStore = TraineeApplicationStore();
   const patientApplicationStore = PatientApplicationStore();
   const consumerStore = ConsumerStore();
@@ -17,7 +18,7 @@ const EditProfile = () => {
     patientApplicationStore.fetchPatientApplication();
     consumerStore.fetchConsumers();
   }, []);
-
+*/
   return (
     <Fragment>
       <ConsumerNav />

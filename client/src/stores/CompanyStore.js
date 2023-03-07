@@ -29,7 +29,6 @@ const CompanyStore = create((set) => ({
     _id: null,
     organization_name: "",
     register_number: "",
-    organization_phone: "",
     organization_website: "",
     organization_bio: "",
     supervisor_name: "",
@@ -46,7 +45,6 @@ const CompanyStore = create((set) => ({
       updateProfile: {
         organization_name,
         register_number,
-        organization_phone,
         organization_website,
         organization_bio,
         supervisor_name,
@@ -151,26 +149,26 @@ const CompanyStore = create((set) => ({
 
   //login
   loggedIn: null,
-  loginForm: {
-    emailCompany: "",
-    passwordCompany: "",
+  loginFormCompany: {
+    email: "",
+    password: "",
   },
   handleChangeLogin: async (e) => {
     const { name, value } = e.target;
 
     set((state) => {
       return {
-        loginForm: {
-          ...state.loginForm,
+        loginFormCompany: {
+          ...state.loginFormCompany,
           [name]: value,
         },
       };
     });
   },
   loginCompany: async () => {
-    const { loginForm } = CompanyStore.getState();
+    const { loginFormCompany } = CompanyStore.getState();
 
-    await axios.post("http://localhost:4000/api/v1/loginCompany", loginForm, {
+    await axios.post("http://localhost:4000/api/v1/loginCompany", loginFormCompany, {
       withCredentials: true,
     });
 

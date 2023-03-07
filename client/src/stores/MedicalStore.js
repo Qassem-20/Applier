@@ -153,28 +153,28 @@ const MedicalStore = create((set) => ({
       };
     });
   },
-  loginForm: {
-    emailMedical: "",
-    passwordMedical: "",
+  loginFormMedical: {
+    email: "",
+    password: "",
   },
   handleChangeLogin: async (e) => {
     const { name, value } = e.target;
 
     set((state) => {
       return {
-        loginForm: {
-          ...state.loginForm,
+        loginFormMedical: {
+          ...state.loginFormMedical,
           [name]: value,
         },
       };
     });
   },
   loginMedicalStudent: async () => {
-    const { loginForm } = MedicalStore.getState();
+    const { loginFormMedical } = MedicalStore.getState();
 
     await axios.post(
       "http://localhost:4000/api/v1/loginMedicalStudent",
-      loginForm,
+      loginFormMedical,
       {
         withCredentials: true,
       }

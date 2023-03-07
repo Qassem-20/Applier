@@ -119,26 +119,26 @@ const ConsumerStore = create((set) => ({
   },
   //login
   loggedIn: null,
-  loginForm: {
-    emailConsumer: "",
-    passwordConsumer: "",
+  loginFormConsumer: {
+    email: "",
+    password: "",
   },
   handleChangeLogin: async (e) => {
     const { name, value } = e.target;
 
     set((state) => {
       return {
-        loginForm: {
-          ...state.loginForm,
+        loginFormConsumer: {
+          ...state.loginFormConsumer,
           [name]: value,
         },
       };
     });
   },
   loginConsumer: async () => {
-    const { loginForm } = ConsumerStore.getState();
+    const { loginFormConsumer } = ConsumerStore.getState();
 
-    await axios.post("http://localhost:4000/api/v1/loginConsumer", loginForm, {
+    await axios.post("http://localhost:4000/api/v1/loginConsumer", loginFormConsumer, {
       withCredentials: true,
     });
 
