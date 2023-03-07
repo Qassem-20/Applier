@@ -1,52 +1,61 @@
 import Nav from "../../components/Nav/companyNav";
 import "../../assets/css/company.css";
 import React, { Fragment, useState } from "react";
+import OpportunityStore from "../../stores/OpportunityStore";
 
 const AddOpportunity = () => {
-  //use states
-  const [job_role, setJobRole] = useState("");
-  const [description, setDescription] = useState("");
-  const [skills, setSkills] = useState("");
-  const [job_type, setJobType] = useState("");
-  const [departments_preferred, setDepartmentPreferred] = useState("");
-  const [major_preferred, setMajorPreferred] = useState("");
-  const [availability_seats, setAvailabilitySeats] = useState("");
-  const [salary, setSalary] = useState("");
-  const [start_date, setStartDate] = useState("");
-  const [duration, setDuration] = useState("");
-  const [city, setCity] = useState("");
-  const [visibility, setVisibility] = useState("");
-  const [createdBy, setCreatedBy] = useState("");
+  const store = OpportunityStore();
 
-  async function createOpportunity(event) {
-    event.preventDefault();
-    const response = await fetch(
-      "http://localhost:4000/api/v1/addOpportunity",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          job_role,
-          description,
-          skills,
-          job_type,
-          departments_preferred,
-          major_preferred,
-          availability_seats,
-          salary,
-          start_date,
-          duration,
-          city,
-          visibility,
-          createdBy,
-        }),
-      }
-    );
-    const data = await response.json();
-    console.log("Opportunity Added", data);
-  }
+  //use states
+  // const [job_role, setJobRole] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [skills, setSkills] = useState("");
+  // const [job_type, setJobType] = useState("");
+  // const [departments_preferred, setDepartmentPreferred] = useState("");
+  // const [major_preferred, setMajorPreferred] = useState("");
+  // const [availability_seats, setAvailabilitySeats] = useState("");
+  // const [salary, setSalary] = useState("");
+  // const [start_date, setStartDate] = useState("");
+  // const [duration, setDuration] = useState("");
+  // const [city, setCity] = useState("");
+  // const [visibility, setVisibility] = useState("");
+  // const [createdBy, setCreatedBy] = useState("");
+  //
+  // async function createOpportunity(event) {
+  //   event.preventDefault();
+  //   const response = await fetch(
+  //     "http://localhost:4000/api/v1/addOpportunity",
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         job_role,
+  //         description,
+  //         skills,
+  //         job_type,
+  //         departments_preferred,
+  //         major_preferred,
+  //         availability_seats,
+  //         salary,
+  //         start_date,
+  //         duration,
+  //         city,
+  //         visibility,
+  //         createdBy,
+  //       }),
+  //     }
+  //   );
+  //   const data = await response.json();
+  //   console.log("Opportunity Added", data);
+  // }
+
+  const createOpportunity = async (e) => {
+    e.preventDefault();
+
+    await store.registerOpportunity();
+  };
 
   return (
     <Fragment>
@@ -57,9 +66,19 @@ const AddOpportunity = () => {
             <div className="row">
               <div className="col-sm-12 col-md-6">
                 <p className="labelTag">Job Role</p>
-                <input type="input" className="inputStyling" name="" value="" />
+                <input
+                  type="input"
+                  className="inputStyling"
+                  name="job_role"
+                  value={store.values.job_role}
+                />
                 <p className="labelTag">Job Description</p>
-                <input type="text" className="inputStyling" name="" value="" />
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="description"
+                  value={store.value.description}
+                />
                 <p className="labelTag">Departments looking for</p>
                 <select>
                   <option value=""></option>
@@ -78,8 +97,8 @@ const AddOpportunity = () => {
                 <input
                   type="number"
                   className="inputStyling"
-                  name=""
-                  value=""
+                  name="duration"
+                  value={store.value.duration}
                 />
               </div>
               <div className="col-sm-12 col-md-6">
