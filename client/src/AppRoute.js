@@ -18,7 +18,6 @@ import CompanyProfile from "./pages/company/companyProfile";
 import EditOpportunity from "./pages/company/editOpportunity";
 import TraineeDetails from "./pages/company/traineeDetails";
 
-import RequireAuth from "./pages/middleware/RequireAuthAdmin";
 import AdminHomePage from "./pages/admin/adminHomePage";
 import UnauthorizedMiddleWare from "./pages/admin/unauthorizedMiddleWare";
 import Consumers from "./pages/admin/consumers";
@@ -35,6 +34,11 @@ import FeedBackConsumerCompany from "./pages/consumer/feedBackConsumerCompany";
 import FeedBackConsumerMedical from "./pages/consumer/feedBackConsumerMedical";
 import FeedBackMedical from "./pages/medicalStudent/feedBackMedical";
 import FeedBackCompany from "./pages/company/feedBackCompany";
+
+import RequireAuthCompany from "./pages/middleware/RequireAuthCompany";
+import RequireAuthAdmin from "./pages/middleware/RequireAuthAdmin";
+import RequireAuthConsumer from "./pages/middleware/RequireAuthConsumer";
+import RequireAuthAMedical from "./pages/middleware/RequireAuthAdmin";
 
 import WelcomePage from "./pages/HomePage";
 import React, { Fragment } from 'react'
@@ -67,36 +71,56 @@ const AppRoute = () => {
       </Route>
 
       <Route path="/consumerProfile">
+        <RequireAuthConsumer>
         <ConsumerProfile />
+        </RequireAuthConsumer>
       </Route>
       <Route path="/opportunities">
+      <RequireAuthConsumer>
         <Opportunities />
+        </RequireAuthConsumer>
       </Route>
       <Route path="/medicalStudents">
+      <RequireAuthConsumer>
         <MedicalStudents />
+</RequireAuthConsumer>
       </Route>
 
       <Route path="/addOpportunity">
+        <RequireAuthCompany>
         <AddOpportunity />
+        </RequireAuthCompany>
       </Route>
       <Route path="/appliedTrainee">
+      <RequireAuthCompany>
         <AppliedTrainee />
+        </RequireAuthCompany>
       </Route>
       <Route path="/companyHomePage">
+      <RequireAuthCompany>
         <CompanyHomePage />
+        </RequireAuthCompany>
       </Route>
       <Route path="/companyProfile">
+      <RequireAuthCompany>
         <CompanyProfile />
+        </RequireAuthCompany>
       </Route>
       <Route path="/editOpportunity">
+      <RequireAuthCompany>
         <EditOpportunity />
+        </RequireAuthCompany>
       </Route>
       <Route path="/traineeDetails">
+      <RequireAuthCompany>
         <TraineeDetails />
+        </RequireAuthCompany>
       </Route>
 
       <Route path="/adminHomePage">
+      <RequireAuthAdmin>
         <AdminHomePage />
+        </RequireAuthAdmin>
       </Route>
       <Route path="/adminSignIn">
         <AdminSignIn />
@@ -108,25 +132,40 @@ const AppRoute = () => {
         <AdminForgottenPassword />
       </Route>
       <Route path="/reportedFeedBack">
+      <RequireAuthAdmin>
         <ReportedFeedBack />
+        </RequireAuthAdmin>
       </Route>
       <Route path="/addAdmin">
+      <RequireAuthAdmin>
         <AddAdmin />
+        </RequireAuthAdmin>
+
       </Route>
       <Route path="/consumers">
+      <RequireAuthAdmin>
         <Consumers />
+        </RequireAuthAdmin>
       </Route>
       <Route path="/companies">
+      <RequireAuthAdmin>
         <Companies />
+        </RequireAuthAdmin>
       </Route>
       <Route path="/opportunitiesPanel">
+      <RequireAuthAdmin>
         <OpportunitiesPanel />
+        </RequireAuthAdmin>
       </Route>
       <Route path="/medicalStudent">
+      <RequireAuthAdmin>
         <MedicalStudent />
+        </RequireAuthAdmin>
       </Route>
       <Route path="/adminPanel">
-        <AdminPanel />
+        <RequireAuthAdmin>
+          <AdminPanel />
+        </RequireAuthAdmin>
       </Route>
 
       <Route path="/feedBackConsumerCompany">

@@ -2,18 +2,18 @@ import "../../assets/css/admin.css";
 import React, { Fragment } from "react";
 import adminsStore from "../../stores/AdminsStore.js";
 import { Container, Row, Col } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const AdminSignIn = () => {
   const store = adminsStore();
 
-  const navigate = useLocation();
+  const navigate = useHistory();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     await store.loginAdmin();
     //Navigate
-    navigate("/adminHomePage");
+    navigate.push("/adminHomePage");
   };
 
   return (
