@@ -2,7 +2,7 @@ import "../../assets/css/signUpSignIn.css";
 import WelcomeNav from "../../components/Nav/welcomeNav";
 import React, { Fragment, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import ConsumerStore from "../../stores/ConsumerStore";
 import CompanyStore from "../../stores/ConsumerStore";
 import MedicalStore from "../../stores/ConsumerStore";
@@ -17,7 +17,7 @@ const SignIn = () => {
   const storeMedical = MedicalStore();
   const storeCompany = CompanyStore();
 
-  const navigate = useNavigate();
+  const navigate = useLocation();
 
   const handleLoginConsumer = async (e) => {
     e.preventDefault();

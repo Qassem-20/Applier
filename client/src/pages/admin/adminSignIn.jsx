@@ -2,12 +2,12 @@ import "../../assets/css/admin.css";
 import React, { Fragment } from "react";
 import adminsStore from "../../stores/AdminsStore.js";
 import { Container, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const AdminSignIn = () => {
   const store = adminsStore();
 
-  const navigate = useNavigate();
+  const navigate = useLocation();
 
   const handleLogin = async (e) => {
     e.preventDefault();

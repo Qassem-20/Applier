@@ -1,6 +1,6 @@
 import "../../assets/css/signUpSignIn.css";
 import WelcomeNav from "../../components/Nav/welcomeNav";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import React, { Fragment } from "react";
 import { Col, Row } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore";
@@ -8,7 +8,7 @@ import CompanyStore from "../../stores/CompanyStore";
 const SignUpCompany = () => {
   const store = CompanyStore();
 
-  const navigate = useNavigate();
+  const navigate = useLocation();
 
   const handleSignUp = async (e) => {
     e.preventDefault();

@@ -3,13 +3,13 @@ import WelcomeNav from "../../components/Nav/welcomeNav";
 import { Col, Row, Container } from "react-bootstrap";
 
 import React, { Fragment, Component } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import MedicalStore from "../../stores/MedicalStore";
 
 const SignUpMedicalStudent = () => {
   const store = MedicalStore();
 
-  const navigate = useNavigate();
+  const navigate = useLocation();
 
   const handleSignUp = async (e) => {
     e.preventDefault();

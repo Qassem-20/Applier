@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
-import { Navigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import CompanyStore from "../../stores/CompanyStore.js";
 
 export default function RequireAuthCompany(props) {
@@ -20,7 +20,7 @@ export default function RequireAuthCompany(props) {
     );
   }
   if (store.loggedIn === false) {
-    return <Navigate to="/signIn" />;
+    return <useLocation to="/signIn" />;
   }
   return <div>{props.children}</div>;
 }

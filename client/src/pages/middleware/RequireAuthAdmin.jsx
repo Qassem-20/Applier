@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
-import { Navigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import AdminsStore from "../../stores/AdminsStore.js";
 
 export default function RequireAuthAdmin(props) {
@@ -20,7 +20,7 @@ export default function RequireAuthAdmin(props) {
     );
   }
   if (store.loggedIn === false) {
-    return <Navigate to="/adminSignIn" />;
+    return <useLocation to="/adminSignIn" />;
   }
   return <div>{props.children}</div>;
 }
