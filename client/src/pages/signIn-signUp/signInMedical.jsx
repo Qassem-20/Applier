@@ -1,15 +1,15 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 import MedicalStore from "../../stores/MedicalStore";
 const SignInMedical = () => {
   const storeMedical = MedicalStore();
-  const navigate = useHistory();
+  //const navigate = useHistory();
   const handleLoginMedical = async (e) => {
     e.preventDefault();
     await storeMedical.loginMedicalStudent();
     //Navigate
-    navigate.push("/medicalHomePage");
+    //navigate.push("/medicalHomePage");
   };
   return (
     <Col xl={5} sm={12} className="mx-3">

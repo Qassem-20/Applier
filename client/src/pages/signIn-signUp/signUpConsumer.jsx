@@ -3,18 +3,18 @@ import WelcomeNav from "../../components/Nav/welcomeNav";
 import { Col, Row, Container } from "react-bootstrap";
 import React, { Fragment } from "react";
 import consumerStore from "../../stores/ConsumerStore.js";
-import { useLocation } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 
 const SignUpConsumer = () => {
   const store = consumerStore();
 
-  const navigate = useLocation();
+  //const navigate = useHistory();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     await store.registerConsumer();
     //Navigate
-    navigate("/signIn");
+    //navigate.push("/signIn");
   };
   return (
     <Fragment>
