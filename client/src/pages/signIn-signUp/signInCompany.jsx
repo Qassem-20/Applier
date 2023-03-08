@@ -1,16 +1,16 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 import CompanyStore from "../../stores/CompanyStore";
 
 const SignInCompany = () => {
   const storeCompany = CompanyStore();
-  const navigate = useHistory();
+  //const navigate = useHistory();
   const handleLoginCompany = async (e) => {
     e.preventDefault();
     await storeCompany.loginCompany();
     //Navigate
-    navigate.push("/companyHomePage");
+    //navigate.push("/companyHomePage");
   };
   return (
     <Col xl={5} sm={12} className="mx-3">

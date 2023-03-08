@@ -3,18 +3,18 @@ import AdminNav from "../../components/Nav/adminNav";
 import React, { Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import adminsStore from "../../stores/AdminsStore.js";
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 
 const AddAdmin = () => {
   const store = adminsStore();
 
-  const navigate = useHistory();
+  //const navigate = useHistory();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     await store.registerAdmin();
     //Navigate
-    navigate.push("/adminPanel");
+    //navigate.push("/adminPanel");
   };
   return (
     <Fragment>
