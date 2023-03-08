@@ -64,3 +64,12 @@ padding: 1rem;
     width: 10rem;
     height: 3rem;
 }
+
+
+.logos{
+    width: 22rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align:center;
+    text-decoration: none;
+}

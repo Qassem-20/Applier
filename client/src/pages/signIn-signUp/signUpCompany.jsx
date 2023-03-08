@@ -5,6 +5,7 @@ import React, { Fragment } from "react";
 import { Col, Row } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore";
 
+
 const SignUpCompany = () => {
   const store = CompanyStore();
 
@@ -41,16 +42,17 @@ const SignUpCompany = () => {
                 type="text"
                 className="inputStyling"
                 name="organization_name"
-                value={store.values.organization_name}
                 onChange={store.handleChange}
+                value={store.values.organization_name}
               />
               <p className="labelTag">Organization registration number</p>
               <input
                 type="text"
                 className="inputStyling"
                 name="register_number"
-                value={store.values.register_number}
                 onChange={store.handleChange}
+
+                value={store.values.register_number}
               />
               <p className="labelTag">
                 Organization website <span>(if exists)</span>
@@ -59,8 +61,9 @@ const SignUpCompany = () => {
                 type="link"
                 className="inputStyling"
                 name="organization_website"
-                value={store.values.organization_website}
                 onChange={store.handleChange}
+
+                value={store.values.organization_website}
               />
 
               <p className="labelTag">About organization</p>
@@ -68,8 +71,9 @@ const SignUpCompany = () => {
                 type="text"
                 className="inputStyling"
                 name="organization_bio"
-                value={store.values.organization_bio}
                 onChange={store.handleChange}
+
+                value={store.values.organization_bio}
               />
             </Col>
             <Col md={6} sm={12}>
@@ -78,46 +82,52 @@ const SignUpCompany = () => {
                 type="name"
                 className="inputStyling"
                 name="supervisor_name"
-                value={store.values.supervisor_name}
                 onChange={store.handleChange}
+
+                value={store.values.supervisor_name}
               />
               <p className="labelTag">Supervisor email</p>
               <input
                 type="email"
                 className="inputStyling"
                 name="email"
-                value={store.values.email}
                 onChange={store.handleChange}
+
+                value={store.values.email}
               />
               <p className="labelTag">Supervisor phone</p>
               <input
                 type="phone"
                 className="inputStyling"
                 name="supervisor_phone"
-                value={store.values.supervisor_phone}
                 onChange={store.handleChange}
+
+                value={store.values.supervisor_phone}
               />
               <p className="labelTag">Password</p>
               <input
                 type="password"
                 className="inputStyling"
                 name="password"
-                value={store.values.password}
                 onChange={store.handleChange}
+
+                value={store.values.password}
               />
               <p className="labelTag">Country</p>
               <input
                 type="text"
                 name="country"
-                value={store.values.country}
                 onChange={store.handleChange}
+
+                value={store.values.country}
               />
               <p className="labelTag">City</p>
               <input
                 type="text"
                 name="city"
-                value={store.values.city}
                 onChange={store.handleChange}
+
+                value={store.values.city}
               />
             </Col>
             <button className="btn login" type="submit">

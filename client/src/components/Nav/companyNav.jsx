@@ -1,4 +1,4 @@
-import {Container, Nav, Navbar } from 'react-bootstrap';
+import {Container, Nav, Navbar, Form, FormControl, Button} from 'react-bootstrap';
 import React, { Component, Fragment } from 'react';
 
 export class companyNav extends Component {
@@ -16,6 +16,18 @@ export class companyNav extends Component {
                 <Nav.Link href="/feedBackCompany">Feedback</Nav.Link>
                 <Nav.Link href="/addOpportunity">Add Opportunity</Nav.Link>
                 <Nav.Link href="/">Medical Students</Nav.Link>
+                <Form inline>
+                  <FormControl
+                    // onChange={this.handleSearchInput}
+                    // value={this.state.searchText}
+                    type="text"
+                    placeholder="Search"
+                    className="mr-sm-2"
+                  />
+                  <Button  variant="outline-info">
+                    Search
+                  </Button>
+               </Form>
               </Nav>
             </Navbar.Collapse>
           </Container>

@@ -4,6 +4,14 @@ import axios from "axios";
 const CompanyStore = create((set) => ({
   companies: null,
 
+
+ 
+
+  // searchCompanies:async(e) => {
+  //   e.preventDefault();
+  //   const res = await axios.get("http://localhost:4000/api/v1/companies");
+  // },
+
   fetchCompanies: async () => {
     // Fetch the companies
     const res = await axios.get("http://localhost:4000/api/v1/companies");
