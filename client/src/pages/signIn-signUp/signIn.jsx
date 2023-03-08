@@ -4,7 +4,6 @@ import React, { Fragment, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import ConsumerStore from "../../stores/ConsumerStore";
-import CompanyStore from "../../stores/ConsumerStore";
 import SignInMedical from "./signInMedical";
 import SignInCompany from "./signInCompany";
 
