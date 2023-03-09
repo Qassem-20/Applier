@@ -6,51 +6,6 @@ import OpportunityStore from "../../stores/OpportunityStore";
 const AddOpportunity = () => {
   const store = OpportunityStore();
 
-  //use states
-  // const [job_role, setJobRole] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [skills, setSkills] = useState("");
-  // const [job_type, setJobType] = useState("");
-  // const [departments_preferred, setDepartmentPreferred] = useState("");
-  // const [major_preferred, setMajorPreferred] = useState("");
-  // const [availability_seats, setAvailabilitySeats] = useState("");
-  // const [salary, setSalary] = useState("");
-  // const [start_date, setStartDate] = useState("");
-  // const [duration, setDuration] = useState("");
-  // const [city, setCity] = useState("");
-  // const [visibility, setVisibility] = useState("");
-  // const [createdBy, setCreatedBy] = useState("");
-  //
-  // async function createOpportunity(event) {
-  //   event.preventDefault();
-  //   const response = await fetch(
-  //     "http://localhost:4000/api/v1/addOpportunity",
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         job_role,
-  //         description,
-  //         skills,
-  //         job_type,
-  //         departments_preferred,
-  //         major_preferred,
-  //         availability_seats,
-  //         salary,
-  //         start_date,
-  //         duration,
-  //         city,
-  //         visibility,
-  //         createdBy,
-  //       }),
-  //     }
-  //   );
-  //   const data = await response.json();
-  //   console.log("Opportunity Added", data);
-  // }
-
   const createOpportunity = async (e) => {
     e.preventDefault();
 
@@ -71,55 +26,101 @@ const AddOpportunity = () => {
                   className="inputStyling"
                   name="job_role"
                   value={store.values.job_role}
+                  onChange={store.handleChange}
                 />
                 <p className="labelTag">Job Description</p>
                 <input
                   type="text"
                   className="inputStyling"
                   name="description"
-                  value={store.value.description}
+                  value={store.values.description}
+                  onChange={store.handleChange}
                 />
                 <p className="labelTag">Departments looking for</p>
-                <select>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                </select>
-                <p className="labelTag">Major Looking for</p>
-                <select>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
+                <select
+                  className="inputStyling"
+                  name="departments_preferred"
+                  placeholder="duration"
+                  value={store.values.departments_preferred}
+                  onChange={store.handleChange}
+                >
+                  <option>Please select a Departments</option>
+                  <option value="Technical">Technical IT</option>
+                  <option value="Engineer">Engineer</option>
+                  <option value="Management">Management</option>
                 </select>
                 <p className="labelTag">Training Duration</p>
-                <input
-                  type="number"
+                <select
                   className="inputStyling"
                   name="duration"
-                  value={store.value.duration}
+                  placeholder="duration"
+                  value={store.values.duration}
+                  onChange={store.handleChange}
+                >
+                  <option>Please select a duration</option>
+                  <option value="2 months">2 months</option>
+                  <option value="3 months">3 months</option>
+                  <option value="4 months">4 months</option>
+                  <option value="6 months">6 months</option>
+                </select>
+                <p className="labelTag">starting Date</p>
+                <input
+                  type="date"
+                  className="inputStyling"
+                  name="start_date"
+                  value={store.values.start_date}
+                  onChange={store.handleChange}
                 />
               </div>
               <div className="col-sm-12 col-md-6">
-                <p className="labelTag">Type of Job</p>
-                <input type="radio" name="" value="" />
-                <input type="radio" name="" value="" />
-                <input type="radio" name="" value="" />
-                <div>
-                  <label className="labelTag">Paid Opportunity?</label>
-                  <input type="checkbox" name="" value="" />
-                </div>
+                <p className="labelTag">Type of Job:</p>
+                <select
+                  className="inputStyling"
+                  name="job_type"
+                  placeholder="job type"
+                  value={store.values.job_type}
+                  onChange={store.handleChange}
+                >
+                  <option>Please select a type</option>
+                  <option value="on-site">On-site</option>
+                  <option value="remote">Remote</option>
+                  <option value="hybrid">Hybrid</option>
+                </select>
+                <p className="labelTag">Major Looking for:</p>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="major_preferred"
+                  placeholder="Software Engineer"
+                  value={store.values.major_preferred}
+                  onChange={store.handleChange}
+                />
+                <p className="labelTag">Number of seats available:</p>
+                <input
+                  type="number"
+                  className="inputStyling"
+                  name="availability_seats"
+                  value={store.values.availability_seats}
+                  onChange={store.handleChange}
+                />
+                <p className="labelTag">Salary</p>
                 <div>
                   <input
                     type="text"
                     className="inputStyling"
-                    name=""
-                    value=""
+                    name="salary"
+                    value={store.values.salary}
+                    onChange={store.handleChange}
                   />
                 </div>
                 <p className="labelTag">Place of the Job</p>
-                <input type="text" className="inputStyling" name="" value="" />
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="city"
+                  value={store.values.city}
+                  onChange={store.handleChange}
+                />
                 <div>
                   <button className="primaryButton" type="submit">
                     add opportunity

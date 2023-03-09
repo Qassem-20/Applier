@@ -124,8 +124,8 @@ const OpportunityStore = create((set) => ({
     visibility: "",
   },
 
-  registerOpportunity: async (e) => {
-    e.preventDefault();
+  registerOpportunity: async () => {
+
     const { values, opportunities } = OpportunityStore.getState();
 
     // add opportunity

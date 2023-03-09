@@ -32,7 +32,7 @@ const opportunitySchema = new mongoose.Schema(
       type: String,
       required: [true, "Please add the preferred departments"],
       //categorize them by (Computer/engineer/Management)
-      enum: ["Technical", "engineer", "Management"],
+      enum: ["Technical", "Engineer", "Management"],
     },
     major_preferred: {
       type: String,
@@ -53,18 +53,15 @@ const opportunitySchema = new mongoose.Schema(
     },
     start_date: {
       type: String,
-      min: "2023-01-01",
-      /*
-        validate:{
-            validator:validator.isDate,
-            message:'Please provide a valid date'
-        },
-        */
+      required: [true, "Please enter the duration for the opportunity"],
+      minlength: 1,
+      maxlength: 100,
+
     },
     duration: {
       type: String,
       required: [true, "Please enter the duration for the opportunity"],
-      enum: ["2 months", "4 months", "6 months"],
+      enum: ["2 months", "3 months", "4 months", "6 months"],
     },
     city: {
       type: String,

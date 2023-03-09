@@ -146,7 +146,7 @@ const ConsumerStore = create((set) => ({
   },
   checkAuth: async () => {
     try {
-      await axios.get("http://localhost:4000/api/v1/checkAuthConsuemr", {
+      await axios.get("http://localhost:4000/api/v1/checkAuthConsumer", {
         withCredentials: true,
       });
       set({ loggedIn: true });
