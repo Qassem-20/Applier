@@ -2,19 +2,19 @@ import "../../assets/css/signUpSignIn.css";
 import WelcomeNav from "../../components/Nav/welcomeNav";
 import { Col, Row, Container } from "react-bootstrap";
 import React, { Fragment, Component } from "react";
-//import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import MedicalStore from "../../stores/MedicalStore";
 
 const SignUpMedicalStudent = () => {
   const store = MedicalStore();
 
-  //const navigate = useHistory();
+  const navigate = useHistory();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     await store.registerMedical();
     //Navigate
-    //navigate.push("/signIn");
+    navigate.push("/signIn");
   };
   return (
     <Fragment>

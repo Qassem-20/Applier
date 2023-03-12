@@ -2,7 +2,7 @@ import "../../assets/css/signUpSignIn.css";
 import WelcomeNav from "../../components/Nav/welcomeNav";
 import React, { Fragment, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-//import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import ConsumerStore from "../../stores/ConsumerStore";
 import SignInMedical from "./signInMedical";
 import SignInCompany from "./signInCompany";
@@ -15,13 +15,13 @@ const initialState = {
 const SignIn = () => {
   const storeConsumer = ConsumerStore();
 
-  //const history = useHistory();
+  const history = useHistory();
 
   const handleLoginConsumer = async (e) => {
     e.preventDefault();
     await storeConsumer.loginConsumer();
     //Navigate
-    //history.push("/consumerProfile");
+    history.push("/consumerProfile");
   };
 
   const [values, setValues] = useState(initialState);

@@ -1,21 +1,20 @@
 import "../../assets/css/signUpSignIn.css";
 import WelcomeNav from "../../components/Nav/welcomeNav";
-//import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import React, { Fragment } from "react";
 import { Col, Row } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore";
 
-
 const SignUpCompany = () => {
   const store = CompanyStore();
 
-  //const navigate = useHistory();
+  const navigate = useHistory();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     await store.registerCompany();
     //Navigate
-    //navigate.push("/signIn");
+    navigate.push("/signIn");
   };
   return (
     <Fragment>
@@ -51,7 +50,6 @@ const SignUpCompany = () => {
                 className="inputStyling"
                 name="register_number"
                 onChange={store.handleChange}
-
                 value={store.values.register_number}
               />
               <p className="labelTag">
@@ -62,7 +60,6 @@ const SignUpCompany = () => {
                 className="inputStyling"
                 name="organization_website"
                 onChange={store.handleChange}
-
                 value={store.values.organization_website}
               />
 
@@ -72,7 +69,6 @@ const SignUpCompany = () => {
                 className="inputStyling"
                 name="organization_bio"
                 onChange={store.handleChange}
-
                 value={store.values.organization_bio}
               />
             </Col>
@@ -83,7 +79,6 @@ const SignUpCompany = () => {
                 className="inputStyling"
                 name="supervisor_name"
                 onChange={store.handleChange}
-
                 value={store.values.supervisor_name}
               />
               <p className="labelTag">Supervisor email</p>
@@ -92,7 +87,6 @@ const SignUpCompany = () => {
                 className="inputStyling"
                 name="email"
                 onChange={store.handleChange}
-
                 value={store.values.email}
               />
               <p className="labelTag">Supervisor phone</p>
@@ -101,7 +95,6 @@ const SignUpCompany = () => {
                 className="inputStyling"
                 name="supervisor_phone"
                 onChange={store.handleChange}
-
                 value={store.values.supervisor_phone}
               />
               <p className="labelTag">Password</p>
@@ -110,7 +103,6 @@ const SignUpCompany = () => {
                 className="inputStyling"
                 name="password"
                 onChange={store.handleChange}
-
                 value={store.values.password}
               />
               <p className="labelTag">Country</p>
@@ -118,7 +110,6 @@ const SignUpCompany = () => {
                 type="text"
                 name="country"
                 onChange={store.handleChange}
-
                 value={store.values.country}
               />
               <p className="labelTag">City</p>
@@ -126,7 +117,6 @@ const SignUpCompany = () => {
                 type="text"
                 name="city"
                 onChange={store.handleChange}
-
                 value={store.values.city}
               />
             </Col>
