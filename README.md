@@ -5,3 +5,4 @@
 MONGO_URL=mongodb+srv://Qassem:123@applier.dvrqop4.mongodb.net/applier-20?retryWrites=true&w=majority
 SECRET=P7Q9SATBVDWEXGZH2J4M5N6Q8R9SAUCVDWFYGZH3K4M5P7Q8RATBUCWEXF
 }​​
+4- run (npm i), if backend didn't work
