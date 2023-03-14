@@ -8,13 +8,13 @@ import MedicalStore from "../../stores/MedicalStore";
 const SignUpMedicalStudent = () => {
   const store = MedicalStore();
 
-  const navigate = useHistory();
+  const history = useHistory();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     await store.registerMedical();
     //Navigate
-    navigate.push("/signIn");
+    history.goForward("/signIn");
   };
   return (
     <Fragment>

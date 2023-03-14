@@ -8,13 +8,13 @@ import { useHistory } from "react-router-dom";
 const SignUpConsumer = () => {
   const store = consumerStore();
 
-  const navigate = useHistory();
+  const history = useHistory();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     await store.registerConsumer();
     //Navigate
-    navigate.push("/signIn");
+    history.push("/signIn");
   };
   return (
     <Fragment>
@@ -50,15 +50,15 @@ const SignUpConsumer = () => {
               onChange={store.handleChange}
             >
               <option>Please select</option>
-              <option value="Saudi">Saudi</option>
+              <option value="saudi">Saudi</option>
               <option value="foreign">Foreign</option>
             </select>
             <p className="labelTag">Phone Number</p>
             <input
               type="phone"
               className="inputStyling"
-              name="phone_number"
-              value={store.values.phone_number}
+              name="phone"
+              value={store.values.phone}
               onChange={store.handleChange}
             />
             <p className="labelTag">Email</p>

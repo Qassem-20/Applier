@@ -8,13 +8,13 @@ import CompanyStore from "../../stores/CompanyStore";
 const SignUpCompany = () => {
   const store = CompanyStore();
 
-  const navigate = useHistory();
+  const history = useHistory();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     await store.registerCompany();
     //Navigate
-    navigate.push("/signIn");
+    history.push("/signIn");
   };
   return (
     <Fragment>

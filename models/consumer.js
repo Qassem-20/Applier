@@ -27,20 +27,14 @@ const consumerSchema = new mongoose.Schema(
       lowercase: true,
       index: true,
     },
-    phone_number: {
+    phone: {
       type: String,
       required: [true, "Please enter your phone number"],
-      validate: {
-        validator: validator.isMobilePhone,
-        // add more instruction after testing
-        message: "Please provide a valid phone number",
-      },
     },
     nationality: {
       type: String,
       required: [true, "Please enter your nationality"],
-      enum: ["Saudi", "foreign"],
-      default: "Saudi",
+      enum: ["saudi", "foreign"],
     },
     statue: {
       type: String,

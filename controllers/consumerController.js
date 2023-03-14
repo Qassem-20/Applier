@@ -36,7 +36,7 @@ const sortConsumers = async (req, res) => {
 
 const createConsumer = async (req, res) => {
   try {
-    const { name, email, password, phone_number, nationality } = req.body;
+    const { name, email, password, phone, nationality } = req.body;
 
     //hash the password
     const hashedPassword = bcrypt.hashSync(password, 8);
@@ -45,7 +45,7 @@ const createConsumer = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      phone_number,
+      phone,
       nationality,
     });
   } catch (err) {
@@ -111,12 +111,12 @@ function checkAuthConsumer(req, res) {
 const updateConsumer = async (req, res) => {
   const consumerId = req.params.id;
 
-  const { name, email, phone_number, nationality } = req.body;
+  const { name, email, phone, nationality } = req.body;
 
   await Consumer.findByIdAndUpdate(consumerId, {
     name,
     email,
-    phone_number,
+    phone,
     nationality,
   });
 

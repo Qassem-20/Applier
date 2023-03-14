@@ -32,7 +32,7 @@ const ConsumerStore = create((set) => ({
     _id: null,
     name: "",
     email: "",
-    phone_number: "",
+    phone: "",
     nationality: "",
   },
 
@@ -40,7 +40,7 @@ const ConsumerStore = create((set) => ({
     e.preventDefault();
 
     const {
-      updateProfile: { name, email, phone_number, nationality, _id },
+      updateProfile: { name, email, phone, nationality, _id },
       consumers,
     } = ConsumerStore.getState();
 
@@ -50,7 +50,7 @@ const ConsumerStore = create((set) => ({
       {
         name,
         email,
-        phone_number,
+        phone,
         nationality,
       },
       { withCredentials: true }
@@ -69,7 +69,7 @@ const ConsumerStore = create((set) => ({
         _id: null,
         name: "",
         email: "",
-        phone_number: "",
+        phone: "",
         nationality: "",
       },
     });
@@ -79,7 +79,7 @@ const ConsumerStore = create((set) => ({
     name: "",
     email: "",
     password: "",
-    phone_number: "",
+    phone: "",
     nationality: "",
   },
 
@@ -99,7 +99,7 @@ const ConsumerStore = create((set) => ({
         name: "",
         email: "",
         password: "",
-        phone_number: "",
+        phone: "",
         nationality: "",
       },
     });
