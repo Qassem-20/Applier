@@ -65,11 +65,10 @@ padding: 1rem;
     height: 3rem;
 }
 
-
-.logos{
-    width: 22rem;
+.align{
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
     padding-left: 5%;
     padding-right: 5%;
-    text-align:center;
-    text-decoration: none;
 }

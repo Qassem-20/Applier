@@ -1,7 +1,7 @@
 import "../../assets/css/signUpSignIn.css";
 import WelcomeNav from "../../components/Nav/welcomeNav";
 import { Col, Row, Container } from "react-bootstrap";
-import React, { Fragment, Component } from "react";
+import React, { Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import MedicalStore from "../../stores/MedicalStore";
 
@@ -14,7 +14,7 @@ const SignUpMedicalStudent = () => {
     e.preventDefault();
     await store.registerMedical();
     //Navigate
-    history.goForward("/signIn");
+    history.push("/signIn");
   };
   return (
     <Fragment>

@@ -33,93 +33,94 @@ const SignUpCompany = () => {
         <hr />
         <Row>
           <form onSubmit={handleSignUp}>
-            <Col md={6} sm={12}>
-              <p className="labelTag">Organization logo</p>
-              <input type="file" className="inputStyling" name="" value="" />
-              <p className="labelTag">Organization name</p>
-              <input
-                type="text"
-                className="inputStyling"
-                name="organization_name"
-                onChange={store.handleChange}
-                value={store.values.organization_name}
-              />
-              <p className="labelTag">Organization registration number</p>
-              <input
-                type="text"
-                className="inputStyling"
-                name="register_number"
-                onChange={store.handleChange}
-                value={store.values.register_number}
-              />
-              <p className="labelTag">
-                Organization website <span>(if exists)</span>
-              </p>
-              <input
-                type="link"
-                className="inputStyling"
-                name="organization_website"
-                onChange={store.handleChange}
-                value={store.values.organization_website}
-              />
-
-              <p className="labelTag">About organization</p>
-              <input
-                type="text"
-                className="inputStyling"
-                name="organization_bio"
-                onChange={store.handleChange}
-                value={store.values.organization_bio}
-              />
-            </Col>
-            <Col md={6} sm={12}>
-              <p className="labelTag">Supervisor full name</p>
-              <input
-                type="name"
-                className="inputStyling"
-                name="supervisor_name"
-                onChange={store.handleChange}
-                value={store.values.supervisor_name}
-              />
-              <p className="labelTag">Supervisor email</p>
-              <input
-                type="email"
-                className="inputStyling"
-                name="email"
-                onChange={store.handleChange}
-                value={store.values.email}
-              />
-              <p className="labelTag">Supervisor phone</p>
-              <input
-                type="phone"
-                className="inputStyling"
-                name="supervisor_phone"
-                onChange={store.handleChange}
-                value={store.values.supervisor_phone}
-              />
-              <p className="labelTag">Password</p>
-              <input
-                type="password"
-                className="inputStyling"
-                name="password"
-                onChange={store.handleChange}
-                value={store.values.password}
-              />
-              <p className="labelTag">Country</p>
-              <input
-                type="text"
-                name="country"
-                onChange={store.handleChange}
-                value={store.values.country}
-              />
-              <p className="labelTag">City</p>
-              <input
-                type="text"
-                name="city"
-                onChange={store.handleChange}
-                value={store.values.city}
-              />
-            </Col>
+            <Row>
+              <Col md={6} sm={12}>
+                <p className="labelTag">Organization name</p>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="organization_name"
+                  onChange={store.handleChange}
+                  value={store.values.organization_name}
+                />
+                <p className="labelTag">Organization registration number</p>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="register_number"
+                  onChange={store.handleChange}
+                  value={store.values.register_number}
+                />
+                <p className="labelTag">
+                  Organization website <span>(if exists)</span>
+                </p>
+                <input
+                  type="link"
+                  className="inputStyling"
+                  name="organization_website"
+                  onChange={store.handleChange}
+                  value={store.values.organization_website}
+                />
+                <p className="labelTag">About organization</p>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="organization_bio"
+                  onChange={store.handleChange}
+                  value={store.values.organization_bio}
+                />
+                <p className="labelTag">Password</p>
+                <input
+                  type="password"
+                  className="inputStyling"
+                  name="password"
+                  onChange={store.handleChange}
+                  value={store.values.password}
+                />
+              </Col>
+              <Col md={6} sm={12}>
+                <p className="labelTag">Supervisor full name</p>
+                <input
+                  type="name"
+                  className="inputStyling"
+                  name="supervisor_name"
+                  onChange={store.handleChange}
+                  value={store.values.supervisor_name}
+                />
+                <p className="labelTag">Supervisor email</p>
+                <input
+                  type="email"
+                  className="inputStyling"
+                  name="email"
+                  onChange={store.handleChange}
+                  value={store.values.email}
+                />
+                <p className="labelTag">Supervisor phone</p>
+                <input
+                  type="phone"
+                  className="inputStyling"
+                  name="supervisor_phone"
+                  onChange={store.handleChange}
+                  value={store.values.supervisor_phone}
+                />
+                <p className="labelTag">Country</p>
+                <input
+                  type="text"
+                  name="country"
+                  className="inputStyling"
+                  onChange={store.handleChange}
+                  value={store.values.country}
+                />
+                <p className="labelTag">City</p>
+                <input
+                  type="text"
+                  name="city"
+                  className="inputStyling"
+                  onChange={store.handleChange}
+                  value={store.values.city}
+                />
+              </Col>
+            </Row>
             <button className="btn login" type="submit">
               submit
             </button>

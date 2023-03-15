@@ -1,15 +1,17 @@
 import Nav from "../../components/Nav/companyNav";
 import "../../assets/css/company.css";
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import OpportunityStore from "../../stores/OpportunityStore";
-
+import { useHistory } from "react-router-dom";
 const AddOpportunity = () => {
   const store = OpportunityStore();
 
+  const history = useHistory();
   const createOpportunity = async (e) => {
     e.preventDefault();
 
     await store.registerOpportunity();
+    history.push("/companyHomePage");
   };
 
   return (

@@ -57,10 +57,6 @@ const companySchema = new mongoose.Schema(
     phone: {
       type: String,
       required: [false, "Please enter your phone number"],
-      validate: {
-        validator: validator.isMobilePhone,
-        message: "Please provide a valid phone number",
-      },
     },
     country: {
       type: String,

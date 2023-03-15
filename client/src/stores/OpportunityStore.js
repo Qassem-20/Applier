@@ -11,6 +11,13 @@ const OpportunityStore = create((set) => ({
     set({ opportunities: res.data.opportunities });
   },
 
+  fetchOpportunitiesCompany: async () => {
+    // Fetch the opportunities
+    const res = await axios.get("http://localhost:4000/api/v1/opportunitiesCompany");
+    // Set to state
+    set({ opportunities: res.data.opportunities });
+  },
+
   deleteOpportunity: async (_id) => {
     const res = await axios.delete(
       "http://localhost:4000/api/v1/opportunities/" + _id

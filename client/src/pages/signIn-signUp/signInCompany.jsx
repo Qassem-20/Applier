@@ -10,7 +10,7 @@ const SignInCompany = () => {
     e.preventDefault();
     await storeCompany.loginCompany();
     //Navigate
-    navigate.push("/companyHomePage");
+    navigate.push("/");
   };
   return (
     <Col xl={5} sm={12} className="mx-3">

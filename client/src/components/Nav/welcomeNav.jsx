@@ -11,7 +11,7 @@ export class welcomeNav extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav>
-                <Nav.Link href="/welcomePage">Home</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/signIn">SignIn</Nav.Link>
                 <Nav.Link href="/routeSignUp">SignUp</Nav.Link>
               </Nav>
