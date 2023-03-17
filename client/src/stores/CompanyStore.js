@@ -14,14 +14,14 @@ const CompanyStore = create((set) => ({
 
   fetchCompanies: async () => {
     // Fetch the companies
-    const res = await axios.get("http://localhost:4000/api/v1/companies");
+    const res = await axios.get("http://localhost:4000/api/v1/companies",     { withCredentials: true });
     // Set to state
     set({ companies: res.data.companies });
   },
 
   deleteCompany: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/companies/" + _id
+      "http://localhost:4000/api/v1/companies/" + _id,     { withCredentials: true }
     );
 
     const { companies } = CompanyStore.getState();
@@ -75,7 +75,7 @@ const CompanyStore = create((set) => ({
         supervisor_phone,
         country,
         city,
-      }
+      },     { withCredentials: true }
     );
 
     // Update state

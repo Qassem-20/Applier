@@ -6,7 +6,7 @@ const OpportunityStore = create((set) => ({
 
   fetchOpportunities: async () => {
     // Fetch the opportunities
-    const res = await axios.get("http://localhost:4000/api/v1/opportunities");
+    const res = await axios.get("http://localhost:4000/api/v1/opportunities",     { withCredentials: true });
     // Set to state
     set({ opportunities: res.data.opportunities });
   },
@@ -20,7 +20,7 @@ const OpportunityStore = create((set) => ({
 
   deleteOpportunity: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/opportunities/" + _id
+      "http://localhost:4000/api/v1/opportunities/" + _id,     { withCredentials: true }
     );
 
     const { opportunities } = OpportunityStore.getState();
@@ -86,7 +86,7 @@ const OpportunityStore = create((set) => ({
         duration,
         city,
         visibility,
-      }
+      },     { withCredentials: true }
     );
 
     // Update state

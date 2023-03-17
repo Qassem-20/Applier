@@ -15,7 +15,7 @@ const TraineeApplicationStore = create((set) => ({
 
   deleteTraineeApplication: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/traineeApplications/" + _id
+      "http://localhost:4000/api/v1/traineeApplications/" + _id,     { withCredentials: true }
     );
 
     const { traineeApplications } = TraineeApplicationStore.getState();
@@ -74,7 +74,7 @@ const TraineeApplicationStore = create((set) => ({
         cv,
         linkedIn_profile,
         experience,
-      }
+      },     { withCredentials: true }
     );
 
     // Update state
@@ -123,7 +123,7 @@ const TraineeApplicationStore = create((set) => ({
     // add traineeApplication
     const res = await axios.post(
       "http://localhost:4000/api/v1/traineeApplications/registerTraineeApplication",
-      values
+      values,     { withCredentials: true }
     );
     set({
       traineeApplications: [
