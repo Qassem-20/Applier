@@ -62,10 +62,9 @@ const traineeApplicationSchema = new mongoose.Schema(
       ],
       default: "none",
     },
-    createdBy: {
-      type: mongoose.Types.ObjectId,
+    consumer: {
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Consumer",
-      required: [false, "Please provide Consumer"],
     },
   },
   { timestamps: true }

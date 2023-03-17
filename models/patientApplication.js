@@ -9,10 +9,9 @@ const patientApplicationSchema = new mongoose.Schema(
       required: [false],
       default: "none",
     },
-    createdBy: {
-      type: mongoose.Types.ObjectId,
+    consumer: {
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Consumer",
-      required: [false, "Please provide Consumer"],
     },
     /*
     allergies:{
