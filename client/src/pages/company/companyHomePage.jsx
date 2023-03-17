@@ -76,27 +76,6 @@ const CompanyHomePage = () => {
             </div>
           );
         })}
-      <div className="row opportunitiesT">
-        <span className="col-2 opportunitiesTags">assurance</span>
-        <span className="col-3 opportunitiesTags">fvervrevevthtaeheheh</span>
-        <span className="col-1 opportunitiesTags">6/20</span>
-        <span className="col-1 opportunitiesTags">duration</span>
-        <span className="col-2 opportunitiesTags">10/01/2022</span>
-        <div className="col-1 d-flex justify-content-center">
-          <a href="/appliedTrainee">
-            <img className="infoImg" src={EyeIcon} alt="view Applications" />
-          </a>
-        </div>
-        <div className="col-1 d-flex justify-content-center">
-          <a href="/editOpportunity">
-            <img
-              className="infoImg"
-              src={EditOpportunities}
-              alt="Edit Opportunities"
-            />
-          </a>
-        </div>
-      </div>
     </Fragment>
   );
 };

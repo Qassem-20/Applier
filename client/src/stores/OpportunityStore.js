@@ -13,7 +13,7 @@ const OpportunityStore = create((set) => ({
 
   fetchOpportunitiesCompany: async () => {
     // Fetch the opportunities
-    const res = await axios.get("http://localhost:4000/api/v1/opportunitiesCompany");
+    const res = await axios.get("http://localhost:4000/api/v1/opportunitiesCompany",     { withCredentials: true });
     // Set to state
     set({ opportunities: res.data.opportunities });
   },
@@ -128,20 +128,19 @@ const OpportunityStore = create((set) => ({
     start_date: "",
     duration: "",
     city: "",
-    visibility: "",
   },
 
   registerOpportunity: async () => {
 
-    const { values, opportunities } = OpportunityStore.getState();
+    const { values } = OpportunityStore.getState();
 
     // add opportunity
     const res = await axios.post(
       "http://localhost:4000/api/v1/opportunities/registerOpportunity",
-      values
+      values,      { withCredentials: true }
+
     );
     set({
-      opportunities: [...opportunities, res.data.opportunity],
       values: {
         job_role: "",
         description: "",
@@ -154,7 +153,6 @@ const OpportunityStore = create((set) => ({
         start_date: "",
         duration: "",
         city: "",
-        visibility: "",
       },
     });
   },

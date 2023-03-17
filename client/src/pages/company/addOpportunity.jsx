@@ -38,6 +38,14 @@ const AddOpportunity = () => {
                   value={store.values.description}
                   onChange={store.handleChange}
                 />
+                <p className="labelTag">skills</p>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="skills"
+                  value={store.values.skills}
+                  onChange={store.handleChange}
+                />
                 <p className="labelTag">Departments looking for</p>
                 <select
                   className="inputStyling"

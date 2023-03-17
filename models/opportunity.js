@@ -75,15 +75,13 @@ const opportunitySchema = new mongoose.Schema(
       enum: ["hidden", "shown"],
       default: "shown",
     },
-    createdBy: {
-      type: mongoose.Types.ObjectId,
+    company: {
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Company",
-      required: [false, "Please provide Company"],
     },
-    appliedBy: {
-      type: mongoose.Types.ObjectId,
+    traineeApplication: {
+      type: mongoose.Schema.Types.ObjectId,
       ref: "traineeApplication",
-      required: [false, "Please provide trainee"],
     },
   },
   { timestamps: true }
