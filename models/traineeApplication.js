@@ -3,8 +3,8 @@ import validator from "validator";
 
 const traineeApplicationSchema = new mongoose.Schema(
   {
-    // -activated by (id_consumer)
     university: {
+      required: [false, "Provide your major"],
       type: String,
       minlength: 3,
       maxlength: 50,
