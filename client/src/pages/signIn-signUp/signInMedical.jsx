@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import MedicalStore from "../../stores/MedicalStore";
-import ApplierButton from "../../components/buttons/applierButton";
+import ApplierButton from "../../components/applierComponents/applierButton";
 
 const SignInMedical = () => {
   const storeMedical = MedicalStore();

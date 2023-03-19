@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import React, { Fragment } from "react";
 import { Col, Row } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore";
-import ApplierButton from "../../components/buttons/applierButton";
+import ApplierButton from "../../components/applierComponents/applierButton";
 
 const SignUpCompany = () => {
   const store = CompanyStore();

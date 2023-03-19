@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import CompanyStore from "../../stores/CompanyStore";
-import ApplierButton from "../../components/buttons/applierButton";
+import ApplierButton from "../../components/applierComponents/applierButton";
 
 const SignInCompany = () => {
   const storeCompany = CompanyStore();

@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import ConsumerStore from "../../stores/ConsumerStore";
 import SignInMedical from "./signInMedical";
 import SignInCompany from "./signInCompany";
-import ApplierButton from "../../components/buttons/applierButton";
+import ApplierButton from "../../components/applierComponents/applierButton";
 
 const initialState = {
   isCompany: true,
