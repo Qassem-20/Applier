@@ -11,16 +11,16 @@ const Consumers = () => {
     store.fetchConsumers();
   }, []);
 
-  const handleSearch = async (e) =>{
+  const handleSearch = async (e) => {
     e.preventDefault();
     await store.searchConsumers();
-  }
+  };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     await store.registerConsumer();
     //Navigate
-    history.push("/signIn");
+    //history.push("/signIn");
   };
 
   return (
@@ -29,40 +29,39 @@ const Consumers = () => {
       <Container className="mt-3 mb-2">
         <h1>Consumers</h1>
         <Row className="m-auto pt-3 pb-1">
-
-        <form onSubmit={handleSearch}>
-          <Col xl={3} md={6} sm={12}>
-            <input
-              className="inputStyling"
-              type="search"
-              name=""
-              value={store.values.name}
-              onChange={store.handleChange}
-              placeholder="Phone Number "
-            />
-          </Col>
-          <Col xl={3} md={6} sm={12}>
-            <input
-              className="inputStyling"
-              type="search"
-              name=""
-              value=""
-              placeholder="Trainee Name"
-            />
-          </Col>
-          <Col xl={3} md={6} sm={12}>
-            <input
-              className="inputStyling"
-              type="date"
-              name=""
-              value=""
-              placeholder="Joined Date"
-            />
-          </Col>
-          <button className="btn " type="submit">
+          <form onSubmit={handleSearch}>
+            <Col xl={3} md={6} sm={12}>
+              <input
+                className="inputStyling"
+                type="search"
+                name=""
+                value={store.values.name}
+                onChange={store.handleChange}
+                placeholder="Phone Number "
+              />
+            </Col>
+            <Col xl={3} md={6} sm={12}>
+              <input
+                className="inputStyling"
+                type="search"
+                name=""
+                value=""
+                placeholder="Trainee Name"
+              />
+            </Col>
+            <Col xl={3} md={6} sm={12}>
+              <input
+                className="inputStyling"
+                type="date"
+                name=""
+                value=""
+                placeholder="Joined Date"
+              />
+            </Col>
+            <button className="btn " type="submit">
               submit
             </button>
-        </form>
+          </form>
 
           <Col xl={3} md={6} sm={12}>
             <select className="inputStyling" name="cars" placeholder="Status">
