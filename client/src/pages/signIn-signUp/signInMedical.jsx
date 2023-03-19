@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import MedicalStore from "../../stores/MedicalStore";
-import LogIn from "../../components/buttons/LogInButton";
+import ApplierButton from "../../components/buttons/applierButton";
 
 const SignInMedical = () => {
   const storeMedical = MedicalStore();
@@ -39,7 +39,7 @@ const SignInMedical = () => {
         </div>
         <Row>
           <Col>
-            <LogIn />
+            <ApplierButton buttonType="Log In" />
           </Col>
           <Col>
             <a href="/ForgottenPassword">Forget Password?</a>

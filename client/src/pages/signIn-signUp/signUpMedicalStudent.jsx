@@ -4,7 +4,7 @@ import { Col, Row, Container } from "react-bootstrap";
 import React, { Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import MedicalStore from "../../stores/MedicalStore";
-import SignUp from "../../components/buttons/SignUpButton";
+import ApplierButton from "../../components/buttons/applierButton";
 
 const SignUpMedicalStudent = () => {
   const store = MedicalStore();
@@ -124,7 +124,7 @@ const SignUpMedicalStudent = () => {
                 />
               </Col>
             </Row>
-            <SignUp />
+            <ApplierButton buttonType="Sign Up" />
           </form>
         </Container>
       </div>

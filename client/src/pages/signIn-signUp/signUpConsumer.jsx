@@ -4,7 +4,7 @@ import { Col, Row, Container } from "react-bootstrap";
 import React, { Fragment } from "react";
 import consumerStore from "../../stores/ConsumerStore.js";
 import { useHistory } from "react-router-dom";
-import SignUp from "../../components/buttons/SignUpButton";
+import ApplierButton from "../../components/buttons/applierButton";
 
 const SignUpConsumer = () => {
   const store = consumerStore();
@@ -79,7 +79,7 @@ const SignUpConsumer = () => {
               onChange={store.handleChange}
             />
             <br />
-            <SignUp />
+            <ApplierButton buttonType="Sign Up" />
           </Container>
         </form>
       </div>
