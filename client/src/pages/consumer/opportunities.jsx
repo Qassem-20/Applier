@@ -38,8 +38,8 @@ const Opportunities = () => {
         </div>
       </section>
       <div className="row opportunitiesTag">
-        <span className="col-3 opportunitiesMainTags">Company</span>
         <span className="col-3 opportunitiesMainTags">Role</span>
+        <span className="col-3 opportunitiesMainTags">major</span>
         <span className="col-3 opportunitiesMainTags">Statues</span>
         <span className="col-3 opportunitiesMainTags">info</span>
       </div>

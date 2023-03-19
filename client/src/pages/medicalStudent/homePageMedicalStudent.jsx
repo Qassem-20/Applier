@@ -1,18 +1,18 @@
 import "../../assets/css/medicalStudent.css";
-import React, { Fragment } from "react";
+import MedicalStore from "../../stores/MedicalStore";
+import React, { Fragment, useEffect } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 
-const homePageMedicalStudent = () => {
+const HomePageMedicalStudent = () => {
+  const store = MedicalStore();
+
+  useEffect(() => {}, []);
   return (
     <Fragment>
       <Container>
         <Row>
           <Col>
-            <img src="" alt="Profile Image" />
-          </Col>
-
-          <Col>
-            <p>University Name</p>
+            <p>Nationality:</p>
             <p>Major</p>
             <p>City</p>
           </Col>
@@ -44,4 +44,4 @@ const homePageMedicalStudent = () => {
   );
 };
 
-export default homePageMedicalStudent;
+export default HomePageMedicalStudent;

@@ -87,7 +87,7 @@ const AppRoute = () => {
       <Route path="/medicalStudents">
       <RequireAuthConsumer>
         <MedicalStudents />
-</RequireAuthConsumer>
+      </RequireAuthConsumer>
       </Route>
 
       <Route path="/addOpportunity">
@@ -122,7 +122,7 @@ const AppRoute = () => {
       </Route>
 
       <Route path="/medicalHomePage">
-      <RequireAuthMedical>
+        <RequireAuthMedical>
         <MedicalHomePage />
         </RequireAuthMedical>
       </Route>
