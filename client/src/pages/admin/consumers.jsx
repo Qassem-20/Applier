@@ -11,18 +11,33 @@ const Consumers = () => {
     store.fetchConsumers();
   }, []);
 
+  const handleSearch = async (e) =>{
+    e.preventDefault();
+    await store.searchConsumers();
+  }
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    await store.registerConsumer();
+    //Navigate
+    history.push("/signIn");
+  };
+
   return (
     <Fragment>
       <AdminNav />
       <Container className="mt-3 mb-2">
         <h1>Consumers</h1>
         <Row className="m-auto pt-3 pb-1">
+
+        <form onSubmit={handleSearch}>
           <Col xl={3} md={6} sm={12}>
             <input
               className="inputStyling"
               type="search"
               name=""
-              value=""
+              value={store.values.name}
+              onChange={store.handleChange}
               placeholder="Phone Number "
             />
           </Col>
@@ -44,6 +59,11 @@ const Consumers = () => {
               placeholder="Joined Date"
             />
           </Col>
+          <button className="btn " type="submit">
+              submit
+            </button>
+        </form>
+
           <Col xl={3} md={6} sm={12}>
             <select className="inputStyling" name="cars" placeholder="Status">
               <option value="saab">Null</option>

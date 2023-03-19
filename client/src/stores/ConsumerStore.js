@@ -1,8 +1,16 @@
 import { create } from "zustand";
+import { devtools, persist } from "zustand/middleware";
+
 import axios from "axios";
 
 const ConsumerStore = create((set) => ({
   consumers: null,
+
+  // devtools(
+  //   _persist(ConsumerStore, {
+  //     name: "consumers",
+  //   })
+  // ),
 
   fetchConsumers: async () => {
     // Fetch the consumers
@@ -13,9 +21,18 @@ const ConsumerStore = create((set) => ({
     set({ consumers: res.data.consumers });
   },
 
+  searchConsumers: async(_name) =>{
+
+    const res = await axios.get("http://localhost:4000/api/v1/consumers/" + _name);
+
+    const { consumers } = ConsumerStore.getState();
+    set({ consumers: res.data.consumers });
+
+  },
+
   deleteConsumer: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/consumers/" + _id,
+      "http://localhost:4000/api/v1//findConsumer/" + _id,
       { withCredentials: true }
     );
 
@@ -160,6 +177,8 @@ const ConsumerStore = create((set) => ({
     });
     set({ loggedIn: false });
   },
+
 }));
+
 
 export default ConsumerStore;
