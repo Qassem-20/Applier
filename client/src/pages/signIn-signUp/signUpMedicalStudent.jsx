@@ -5,6 +5,7 @@ import React, { Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import MedicalStore from "../../stores/MedicalStore";
 import ApplierButton from "../../components/applierComponents/applierButton";
+import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 
 const SignUpMedicalStudent = () => {
   const store = MedicalStore();
@@ -35,40 +36,39 @@ const SignUpMedicalStudent = () => {
         <Container>
           <form onSubmit={handleSignUp}>
             <Row>
-              <Col md={6}>
-                <p className="labelTag">Full name</p>
-                <input
+              <Col md={6} sm={12}>
+                <ApplierInputForm
+                  label="Full name"
                   type="name"
-                  className="inputStyling"
                   name="name"
                   value={store.values.name}
                   onChange={store.handleChange}
                 />
-                <p className="labelTag">Phone Number</p>
-                <input
+
+                <ApplierInputForm
+                  label="Phone Number"
                   type="phone"
-                  className="inputStyling"
                   name="phone_number"
                   value={store.values.phone_number}
                   onChange={store.handleChange}
                 />
-                <p className="labelTag">Email</p>
-                <input
+
+                <ApplierInputForm
+                  label="Email"
                   type="email"
-                  className="inputStyling"
                   name="email"
                   value={store.values.email}
                   onChange={store.handleChange}
                 />
-                <p className="labelTag">Password</p>
-                <input
+
+                <ApplierInputForm
+                  label="Password"
                   type="password"
-                  className="inputStyling"
                   name="password"
                   value={store.values.password}
                   onChange={store.handleChange}
                 />
-                <p className="labelTag">Nationality</p>
+                <label>Nationality</label>
                 <select
                   className="inputStyling"
                   name="nationality"
@@ -81,11 +81,11 @@ const SignUpMedicalStudent = () => {
                   <option value="foreign">Foreign</option>
                 </select>
               </Col>
-              <Col md={6}>
-                <p className="labelTag">Gender</p>
+              <Col md={6} sm={12}>
+                <label>Gender</label>
                 <select
-                  className="inputStyling"
                   name="gender"
+                  className="inputStyling"
                   placeholder="gender"
                   value={store.values.gender}
                   onChange={store.handleChange}
@@ -94,15 +94,14 @@ const SignUpMedicalStudent = () => {
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                 </select>
-                <p className="labelTag">city</p>
-                <input
+                <ApplierInputForm
+                  label="City"
                   type="text"
-                  className="inputStyling"
                   name="city"
                   value={store.values.city}
                   onChange={store.handleChange}
                 />
-                <p className="labelTag">Major</p>
+                <label>Major</label>
                 <select
                   className="inputStyling"
                   name="main_major"
@@ -114,10 +113,10 @@ const SignUpMedicalStudent = () => {
                   <option value="Doctor">Doctor</option>
                   <option value="Dentist">Dentist</option>
                 </select>
-                <p className="labelTag">Specialty</p>
-                <input
+
+                <ApplierInputForm
+                  label="Specialty"
                   type="text"
-                  className="inputStyling"
                   name="specialty"
                   value={store.values.specialty}
                   onChange={store.handleChange}

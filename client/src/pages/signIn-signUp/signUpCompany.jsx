@@ -5,6 +5,7 @@ import React, { Fragment } from "react";
 import { Col, Row } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore";
 import ApplierButton from "../../components/applierComponents/applierButton";
+import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 
 const SignUpCompany = () => {
   const store = CompanyStore();
@@ -36,87 +37,82 @@ const SignUpCompany = () => {
           <form onSubmit={handleSignUp}>
             <Row>
               <Col md={6} sm={12}>
-                <p className="labelTag">Organization name</p>
-                <input
+                <ApplierInputForm
                   type="text"
-                  className="inputStyling"
+                  label="Organization name"
                   name="organization_name"
                   onChange={store.handleChange}
                   value={store.values.organization_name}
                 />
-                <p className="labelTag">Organization registration number</p>
-                <input
+
+                <ApplierInputForm
                   type="text"
-                  className="inputStyling"
+                  label="Organization registration number"
                   name="register_number"
                   onChange={store.handleChange}
                   value={store.values.register_number}
                 />
-                <p className="labelTag">
-                  Organization website <span>(if exists)</span>
-                </p>
-                <input
+
+                <ApplierInputForm
                   type="link"
-                  className="inputStyling"
+                  label="Organization website <span>(if exists)</span>"
                   name="organization_website"
                   onChange={store.handleChange}
                   value={store.values.organization_website}
                 />
-                <p className="labelTag">About organization</p>
-                <input
+
+                <ApplierInputForm
                   type="text"
-                  className="inputStyling"
+                  label="About organization"
                   name="organization_bio"
                   onChange={store.handleChange}
                   value={store.values.organization_bio}
                 />
-                <p className="labelTag">Password</p>
-                <input
+
+                <ApplierInputForm
                   type="password"
-                  className="inputStyling"
+                  label="Password"
                   name="password"
                   onChange={store.handleChange}
                   value={store.values.password}
                 />
               </Col>
               <Col md={6} sm={12}>
-                <p className="labelTag">Supervisor full name</p>
-                <input
+                <ApplierInputForm
                   type="name"
-                  className="inputStyling"
+                  label="Supervisor full name"
                   name="supervisor_name"
                   onChange={store.handleChange}
                   value={store.values.supervisor_name}
                 />
-                <p className="labelTag">Supervisor email</p>
-                <input
+
+                <ApplierInputForm
                   type="email"
-                  className="inputStyling"
+                  label="Supervisor email"
                   name="email"
                   onChange={store.handleChange}
                   value={store.values.email}
                 />
-                <p className="labelTag">Supervisor phone</p>
-                <input
+                <ApplierInputForm
                   type="phone"
-                  className="inputStyling"
+                  label="Supervisor phone"
                   name="supervisor_phone"
                   onChange={store.handleChange}
                   value={store.values.supervisor_phone}
                 />
-                <p className="labelTag">Country</p>
-                <input
+
+                <ApplierInputForm
                   type="text"
                   name="country"
-                  className="inputStyling"
+                  label="Country"
                   onChange={store.handleChange}
                   value={store.values.country}
                 />
-                <p className="labelTag">City</p>
-                <input
+
+                <ApplierInputForm
                   type="text"
                   name="city"
-                  className="inputStyling"
+                  label="City"
                   onChange={store.handleChange}
                   value={store.values.city}
                 />

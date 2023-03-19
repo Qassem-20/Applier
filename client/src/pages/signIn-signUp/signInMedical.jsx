@@ -3,6 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import MedicalStore from "../../stores/MedicalStore";
 import ApplierButton from "../../components/applierComponents/applierButton";
+import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 
 const SignInMedical = () => {
   const storeMedical = MedicalStore();
@@ -17,26 +18,24 @@ const SignInMedical = () => {
     <Col xl={5} sm={12} className="mx-3">
       <h4>Medical Student</h4>
       <form onSubmit={handleLoginMedical}>
-        <p className="labelTag">Email</p>
-        <input
-          className="inputStyling"
-          type=""
+        <ApplierInputForm
+          label="Email"
+          type="email"
           placeholder="dr.Faisal@gmail.com"
           name="email"
           value={storeMedical.loginFormMedical.email}
           onChange={storeMedical.handleChangeLogin}
         />
-        <div>
-          <p className="labelTag">Password</p>
-          <input
-            className="inputStyling"
-            type="password"
-            placeholder="********"
-            name="password"
-            value={storeMedical.loginFormMedical.password}
-            onChange={storeMedical.handleChangeLogin}
-          />
-        </div>
+
+        <ApplierInputForm
+          label="Password"
+          type="password"
+          placeholder="********"
+          name="password"
+          value={storeMedical.loginFormMedical.password}
+          onChange={storeMedical.handleChangeLogin}
+        />
+
         <Row>
           <Col>
             <ApplierButton buttonType="Log In" />

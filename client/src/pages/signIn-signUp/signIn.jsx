@@ -1,4 +1,3 @@
-import "../../assets/css/signUpSignIn.css";
 import WelcomeNav from "../../components/Nav/welcomeNav";
 import React, { Fragment, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
@@ -7,6 +6,7 @@ import ConsumerStore from "../../stores/ConsumerStore";
 import SignInMedical from "./signInMedical";
 import SignInCompany from "./signInCompany";
 import ApplierButton from "../../components/applierComponents/applierButton";
+import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 
 const initialState = {
   isCompany: true,
@@ -58,26 +58,24 @@ const SignIn = () => {
               <Col xl={5} sm={12} className="mx-3">
                 <h4>User</h4>
                 <form onSubmit={handleLoginConsumer}>
-                  <p className="labelTag">Email</p>
-                  <input
-                    className="inputStyling"
-                    type=""
+                  <ApplierInputForm
+                    label="Email"
+                    type="email"
                     placeholder="Fouad28@gmail.com"
                     name="email"
                     value={storeConsumer.loginFormConsumer.email}
                     onChange={storeConsumer.handleChangeLogin}
                   />
-                  <div>
-                    <p className="labelTag">Password</p>
-                    <input
-                      className="inputStyling"
-                      type="password"
-                      placeholder="**********"
-                      name="password"
-                      value={storeConsumer.loginFormConsumer.password}
-                      onChange={storeConsumer.handleChangeLogin}
-                    />
-                  </div>
+
+                  <ApplierInputForm
+                    label="Password"
+                    type="password"
+                    placeholder="**********"
+                    name="password"
+                    value={storeConsumer.loginFormConsumer.password}
+                    onChange={storeConsumer.handleChangeLogin}
+                  />
+
                   <Row>
                     <Col>
                       <ApplierButton buttonType="Log In" />

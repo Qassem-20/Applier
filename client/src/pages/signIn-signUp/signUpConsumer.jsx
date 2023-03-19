@@ -5,6 +5,7 @@ import React, { Fragment } from "react";
 import consumerStore from "../../stores/ConsumerStore.js";
 import { useHistory } from "react-router-dom";
 import ApplierButton from "../../components/applierComponents/applierButton";
+import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 
 const SignUpConsumer = () => {
   const store = consumerStore();
@@ -34,15 +35,14 @@ const SignUpConsumer = () => {
         <hr />
         <form onSubmit={handleSignUp}>
           <Container>
-            <p className="labelTag">Full name</p>
-            <input
+            <ApplierInputForm
+              label="Full name"
               type="name"
-              className="inputStyling"
               name="name"
               value={store.values.name}
               onChange={store.handleChange}
             />
-            <p className="labelTag">Nationality</p>
+            <label>Nationality</label>
             <select
               className="inputStyling"
               name="nationality"
@@ -54,26 +54,26 @@ const SignUpConsumer = () => {
               <option value="saudi">Saudi</option>
               <option value="foreign">Foreign</option>
             </select>
-            <p className="labelTag">Phone Number</p>
-            <input
+
+            <ApplierInputForm
+              label="Phone Number"
               type="phone"
-              className="inputStyling"
               name="phone"
               value={store.values.phone}
               onChange={store.handleChange}
             />
-            <p className="labelTag">Email</p>
-            <input
+
+            <ApplierInputForm
+              label="Email"
               type="email"
-              className="inputStyling"
               name="email"
               value={store.values.email}
               onChange={store.handleChange}
             />
-            <p className="labelTag">Password</p>
-            <input
+
+            <ApplierInputForm
+              label="Password"
               type="password"
-              className="inputStyling"
               name="password"
               value={store.values.password}
               onChange={store.handleChange}
