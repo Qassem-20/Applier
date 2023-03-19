@@ -4,6 +4,7 @@ import { Col, Row, Container } from "react-bootstrap";
 import React, { Fragment } from "react";
 import consumerStore from "../../stores/ConsumerStore.js";
 import { useHistory } from "react-router-dom";
+import SignUp from "../../components/buttons/SignUpButton";
 
 const SignUpConsumer = () => {
   const store = consumerStore();
@@ -27,7 +28,7 @@ const SignUpConsumer = () => {
           </Col>
           <Col>
             <span> Already have an account? </span>
-            <a href="/signIn">SignIn</a>
+            <a href="/signIn">Sign In</a>
           </Col>
         </Row>
         <hr />
@@ -78,9 +79,7 @@ const SignUpConsumer = () => {
               onChange={store.handleChange}
             />
             <br />
-            <button className="btn login" type="submit">
-              submit
-            </button>
+            <SignUp />
           </Container>
         </form>
       </div>

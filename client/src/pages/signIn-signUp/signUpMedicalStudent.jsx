@@ -4,6 +4,7 @@ import { Col, Row, Container } from "react-bootstrap";
 import React, { Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import MedicalStore from "../../stores/MedicalStore";
+import SignUp from "../../components/buttons/SignUpButton";
 
 const SignUpMedicalStudent = () => {
   const store = MedicalStore();
@@ -27,7 +28,7 @@ const SignUpMedicalStudent = () => {
           </Col>
           <Col>
             <span> Already have an account? </span>
-            <a href="/signIn">SignIn</a>
+            <a href="/signIn">Sign In</a>
           </Col>
         </Row>
         <hr />
@@ -123,9 +124,7 @@ const SignUpMedicalStudent = () => {
                 />
               </Col>
             </Row>
-            <button className="btn login" type="submit">
-              submit
-            </button>
+            <SignUp />
           </form>
         </Container>
       </div>

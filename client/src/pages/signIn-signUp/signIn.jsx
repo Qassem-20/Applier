@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import ConsumerStore from "../../stores/ConsumerStore";
 import SignInMedical from "./signInMedical";
 import SignInCompany from "./signInCompany";
+import LogIn from "../../components/buttons/LogInButton";
 
 const initialState = {
   isCompany: true,
@@ -79,20 +80,19 @@ const SignIn = () => {
                   </div>
                   <Row>
                     <Col>
-                      <button className="btn login" type="submit">
-                        logIn
-                      </button>
+                      <LogIn />
                     </Col>
 
                     <Col>
                       <a href="/ForgottenPassword">Forget Password?</a>
+
+                      <div className="alignmentCenter mt-2">
+                        <a href="/signUpConsumer">
+                          Don’t have an Account? Register
+                        </a>
+                      </div>
                     </Col>
                   </Row>
-                  <div className="alignmentCenter mt-2">
-                    <a href="/signUpConsumer">
-                      Don’t have an Account? Register
-                    </a>
-                  </div>
                 </form>
               </Col>
 

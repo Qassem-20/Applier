@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import React, { Fragment } from "react";
 import { Col, Row } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore";
+import SignUp from "../../components/buttons/SignUpButton";
 
 const SignUpCompany = () => {
   const store = CompanyStore();
@@ -27,7 +28,7 @@ const SignUpCompany = () => {
           </Col>
           <Col>
             <span> Already have an account? </span>
-            <a href="/signIn">SignIn</a>
+            <a href="/signIn">Sign In</a>
           </Col>
         </Row>
         <hr />
@@ -121,9 +122,7 @@ const SignUpCompany = () => {
                 />
               </Col>
             </Row>
-            <button className="btn login" type="submit">
-              submit
-            </button>
+            <SignUp />
           </form>
         </Row>
       </div>

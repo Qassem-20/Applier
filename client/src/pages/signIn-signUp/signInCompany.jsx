@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import CompanyStore from "../../stores/CompanyStore";
+import LogIn from "../../components/buttons/LogInButton";
 
 const SignInCompany = () => {
   const storeCompany = CompanyStore();
@@ -38,17 +39,15 @@ const SignInCompany = () => {
         </div>
         <Row>
           <Col>
-            <button className="btn login" type="submit">
-              LogIn
-            </button>
+            <LogIn />
           </Col>
           <Col>
             <a href="/ForgottenPassword">Forget Password?</a>
+            <div className="mt-2">
+              <a href="/signUpCompany">Don’t have an Account? Register</a>
+            </div>
           </Col>
         </Row>
-        <div className="alignmentCenter mt-2">
-          <a href="/signUpConsumer">Don’t have an Account? Register</a>
-        </div>
       </form>
     </Col>
   );

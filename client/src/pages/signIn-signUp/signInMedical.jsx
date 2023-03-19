@@ -2,6 +2,8 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import MedicalStore from "../../stores/MedicalStore";
+import LogIn from "../../components/buttons/LogInButton";
+
 const SignInMedical = () => {
   const storeMedical = MedicalStore();
   const navigate = useHistory();
@@ -37,17 +39,18 @@ const SignInMedical = () => {
         </div>
         <Row>
           <Col>
-            <button className="btn login" type="submit">
-              LogIn
-            </button>
+            <LogIn />
           </Col>
           <Col>
             <a href="/ForgottenPassword">Forget Password?</a>
+
+            <div className="mt-2">
+              <a href="/signUpMedicalStudent">
+                Don’t have an Account? Register
+              </a>
+            </div>
           </Col>
         </Row>
-        <div className="alignmentCenter mt-2">
-          <a href="/signUpMedicalStudent">Don’t have an Account? Register</a>
-        </div>
       </form>
     </Col>
   );
