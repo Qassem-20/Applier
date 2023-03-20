@@ -6,11 +6,6 @@ import axios from "axios";
 const ConsumerStore = create((set) => ({
   consumers: null,
 
-  // devtools(
-  //   _persist(ConsumerStore, {
-  //     name: "consumers",
-  //   })
-  // ),
 
   fetchConsumers: async () => {
     // Fetch the consumers
@@ -21,11 +16,38 @@ const ConsumerStore = create((set) => ({
     set({ consumers: res.data.consumers });
   },
 
-  searchConsumers: async(_name) =>{
+  sortConsumer:async () =>{
 
-    const res = await axios.get("http://localhost:4000/api/v1/consumers/" + _name);
+    const res = await axios.get("http://localhost:4000/api/v1/sortConsumers")
 
-    const { consumers } = ConsumerStore.getState();
+    set({consumers : res.data.consumers})
+  },
+
+
+  searchForm: {
+    phone: "",
+    name: "",
+  },
+
+  handleSearchForm: async (e) => {
+    const { name, value } = e.target;
+
+    set((state) => {
+      return {
+        searchForm: {
+          ...state.searchForm,
+          [name]: value,
+        },
+      };
+    });
+  },
+
+  searchConsumers: async() =>{
+
+    const { searchForm } = ConsumerStore.getState();
+
+    const res = await axios.get("http://localhost:4000/api/v1//findConsumer/" + searchForm);
+
     set({ consumers: res.data.consumers });
 
   },
@@ -44,6 +66,8 @@ const ConsumerStore = create((set) => ({
     });
     set({ consumers: newConsumers });
   },
+
+
 
   updateProfile: {
     _id: null,
@@ -122,18 +146,7 @@ const ConsumerStore = create((set) => ({
     });
   },
 
-  handleChangeSearch: async (e) => {
-    const { name, value } = e.target;
 
-    set((state) => {
-      return {
-        values: {
-          ...state.values,
-          [name]: value,
-        },
-      };
-    });
-  },
 
   handleChange: async (e) => {
     const { name, value } = e.target;

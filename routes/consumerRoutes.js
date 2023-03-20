@@ -20,6 +20,7 @@ import {
   updateConsumer,
   deleteConsumer,
   checkAuthConsumer,
+  findAll,
   sortConsumers,
   findConsumer,
 } from "../controllers/consumerController.js";
@@ -34,5 +35,6 @@ router.route("/consumers/:id").put(requireAuthConsumer, updateConsumer);
 router.route("/consumers/:id").delete(deleteConsumer);
 router.route("/sortConsumers").get(sortConsumers);
 router.route("/findConsumer/:name").get(findConsumer);
+router.route("/findAll/:name").get(findAll);
 
 export default router;

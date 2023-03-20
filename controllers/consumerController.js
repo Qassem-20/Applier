@@ -18,18 +18,40 @@ const fetchConsumer = async (req, res) => {
   res.json({ consumer });
 };
 
+const findAll = async (req, res) => {
+
+  const name = req.params.name;
+    const consumer = await Consumer.find({name:{ $regex:'.*'+name+'.*'} });
+
+
+  res.json({ consumer });
+};
+
+
 const findConsumer =async (req, res) =>{
-  try {
-    const companyName = req.params.name;
-    const findName = await Consumer.find({name:{ $regex:'.*'+companyName+'.*'} });
-    res.json(findName);
-  } catch (error) {
-    res.json({message: error});        
-  }
+  // try {
+  //   const consumerName = req.params.name;
+  //   const { name, phone } = req.body;
+
+  //   const consumer = await Consumer.find({ name, phone });
+
+  //   if (!consumer) return res.sendStatus("not found");
+
+  //   // const findName = await Consumer.find({name:{ $regex:'.*'+consumerName+'.*'} });
+  //   res.json(consumer);
+  // } catch (error) {
+  //   res.json({message: error});        
+  // }
+
+  const name = req.params.name;
+  const consumer = await Consumer.find({name:{ $regex:'.*'+name+'.*'} });
+
+
+res.json({ consumer });
 }
 
 const sortConsumers = async (req, res) => {
-  const consumers = await Consumer.find().sort({ name: 1 });
+  const consumers = await Consumer.find().sort({ createdAt: -1 });
 
   res.json({ consumers });
 };
@@ -159,4 +181,5 @@ export {
   suspendConsumer,
   sortConsumers,
   findConsumer,
+  findAll,
 };
