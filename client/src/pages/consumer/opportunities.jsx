@@ -3,10 +3,18 @@ import InfoIcon from "../../assets/images/infoIcon.png";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import OpportunityStore from "../../stores/OpportunityStore";
 
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 const Opportunities = () => {
   const opportunityStore = OpportunityStore();
+
+  const [Applied, setSuspended] = useState(false);
+
+  const handleSuspensionUpdate = () => {
+    setSuspended(!Applied);
+    // Make the update request to your API or database using the new suspension status value
+    // ...
+  };
 
   useEffect(() => {
     opportunityStore.fetchOpportunities();
@@ -54,7 +62,9 @@ const Opportunities = () => {
                 {opportunity.major_preferred}
               </span>
               <span className="col-3 opportunitiesTags">
-                {opportunity.statues}
+                <button className="button" onClick={handleSuspensionUpdate}>
+                  {Applied ? "Apply" : "Applied"}
+                </button>
               </span>
               <div className="col-3 d-flex justify-content-center">
                 <img className="infoImg" src={InfoIcon} alt="InfoIcon" />

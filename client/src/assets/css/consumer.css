@@ -11,7 +11,23 @@
     border: 1px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
+}.button {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
 }
+
+.button:hover {
+  background-color: #00d93a;
+}
+
+.button:Applied {
+  background-color: #000dbf;
+}
+
 .opportunitiesMainTags{
     font-family: Lora;
     font-weight: bolder;
