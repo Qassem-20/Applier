@@ -28,11 +28,18 @@ const SignIn = () => {
   const [values, setValues] = useState(initialState);
 
   const showCompany = () => {
-    setValues({ ...values, isCompany: !values.isCompany });
+    setValues({
+      ...values,
+      isCompany: !values.isCompany,
+    });
   };
   const showMedical = () => {
-    setValues({ ...values, isMedical: !values.isMedical });
+    setValues({
+      ...values,
+      isMedical: !values.isMedical,
+    });
   };
+
   return (
     <Fragment>
       <WelcomeNav />
@@ -43,14 +50,19 @@ const SignIn = () => {
             <Row>
               <Col xl={8}></Col>
               <Col>
-                <button className="medicalLog" onClick={showMedical}>
-                  Medical Student
-                </button>
+                <ApplierButton
+                  className="medicalLog"
+                  buttonType="Medical Student"
+                  onClick={showMedical}
+                />
               </Col>
               <Col>
-                <button className="companyLog" onClick={showCompany}>
-                  Company
-                </button>
+                <button></button>
+                <ApplierButton
+                  buttonType="Company"
+                  className="companyLog"
+                  onClick={showCompany}
+                />
               </Col>
             </Row>
             <hr />
