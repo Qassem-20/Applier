@@ -5,7 +5,7 @@ import "../../assets/css/custom.css";
 const ApplierInputForm = (props) => {
   return (
     <div>
-      <label className=""> {props.label}</label>
+      <label> {props.label}</label>
       <input
         className="inputStyling"
         name={props.name}
