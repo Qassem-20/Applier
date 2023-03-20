@@ -14,16 +14,6 @@ const AdminPanel = () => {
     };
   });
 
-  /* this to get current value int tags (input)
-  const getUpdateAdminType = (e) => {
-    const { value, name } = e.target;
-    setUpdateType({
-      ...updateType,
-      [name]: value,
-    });
-  };
-  */
-
   useEffect(() => {
     store.fetchAdmins();
   }, []);
