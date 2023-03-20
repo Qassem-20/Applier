@@ -122,6 +122,19 @@ const ConsumerStore = create((set) => ({
     });
   },
 
+  handleChangeSearch: async (e) => {
+    const { name, value } = e.target;
+
+    set((state) => {
+      return {
+        values: {
+          ...state.values,
+          [name]: value,
+        },
+      };
+    });
+  },
+
   handleChange: async (e) => {
     const { name, value } = e.target;
 

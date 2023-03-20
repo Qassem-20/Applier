@@ -7,21 +7,22 @@ import ConsumerStore from "../../stores/ConsumerStore.js";
 const Consumers = () => {
   const store = ConsumerStore();
 
-  useEffect(() => {
-    store.fetchConsumers();
-  }, []);
+  // const storeSearch = ConsumerStore((s) => s.searchConsumers())
+  // useEffect(() => {
+  //   store.fetchConsumers();
+  // }, []);
 
   const handleSearch = async (e) => {
     e.preventDefault();
     await store.searchConsumers();
   };
 
-  const handleSignUp = async (e) => {
-    e.preventDefault();
-    await store.registerConsumer();
-    //Navigate
-    //history.push("/signIn");
-  };
+  // const handleSignUp = async (e) => {
+  //   e.preventDefault();
+  //   await store.registerConsumer();
+  //   //Navigate
+  //   //history.push("/signIn");
+  // };
 
   return (
     <Fragment>
@@ -34,8 +35,8 @@ const Consumers = () => {
               <input
                 className="inputStyling"
                 type="search"
-                name=""
-                value={store.values.name}
+                name="phone"
+                value={store.values.phone}
                 onChange={store.handleChange}
                 placeholder="Phone Number "
               />
@@ -44,8 +45,9 @@ const Consumers = () => {
               <input
                 className="inputStyling"
                 type="search"
-                name=""
-                value=""
+                name="name"
+                value={store.values.name}
+                onChange={store.handleChange}
                 placeholder="Trainee Name"
               />
             </Col>
