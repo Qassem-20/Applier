@@ -34,10 +34,10 @@ const TraineeApplicationStore = create((set) => ({
     university: "",
     major: "",
     gpa: "",
-    gpa_statue: "",
+    degree: "",
     concentrated_major: "",
     skills: "",
-    cv: "",
+
     linkedIn_profile: "",
     experience: "",
   },
@@ -50,10 +50,9 @@ const TraineeApplicationStore = create((set) => ({
         university,
         major,
         gpa,
-        gpa_statue,
+        degree,
         concentrated_major,
         skills,
-        cv,
         linkedIn_profile,
         experience,
         _id,
@@ -68,10 +67,10 @@ const TraineeApplicationStore = create((set) => ({
         university,
         major,
         gpa,
-        gpa_statue,
+        degree,
         concentrated_major,
         skills,
-        cv,
+
         linkedIn_profile,
         experience,
       },     { withCredentials: true }
@@ -94,10 +93,10 @@ const TraineeApplicationStore = create((set) => ({
         university: "",
         major: "",
         gpa: "",
-        gpa_statue: "",
+        degree: "",
         concentrated_major: "",
         skills: "",
-        cv: "",
+
         linkedIn_profile: "",
         experience: "",
       },
@@ -108,36 +107,30 @@ const TraineeApplicationStore = create((set) => ({
     university: "",
     major: "",
     gpa: "",
-    gpa_statue: "",
+    degree: "",
     concentrated_major: "",
     skills: "",
-    cv: "",
     linkedIn_profile: "",
     experience: "",
   },
 
-  registerTraineeApplication: async (e) => {
-    e.preventDefault();
-    const { values, traineeApplications } = TraineeApplicationStore.getState();
+  registerTraineeApplication: async () => {
+    const { values } = TraineeApplicationStore.getState();
 
     // add traineeApplication
     const res = await axios.post(
-      "http://localhost:4000/api/v1/traineeApplications/registerTraineeApplication",
-      values,     { withCredentials: true }
+      "http://localhost:4000/api/v1/traineeApplications/registerTraineeApplications",
+      values,     
+      { withCredentials: true }
     );
     set({
-      traineeApplications: [
-        ...traineeApplications,
-        res.data.traineeApplication,
-      ],
       values: {
         university: "",
         major: "",
         gpa: "",
-        gpa_statue: "",
+        degree: "",
         concentrated_major: "",
         skills: "",
-        cv: "",
         linkedIn_profile: "",
         experience: "",
       },

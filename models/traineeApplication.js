@@ -6,7 +6,7 @@ const traineeApplicationSchema = new mongoose.Schema(
     university: {
       required: [false, "Provide your major"],
       type: String,
-      minlength: 3,
+      minlength: 2,
       maxlength: 50,
       trim: true,
     },
@@ -14,22 +14,17 @@ const traineeApplicationSchema = new mongoose.Schema(
       type: String,
       required: [false, "Provide your major"],
       //add all majors
-      enum: [""],
+      //enum: [""],
     },
     gpa: {
       type: String,
       required: [false, "Please provide your gpa"],
     },
-    gpa_statue: {
-      type: String,
-      required: [false, "Please provide your gpa"],
-      enum: ["shown", "hidden"],
-      default: "shown",
-    },
+
     concentrated_major: {
       type: String,
       required: [false, "concentrated_major"],
-      minlength: 3,
+      minlength: 0,
       maxlength: 20,
       trim: true,
     },
@@ -37,7 +32,7 @@ const traineeApplicationSchema = new mongoose.Schema(
       type: String,
       required: [false, "Provide at least one skill"],
       //provide all skills for all majors
-      enum: [""],
+      //enum: [""],
     },
     /*cv: {
       file: { type: Buffer, required: true },
@@ -46,7 +41,7 @@ const traineeApplicationSchema = new mongoose.Schema(
     },*/
     linkedIn_profile: {
       type: String,
-      minlength: 3,
+      minlength: 0,
       maxlength: 100,
       trim: true,
     },
@@ -61,6 +56,16 @@ const traineeApplicationSchema = new mongoose.Schema(
         "more than 2 years",
       ],
       default: "none",
+    },
+    degree:{
+      type: String,
+      required: [false, "Please enter your experience"],
+      enum: [
+        "High School",
+        "Bachelor",
+        "Master",
+        "Diploma",
+      ],
     },
     consumer: {
       type: mongoose.Schema.Types.ObjectId,

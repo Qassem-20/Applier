@@ -49,6 +49,7 @@ const consumerSchema = new mongoose.Schema(
     patientApplication: [
       { type: mongoose.Schema.Types.ObjectId, ref: "PatientApplication" },
     ],
+    
     traineeApplication: [
       { type: mongoose.Schema.Types.ObjectId, ref: "TraineeApplication" },
     ],

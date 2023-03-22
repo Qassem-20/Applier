@@ -1,108 +1,115 @@
 import "../../assets/css/consumer.css";
-import Profile from "../../assets/images/profileIcon.png";
 import ConsumerNav from "../../components/Nav/consumerNav";
-import React, { Fragment, useEffect } from "react";
 import TraineeApplicationStore from "../../stores/traineeApplicationStore";
-import PatientApplicationStore from "../../stores/PatientApplicationStore";
-import ConsumerStore from "../../stores/ConsumerStore";
+import React, { Fragment, useEffect } from "react";
+import ApplierButton from "../../components/applierComponents/applierButton";
+
+import { useHistory } from "react-router-dom";
+
 import { Container } from "react-bootstrap";
 
 const EditProfile = () => {
-  /*
-  const traineeApplicationStore = TraineeApplicationStore();
-  const patientApplicationStore = PatientApplicationStore();
-  const consumerStore = ConsumerStore();
+  const store = TraineeApplicationStore();
 
-  useEffect(() => {
-    traineeApplicationStore.fetchTraineeApplications();
-    patientApplicationStore.fetchPatientApplication();
-    consumerStore.fetchConsumers();
-  }, []);
-*/
+  const history = useHistory();
+
+  const addProfile = async (e) => {
+    e.preventDefault();
+
+    await store.registerTraineeApplication();
+    history.push("/consumerProfile");
+  };
   return (
     <Fragment>
       <ConsumerNav />
       <Container fluid>
-        <div className="container">
-          <img
-            src={Profile}
-            className="mx-auto"
-            id="imgProfile"
-            alt="Change Profile"
-          />
-        </div>
         <div className="container backgroundProfile">
-          <div className="row">
-            <div className="col-sm-12 col-md-6">
-              <p className="labelTag">Full name</p>
-              <input type="name" className="inputStyling" name="" value="" />
-              <p className="labelTag">Date of Birth</p>
-              <input type="date" className="inputStyling" name="" value="" />
-              <p className="labelTag">Nationality</p>
-              <select className="inputStyling">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-              <p className="labelTag">Phone Number</p>
-              <input type="phone" className="inputStyling" name="" value="" />
-              <p className="labelTag">GBA</p>
-              <input type="number" className="inputStyling" name="" value="" />
-              <span>out of</span>
-              <select className="inputStyling">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-              <p className="labelTag">Major</p>
-              <select className="inputStyling">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-              <div>
-                <label className="labelTag">Concentrated major?</label>
-                <input type="checkbox" name="" value="" />
+          <form onSubmit={addProfile}>
+            <div className="row">
+              <div className="col-sm-12 col-md-6">
+                <label className="labelTag">GPA</label>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="gpa"
+                  value={store.values.gpa}
+                  onChange={store.handleChange}
+                />
+                <label className="labelTag">Major</label>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="major"
+                  value={store.values.major}
+                  onChange={store.handleChange}
+                />
+
+                <label className="labelTag">Concentrated major</label>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="concentrated_major"
+                  value={store.values.concentrated_major}
+                  onChange={store.handleChange}
+                />
+                <label className="labelTag">skills</label>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="skills"
+                  value={store.values.skills}
+                  onChange={store.handleChange}
+                />
               </div>
-              <div>
-                <input type="text" className="inputStyling" name="" value="" />
+              <div className="col-sm-12 col-md-6">
+                <label className="labelTag">Degree</label>
+                <select
+                  className="inputStyling"
+                  name="degree"
+                  placeholder="degree"
+                  value={store.values.degree}
+                  onChange={store.handleChange}
+                >
+                  <option value="High school">high school</option>
+                  <option value="Bachelor">bachelor</option>
+                  <option value="Diploma">diploma</option>
+                  <option value="Master">master</option>
+                </select>
+                <label className="labelTag">Collage</label>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="university"
+                  value={store.values.university}
+                  onChange={store.handleChange}
+                />
+                <br />
+                <label className="labelTag">LinkedIn Profile</label>
+                <input
+                  type="link"
+                  className="inputStyling"
+                  name="linkedIn_profile"
+                  value={store.values.linkedIn_profile}
+                  onChange={store.handleChange}
+                />
+                <label className="labelTag">Experience</label>
+                <select
+                  className="inputStyling"
+                  name="experience"
+                  placeholder="duration"
+                  value={store.values.experience}
+                  onChange={store.handleChange}
+                >
+                  <option value="none">None</option>
+                  <option value="less than a year">less than a year</option>
+                  <option value="an year">an year</option>
+                  <option value="2 years">2 years</option>
+                  <option value="more than 2 years">more than 2 years</option>
+                </select>
               </div>
             </div>
-            <div className="col-sm-12 col-md-6">
-              <p className="labelTag">Degree</p>
-              <select className="inputStyling">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-              <p className="labelTag">Collage</p>
-              <select className="inputStyling">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-              <br />
-              <p className="labelTag">CV</p>
-              <input type="file" className="inputStyling" name="" value="" />
-              <p className="labelTag">
-                Identification Letter <span>(IF EXISTS)</span>
-              </p>
-              <input type="file" className="inputStyling" name="" value="" />
-              <p className="labelTag">
-                LinkedIn Profile<span>(IF EXISTS)</span>
-              </p>
-              <input type="link" className="inputStyling" name="" value="" />
-              <p className="labelTag">
-                Profile Picture<span>(IF EXISTS)</span>
-              </p>
-              <input type="file" className="inputStyling" name="" value="" />
-            </div>
-          </div>
+            <ApplierButton buttonType="add Profile" />
+          </form>
         </div>
       </Container>
     </Fragment>

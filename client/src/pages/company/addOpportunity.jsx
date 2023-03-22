@@ -1,6 +1,6 @@
 import Nav from "../../components/Nav/companyNav";
 import "../../assets/css/company.css";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import OpportunityStore from "../../stores/OpportunityStore";
 import { useHistory } from "react-router-dom";
 const AddOpportunity = () => {
