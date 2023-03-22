@@ -8,23 +8,25 @@ import { useHistory } from "react-router-dom";
 
 import { Container } from "react-bootstrap";
 
-const EditProfile = () => {
+const AddProfile = () => {
   const store = TraineeApplicationStore();
 
   const history = useHistory();
 
-  const addProfile = async (e) => {
-    e.preventDefault();
+  const [hasPosted, setHasPosted] = useState(false);
 
+  const createProfile = async (e) => {
+    e.preventDefault();
+    setHasPosted(true);
     await store.registerTraineeApplication();
-    history.push("/editProfile");
+    history.push("/consumerProfile");
   };
   return (
     <Fragment>
       <ConsumerNav />
       <Container fluid>
         <div className="container backgroundProfile">
-          <form onSubmit={addProfile}>
+          <form onSubmit={createProfile}>
             <div className="row">
               <div className="col-sm-12 col-md-6">
                 <label className="labelTag">GPA</label>
@@ -116,4 +118,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default AddProfile;
