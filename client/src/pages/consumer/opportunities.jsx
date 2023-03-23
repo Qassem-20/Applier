@@ -20,6 +20,12 @@ const Opportunities = () => {
     opportunityStore.fetchOpportunities();
   }, []);
 
+  // useEffect(() => {
+  //   opportunityStore.fetchOpportunity();
+  // }, []);  
+
+
+
   return (
     <Fragment>
       <ConsumerNav />
@@ -67,7 +73,7 @@ const Opportunities = () => {
                 </button>
               </span>
               <div className="col-3 d-flex justify-content-center">
-                <img className="infoImg" src={InfoIcon} alt="InfoIcon" />
+                <img  className="infoImg" src={InfoIcon} alt="InfoIcon" />
               </div>
             </div>
           );

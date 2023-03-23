@@ -15,7 +15,7 @@ const Companies = () => {
       <AdminNav />
       <Container className="mt-3 mb-2">
         <h1>Companies</h1>
-        <Row className="m-auto pt-3 pb-1">
+        <Row className=" pt-3 pb-1">
           <Col xl={3} md={6} sm={12}>
             <input
               className="inputStyling"

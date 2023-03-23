@@ -50,8 +50,24 @@ const findConsumer =async (req, res) =>{
 res.json({ consumer });
 }
 
-const sortConsumers = async (req, res) => {
+
+const sortDateConsumers = async (req, res) => {
   const consumers = await Consumer.find().sort({ createdAt: -1 });
+
+  res.json({ consumers });
+  // var btnName = document.getElementById('btnName');
+  // var btnDate = document.getElementById('btnDate');
+
+  // function handleClick()  {
+  //   const consumers =  Consumer.find().sort({ name: -1 });
+  //   res.json({ consumers });
+  // }
+
+  // btnName.addEventListener('click', handleClick() );
+};
+
+const sortNameConsumers = async (req, res) => {
+  const consumers = await Consumer.find().sort({ name: -1 });
 
   res.json({ consumers });
 };
@@ -179,7 +195,8 @@ export {
   updateConsumer,
   deleteConsumer,
   suspendConsumer,
-  sortConsumers,
+  sortDateConsumers,
+  sortNameConsumers,
   findConsumer,
   findAll,
 };

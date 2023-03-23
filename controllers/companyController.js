@@ -84,6 +84,18 @@ const sortCompanies = async (req, res) => {
   res.json({ companies });
 };
 
+// Create feedback and review 
+const creatFeedBack = async(req, res) =>{
+  const reviews = req.body;
+
+  await Company.findByIdAndUpdate(companyId, reviews);
+
+  const company = await Company.findById(companyId);
+
+  res.json({ company });
+
+}
+
 const createCompany = async (req, res) => {
   try {
     //get the data
@@ -249,5 +261,6 @@ export {
   activateCompany,
   findCompany,
   sortCompanies,
+  creatFeedBack,
   
 };
