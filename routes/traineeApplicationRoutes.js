@@ -16,7 +16,7 @@ import {
 router.route("/traineeApplications").get(fetchTraineeApplications);
 router.route("/traineeApplications/:id").get(fetchTraineeApplication);
 router
-  .route("traineeApplications/registerTraineeApplications")
+  .route("/traineeApplications/registerTraineeApplications")
   .post(requireAuthConsumer, createTraineeApplication);
 router
   .route("/traineeApplications/:id")

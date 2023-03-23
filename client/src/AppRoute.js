@@ -7,6 +7,7 @@ import SignUpCompany from "./pages/signIn-signUp/signUpCompany";
 import SignUpConsumer from "./pages/signIn-signUp/signUpConsumer";
 import ForgottenPassword from "./pages/signIn-signUp/forgottenPassword";
 
+import AddProfile from "./pages/consumer/addProfile.jsx";
 import ConsumerProfile from "./pages/consumer/editProfile.jsx";
 import Opportunities from "./pages/consumer/opportunities";
 import MedicalStudents from "./pages/consumer/medicalStudents";
@@ -76,9 +77,15 @@ const AppRoute = () => {
 
       <Route path="/consumerProfile">
         <RequireAuthConsumer>
+        <AddProfile />
+        </RequireAuthConsumer>
+      </Route>
+      <Route path="/editProfile">
+        <RequireAuthConsumer>
         <ConsumerProfile />
         </RequireAuthConsumer>
       </Route>
+
       <Route path="/opportunities">
       <RequireAuthConsumer>
         <Opportunities />

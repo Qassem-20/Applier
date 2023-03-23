@@ -10,12 +10,12 @@ const AdminPanel = () => {
   const storeDeleteAndUpdate = adminsStore((storeDeleteAndUpdate) => {
     return {
       deleteAdmin: storeDeleteAndUpdate.deleteAdmin,
-      toggleUpdate: storeDeleteAndUpdate.toggleUpdate,
     };
   });
 
   useEffect(() => {
     store.fetchAdmins();
+    store.updateAdminType();
   }, []);
   return (
     <Fragment>
@@ -66,25 +66,26 @@ const AdminPanel = () => {
                   <p className="opportunitiesTags">{admin.phone}</p>
                 </Col>
                 <Col xl={2} md={1} xs={1}>
-                  <form onSubmit={store.updateAdminType}>
-                    <select name="type" defaultValue={admin.type}>
-                      <option
-                        value={store.updateAdminType.type}
-                        onChange={store.handleUpdateFieldChange}
-                        name="type"
-                      >
-                        sub-admin
-                      </option>
-                      <option
-                        value={store.updateAdminType.type}
-                        onChange={store.handleUpdateFieldChange}
-                        name="type"
-                      >
-                        main-admin
-                      </option>
-                    </select>
-                    <button type="submit">.</button>
-                  </form>
+                  <select
+                    name="type"
+                    defaultValue={admin.type}
+                    onChange={store.updateAdminType.type}
+                  >
+                    <option
+                      value="sub-admin"
+                      onChange={store.handleUpdateFieldChange}
+                      name="sub-admin"
+                    >
+                      sub-admin
+                    </option>
+                    <option
+                      value="main-admin"
+                      onChange={store.handleUpdateFieldChange}
+                      name="main-admin"
+                    >
+                      main-admin
+                    </option>
+                  </select>
                 </Col>
                 <Col xl={1} md={1} xs={1}>
                   <button

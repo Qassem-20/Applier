@@ -32,18 +32,18 @@ const fetchTraineeApplications = async (req, res) => {
   };
   
   const createTraineeApplication = async (req, res) => {
-    const { university, major, gpa, gpa_statue, concentrated_major, skills, cv, linkedIn_profile, experience } = req.body;
+    const { university, major, gpa,degree, concentrated_major, skills, linkedIn_profile, experience } = req.body;
   
     const traineeApplication = await TraineeApplication.create({
     university, 
     major, 
     gpa, 
-    gpa_statue, 
     concentrated_major, 
-    skills, 
-    cv, 
+    skills,  
+    degree,
     linkedIn_profile, 
     experience, 
+    consumer: req.consumer._id,
     });
   
     res.json({ traineeApplication });
