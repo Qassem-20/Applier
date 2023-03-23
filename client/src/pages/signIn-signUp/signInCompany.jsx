@@ -22,24 +22,27 @@ const SignInCompany = () => {
           label="Email"
           type="email"
           placeholder="Applier@Applier.com"
+          errorMessage="Enter a valid Email !! (Applier@Applier.com)"
           name="email"
           value={storeCompany.loginFormCompany.email}
           onChange={storeCompany.handleChangeLogin}
+          required="true"
         />
 
         <ApplierInputForm
           label="Password"
-          className="inputStyling"
           type="password"
           placeholder="********"
           name="password"
+          errorMessage="Password must contain Minimum of eight characters, at least one letter and one number"
           value={storeCompany.loginFormCompany.password}
           onChange={storeCompany.handleChangeLogin}
+          required="true"
+          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
         />
 
         <Row>
           <Col>
-            {" "}
             <ApplierButton buttonType="Log In" />
           </Col>
           <Col>

@@ -23,9 +23,9 @@
   border-radius: 25px;
   color: aliceblue;
 }
-/* .alignmentCenter{
-    text-align: center;
-} */
+.alignmentCenter {
+  text-align: center;
+}
 
 .SignUpFormat {
   background-color: white;

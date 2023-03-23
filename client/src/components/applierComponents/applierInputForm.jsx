@@ -23,6 +23,7 @@ const ApplierInputForm = (props) => {
         pattern={props.pattern}
         onBlur={handleFocus}
         focused={focused.toString()}
+        required={props.required}
       />
       <span className="errorMessage">{props.errorMessage}</span>
     </div>
