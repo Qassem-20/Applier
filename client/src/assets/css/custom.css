@@ -96,7 +96,6 @@ img {
   border: 1px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  margin-bottom: 1rem;
   padding-left: 10px;
 }
 
@@ -142,4 +141,25 @@ img {
   padding: 6px 8px;
   margin: 0;
   border-radius: 5px;
+}
+.errorMessage {
+  color: red;
+  font-style: italic;
+  font-size: smaller;
+  display: none;
+}
+
+input:invalid[focused="true"] {
+  border: 1px solid red;
+}
+input:invalid[focused="true"] ~ span {
+  display: block;
+}
+
+.labelStyling {
+  font-weight: bolder;
+}
+
+.applierInputComponent {
+  margin-bottom: 1rem;
 }

@@ -75,8 +75,10 @@ const SignIn = () => {
                     type="email"
                     placeholder="Fouad28@gmail.com"
                     name="email"
+                    errorMessage="Enter a valid Email !! (Applier@Applier.com)"
                     value={storeConsumer.loginFormConsumer.email}
                     onChange={storeConsumer.handleChangeLogin}
+                    required="true"
                   />
 
                   <ApplierInputForm
@@ -84,8 +86,11 @@ const SignIn = () => {
                     type="password"
                     placeholder="**********"
                     name="password"
+                    errorMessage="Password must contain Minimum of eight characters, at least one letter and one number"
                     value={storeConsumer.loginFormConsumer.password}
                     onChange={storeConsumer.handleChangeLogin}
+                    required="true"
+                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                   />
 
                   <Row>
