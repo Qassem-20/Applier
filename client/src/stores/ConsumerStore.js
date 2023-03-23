@@ -1,6 +1,4 @@
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
-
 import axios from "axios";
 
 const ConsumerStore = create((set) => ({
@@ -16,41 +14,50 @@ const ConsumerStore = create((set) => ({
     set({ consumers: res.data.consumers });
   },
 
-  sortConsumer:async () =>{
+  sortNameConsumers:async () =>{
 
-    const res = await axios.get("http://localhost:4000/api/v1/sortConsumers")
+    const res = await axios.get("http://localhost:4000/api/v1/sortNameConsumers")
 
     set({consumers : res.data.consumers})
   },
+  sortDateConsumers:async () =>{
+
+    const res = await axios.get("http://localhost:4000/api/v1/sortDateConsumers")
+
+    set({consumers : res.data.consumers})
+  },
+
+
+
+
 
 
   searchForm: {
     phone: "",
     name: "",
   },
+  searchConsumers: async(e) =>{
 
-  handleSearchForm: async (e) => {
-    const { name, value } = e.target;
+    const { searchForm } = ConsumerStore.getState().searchForm;
 
+
+    const res = await axios.get("http://localhost:4000/api/v1//findConsumer/" + searchForm.name);
+
+    console.log(res);
     set((state) => {
       return {
         searchForm: {
           ...state.searchForm,
-          [name]: value,
+          // [name]: values,
         },
       };
     });
-  },
-
-  searchConsumers: async() =>{
-
-    const { searchForm } = ConsumerStore.getState();
-
-    const res = await axios.get("http://localhost:4000/api/v1//findConsumer/" + searchForm);
 
     set({ consumers: res.data.consumers });
 
+
   },
+
 
   deleteConsumer: async (_id) => {
     const res = await axios.delete(
@@ -160,7 +167,20 @@ const ConsumerStore = create((set) => ({
       };
     });
   },
-  //login
+
+  handleSearchForm: async (e) => {
+    const { name, value } = e.target;
+
+    set(state => {
+      return{
+        searchForm:{
+          ...state.searchForm, [name]: value,
+        },
+      };
+    }) ;
+  },
+
+  // login
   loggedIn: null,
   loginFormConsumer: {
     email: "",

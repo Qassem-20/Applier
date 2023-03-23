@@ -15,6 +15,8 @@ const Opportunities = () => {
     store.fetchOpportunities();
   }, []);
 
+
+
   return (
     <Fragment>
       <AdminNav />

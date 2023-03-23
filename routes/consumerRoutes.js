@@ -21,7 +21,8 @@ import {
   deleteConsumer,
   checkAuthConsumer,
   findAll,
-  sortConsumers,
+  sortDateConsumers,
+  sortNameConsumers,
   findConsumer,
 } from "../controllers/consumerController.js";
 //routes of the Consumer from the controllers
@@ -33,7 +34,8 @@ router.route("/logoutConsumer").get(logoutConsumer);
 router.route("/checkAuthConsumer").get(requireAuthConsumer, checkAuthConsumer);
 router.route("/consumers/:id").put(requireAuthConsumer, updateConsumer);
 router.route("/consumers/:id").delete(deleteConsumer);
-router.route("/sortConsumers").get(sortConsumers);
+router.route("/sortDateConsumers").get(sortDateConsumers);
+router.route("/sortNameConsumers").get(sortNameConsumers);
 router.route("/findConsumer/:name").get(findConsumer);
 router.route("/findAll/:name").get(findAll);
 

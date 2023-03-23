@@ -89,6 +89,15 @@ const updateOpportunity = async (req, res) => {
   res.json({ opportunity });
 };
 
+// const infoShow = async(req, res) => {
+//   const opportunityId = req.params.id;
+
+//   const opportunity = await Opportunity.findById(opportunityId);
+
+//   res.json({ opportunity });
+
+// };
+
 const hideOpportunity = async (req, res) => {
   const opportunityId = req.params.id;
 
