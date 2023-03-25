@@ -43,6 +43,8 @@ const SignUpCompany = () => {
                   name="organization_name"
                   onChange={store.handleChange}
                   value={store.values.organization_name}
+                  errorMessage="organization"
+                  required="true"
                 />
 
                 <ApplierInputForm
@@ -51,6 +53,8 @@ const SignUpCompany = () => {
                   name="register_number"
                   onChange={store.handleChange}
                   value={store.values.register_number}
+                  errorMessage="register_number"
+                  required="true"
                 />
 
                 <ApplierInputForm
@@ -72,9 +76,13 @@ const SignUpCompany = () => {
                 <ApplierInputForm
                   type="password"
                   label="Password"
+                  placeholder="**********"
                   name="password"
                   onChange={store.handleChange}
                   value={store.values.password}
+                  errorMessage="password"
+                  required="true"
+                  pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                 />
               </Col>
               <Col md={6} sm={12}>
@@ -82,16 +90,21 @@ const SignUpCompany = () => {
                   type="name"
                   label="Supervisor full name"
                   name="supervisor_name"
+                  errorMessage="supervisor_name"
                   onChange={store.handleChange}
                   value={store.values.supervisor_name}
+                  required="true"
                 />
 
                 <ApplierInputForm
                   type="email"
                   label="Supervisor email"
                   name="email"
+                  placeholder="Fouad28@gmail.com"
+                  errorMessage="email"
                   onChange={store.handleChange}
                   value={store.values.email}
+                  required="true"
                 />
                 <ApplierInputForm
                   type="phone"
@@ -107,6 +120,8 @@ const SignUpCompany = () => {
                   label="Country"
                   onChange={store.handleChange}
                   value={store.values.country}
+                  required="true"
+                  errorMessage="country"
                 />
 
                 <ApplierInputForm
@@ -115,6 +130,8 @@ const SignUpCompany = () => {
                   label="City"
                   onChange={store.handleChange}
                   value={store.values.city}
+                  required="true"
+                  errorMessage="city"
                 />
               </Col>
             </Row>

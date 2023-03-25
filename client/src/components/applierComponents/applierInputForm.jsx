@@ -14,6 +14,15 @@ const ApplierInputForm = (props) => {
     email: "Enter a valid Email !! (Applier@Applier.com)",
     password:
       "Password must contain Minimum of eight characters, at least one letter and one number",
+    organization: "Enter your organization name",
+    register_number: "Enter your organization registration number",
+    supervisor_name: "Enter the supervisor name",
+    city: "The City is a must",
+    country: "The Country is a must",
+    full_name: "Enter your full name",
+    nationality: "Select your nationality",
+    phone: "Enter your phone number for communication",
+    specialty: "Enter your specialty",
   };
 
   const {

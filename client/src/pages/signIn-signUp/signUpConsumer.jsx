@@ -41,12 +41,13 @@ const SignUpConsumer = () => {
               name="name"
               value={store.values.name}
               onChange={store.handleChange}
+              errorMessage="full_name"
+              required="true"
             />
             <label>Nationality</label>
             <select
               className="inputStyling"
               name="nationality"
-              placeholder="nationality"
               value={store.values.nationality}
               onChange={store.handleChange}
             >
@@ -61,22 +62,31 @@ const SignUpConsumer = () => {
               name="phone"
               value={store.values.phone}
               onChange={store.handleChange}
+              errorMessage="phone"
+              required="true"
             />
 
             <ApplierInputForm
               label="Email"
               type="email"
+              placeholder="Fouad28@gmail.com"
               name="email"
+              errorMessage="email"
               value={store.values.email}
               onChange={store.handleChange}
+              required="true"
             />
 
             <ApplierInputForm
               label="Password"
               type="password"
+              placeholder="**********"
               name="password"
+              errorMessage="password"
               value={store.values.password}
               onChange={store.handleChange}
+              required="true"
+              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
             />
             <br />
             <ApplierButton buttonType="Sign Up" />

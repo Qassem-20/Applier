@@ -43,6 +43,8 @@ const SignUpMedicalStudent = () => {
                   name="name"
                   value={store.values.name}
                   onChange={store.handleChange}
+                  errorMessage="full_name"
+                  required="true"
                 />
 
                 <ApplierInputForm
@@ -51,6 +53,8 @@ const SignUpMedicalStudent = () => {
                   name="phone_number"
                   value={store.values.phone_number}
                   onChange={store.handleChange}
+                  errorMessage="phone"
+                  required="true"
                 />
 
                 <ApplierInputForm
@@ -59,15 +63,23 @@ const SignUpMedicalStudent = () => {
                   name="email"
                   value={store.values.email}
                   onChange={store.handleChange}
+                  placeholder="Fouad28@gmail.com"
+                  required="true"
+                  errorMessage="email"
                 />
 
                 <ApplierInputForm
                   label="Password"
                   type="password"
+                  placeholder="**********"
                   name="password"
+                  errorMessage="password"
                   value={store.values.password}
                   onChange={store.handleChange}
+                  required="true"
+                  pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                 />
+
                 <label>Nationality</label>
                 <select
                   className="inputStyling"
@@ -100,6 +112,8 @@ const SignUpMedicalStudent = () => {
                   name="city"
                   value={store.values.city}
                   onChange={store.handleChange}
+                  required="true"
+                  errorMessage="city"
                 />
                 <label>Major</label>
                 <select
@@ -108,6 +122,7 @@ const SignUpMedicalStudent = () => {
                   placeholder="main_major"
                   value={store.values.main_major}
                   onChange={store.handleChange}
+                  required="true"
                 >
                   <option>Please select</option>
                   <option value="Doctor">Doctor</option>
@@ -120,6 +135,8 @@ const SignUpMedicalStudent = () => {
                   name="specialty"
                   value={store.values.specialty}
                   onChange={store.handleChange}
+                  required="true"
+                  errorMessage="specialty"
                 />
               </Col>
             </Row>
