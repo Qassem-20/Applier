@@ -10,22 +10,40 @@ const ApplierInputForm = (props) => {
     setFocused(true);
   };
 
+  const errorMeassages = {
+    email: "Enter a valid Email !! (Applier@Applier.com)",
+    password:
+      "Password must contain Minimum of eight characters, at least one letter and one number",
+  };
+
+  const {
+    name,
+    type,
+    value,
+    onChange,
+    placeholder,
+    pattern,
+    required,
+    errorMessage,
+    label,
+  } = props;
+
   return (
     <div className="applierInputComponent">
-      <label className="labelStyling"> {props.label}</label>
+      <label className="labelStyling"> {label}</label>
       <input
         className="inputStyling"
-        name={props.name}
-        type={props.type}
-        value={props.value}
-        onChange={props.onChange}
-        placeholder={props.placeholder}
-        pattern={props.pattern}
+        name={name}
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        pattern={pattern}
         onBlur={handleFocus}
         focused={focused.toString()}
-        required={props.required}
+        required={required}
       />
-      <span className="errorMessage">{props.errorMessage}</span>
+      <span className="errorMessage">{errorMeassages[errorMessage]}</span>
     </div>
   );
 };

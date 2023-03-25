@@ -23,22 +23,22 @@ const SignInMedical = () => {
           type="email"
           placeholder="dr.Faisal@gmail.com"
           name="email"
-          errorMessage="Enter a valid Email !! (Applier@Applier.com)"
+          errorMessage="email"
           value={storeMedical.loginFormMedical.email}
           onChange={storeMedical.handleChangeLogin}
-          required
+          required="true"
         />
 
         <ApplierInputForm
           label="Password"
           type="password"
-          placeholder="********"
+          placeholder="**********"
           name="password"
+          errorMessage="password"
           value={storeMedical.loginFormMedical.password}
           onChange={storeMedical.handleChangeLogin}
-          errorMessage="Password must contain Minimum of eight characters, at least one letter and one number"
+          required="true"
           pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-          required
         />
 
         <Row>

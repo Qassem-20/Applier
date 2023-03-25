@@ -22,7 +22,7 @@ const SignInCompany = () => {
           label="Email"
           type="email"
           placeholder="Applier@Applier.com"
-          errorMessage="Enter a valid Email !! (Applier@Applier.com)"
+          errorMessage="email"
           name="email"
           value={storeCompany.loginFormCompany.email}
           onChange={storeCompany.handleChangeLogin}
@@ -32,9 +32,9 @@ const SignInCompany = () => {
         <ApplierInputForm
           label="Password"
           type="password"
-          placeholder="********"
+          placeholder="**********"
           name="password"
-          errorMessage="Password must contain Minimum of eight characters, at least one letter and one number"
+          errorMessage="password"
           value={storeCompany.loginFormCompany.password}
           onChange={storeCompany.handleChangeLogin}
           required="true"

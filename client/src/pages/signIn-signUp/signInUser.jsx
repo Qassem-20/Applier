@@ -25,7 +25,7 @@ const SignInUser = () => {
           type="email"
           placeholder="Fouad28@gmail.com"
           name="email"
-          errorMessage="Enter a valid Email !! (Applier@Applier.com)"
+          errorMessage="email"
           value={storeConsumer.loginFormConsumer.email}
           onChange={storeConsumer.handleChangeLogin}
           required="true"
@@ -36,7 +36,7 @@ const SignInUser = () => {
           type="password"
           placeholder="**********"
           name="password"
-          errorMessage="Password must contain Minimum of eight characters, at least one letter and one number"
+          errorMessage="password"
           value={storeConsumer.loginFormConsumer.password}
           onChange={storeConsumer.handleChangeLogin}
           required="true"
