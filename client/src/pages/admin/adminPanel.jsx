@@ -12,7 +12,7 @@ const AdminPanel = ({ userId }) => {
       deleteAdmin: storeDeleteAndUpdate.deleteAdmin,
     };
   });
-
+  /*
   const [userType, setUserType] = useState("main-admin");
 
   const updateUserType = async () => {
@@ -39,7 +39,7 @@ const AdminPanel = ({ userId }) => {
   const handleButtonClick = () => {
     updateUserType("admin");
   };
-
+*/
   useEffect(() => {
     store.fetchAdmins();
   }, []);
@@ -92,9 +92,7 @@ const AdminPanel = ({ userId }) => {
                   <p className="opportunitiesTags">{admin.phone}</p>
                 </Col>
                 <Col xl={2} md={1} xs={1}>
-                  <button onClick={handleButtonClick(admin._id)}>
-                    {admin.type}
-                  </button>
+                  <button>{admin.type}</button>
                 </Col>
                 <Col xl={1} md={1} xs={1}>
                   <button
