@@ -2,9 +2,9 @@ import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
 import { Container, Row, Col } from "react-bootstrap";
 import adminsStore from "../../stores/AdminsStore.js";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
-const AdminPanel = () => {
+const AdminPanel = ({ userId }) => {
   const store = adminsStore();
 
   const storeDeleteAndUpdate = adminsStore((storeDeleteAndUpdate) => {
@@ -13,9 +13,35 @@ const AdminPanel = () => {
     };
   });
 
+  const [userType, setUserType] = useState("main-admin");
+
+  const updateUserType = async () => {
+    try {
+      const newType = userType === "main-admin" ? "sub-admin" : "main-admin";
+      const response = await fetch(
+        `http://localhost:4000/api/v1/admins/${userId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ type: newType }),
+        },
+        { withCredentials: true }
+      );
+      const data = await response.json();
+      setUserType(data.type);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleButtonClick = () => {
+    updateUserType("admin");
+  };
+
   useEffect(() => {
     store.fetchAdmins();
-    store.updateAdminType();
   }, []);
   return (
     <Fragment>
@@ -66,26 +92,9 @@ const AdminPanel = () => {
                   <p className="opportunitiesTags">{admin.phone}</p>
                 </Col>
                 <Col xl={2} md={1} xs={1}>
-                  <select
-                    name="type"
-                    defaultValue={admin.type}
-                    onChange={store.updateAdminType.type}
-                  >
-                    <option
-                      value="sub-admin"
-                      onChange={store.handleUpdateFieldChange}
-                      name="sub-admin"
-                    >
-                      sub-admin
-                    </option>
-                    <option
-                      value="main-admin"
-                      onChange={store.handleUpdateFieldChange}
-                      name="main-admin"
-                    >
-                      main-admin
-                    </option>
-                  </select>
+                  <button onClick={handleButtonClick(admin._id)}>
+                    {admin.type}
+                  </button>
                 </Col>
                 <Col xl={1} md={1} xs={1}>
                   <button

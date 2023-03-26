@@ -185,7 +185,7 @@ const AppRoute = () => {
         </RequireAuthAdmin>
       </Route>
 
-      <Route path="/feedBackConsumerCompany">
+      <Route path="/feedBackConsumerCompany/:id">
         <FeedBackConsumerCompany />
       </Route>
       <Route path="/feedBackConsumerMedical">

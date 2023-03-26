@@ -74,17 +74,14 @@ const sortNameConsumers = async (req, res) => {
 
 const createConsumer = async (req, res) => {
   try {
-    const { name, email, password, phone, nationality } = req.body;
+    const { name, email, password, phone, nationality,university,major,gpa,concentrated_major,skills,linkedIn_profile,experience,degree } = req.body;
 
     //hash the password
     const hashedPassword = bcrypt.hashSync(password, 8);
 
     await Consumer.create({
-      name,
-      email,
-      password: hashedPassword,
-      phone,
-      nationality,
+
+      name, email, password:hashedPassword, phone, nationality,university,major,gpa,concentrated_major,skills,linkedIn_profile,experience,degree
     });
   } catch (err) {
     console.log(err);

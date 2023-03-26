@@ -1,35 +1,43 @@
 import "../../assets/css/feedback.css";
 import profileIcon from "../../assets/images/profileIcon.png";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import ConsumerNav from "../../components/Nav/consumerNav";
+import CompanyStore from "../../stores/CompanyStore";
 
-const feedBackConsumerCompany = () => {
+const FeedBackConsumerCompany = () => {
+  const store = CompanyStore();
+  useEffect(() => {
+    store.fetchCompany();
+  }, []);
   return (
     <Fragment>
-      <Container className="mt-5 p-5 bg-white">
-        <Row>
-          <Col>
-            <img src={profileIcon} alt="Profile" />
-          </Col>
+      <ConsumerNav />
+      {CompanyStore.company &&
+        CompanyStore.company.map((company) => {
+          return (
+            <Container className="mt-5 p-5 bg-white">
+              <Row>
+                <Col>
+                  <p>Company Name</p>
+                  <span>{company.name}</span>
+                  <p>Major</p>
+                  <p>City</p>
+                </Col>
 
-          <Col>
-            <p>University Name</p>
-            <p>Major</p>
-            <p>City</p>
-          </Col>
-
-          <Col>
-            <p>Rate</p>
-            <p>Phone Number</p>
-            <p>WhatsApp URL</p>
-          </Col>
-        </Row>
-      </Container>
-
+                <Col>
+                  <p>Rate</p>
+                  <p>Phone Number</p>
+                  <p>WhatsApp URL</p>
+                </Col>
+              </Row>
+            </Container>
+          );
+        })}
       <Container>
         <h1>Add Review</h1>
         <p>Rate</p>
-        <div class="rate">
+        <div className="rate">
           <input type="radio" id="star5" name="rate" value="5" />
           <label for="star5" title="text">
             5 stars
@@ -94,4 +102,4 @@ const feedBackConsumerCompany = () => {
   );
 };
 
-export default feedBackConsumerCompany;
+export default FeedBackConsumerCompany;

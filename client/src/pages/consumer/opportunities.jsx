@@ -12,20 +12,11 @@ const Opportunities = () => {
 
   const handleSuspensionUpdate = () => {
     setSuspended(!Applied);
-    // Make the update request to your API or database using the new suspension status value
-    // ...
   };
 
   useEffect(() => {
     opportunityStore.fetchOpportunities();
   }, []);
-
-  // useEffect(() => {
-  //   opportunityStore.fetchOpportunity();
-  // }, []);  
-
-
-
   return (
     <Fragment>
       <ConsumerNav />
@@ -60,7 +51,7 @@ const Opportunities = () => {
       {opportunityStore.opportunities &&
         opportunityStore.opportunities.map((opportunity) => {
           return (
-            <div className="row opportunitiesT">
+            <div className="row opportunitiesT" key={opportunity._id}>
               <span className="col-3 opportunitiesTags">
                 {opportunity.job_role}
               </span>
@@ -73,7 +64,9 @@ const Opportunities = () => {
                 </button>
               </span>
               <div className="col-3 d-flex justify-content-center">
-                <img  className="infoImg" src={InfoIcon} alt="InfoIcon" />
+                <a href="/feedBackConsumerCompany/:id">
+                  <img className="infoImg" src={InfoIcon} alt="InfoIcon" />
+                </a>
               </div>
             </div>
           );

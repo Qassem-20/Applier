@@ -35,59 +35,142 @@ const SignUpConsumer = () => {
         <hr />
         <form onSubmit={handleSignUp}>
           <Container>
-            <ApplierInputForm
-              label="Full name"
-              type="name"
-              name="name"
-              value={store.values.name}
-              onChange={store.handleChange}
-              errorMessage="full_name"
-              required="true"
-            />
-            <label>Nationality</label>
-            <select
-              className="inputStyling"
-              name="nationality"
-              value={store.values.nationality}
-              onChange={store.handleChange}
-            >
-              <option>Please select</option>
-              <option value="saudi">Saudi</option>
-              <option value="foreign">Foreign</option>
-            </select>
+            <Row>
+              <div className="col-sm-12 col-md-6">
+                <ApplierInputForm
+                  label="Full name"
+                  type="name"
+                  name="name"
+                  value={store.values.name}
+                  onChange={store.handleChange}
+                  errorMessage="full_name"
+                  required="true"
+                />
+                <label>Nationality</label>
+                <select
+                  className="inputStyling"
+                  name="nationality"
+                  value={store.values.nationality}
+                  onChange={store.handleChange}
+                >
+                  <option>Please select</option>
+                  <option value="saudi">Saudi</option>
+                  <option value="foreign">Foreign</option>
+                </select>
 
-            <ApplierInputForm
-              label="Phone Number"
-              type="phone"
-              name="phone"
-              value={store.values.phone}
-              onChange={store.handleChange}
-              errorMessage="phone"
-              required="true"
-            />
+                <ApplierInputForm
+                  label="Phone Number"
+                  type="phone"
+                  name="phone"
+                  value={store.values.phone}
+                  onChange={store.handleChange}
+                  errorMessage="phone"
+                  required="true"
+                />
 
-            <ApplierInputForm
-              label="Email"
-              type="email"
-              placeholder="Fouad28@gmail.com"
-              name="email"
-              errorMessage="email"
-              value={store.values.email}
-              onChange={store.handleChange}
-              required="true"
-            />
+                <ApplierInputForm
+                  label="Email"
+                  type="email"
+                  placeholder="Fouad28@gmail.com"
+                  name="email"
+                  errorMessage="email"
+                  value={store.values.email}
+                  onChange={store.handleChange}
+                  required="true"
+                />
 
-            <ApplierInputForm
-              label="Password"
-              type="password"
-              placeholder="**********"
-              name="password"
-              errorMessage="password"
-              value={store.values.password}
-              onChange={store.handleChange}
-              required="true"
-              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-            />
+                <ApplierInputForm
+                  label="Password"
+                  type="password"
+                  placeholder="**********"
+                  name="password"
+                  errorMessage="password"
+                  value={store.values.password}
+                  onChange={store.handleChange}
+                  required="true"
+                  pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                />
+                <label className="labelTag">GPA</label>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="gpa"
+                  value={store.values.gpa}
+                  onChange={store.handleChange}
+                />
+                <label className="labelTag">Major</label>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="major"
+                  value={store.values.major}
+                  onChange={store.handleChange}
+                />
+
+                <label className="labelTag">Concentrated major</label>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="concentrated_major"
+                  value={store.values.concentrated_major}
+                  onChange={store.handleChange}
+                />
+                <label className="labelTag">skills</label>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="skills"
+                  value={store.values.skills}
+                  onChange={store.handleChange}
+                />
+              </div>
+              <div className="col-sm-12 col-md-6">
+                <label className="labelTag">Degree</label>
+                <select
+                  className="inputStyling"
+                  name="degree"
+                  placeholder="degree"
+                  value={store.values.degree}
+                  onChange={store.handleChange}
+                >
+                  <option value="High school">high school</option>
+                  <option value="Bachelor">bachelor</option>
+                  <option value="Diploma">diploma</option>
+                  <option value="Master">master</option>
+                </select>
+                <label className="labelTag">Collage</label>
+                <input
+                  type="text"
+                  className="inputStyling"
+                  name="university"
+                  value={store.values.university}
+                  onChange={store.handleChange}
+                />
+                <br />
+                <label className="labelTag">LinkedIn Profile</label>
+                <input
+                  type="link"
+                  className="inputStyling"
+                  name="linkedIn_profile"
+                  value={store.values.linkedIn_profile}
+                  onChange={store.handleChange}
+                />
+                <label className="labelTag">Experience</label>
+                <select
+                  className="inputStyling"
+                  name="experience"
+                  placeholder="duration"
+                  value={store.values.experience}
+                  onChange={store.handleChange}
+                >
+                  <option value="none">None</option>
+                  <option value="less than a year">less than a year</option>
+                  <option value="an year">an year</option>
+                  <option value="2 years">2 years</option>
+                  <option value="more than 2 years">more than 2 years</option>
+                </select>
+              </div>
+            </Row>
             <br />
             <ApplierButton buttonType="Sign Up" />
           </Container>

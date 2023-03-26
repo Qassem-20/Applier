@@ -67,10 +67,7 @@ const traineeApplicationSchema = new mongoose.Schema(
         "Diploma",
       ],
     },
-    consumer: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Consumer",
-    },
+
   },
   { timestamps: true }
 );

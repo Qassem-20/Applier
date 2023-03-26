@@ -144,11 +144,19 @@ const ConsumerStore = create((set) => ({
     );
     set({
       values: {
-        name: "",
-        email: "",
-        password: "",
-        phone: "",
-        nationality: "",
+        name:"",
+         email:"",
+          password:"",
+           phone:"",
+            nationality:"",
+            university:"",
+            major:"",
+            gpa:"",
+            concentrated_major:"",
+            skills:"",
+            linkedIn_profile:"",
+         experience:"",
+         degree:""
       },
     });
   },

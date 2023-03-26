@@ -4,7 +4,14 @@ import axios from "axios";
 const CompanyStore = create((set) => ({
   companies: null,
 
-
+  fetchCompany: async (id) => {
+    try {
+      const response = await axios.get(`http://localhost:4000/api/v1/companies/${id}`,     { withCredentials: true });
+      set({ data: response.data });
+    } catch (error) {
+      console.error(error);
+    }
+  },
  
 
   // searchCompanies:async(e) => {

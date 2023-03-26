@@ -56,7 +56,6 @@ const AdminsStore = create((set) => ({
 
   updateAdminType: async (e) => {
     e.preventDefault();
-
     const {
       updateType: { type, _id },
       admins,
