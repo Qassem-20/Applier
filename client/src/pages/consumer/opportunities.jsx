@@ -2,11 +2,15 @@ import "../../assets/css/consumer.css";
 import InfoIcon from "../../assets/images/infoIcon.png";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import OpportunityStore from "../../stores/OpportunityStore";
+import CompanyStore from "../../stores/CompanyStore";
+
+import { Link } from "react-router-dom";
 
 import React, { Fragment, useEffect, useState } from "react";
 
 const Opportunities = () => {
   const opportunityStore = OpportunityStore();
+  const company = CompanyStore();
 
   const [Applied, setSuspended] = useState(false);
 
@@ -16,6 +20,7 @@ const Opportunities = () => {
 
   useEffect(() => {
     opportunityStore.fetchOpportunities();
+    company.fetchCompanies();
   }, []);
   return (
     <Fragment>
@@ -35,7 +40,7 @@ const Opportunities = () => {
                 className="form-control"
                 placeholder="  Search"
                 name=""
-                value=""
+                //value=""
                 id="searchInput"
               />
             </div>
@@ -44,9 +49,9 @@ const Opportunities = () => {
       </section>
       <div className="row opportunitiesTag">
         <span className="col-3 opportunitiesMainTags">Role</span>
-        <span className="col-3 opportunitiesMainTags">major</span>
-        <span className="col-3 opportunitiesMainTags">Statues</span>
-        <span className="col-3 opportunitiesMainTags">info</span>
+        <span className="col-2 opportunitiesMainTags">major</span>
+        <span className="col-2 opportunitiesMainTags">Statues</span>
+        <span className="col-4 opportunitiesMainTags">info</span>
       </div>
       {opportunityStore.opportunities &&
         opportunityStore.opportunities.map((opportunity) => {
@@ -55,19 +60,31 @@ const Opportunities = () => {
               <span className="col-3 opportunitiesTags">
                 {opportunity.job_role}
               </span>
-              <span className="col-3 opportunitiesTags">
+              <span className="col-2 opportunitiesTags">
                 {opportunity.major_preferred}
               </span>
-              <span className="col-3 opportunitiesTags">
+              <span className="col-2 opportunitiesTags">
                 <button className="button" onClick={handleSuspensionUpdate}>
                   {Applied ? "Apply" : "Applied"}
                 </button>
               </span>
-              <div className="col-3 d-flex justify-content-center">
-                <a href="/feedBackConsumerCompany/:id">
-                  <img className="infoImg" src={InfoIcon} alt="InfoIcon" />
-                </a>
-              </div>
+              {company.companies &&
+                company.companies.map((company) => {
+                  return (
+                    <div className="col-4 d-flex justify-content-center">
+                      <Link to={`/feedBackConsumerCompany/${company._id}`}>
+                        <img
+                          className="infoImg"
+                          src={InfoIcon}
+                          alt="InfoIcon"
+                        />
+                        <p className=" opportunitiesTags">
+                          {company.organization_name}
+                        </p>
+                      </Link>
+                    </div>
+                  );
+                })}
             </div>
           );
         })}

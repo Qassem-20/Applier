@@ -4,8 +4,11 @@ import React, { Fragment, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import CompanyStore from "../../stores/CompanyStore";
+import { useParams } from "react-router-dom";
 
 const FeedBackConsumerCompany = () => {
+  const { companyId } = useParams();
+
   const store = CompanyStore();
   useEffect(() => {
     store.fetchCompany();
@@ -20,7 +23,7 @@ const FeedBackConsumerCompany = () => {
               <Row>
                 <Col>
                   <p>Company Name</p>
-                  <span>{company.name}</span>
+                  <span>{company.organization_name}</span>
                   <p>Major</p>
                   <p>City</p>
                 </Col>
