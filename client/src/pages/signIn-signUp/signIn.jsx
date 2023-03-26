@@ -52,21 +52,21 @@ const SignIn = () => {
               <Col>
                 <ApplierButton
                   buttonType="User"
-                  className="companyLog"
+                  className="companyLog clickedEffect"
                   onClick={showUser}
                 />
               </Col>
               <Col>
                 <ApplierButton
                   buttonType="Medical Student"
-                  className="medicalLog"
+                  className="medicalLog clickedEffect"
                   onClick={showMedical}
                 />
               </Col>
               <Col>
                 <ApplierButton
                   buttonType="Company"
-                  className="companyLog"
+                  className="companyLog clickedEffect"
                   onClick={showCompany}
                 />
               </Col>
