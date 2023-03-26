@@ -38,7 +38,6 @@ const SignInMedical = () => {
           value={storeMedical.loginFormMedical.password}
           onChange={storeMedical.handleChangeLogin}
           required="true"
-          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
         />
 
         <Row>
