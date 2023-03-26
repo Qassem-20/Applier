@@ -126,6 +126,9 @@ const consumerSchema = new mongoose.Schema(
     patientApplication: [
       { type: mongoose.Schema.Types.ObjectId, ref: "PatientApplication" },
     ],
+    opportunity: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Opportunity" },
+    ],
   },
   { timestamps: true }
 );

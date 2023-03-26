@@ -79,9 +79,9 @@ const opportunitySchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Company",
     },
-    traineeApplication: {
+    consumer: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "traineeApplication",
+      ref: "Consumer",
     },
   },
   { timestamps: true }
