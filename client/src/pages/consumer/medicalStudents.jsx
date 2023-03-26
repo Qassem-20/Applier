@@ -96,7 +96,7 @@ const MedicalStudents = () => {
           {store.medicalStudents &&
             store.medicalStudents.map((medicalStudent) => {
               return (
-                <Col xl={4} md={6} sm={12}>
+                <Col xl={4} md={6} sm={12} key={medicalStudent._id}>
                   <Card>
                     <Row>
                       <Col sm={3}>

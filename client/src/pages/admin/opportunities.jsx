@@ -15,8 +15,6 @@ const Opportunities = () => {
     store.fetchOpportunities();
   }, []);
 
-
-
   return (
     <Fragment>
       <AdminNav />
@@ -84,7 +82,7 @@ const Opportunities = () => {
       {store.opportunities &&
         store.opportunities.map((opportunity) => {
           return (
-            <Container fluid>
+            <Container fluid key={opportunity._id}>
               <Row className="opportunitiesT">
                 <Col xl={2}>
                   <p className="opportunitiesTags">{opportunity.job_role}</p>

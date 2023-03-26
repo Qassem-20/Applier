@@ -45,7 +45,7 @@ const CompanyHomePage = () => {
       {store.opportunities &&
         store.opportunities.map((opportunity) => {
           return (
-            <div className="row opportunitiesT">
+            <div className="row opportunitiesT" key={opportunity._id}>
               <span className="col-2 opportunitiesTags">
                 {opportunity.job_role}
               </span>
