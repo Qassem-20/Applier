@@ -40,7 +40,6 @@ const SignInUser = () => {
           value={storeConsumer.loginFormConsumer.password}
           onChange={storeConsumer.handleChangeLogin}
           required="true"
-          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
         />
 
         <Row>
