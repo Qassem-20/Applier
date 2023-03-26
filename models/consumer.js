@@ -52,16 +52,21 @@ const consumerSchema = new mongoose.Schema(
       minlength: 2,
       maxlength: 50,
       trim: true,
+      default:"null"
+
     },
     major: {
       type: String,
       required: [false, "Provide your major"],
       //add all majors
       //enum: [""],
+      default:"null"
+
     },
     gpa: {
       type: String,
       required: [false, "Please provide your gpa"],
+      default:"null"
     },
 
     concentrated_major: {
@@ -70,12 +75,15 @@ const consumerSchema = new mongoose.Schema(
       minlength: 0,
       maxlength: 20,
       trim: true,
+      default:"null"
     },
     skills: {
       type: String,
       required: [false, "Provide at least one skill"],
       //provide all skills for all majors
       //enum: [""],
+      default:"null"
+
     },
     /*cv: {
       file: { type: Buffer, required: true },
@@ -87,6 +95,8 @@ const consumerSchema = new mongoose.Schema(
       minlength: 0,
       maxlength: 100,
       trim: true,
+      default:"null"
+
     },
     experience: {
       type: String,
@@ -104,11 +114,14 @@ const consumerSchema = new mongoose.Schema(
       type: String,
       required: [false, "Please enter your experience"],
       enum: [
+        "null",
         "High School",
         "Bachelor",
         "Master",
         "Diploma",
       ],
+      default:"null"
+
     },
     patientApplication: [
       { type: mongoose.Schema.Types.ObjectId, ref: "PatientApplication" },
