@@ -1,17 +1,26 @@
 import "../../assets/css/signUpSignIn.css";
 import WelcomeNav from "../../components/Nav/welcomeNav";
 import { Col, Row, Container } from "react-bootstrap";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import consumerStore from "../../stores/ConsumerStore.js";
 import { useHistory } from "react-router-dom";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
-
+const initialState = {
+  isApplication: true,
+};
 const SignUpConsumer = () => {
   const store = consumerStore();
 
   const history = useHistory();
 
+  const [values, setValues] = useState(initialState);
+  const showApplication = () => {
+    setValues({
+      ...values,
+      isApplication: !values.isApplication,
+    });
+  };
   const handleSignUp = async (e) => {
     e.preventDefault();
     await store.registerConsumer();
@@ -36,7 +45,7 @@ const SignUpConsumer = () => {
         <form onSubmit={handleSignUp}>
           <Container>
             <Row>
-              <div className="col-sm-12 col-md-6">
+              <div>
                 <ApplierInputForm
                   label="Full name"
                   type="name"
@@ -90,86 +99,101 @@ const SignUpConsumer = () => {
                   required="true"
                   pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                 />
-                <label className="labelTag">GPA</label>
-                <input
-                  type="text"
-                  className="inputStyling"
-                  name="gpa"
-                  value={store.values.gpa}
-                  onChange={store.handleChange}
-                />
-                <label className="labelTag">Major</label>
-                <input
-                  type="text"
-                  className="inputStyling"
-                  name="major"
-                  value={store.values.major}
-                  onChange={store.handleChange}
-                />
+              </div>
+              <button id="signInButton" onClick={showApplication}>
+                are you applying to COOP or Summer?
+              </button>
+              {!values.isApplication && (
+                <div>
+                  <Row>
+                    <div className="col-sm-12 col-md-6">
+                      <label className="labelTag">GPA</label>
+                      <input
+                        type="text"
+                        className="inputStyling"
+                        name="gpa"
+                        value={store.values.gpa}
+                        onChange={store.handleChange}
+                      />
+                      <label className="labelTag">Major</label>
+                      <input
+                        type="text"
+                        className="inputStyling"
+                        name="major"
+                        value={store.values.major}
+                        onChange={store.handleChange}
+                      />
 
-                <label className="labelTag">Concentrated major</label>
-                <input
-                  type="text"
-                  className="inputStyling"
-                  name="concentrated_major"
-                  value={store.values.concentrated_major}
-                  onChange={store.handleChange}
-                />
-                <label className="labelTag">skills</label>
-                <input
-                  type="text"
-                  className="inputStyling"
-                  name="skills"
-                  value={store.values.skills}
-                  onChange={store.handleChange}
-                />
-              </div>
-              <div className="col-sm-12 col-md-6">
-                <label className="labelTag">Degree</label>
-                <select
-                  className="inputStyling"
-                  name="degree"
-                  placeholder="degree"
-                  value={store.values.degree}
-                  onChange={store.handleChange}
-                >
-                  <option value="High school">high school</option>
-                  <option value="Bachelor">bachelor</option>
-                  <option value="Diploma">diploma</option>
-                  <option value="Master">master</option>
-                </select>
-                <label className="labelTag">Collage</label>
-                <input
-                  type="text"
-                  className="inputStyling"
-                  name="university"
-                  value={store.values.university}
-                  onChange={store.handleChange}
-                />
-                <br />
-                <label className="labelTag">LinkedIn Profile</label>
-                <input
-                  type="link"
-                  className="inputStyling"
-                  name="linkedIn_profile"
-                  value={store.values.linkedIn_profile}
-                  onChange={store.handleChange}
-                />
-                <label className="labelTag">Experience</label>
-                <select
-                  className="inputStyling"
-                  name="experience"
-                  placeholder="duration"
-                  value={store.values.experience}
-                  onChange={store.handleChange}
-                >
-                  <option value="none">None</option>
-                  <option value="less than a year">less than a year</option>
-                  <option value="an year">an year</option>
-                  <option value="2 years">2 years</option>
-                  <option value="more than 2 years">more than 2 years</option>
-                </select>
-              </div>
+                      <label className="labelTag">Concentrated major</label>
+                      <input
+                        type="text"
+                        className="inputStyling"
+                        name="concentrated_major"
+                        value={store.values.concentrated_major}
+                        onChange={store.handleChange}
+                      />
+                      <label className="labelTag">skills</label>
+                      <input
+                        type="text"
+                        className="inputStyling"
+                        name="skills"
+                        value={store.values.skills}
+                        onChange={store.handleChange}
+                      />
+                    </div>
+                    <div className="col-sm-12 col-md-6">
+                      <label className="labelTag">Degree</label>
+                      <select
+                        className="inputStyling"
+                        name="degree"
+                        placeholder="degree"
+                        value={store.values.degree}
+                        onChange={store.handleChange}
+                      >
+                        <option value="High school">high school</option>
+                        <option value="Bachelor">bachelor</option>
+                        <option value="Diploma">diploma</option>
+                        <option value="Master">master</option>
+                      </select>
+                      <label className="labelTag">Collage</label>
+                      <input
+                        type="text"
+                        className="inputStyling"
+                        name="university"
+                        value={store.values.university}
+                        onChange={store.handleChange}
+                      />
+                      <br />
+                      <label className="labelTag">LinkedIn Profile</label>
+                      <input
+                        type="link"
+                        className="inputStyling"
+                        name="linkedIn_profile"
+                        value={store.values.linkedIn_profile}
+                        onChange={store.handleChange}
+                      />
+                      <label className="labelTag">Experience</label>
+                      <select
+                        className="inputStyling"
+                        name="experience"
+                        placeholder="duration"
+                        value={store.values.experience}
+                        onChange={store.handleChange}
+                      >
+                        <option value="none">None</option>
+                        <option value="less than a year">
+                          less than a year
+                        </option>
+                        <option value="an year">an year</option>
+                        <option value="2 years">2 years</option>
+                        <option value="more than 2 years">
+                          more than 2 years
+                        </option>
+                      </select>
+                    </div>
+                  </Row>
+                </div>
+              )}
             </Row>
             <br />
             <ApplierButton buttonType="Sign Up" />
