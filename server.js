@@ -52,9 +52,7 @@ app.use("/api/v1", reviewRoutes);
 
 //applications routes
 import patientApplicationRoutes from "./routes/patientApplicationRoutes.js";
-import traineeApplicationRoutes from "./routes/traineeApplicationRoutes.js";
 app.use("/api/v1", patientApplicationRoutes);
-app.use("/api/v1", traineeApplicationRoutes);
 
 //opportunity routes
 import opportunitiesRoutes from "./routes/opportunitiesRoutes.js";

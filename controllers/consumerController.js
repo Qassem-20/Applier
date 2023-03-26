@@ -146,13 +146,29 @@ function checkAuthConsumer(req, res) {
 const updateConsumer = async (req, res) => {
   const consumerId = req.params.id;
 
-  const { name, email, phone, nationality } = req.body;
+  const { name, phone, nationality,    university, 
+    major, 
+    gpa, 
+    gpa_statue, 
+    concentrated_major, 
+    skills, 
+    cv, 
+    linkedIn_profile, 
+    experience, } = req.body;
 
   await Consumer.findByIdAndUpdate(consumerId, {
     name,
-    email,
     phone,
     nationality,
+    university, 
+    major, 
+    gpa, 
+    gpa_statue, 
+    concentrated_major, 
+    skills, 
+    cv, 
+    linkedIn_profile, 
+    experience,
   });
 
   const consumer = await Consumer.findById(consumerId);
