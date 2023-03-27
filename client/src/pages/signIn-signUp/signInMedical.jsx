@@ -23,7 +23,7 @@ const SignInMedical = () => {
           type="email"
           placeholder="dr.Faisal@gmail.com"
           name="email"
-          errorMessage="email"
+          errorMessage="userEmail"
           value={storeMedical.loginFormMedical.email}
           onChange={storeMedical.handleChangeLogin}
           required="true"
@@ -34,7 +34,7 @@ const SignInMedical = () => {
           type="password"
           placeholder="**********"
           name="password"
-          errorMessage="password"
+          errorMessage="userPassword"
           value={storeMedical.loginFormMedical.password}
           onChange={storeMedical.handleChangeLogin}
           required="true"

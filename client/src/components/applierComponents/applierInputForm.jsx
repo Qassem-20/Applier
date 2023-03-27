@@ -23,6 +23,10 @@ const ApplierInputForm = (props) => {
     nationality: "Select your nationality",
     phone: "Enter your phone number for communication",
     specialty: "Enter your specialty",
+    userEmail: "Enter your email",
+    userPassword: "Enter your password",
+    orgEmail: "Enter your Organization Account Email",
+    orgPassword: "Enter your Organization Account Password",
   };
 
   const {

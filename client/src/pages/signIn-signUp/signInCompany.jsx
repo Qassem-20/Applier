@@ -22,7 +22,7 @@ const SignInCompany = () => {
           label="Email"
           type="email"
           placeholder="Applier@Applier.com"
-          errorMessage="email"
+          errorMessage="orgEmail"
           name="email"
           value={storeCompany.loginFormCompany.email}
           onChange={storeCompany.handleChangeLogin}
@@ -34,7 +34,7 @@ const SignInCompany = () => {
           type="password"
           placeholder="**********"
           name="password"
-          errorMessage="password"
+          errorMessage="orgPassword"
           value={storeCompany.loginFormCompany.password}
           onChange={storeCompany.handleChangeLogin}
           required="true"

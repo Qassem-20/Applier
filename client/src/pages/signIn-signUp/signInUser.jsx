@@ -25,7 +25,7 @@ const SignInUser = () => {
           type="email"
           placeholder="Fouad28@gmail.com"
           name="email"
-          errorMessage="email"
+          errorMessage="userEmail"
           value={storeConsumer.loginFormConsumer.email}
           onChange={storeConsumer.handleChangeLogin}
           required="true"
@@ -36,7 +36,7 @@ const SignInUser = () => {
           type="password"
           placeholder="**********"
           name="password"
-          errorMessage="password"
+          errorMessage="userPassword"
           value={storeConsumer.loginFormConsumer.password}
           onChange={storeConsumer.handleChangeLogin}
           required="true"
