@@ -45,22 +45,34 @@
   margin-left: 40%;
   margin-right: 60%;
 }
-.medicalLog {
-  background-color: #69bfd5;
-  border-radius: 18px;
+
+.btnGp {
   width: 10rem;
   height: 3rem;
-}
-.companyLog {
-  background-color: #55c454;
-  border-radius: 18px;
-  width: 10rem;
-  height: 3rem;
+  border-radius: 0;
+  color: var(--color-button);
+  font-weight: bolder;
+  transition: background-color 0.5s;
+  background-color: var(--color-button-secondary);
+  border: 2px solid var(--color-button);
 }
 
-.clickedEffect {
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+.btnGp:hover {
+  background-color: var(--color-button);
+}
+
+.btnGp:focus {
+  background-color: var(--color-button);
+  color: var(--color-button-secondary);
+}
+
+.btnGp:nth-child(1) {
+  border-radius: 10px 0 0 10px;
+  border-width: 2px 0px 2px 2px;
+}
+.btnGp:last-child {
+  border-radius: 0 10px 10px 0;
+  border-width: 2px 2px 2px 0px;
 }
 
 .align {

@@ -1,6 +1,6 @@
 import WelcomeNav from "../../components/Nav/welcomeNav";
 import React, { Fragment, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import SignInMedical from "./signInMedical";
 import SignInCompany from "./signInCompany";
 import ApplierButton from "../../components/applierComponents/applierButton";
@@ -48,28 +48,24 @@ const SignIn = () => {
         <Row>
           <Container className="bg-white p-4 rounded">
             <h1 className="alignmentCenter">Welcome to Applier</h1>
-            <Row className=" alignmentCenter">
-              <Col>
-                <ApplierButton
-                  buttonType="User"
-                  className="companyLog clickedEffect"
-                  onClick={showUser}
-                />
-              </Col>
-              <Col>
-                <ApplierButton
-                  buttonType="Medical Student"
-                  className="medicalLog clickedEffect"
-                  onClick={showMedical}
-                />
-              </Col>
-              <Col>
-                <ApplierButton
-                  buttonType="Company"
-                  className="companyLog clickedEffect"
-                  onClick={showCompany}
-                />
-              </Col>
+            <Row className=" alignmentCenter justify-content-center ">
+              <ApplierButton
+                buttonType="User"
+                className="btnGp"
+                onClick={showUser}
+              />
+
+              <ApplierButton
+                buttonType="Medical Student"
+                className="btnGp"
+                onClick={showMedical}
+              />
+
+              <ApplierButton
+                buttonType="Company"
+                className="btnGp"
+                onClick={showCompany}
+              />
             </Row>
             <hr />
             <Row className="mt-4 mb-3">
