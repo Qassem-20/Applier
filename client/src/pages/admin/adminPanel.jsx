@@ -3,8 +3,8 @@ import AdminNav from "../../components/Nav/adminNav";
 import { Container, Row, Col } from "react-bootstrap";
 import adminsStore from "../../stores/AdminsStore.js";
 import React, { Fragment, useEffect, useState } from "react";
-
-const AdminPanel = ({ userId }) => {
+import axios from "axios";
+const AdminPanel = () => {
   const store = adminsStore();
 
   const storeDeleteAndUpdate = adminsStore((storeDeleteAndUpdate) => {
@@ -12,34 +12,29 @@ const AdminPanel = ({ userId }) => {
       deleteAdmin: storeDeleteAndUpdate.deleteAdmin,
     };
   });
-  /*
-  const [userType, setUserType] = useState("main-admin");
 
-  const updateUserType = async () => {
+  const [userData, setUserData] = useState({ type: "" });
+
+  function handleUserDataChange(event) {
+    setUserData({
+      ...userData,
+      type: event.target.value,
+    });
+  }
+  async function updateUser(_id) {
     try {
-      const newType = userType === "main-admin" ? "sub-admin" : "main-admin";
-      const response = await fetch(
-        `http://localhost:4000/api/v1/admins/${userId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ type: newType }),
-        },
+      const response = await axios.put(
+        `http://localhost:4000/api/v1/admins/${_id}`,
+        userData,
         { withCredentials: true }
       );
-      const data = await response.json();
-      setUserType(data.type);
+      //window.location.reload();
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
-  };
+  }
 
-  const handleButtonClick = () => {
-    updateUserType("admin");
-  };
-*/
   useEffect(() => {
     store.fetchAdmins();
   }, []);
@@ -92,7 +87,16 @@ const AdminPanel = ({ userId }) => {
                   <p className="opportunitiesTags">{admin.phone}</p>
                 </Col>
                 <Col xl={2} md={1} xs={1}>
-                  <button>{admin.type}</button>
+                  <select
+                    name="type"
+                    defaultValue={admin.type}
+                    onChange={handleUserDataChange}
+                    onClick={(e) => updateUser(admin._id)}
+                  >
+                    <option value="">null</option>
+                    <option value="sub-admin">sub-admin</option>
+                    <option value="main-admin">main-admin</option>
+                  </select>
                 </Col>
                 <Col xl={1} md={1} xs={1}>
                   <button
