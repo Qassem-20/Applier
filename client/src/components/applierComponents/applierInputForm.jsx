@@ -42,7 +42,7 @@ const ApplierInputForm = (props) => {
   } = props;
 
   return (
-    <div className="applierInputComponent">
+    <div>
       <label className="labelStyling"> {label}</label>
       <input
         className="inputStyling"
