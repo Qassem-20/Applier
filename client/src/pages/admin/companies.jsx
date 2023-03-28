@@ -1,11 +1,33 @@
 import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore.js";
 
 const Companies = () => {
   const store = CompanyStore();
+
+  const [userData, setUserData] = useState({ statue: "" });
+
+  function handleUserDataChange(event) {
+    setUserData({
+      ...userData,
+      statue: event.target.value,
+    });
+  }
+  async function updateStatue(_id) {
+    try {
+      const response = await axios.put(
+        `http://localhost:4000/api/v1/admins/activateCompanies/${_id}`,
+        userData,
+        { withCredentials: true }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
     store.fetchCompanies();
@@ -103,12 +125,15 @@ const Companies = () => {
                   </p>
                 </Col>
                 <Col xl={1}>
-                  <form onSubmit={store.updateStatueCompany}>
-                    <select name="statue" defaultValue={company.statue}>
-                      <option value="inactive">inactive</option>
-                      <option value="active">active</option>
-                    </select>
-                  </form>
+                  <select
+                    name="statue"
+                    defaultValue={company.statue}
+                    onChange={handleUserDataChange}
+                    onClick={() => updateStatue(company._id)}
+                  >
+                    <option value="inactive">inactive</option>
+                    <option value="active">active</option>
+                  </select>
                 </Col>
               </Row>
             </Container>

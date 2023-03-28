@@ -1,11 +1,31 @@
 import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import MedicalStore from "../../stores/MedicalStore.js";
 const MedicalStudents = () => {
   const store = MedicalStore();
+  const [userData, setUserData] = useState({ statue: "" });
 
+  function handleUserDataChange(event) {
+    setUserData({
+      ...userData,
+      statue: event.target.value,
+    });
+  }
+  async function updateStatue(_id) {
+    try {
+      const response = await axios.put(
+        `http://localhost:4000/api/v1/admins/activateMedicalStudent/${_id}`,
+        userData,
+        { withCredentials: true }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
   useEffect(() => {
     store.fetchMedicalStudents();
   }, []);
@@ -97,7 +117,12 @@ const MedicalStudents = () => {
                 </Col>
                 <Col xl={1}>
                   <form onSubmit={store.updateMedicalStudents}>
-                    <select name="statue" defaultValue={medicalStudent.statue}>
+                    <select
+                      name="statue"
+                      defaultValue={medicalStudent.statue}
+                      onChange={handleUserDataChange}
+                      onClick={() => updateStatue(medicalStudent._id)}
+                    >
                       <option value="inactive">inactive</option>
                       <option value="active">active</option>
                     </select>

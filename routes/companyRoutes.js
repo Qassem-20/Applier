@@ -22,7 +22,6 @@ import {
   deleteCompany,
   findCompany,
   sortCompanies,
-  creatFeedBack, 
 } from "../controllers/companyController.js";
 import { reportReview } from "../controllers/reviewController.js";
 //routes of the Company from the controllers
@@ -33,7 +32,6 @@ router.route("/loginCompany").post(apiLimiter, loginCompany);
 router.route("/logoutCompany").get(logoutCompany);
 router.route("/checkAuthCompany").get(requireAuthCompany, checkAuthCompany);
 router.route("/companies/:id").put(requireAuthCompany, updateCompany);
-router.route("/companies/:id").put(requireAuthCompany, creatFeedBack);
 
 router.route("/companies/:id").delete(deleteCompany);
 

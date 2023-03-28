@@ -2,11 +2,32 @@ import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
 import React, { Fragment, useEffect, useState } from "react";
 import { Container, Row, Col, SortButton, SortIcon } from "react-bootstrap";
+import axios from "axios";
 import ConsumerStore from "../../stores/ConsumerStore.js";
 
 const Consumers = () => {
   const store = ConsumerStore();
 
+  const [userData, setUserData] = useState({ statue: "" });
+
+  function handleUserDataChange(event) {
+    setUserData({
+      ...userData,
+      statue: event.target.value,
+    });
+  }
+  async function updateStatue(_id) {
+    try {
+      const response = await axios.put(
+        `http://localhost:4000/api/v1/admins/suspendConsumer/${_id}`,
+        userData,
+        { withCredentials: true }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
   useEffect(() => {
     store.fetchConsumers();
   }, []);
@@ -118,7 +139,7 @@ const Consumers = () => {
               >
                 <path d="M3.5 3.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 12.293V3.5zm4 .5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1h-1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1h-3zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1h-5zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5z" />
               </svg>
-              Date
+              Joined Date
             </p>
           </Col>
           <Col xl={1}>
@@ -138,7 +159,7 @@ const Consumers = () => {
                   <p className="opportunitiesTags">{consumer.email}</p>
                 </Col>
                 <Col xl={2}>
-                  <p className="opportunitiesTags">{consumer.phone_number}</p>
+                  <p className="opportunitiesTags">{consumer.phone}</p>
                 </Col>
                 <Col xl={2}>
                   <p className="opportunitiesTags">{consumer.nationality}</p>
@@ -147,12 +168,15 @@ const Consumers = () => {
                   <p className="opportunitiesTags">{consumer.createdAt}</p>
                 </Col>
                 <Col xl={1}>
-                  <form onSubmit={store.updateConsumer}>
-                    <select name="statue" defaultValue={consumer.statue}>
-                      <option value="suspend">suspend</option>
-                      <option value="unsuspend">unsuspend</option>
-                    </select>
-                  </form>
+                  <select
+                    name="statue"
+                    onChange={handleUserDataChange}
+                    onClick={() => updateStatue(consumer._id)}
+                    defaultValue={consumer.statue}
+                  >
+                    <option value="suspend">suspend</option>
+                    <option value="unsuspend">unsuspend</option>
+                  </select>
                 </Col>
               </Row>
             </Container>

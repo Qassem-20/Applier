@@ -21,14 +21,13 @@ const AdminPanel = () => {
       type: event.target.value,
     });
   }
-  async function updateUser(_id) {
+  async function updateType(_id) {
     try {
       const response = await axios.put(
         `http://localhost:4000/api/v1/admins/${_id}`,
         userData,
         { withCredentials: true }
       );
-      //window.location.reload();
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -91,9 +90,8 @@ const AdminPanel = () => {
                     name="type"
                     defaultValue={admin.type}
                     onChange={handleUserDataChange}
-                    onClick={(e) => updateUser(admin._id)}
+                    onClick={() => updateType(admin._id)}
                   >
-                    <option value="">null</option>
                     <option value="sub-admin">sub-admin</option>
                     <option value="main-admin">main-admin</option>
                   </select>
