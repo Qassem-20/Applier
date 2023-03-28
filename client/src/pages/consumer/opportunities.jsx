@@ -22,7 +22,7 @@ const Opportunities = () => {
   useEffect(() => {
     opportunityStore.fetchOpportunities();
     company.fetchCompanies();
-  }, []);
+  }, [company, opportunityStore]);
   return (
     <Fragment>
       <ConsumerNav />
@@ -68,7 +68,10 @@ const Opportunities = () => {
               {company.companies &&
                 company.companies.map((company) => {
                   return (
-                    <div className="col-4 d-flex justify-content-center">
+                    <div
+                      className="col-4 d-flex justify-content-center"
+                      key={company._id}
+                    >
                       <Link to={`/feedBackConsumerCompany/${company._id}`}>
                         <img
                           className="infoImg"

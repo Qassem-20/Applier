@@ -1,42 +1,48 @@
 import "../../assets/css/feedback.css";
 import profileIcon from "../../assets/images/profileIcon.png";
-import React, { Fragment, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ConsumerNav from "../../components/Nav/consumerNav";
-import CompanyStore from "../../stores/CompanyStore";
-import { useParams } from "react-router-dom";
+import React, { Fragment, useEffect, useState } from "react";
+import axios from "axios";
 
-const FeedBackConsumerCompany = () => {
-  const { companyId } = useParams();
+const FeedBackConsumerCompany = ({ _id }) => {
+  const [data, setData] = useState(null);
 
-  const store = CompanyStore();
   useEffect(() => {
-    store.fetchCompany();
-  }, []);
+    async function fetchData() {
+      const response = await axios.get(
+        `http://localhost:4000/api/v1/companies/${_id}`
+      );
+      setData(response.data);
+    }
+    fetchData();
+  }, [_id]);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Fragment>
       <ConsumerNav />
-      {CompanyStore.company &&
-        CompanyStore.company.map((company) => {
-          return (
-            <Container className="mt-5 p-5 bg-white">
-              <Row>
-                <Col>
-                  <p>Company Name</p>
-                  <span>{company.organization_name}</span>
-                  <p>Major</p>
-                  <p>City</p>
-                </Col>
 
-                <Col>
-                  <p>Rate</p>
-                  <p>Phone Number</p>
-                  <p>WhatsApp URL</p>
-                </Col>
-              </Row>
-            </Container>
-          );
-        })}
+      <Container className="mt-5 p-5 bg-white">
+        <Row>
+          <Col>
+            <p>Company Name</p>
+            <span>{data.organization_name}</span>
+            <p>Major</p>
+            <p>City</p>
+          </Col>
+
+          <Col>
+            <p>Rate</p>
+            <p>Phone Number</p>
+            <p>WhatsApp URL</p>
+          </Col>
+        </Row>
+      </Container>
+
       <Container>
         <h1>Add Review</h1>
         <p>Rate</p>
