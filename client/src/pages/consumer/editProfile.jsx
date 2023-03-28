@@ -1,8 +1,9 @@
 import "../../assets/css/consumer.css";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import TraineeApplicationStore from "../../stores/traineeApplicationStore";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import ApplierButton from "../../components/applierComponents/applierButton";
+import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 
 import { useHistory } from "react-router-dom";
 
@@ -27,42 +28,44 @@ const EditProfile = () => {
           <form onSubmit={addProfile}>
             <div className="row">
               <div className="col-sm-12 col-md-6">
-                <label className="labelTag">GPA</label>
-                <input
+                <ApplierInputForm
+                  label="GPA"
                   type="text"
-                  className="inputStyling"
+                  placeholder="Enter Your GPA"
                   name="gpa"
                   value={store.values.gpa}
                   onChange={store.handleChange}
                 />
-                <label className="labelTag">Major</label>
-                <input
+
+                <ApplierInputForm
+                  label="Major"
                   type="text"
-                  className="inputStyling"
+                  placeholder="Enter Your Major"
                   name="major"
                   value={store.values.major}
                   onChange={store.handleChange}
                 />
 
-                <label className="labelTag">Concentrated major</label>
-                <input
+                <ApplierInputForm
+                  label="Minor"
                   type="text"
-                  className="inputStyling"
+                  placeholder="Enter Your Minor (If Available)"
                   name="concentrated_major"
                   value={store.values.concentrated_major}
                   onChange={store.handleChange}
                 />
-                <label className="labelTag">skills</label>
-                <input
+
+                <ApplierInputForm
+                  label="Skills"
                   type="text"
-                  className="inputStyling"
+                  placeholder="What skills you have"
                   name="skills"
                   value={store.values.skills}
                   onChange={store.handleChange}
                 />
               </div>
               <div className="col-sm-12 col-md-6">
-                <label className="labelTag">Degree</label>
+                <label className="labelStyling">Degree</label>
                 <select
                   className="inputStyling"
                   name="degree"
@@ -75,24 +78,26 @@ const EditProfile = () => {
                   <option value="Diploma">diploma</option>
                   <option value="Master">master</option>
                 </select>
-                <label className="labelTag">Collage</label>
-                <input
+
+                <ApplierInputForm
+                  label="University"
                   type="text"
-                  className="inputStyling"
+                  placeholder="Enter your University name"
                   name="university"
                   value={store.values.university}
                   onChange={store.handleChange}
                 />
-                <br />
-                <label className="labelTag">LinkedIn Profile</label>
-                <input
-                  type="link"
-                  className="inputStyling"
+
+                <ApplierInputForm
+                  label="LinkedIn Profile"
+                  type="text"
+                  placeholder="Enter your LinkedIn Account Link (Optional)"
                   name="linkedIn_profile"
                   value={store.values.linkedIn_profile}
                   onChange={store.handleChange}
                 />
-                <label className="labelTag">Experience</label>
+
+                <label className="labelStyling">Experience</label>
                 <select
                   className="inputStyling"
                   name="experience"
@@ -108,7 +113,7 @@ const EditProfile = () => {
                 </select>
               </div>
             </div>
-            <ApplierButton buttonType="add Profile" />
+            <ApplierButton buttonType="Create Profile" />
           </form>
         </div>
       </Container>

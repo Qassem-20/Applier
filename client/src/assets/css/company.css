@@ -1,58 +1,56 @@
 @import url(//fonts.googleapis.com/css?family=Lora);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-#searchInput{
-    box-sizing: border-box;
-    width: 80%;
-    height: 34px;
-    top: 10rem;
-    background: rgba(51, 52, 57, 0.1);
-    border: 1px solid #000000;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
+#searchInput {
+  box-sizing: border-box;
+  width: 80%;
+  height: 34px;
+  top: 10rem;
+  background: rgba(51, 52, 57, 0.1);
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
 }
-#opportunitiesHeader{
-    margin-left: 3rem;
-    font-size: 24px;
-    font-weight:500;
-    font-family: Lora;
+#opportunitiesHeader {
+  font-size: 30px;
+  font-family: Lora;
+  font-weight: bolder;
 }
-.opportunitiesMainTags{
-    font-family: Lora;
-    font-weight: bolder;
-    font-size: large;
-    text-align: center;
-    font-weight: bold;
+.opportunitiesMainTags {
+  font-family: Lora;
+  font-weight: bolder;
+  font-size: large;
+  text-align: center;
 }
-.opportunitiesTags{
-    font-size: medium;
-    text-align: center;
-    font-family: roboto;
+.opportunitiesTags {
+  font-size: medium;
+  text-align: center;
+  font-family: roboto;
 }
-.opportunitiesTag{
-    font-family: Lora;
-    border-bottom: 2px solid #d3d3d3;
-    border-top: 2px solid #d3d3d3;
-    background-color: white;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+.opportunitiesTag {
+  font-family: Lora;
+  border-bottom: 2px solid #d3d3d3;
+  border-top: 2px solid #d3d3d3;
+  background-color: white;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
-.opportunitiesT{
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    background-color: white;
-    border-bottom: 2px solid #d3d3d3;
+.opportunitiesT {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: white;
+  border-bottom: 2px solid #d3d3d3;
 }
-.infoImg{
-    height: 30px;
-    width: 30px;
+.infoImg {
+  height: 30px;
+  width: 30px;
 }
-.iconSize{
-    height: 30px;
-    width: 30px;
+.iconSize {
+  height: 30px;
+  width: 30px;
 }
 /*addOpportunity*/
-.backgroundAdd{
-    background-color: white;
-    border-radius: 25px;
-    padding: 1rem;
+.backgroundAdd {
+  background-color: white;
+  border-radius: 25px;
+  padding: 1rem;
 }

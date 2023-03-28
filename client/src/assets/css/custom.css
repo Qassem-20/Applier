@@ -160,3 +160,7 @@ input:invalid[focused="true"] ~ span {
 .labelStyling {
   font-weight: bolder;
 }
+
+.btn-dark {
+  background-color: var(--color-button);
+}
