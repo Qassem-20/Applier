@@ -13,7 +13,7 @@ export class routeSignUp extends Component {
       <Fragment>
         <WelcomeNav />
         <div className="container">
-          <Container mt-2>
+          <Container className="mt-2">
             <div className="row">
               <a className="col-4 align" href="/signUpConsumer">
                 <img className="img-fluid" src={traineeBackground} alt="" />

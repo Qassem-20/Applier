@@ -1,7 +1,8 @@
 import "../../assets/css/consumer.css";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import TraineeApplicationStore from "../../stores/traineeApplicationStore";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import axios from "axios";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 
@@ -14,17 +15,48 @@ const AddProfile = () => {
 
   const history = useHistory();
 
-  const [hasPosted, setHasPosted] = useState(false);
-
   const createProfile = async (e) => {
     e.preventDefault();
-    setHasPosted(true);
     await store.registerTraineeApplication();
     history.push("/consumerProfile");
   };
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchUser() {
+      try {
+        const response = await axios.get(
+          `http://localhost:4000/api/v1/consumers/`
+        );
+        setUser(response.data);
+        setLoading(false);
+        setError(null);
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        setLoading(false);
+        setError(error.response.data.message);
+      }
+    }
+    fetchUser();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <Fragment>
       <ConsumerNav />
+      <div className="container backgroundProfile">
+        <p>Name: {user.name}</p>
+      </div>
+
       <Container fluid>
         <div className="container backgroundProfile">
           <form onSubmit={createProfile}>
@@ -115,7 +147,7 @@ const AddProfile = () => {
                 </select>
               </div>
             </div>
-            <ApplierButton buttonType="Create Profile" />
+            <ApplierButton buttonType="Update Profile" />
           </form>
         </div>
       </Container>
