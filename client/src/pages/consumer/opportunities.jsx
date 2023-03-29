@@ -65,26 +65,15 @@ const Opportunities = () => {
                   {Applied ? "Apply" : "Applied"}
                 </button>
               </span>
-              {company.companies &&
-                company.companies.map((company) => {
-                  return (
-                    <div
-                      className="col-4 d-flex justify-content-center"
-                      key={company._id}
-                    >
-                      <Link to={`/feedBackConsumerCompany/${company._id}`}>
-                        <img
-                          className="infoImg"
-                          src={InfoIcon}
-                          alt="InfoIcon"
-                        />
-                        <p className=" opportunitiesTags">
-                          {company.organization_name}
-                        </p>
-                      </Link>
-                    </div>
-                  );
-                })}
+
+              <div
+                className="col-4 d-flex justify-content-center"
+                key={company._id}
+              >
+                <Link to={`/feedBackConsumerCompany/${opportunity.company}`}>
+                  <img className="infoImg" src={InfoIcon} alt="InfoIcon" />
+                </Link>
+              </div>
             </div>
           );
         })}

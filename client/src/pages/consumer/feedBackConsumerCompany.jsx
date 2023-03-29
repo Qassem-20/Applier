@@ -5,18 +5,18 @@ import ConsumerNav from "../../components/Nav/consumerNav";
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 
-const FeedBackConsumerCompany = ({ _id }) => {
+const FeedBackConsumerCompany = ({ match }) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       const response = await axios.get(
-        `http://localhost:4000/api/v1/companies/${_id}`
+        `http://localhost:4000/api/v1/companies/${match.params._id}`
       );
       setData(response.data);
     }
     fetchData();
-  }, [_id]);
+  }, [match.params._id]);
 
   if (!data) {
     return <div>Loading...</div>;
