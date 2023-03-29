@@ -3,7 +3,14 @@ import axios from "axios";
 
 const ConsumerStore = create((set) => ({
   consumers: null,
-
+  fetchConsumer: async ( _id) => {
+    // Fetch the consumers
+    const res = await axios.get(`http://localhost:4000/api/v1/consumers/${_id}`, {
+      withCredentials: true,
+    });
+    // Set to state
+    set({ consumers: res.data.consumers });
+  },
 
   fetchConsumers: async () => {
     // Fetch the consumers

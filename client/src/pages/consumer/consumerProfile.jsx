@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 
 import { Container } from "react-bootstrap";
 
-const AddProfile = () => {
+const ConsumerProfile = ({ userId }) => {
   const store = TraineeApplicationStore();
 
   const history = useHistory();
@@ -20,27 +20,30 @@ const AddProfile = () => {
     await store.registerTraineeApplication();
     history.push("/consumerProfile");
   };
-  const [user, setUser] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchUser() {
+    async function fetchUserProfile() {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/v1/consumers/`
+          `http://localhost:4000/api/v1/consumers/6420a607013be840922c6ced`,
+          {
+            withCredentials: true,
+          }
         );
-        setUser(response.data);
+        setUserProfile(response.data);
         setLoading(false);
         setError(null);
       } catch (error) {
-        console.error("Error fetching user:", error);
+        console.error("Error fetching user profile:", error);
         setLoading(false);
-        setError(error.response.data.message);
+        setError(error.message);
       }
     }
-    fetchUser();
-  }, []);
+    fetchUserProfile();
+  }, ["6420a607013be840922c6ced"]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -53,10 +56,13 @@ const AddProfile = () => {
   return (
     <Fragment>
       <ConsumerNav />
-      <div className="container backgroundProfile">
-        <p>Name: {user.name}</p>
-      </div>
-
+      {userProfile && (
+        <div className="container backgroundProfile">
+          <p>Name: {userProfile.name}</p>
+          <p>email: {userProfile.email}</p>
+          <p>_id: {userProfile._id}</p>
+        </div>
+      )}
       <Container fluid>
         <div className="container backgroundProfile">
           <form onSubmit={createProfile}>
@@ -155,4 +161,4 @@ const AddProfile = () => {
   );
 };
 
-export default AddProfile;
+export default ConsumerProfile;

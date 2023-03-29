@@ -22,7 +22,7 @@ const Opportunities = () => {
   useEffect(() => {
     opportunityStore.fetchOpportunities();
     company.fetchCompanies();
-  }, [company, opportunityStore]);
+  }, []);
   return (
     <Fragment>
       <ConsumerNav />
@@ -45,16 +45,18 @@ const Opportunities = () => {
         </div>
       </section>
       <div className="row opportunitiesTag">
-        <span className="col-3 opportunitiesMainTags">Role</span>
+        <span className="col-2 opportunitiesMainTags">Role</span>
         <span className="col-2 opportunitiesMainTags">major</span>
         <span className="col-2 opportunitiesMainTags">Statues</span>
-        <span className="col-4 opportunitiesMainTags">info</span>
+        <span className="col-2 opportunitiesMainTags">City</span>
+        <span className="col-2 opportunitiesMainTags">Salary</span>
+        <span className="col-2 opportunitiesMainTags">Company info</span>
       </div>
       {opportunityStore.opportunities &&
         opportunityStore.opportunities.map((opportunity) => {
           return (
             <div className="row opportunitiesT" key={opportunity._id}>
-              <span className="col-3 opportunitiesTags">
+              <span className="col-2 opportunitiesTags">
                 {opportunity.job_role}
               </span>
               <span className="col-2 opportunitiesTags">
@@ -65,9 +67,14 @@ const Opportunities = () => {
                   {Applied ? "Apply" : "Applied"}
                 </button>
               </span>
-
+              <span className="col-2 opportunitiesTags">
+                {opportunity.city}
+              </span>
+              <span className="col-2 opportunitiesTags">
+                {opportunity.salary}
+              </span>
               <div
-                className="col-4 d-flex justify-content-center"
+                className="col-2 d-flex justify-content-center"
                 key={company._id}
               >
                 <Link to={`/feedBackConsumerCompany/${opportunity.company}`}>

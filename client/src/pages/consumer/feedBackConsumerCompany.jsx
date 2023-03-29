@@ -4,23 +4,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
+import { useParams, useHistory } from "react-router-dom";
 
-const FeedBackConsumerCompany = ({ match }) => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get(
-        `http://localhost:4000/api/v1/companies/${match.params._id}`
-      );
-      setData(response.data);
-    }
-    fetchData();
-  }, [match.params._id]);
-
-  if (!data) {
-    return <div>Loading...</div>;
-  }
+const FeedBackConsumerCompany = () => {
+  const { id } = useParams();
+  const [getCompanyData, setCompanyData] = useState([]);
+  console.log(getCompanyData);
 
   return (
     <Fragment>
@@ -30,7 +19,7 @@ const FeedBackConsumerCompany = ({ match }) => {
         <Row>
           <Col>
             <p>Company Name</p>
-            <span>{data.organization_name}</span>
+            <span></span>
             <p>Major</p>
             <p>City</p>
           </Col>
