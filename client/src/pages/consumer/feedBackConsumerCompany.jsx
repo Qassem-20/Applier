@@ -2,14 +2,16 @@ import "../../assets/css/feedback.css";
 import profileIcon from "../../assets/images/profileIcon.png";
 import { Container, Row, Col } from "react-bootstrap";
 import ConsumerNav from "../../components/Nav/consumerNav";
-import React, { Fragment, useEffect, useState } from "react";
-import axios from "axios";
-import { useParams, useHistory } from "react-router-dom";
-
+import CompanyStore from "../../stores/CompanyStore";
+import React, { Fragment, useEffect } from "react";
+import { useParams } from "react-router-dom";
 const FeedBackConsumerCompany = () => {
-  const { id } = useParams();
-  const [getCompanyData, setCompanyData] = useState([]);
-  console.log(getCompanyData);
+  const store = CompanyStore();
+  const { companyId } = useParams();
+
+  useEffect(() => {
+    store.fetchCompany(companyId);
+  }, []);
 
   return (
     <Fragment>
@@ -18,7 +20,7 @@ const FeedBackConsumerCompany = () => {
       <Container className="mt-5 p-5 bg-white">
         <Row>
           <Col>
-            <p>Company Name</p>
+            <p>Company Name: {store.company} </p>
             <span></span>
             <p>Major</p>
             <p>City</p>
@@ -31,7 +33,6 @@ const FeedBackConsumerCompany = () => {
           </Col>
         </Row>
       </Container>
-
       <Container>
         <h1>Add Review</h1>
         <p>Rate</p>

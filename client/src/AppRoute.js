@@ -179,7 +179,9 @@ const AppRoute = () => {
           <AdminPanel />
         </RequireAuthAdmin>
       </Route>
-      <Route path='/feedBackConsumerCompany' element={<FeedBackConsumerCompany />} exact />
+      <Route path='/feedBackConsumerCompany/:companyId'>
+      <FeedBackConsumerCompany />
+      </Route>
 
      
       <Route path="/feedBackConsumerMedical">
