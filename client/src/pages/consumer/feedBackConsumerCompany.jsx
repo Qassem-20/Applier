@@ -12,27 +12,27 @@ const FeedBackConsumerCompany = () => {
   useEffect(() => {
     store.fetchCompany(companyId);
   }, []);
-  console.log(store.data);
+
+  console.log(store.company);
   return (
     <Fragment>
       <ConsumerNav />
-
-      <Container className="mt-5 p-5 bg-white">
-        <Row>
-          <Col>
-            <p>Company Name: store.organization_name</p>
-            <span></span>
-            <p>Major</p>
-            <p>City</p>
-          </Col>
-
-          <Col>
-            <p>Rate</p>
-            <p>Phone Number</p>
-            <p>WhatsApp URL</p>
-          </Col>
-        </Row>
-      </Container>
+      {store.data &&
+        store.data.map((company) => {
+          return (
+            <Container className="mt-5 p-5 bg-white" key={company._id}>
+              <Row>
+                <Col>
+                  <p>Company Name: {company.organization_name}</p>
+                  <p>Bio:</p>
+                  <p>{company.organization_bio}</p>
+                  <p>City: {company.city}</p>
+                  <p>website: {company.organization_website}</p>
+                </Col>
+              </Row>
+            </Container>
+          );
+        })}
       <Container>
         <h1>Add Review</h1>
         <p>Rate</p>

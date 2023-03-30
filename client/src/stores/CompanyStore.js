@@ -3,11 +3,12 @@ import axios from "axios";
 
 const CompanyStore = create((set) => ({
   companies: null,
+  company: null,
 
   fetchCompany: async (_id) => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/v1/companies/${_id}`,     { withCredentials: true });
-      set({ data: response.data });
+      const res = await axios.get(`http://localhost:4000/api/v1/companies/${_id}`,     { withCredentials: true });
+      set({ company: res.data.company });
     } catch (error) {
       console.error(error);
     }
@@ -47,7 +48,7 @@ const CompanyStore = create((set) => ({
     organization_website: "",
     organization_bio: "",
     supervisor_name: "",
-    supervisor_phone: "",
+    phone: "",
     country: "",
     city: "",
   },
@@ -62,7 +63,7 @@ const CompanyStore = create((set) => ({
         organization_website,
         organization_bio,
         supervisor_name,
-        supervisor_phone,
+        phone,
         country,
         city,
         _id,
@@ -79,7 +80,7 @@ const CompanyStore = create((set) => ({
         organization_website,
         organization_bio,
         supervisor_name,
-        supervisor_phone,
+        phone,
         country,
         city,
       },     { withCredentials: true }
@@ -102,7 +103,7 @@ const CompanyStore = create((set) => ({
         organization_bio: "",
         supervisor_name: "",
         password: "",
-        supervisor_phone: "",
+        phone: "",
         country: "",
         city: "",
       },

@@ -109,9 +109,9 @@ const SignUpCompany = () => {
                 <ApplierInputForm
                   type="phone"
                   label="Supervisor phone"
-                  name="supervisor_phone"
+                  name="phone"
                   onChange={store.handleChange}
-                  value={store.values.supervisor_phone}
+                  value={store.values.phone}
                 />
 
                 <ApplierInputForm
