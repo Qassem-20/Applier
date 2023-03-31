@@ -7,16 +7,6 @@ import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 const FeedBackConsumerCompany = () => {
-  /*
-  const store = CompanyStore();
-  const { companyId } = useParams();
-
-  useEffect(() => {
-    store.fetchCompany(companyId);
-  }, []);
-
-  console.log(store.company);
-  */
   const { companyId } = useParams();
   const [userProfile, setUserProfile] = useState({});
 

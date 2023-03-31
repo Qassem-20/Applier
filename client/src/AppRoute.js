@@ -184,7 +184,7 @@ const AppRoute = () => {
       </Route>
 
      
-      <Route path="/feedBackConsumerMedical">
+      <Route path="/feedBackConsumerMedical/:medicalId">
         <FeedBackConsumerMedical />
       </Route>
       <Route path="/feedBackMedical">

@@ -1,11 +1,28 @@
 import "../../assets/css/feedback.css";
 import profileIcon from "../../assets/images/profileIcon.png";
-import React, { Fragment } from "react";
+import ConsumerNav from "../../components/Nav/consumerNav";
+import React, { Fragment, useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 
-const feedBackConsumerMedical = () => {
+const FeedBackConsumerMedical = () => {
+  const { medicalId } = useParams();
+  const [userProfile, setUserProfile] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/api/v1/medicalStudents/${medicalId}`)
+      .then((response) => {
+        setUserProfile(response.data.medicalStudent);
+      });
+  }, []);
+  console.log(userProfile);
+
   return (
     <Fragment>
+      <ConsumerNav />
+
       <Container className="mt-5 p-5 bg-white">
         <Row>
           <Col>
@@ -13,15 +30,15 @@ const feedBackConsumerMedical = () => {
           </Col>
 
           <Col>
-            <p>University Name</p>
-            <p>Major</p>
-            <p>City</p>
+            <p>Name: {userProfile.name}</p>
+            <p>Nationality: {userProfile.nationality}</p>
+            <p>City: {userProfile.city}</p>
           </Col>
 
           <Col>
-            <p>Rate</p>
-            <p>Phone Number</p>
-            <p>WhatsApp URL</p>
+            <p>Major: {userProfile.main_major}</p>
+            <p>Phone Number: {userProfile.phone_number}</p>
+            <p>Specialty: {userProfile.specialty}</p>
           </Col>
         </Row>
       </Container>
@@ -29,25 +46,25 @@ const feedBackConsumerMedical = () => {
       <Container>
         <h1>Add Review</h1>
         <p>Rate</p>
-        <div class="rate">
+        <div className="rate">
           <input type="radio" id="star5" name="rate" value="5" />
-          <label for="star5" title="text">
+          <label htmlFor="star5" title="text">
             5 stars
           </label>
           <input type="radio" id="star4" name="rate" value="4" />
-          <label for="star4" title="text">
+          <label htmlFor="star4" title="text">
             4 stars
           </label>
           <input type="radio" id="star3" name="rate" value="3" />
-          <label for="star3" title="text">
+          <label htmlFor="star3" title="text">
             3 stars
           </label>
           <input type="radio" id="star2" name="rate" value="2" />
-          <label for="star2" title="text">
+          <label htmlFor="star2" title="text">
             2 stars
           </label>
           <input type="radio" id="star1" name="rate" value="1" />
-          <label for="star1" title="text">
+          <label htmlFor="star1" title="text">
             1 star
           </label>
         </div>
@@ -94,4 +111,4 @@ const feedBackConsumerMedical = () => {
   );
 };
 
-export default feedBackConsumerMedical;
+export default FeedBackConsumerMedical;

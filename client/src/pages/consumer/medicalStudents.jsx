@@ -6,6 +6,7 @@ import Profile from "../../assets/images/profileIcon.png";
 import CallIcon from "../../assets/images/callIcon.png";
 import WhatsAppIcon from "../../assets/images/whatsAppIcon.png";
 import MedicalStore from "../../stores/MedicalStore";
+import { Link } from "react-router-dom";
 
 import React, { Fragment, useEffect } from "react";
 import { Row, Col, Container, Card } from "react-bootstrap";
@@ -97,27 +98,29 @@ const MedicalStudents = () => {
             store.medicalStudents.map((medicalStudent) => {
               return (
                 <Col xl={4} md={6} sm={12} key={medicalStudent._id}>
-                  <Card>
-                    <Row>
-                      <Col sm={3}>
-                        <img src={Profile} alt="" />
-                        <p>rate</p>
-                      </Col>
-                      <Col sm={7}>
-                        <p>{medicalStudent.name}</p>
-                        <p>{medicalStudent.specialty}</p>
-                        <p>{medicalStudent.city}</p>
-                      </Col>
-                      <Col sm={2}>
-                        <div>
-                          <img src={CallIcon} alt="whatsApp" />
-                        </div>
-                        <div>
-                          <img src={WhatsAppIcon} alt="Call" />
-                        </div>
-                      </Col>
-                    </Row>
-                  </Card>
+                  <Link to={`/feedBackConsumerMedical/${medicalStudent._id}`}>
+                    <Card className="m-1">
+                      <Row>
+                        <Col sm={3}>
+                          <img src={Profile} alt="" />
+                          <p>rate</p>
+                        </Col>
+                        <Col sm={7}>
+                          <p>{medicalStudent.name}</p>
+                          <p>{medicalStudent.specialty}</p>
+                          <p>{medicalStudent.city}</p>
+                        </Col>
+                        <Col sm={2}>
+                          <div>
+                            <img src={CallIcon} alt="whatsApp" />
+                          </div>
+                          <div>
+                            <img src={WhatsAppIcon} alt="Call" />
+                          </div>
+                        </Col>
+                      </Row>
+                    </Card>
+                  </Link>
                 </Col>
               );
             })}
