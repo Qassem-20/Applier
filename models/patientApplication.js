@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import validator from "validator";
 
 const patientApplicationSchema = new mongoose.Schema(
   {
@@ -13,15 +12,6 @@ const patientApplicationSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Consumer",
     },
-    /*
-    allergies:{
-        type:String,
-        required:[true, 'Provide a name'],
-        // 
-        enum:['','','',''],
-        default:'none'
-    },
-    */
   },
   { timestamps: true }
 );

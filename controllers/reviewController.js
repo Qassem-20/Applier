@@ -23,17 +23,30 @@ const sortReview = async (req, res) => {
 };
 
 
-const createReview = async (req, res) => {
+const createReviewCompany = async (req, res) => {
   const { rate, description } = req.body;
 
   const review = await Review.create({
     rate,
     description,
+    company: req.company._id,
+    consumer: req.consumer._id,
   });
 
   res.json({ review });
 };
+const createReviewMedical = async (req, res) => {
+  const { rate, description } = req.body;
 
+  const review = await Review.create({
+    rate,
+    description,
+    medical: req.medical._id,
+    consumer: req.consumer._id,
+  });
+
+  res.json({ review });
+};
 const hideReview = async (req, res) => {
   const reviewId = req.params.id;
 
@@ -74,7 +87,8 @@ const deleteReview = async (req, res) => {
 export {
   fetchReviews,
   fetchReview,
-  createReview,
+  createReviewCompany,
+  createReviewMedical,
   deleteReview,
   hideReview,
   reportReview,

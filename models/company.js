@@ -6,15 +6,11 @@ const companySchema = new mongoose.Schema(
     organization_name: {
       type: String,
       required: [true, "Provide an organization name"],
-      minlength: 3,
-      maxlength: 30,
       trim: true,
     },
     register_number: {
       type: String,
       required: [true, "Provide a register number"],
-      minlength: 1,
-      maxlength: 20,
       trim: true,
     },
     organization_website: {
@@ -27,15 +23,11 @@ const companySchema = new mongoose.Schema(
     organization_bio: {
       type: String,
       required: [true, "Provide an organization bio"],
-      minlength: 1,
-      maxlength: 500,
       trim: true,
     },
     supervisor_name: {
       type: String,
       required: [true, "Provide a name"],
-      minlength: 3,
-      maxlength: 20,
       trim: true,
     },
     password: {
@@ -122,7 +114,9 @@ const companySchema = new mongoose.Schema(
     Opportunities: [
       { type: mongoose.Schema.Types.ObjectId, ref: "Opportunity" },
     ],
-    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
+    reviews: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Review" }
+    ],
   },
   { timestamps: true }
 );

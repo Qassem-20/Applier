@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import validator from "validator";
 
 const opportunitySchema = new mongoose.Schema(
   {
@@ -7,7 +6,6 @@ const opportunitySchema = new mongoose.Schema(
     job_role: {
       type: String,
       required: [true, "Please provide the job role"],
-      minlength: 3,
       maxlength: 20,
       trim: true,
     },
@@ -41,7 +39,6 @@ const opportunitySchema = new mongoose.Schema(
     availability_seats: {
       type: String,
       required: [false, "Please provide number of available seats"],
-      minlength: 1,
       maxlength: 5,
       trim: true,
       default:"Null",
@@ -67,7 +64,6 @@ const opportunitySchema = new mongoose.Schema(
     city: {
       type: String,
       required: [true, "Please enter your location url"],
-      minlength: 3,
       maxlength: 25,
     },
     visibility: {
@@ -84,6 +80,9 @@ const opportunitySchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Consumer",
     },
+    applicationStatus: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "ApplicationStatus" },
+    ],
   },
   { timestamps: true }
 );

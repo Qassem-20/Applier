@@ -29,6 +29,10 @@ const reviewSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Company',
     },
+    medical: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'MedicalStudent',
+    },
     consumer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Consumer',

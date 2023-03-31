@@ -6,7 +6,6 @@ const MedicalStudentSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, "Provide a name"],
-      minlength: 3,
       maxlength: 30,
       trim: true,
     },
@@ -116,6 +115,9 @@ const MedicalStudentSchema = new mongoose.Schema(
       enum: ["active", "inactive"],
       default: "inactive",
     },
+    reviews: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Review" }
+    ],
   },
   { timestamps: true }
 );

@@ -8,7 +8,7 @@ const consumerSchema = new mongoose.Schema(
       type: String,
       required: [true, "Provide a name"],
       minlength: 3,
-      maxlength: 30,
+      maxlength: 45,
       trim: true,
     },
     password: {
@@ -49,7 +49,6 @@ const consumerSchema = new mongoose.Schema(
     university: {
       required: [false, "Provide your major"],
       type: String,
-      minlength: 2,
       maxlength: 50,
       trim: true,
       default:"null"
@@ -72,7 +71,6 @@ const consumerSchema = new mongoose.Schema(
     concentrated_major: {
       type: String,
       required: [false, "concentrated_major"],
-      minlength: 0,
       maxlength: 20,
       trim: true,
       default:"null"
@@ -128,6 +126,9 @@ const consumerSchema = new mongoose.Schema(
     ],
     opportunity: [
       { type: mongoose.Schema.Types.ObjectId, ref: "Opportunity" },
+    ],
+    applicationStatus: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "ApplicationStatus" },
     ],
   },
   { timestamps: true }

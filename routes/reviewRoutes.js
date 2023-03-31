@@ -6,14 +6,16 @@ import { requireAuthConsumer } from "../middleware/requireAuth.js";
 import {
   fetchReviews,
   fetchReview,
-  createReview,
+  createReviewCompany,
+  createReviewMedical,
   deleteReview,
   sortReview,
 } from "../controllers/reviewController.js";
 //routes of the review from the controllers
 router.route("/reviews").get(fetchReviews);
 router.route("/reviews/:id").get(fetchReview);
-router.route("/reviews/registerReview").post(requireAuthConsumer, createReview);
+router.route("/reviews/registerReview").post(requireAuthConsumer, createReviewCompany);
+router.route("/reviews/registerReview").post(requireAuthConsumer, createReviewMedical);
 router.route("/reviews/:id").delete(requireAuthConsumer, deleteReview);
 router.route("/reviews/sortReview").get(sortReview);
 

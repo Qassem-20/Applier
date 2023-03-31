@@ -58,6 +58,10 @@ app.use("/api/v1", patientApplicationRoutes);
 import opportunitiesRoutes from "./routes/opportunitiesRoutes.js";
 app.use("/api/v1", opportunitiesRoutes);
 
+//opportunity routes
+import traineeApplication from "./routes/traineeApplications.js";
+app.use("/api/v1", traineeApplication);
+
 // assign a port for the server
 const port = process.env.PORT || 4000;
 
