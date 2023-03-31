@@ -3,9 +3,11 @@ import profileIcon from "../../assets/images/profileIcon.png";
 import { Container, Row, Col } from "react-bootstrap";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import CompanyStore from "../../stores/CompanyStore";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 const FeedBackConsumerCompany = () => {
+  /*
   const store = CompanyStore();
   const { companyId } = useParams();
 
@@ -14,27 +16,35 @@ const FeedBackConsumerCompany = () => {
   }, []);
 
   console.log(store.company);
+  */
+  const { companyId } = useParams();
+  const [userProfile, setUserProfile] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/api/v1/companies/${companyId}`)
+      .then((response) => {
+        setUserProfile(response.data.company);
+      });
+  }, []);
   return (
     <Fragment>
       <ConsumerNav />
-      {store.data &&
-        store.data.map((company) => {
-          return (
-            <Container className="mt-5 p-5 bg-white" key={company._id}>
-              <Row>
-                <Col>
-                  <p>Company Name: {company.organization_name}</p>
-                  <p>Bio:</p>
-                  <p>{company.organization_bio}</p>
-                  <p>City: {company.city}</p>
-                  <p>website: {company.organization_website}</p>
-                </Col>
-              </Row>
-            </Container>
-          );
-        })}
+
+      <Container className="mt-5 p-5 bg-white">
+        <Row>
+          <Col>
+            <p>Company Name: {userProfile.organization_name}</p>
+            <p>Bio:</p>
+            <p>{userProfile.organization_bio}</p>
+            <p>City: {userProfile.city}</p>
+            <p>website: {userProfile.organization_website}</p>
+          </Col>
+        </Row>
+      </Container>
+
       <Container>
-        <h1>Add Review</h1>
+        <h1 className="mt-3">Add Review</h1>
         <p>Rate</p>
         <div className="rate">
           <input type="radio" id="star5" name="rate" value="5" />

@@ -3,12 +3,11 @@ import axios from "axios";
 
 const CompanyStore = create((set) => ({
   companies: null,
-  company: null,
 
   fetchCompany: async (_id) => {
     try {
       const res = await axios.get(`http://localhost:4000/api/v1/companies/${_id}`,     { withCredentials: true });
-      set({ company: res.data.company });
+      set({ company: res.data.companies });
     } catch (error) {
       console.error(error);
     }
