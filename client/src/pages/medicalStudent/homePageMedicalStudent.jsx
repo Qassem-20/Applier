@@ -4,9 +4,6 @@ import React, { Fragment, useEffect } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 
 const HomePageMedicalStudent = () => {
-  const store = MedicalStore();
-
-  useEffect(() => {}, []);
   return (
     <Fragment>
       <Container>

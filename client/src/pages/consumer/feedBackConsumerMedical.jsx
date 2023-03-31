@@ -17,7 +17,6 @@ const FeedBackConsumerMedical = () => {
         setUserProfile(response.data.medicalStudent);
       });
   }, []);
-  console.log(userProfile);
 
   return (
     <Fragment>

@@ -13,7 +13,7 @@ const SignInUser = () => {
     e.preventDefault();
     await storeConsumer.loginConsumer();
     //Navigate
-    history.push("/consumerProfile");
+    history.push("/opportunities");
   };
 
   return (
@@ -28,7 +28,7 @@ const SignInUser = () => {
           errorMessage="userEmail"
           value={storeConsumer.loginFormConsumer.email}
           onChange={storeConsumer.handleChangeLogin}
-          required="true"
+          required={true}
         />
 
         <ApplierInputForm
@@ -39,7 +39,7 @@ const SignInUser = () => {
           errorMessage="userPassword"
           value={storeConsumer.loginFormConsumer.password}
           onChange={storeConsumer.handleChangeLogin}
-          required="true"
+          required={true}
         />
 
         <Row>

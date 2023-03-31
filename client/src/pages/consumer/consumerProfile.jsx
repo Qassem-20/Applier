@@ -6,66 +6,35 @@ import axios from "axios";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 
-import { useHistory } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
-const ConsumerProfile = ({ userId }) => {
+const ConsumerProfile = () => {
+  const { consumerId } = useParams();
   const store = TraineeApplicationStore();
 
-  const history = useHistory();
-
-  const createProfile = async (e) => {
-    e.preventDefault();
-    await store.registerTraineeApplication();
-    history.push("/consumerProfile");
-  };
-  const [userProfile, setUserProfile] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [userProfile, setUserProfile] = useState({});
 
   useEffect(() => {
-    async function fetchUserProfile() {
-      try {
-        const response = await axios.get(
-          `http://localhost:4000/api/v1/consumers/6420a607013be840922c6ced`,
-          {
-            withCredentials: true,
-          }
-        );
-        setUserProfile(response.data);
-        setLoading(false);
-        setError(null);
-      } catch (error) {
-        console.error("Error fetching user profile:", error);
-        setLoading(false);
-        setError(error.message);
-      }
-    }
-    fetchUserProfile();
-  }, ["6420a607013be840922c6ced"]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
+    axios
+      .get(`http://localhost:4000/api/v1/consumers/${consumerId}`)
+      .then((response) => {
+        setUserProfile(response.data.consumer);
+      });
+  }, []);
   return (
     <Fragment>
       <ConsumerNav />
-      {userProfile && (
-        <div className="container backgroundProfile">
-          <p>Name: {userProfile.name}</p>
-          <p>email: {userProfile.email}</p>
-          <p>_id: {userProfile._id}</p>
-        </div>
-      )}
+
+      <div className="container backgroundProfile">
+        <p>Name: {userProfile.name}</p>
+        <p>email: {userProfile.email}</p>
+        <p>_id: {userProfile._id}</p>
+      </div>
+
       <Container fluid>
         <div className="container backgroundProfile">
-          <form onSubmit={createProfile}>
+          <form onSubmit="">
             <div className="row">
               <div className="col-sm-12 col-md-6">
                 <ApplierInputForm
