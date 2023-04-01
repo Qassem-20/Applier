@@ -2,12 +2,20 @@ import "../../assets/css/feedback.css";
 import profileIcon from "../../assets/images/profileIcon.png";
 import { Container, Row, Col } from "react-bootstrap";
 import ConsumerNav from "../../components/Nav/consumerNav";
-import CompanyStore from "../../stores/CompanyStore";
+import ReviewStore from "../../stores/ReviewStore";
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 const FeedBackConsumerCompany = () => {
   const { companyId } = useParams();
+
+  const store = ReviewStore();
+  const createReview = async (e) => {
+    e.preventDefault();
+    await store.registerReviewCompany();
+    window.location.reload();
+  };
+
   const [userProfile, setUserProfile] = useState({});
 
   useEffect(() => {
@@ -28,42 +36,90 @@ const FeedBackConsumerCompany = () => {
             <p>Bio:</p>
             <p>{userProfile.organization_bio}</p>
             <p>City: {userProfile.city}</p>
-            <p>website: {userProfile.organization_website}</p>
+            <span>Website: </span>
+            <a href={userProfile.organization_website}>
+              {userProfile.organization_website}
+            </a>
           </Col>
         </Row>
       </Container>
-
-      <Container>
-        <h1 className="mt-3">Add Review</h1>
-        <p>Rate</p>
-        <div className="rate">
-          <input type="radio" id="star5" name="rate" value="5" />
-          <label htmlFor="star5" title="text">
-            5 stars
-          </label>
-          <input type="radio" id="star4" name="rate" value="4" />
-          <label htmlFor="star4" title="text">
-            4 stars
-          </label>
-          <input type="radio" id="star3" name="rate" value="3" />
-          <label htmlFor="star3" title="text">
-            3 stars
-          </label>
-          <input type="radio" id="star2" name="rate" value="2" />
-          <label htmlFor="star2" title="text">
-            2 stars
-          </label>
-          <input type="radio" id="star1" name="rate" value="1" />
-          <label htmlFor="star1" title="text">
-            1 star
-          </label>
-        </div>
-        <input className="inputStyling" type="text" />
-        <a className="btn login" href="/feedBackConsumer">
-          Submit
-        </a>
-      </Container>
-
+      <form onSubmit={createReview}>
+        <Container className=" mt-4 p-5 bg-white">
+          <h1>Add Review</h1>
+          <p>Rate</p>
+          <div className="rate">
+            <input
+              type="radio"
+              id="star5"
+              name="rate"
+              value="5"
+              onChange={store.handleChange}
+            />
+            <label htmlFor="star5" title="text">
+              5 stars
+            </label>
+            <input
+              type="radio"
+              id="star4"
+              name="rate"
+              value="4"
+              onChange={store.handleChange}
+            />
+            <label htmlFor="star4" title="text">
+              4 stars
+            </label>
+            <input
+              type="radio"
+              id="star3"
+              name="rate"
+              value="3"
+              onChange={store.handleChange}
+            />
+            <label htmlFor="star3" title="text">
+              3 stars
+            </label>
+            <input
+              type="radio"
+              id="star2"
+              name="rate"
+              value="2"
+              onChange={store.handleChange}
+            />
+            <label htmlFor="star2" title="text">
+              2 stars
+            </label>
+            <input
+              type="radio"
+              id="star1"
+              name="rate"
+              value="1"
+              onChange={store.handleChange}
+            />
+            <label htmlFor="star1" title="text">
+              1 star
+            </label>
+          </div>
+          <textarea
+            className="inputStyling description"
+            type="text"
+            placeholder="Type your review here (max 500 character)"
+            maxlength="500"
+            name="description"
+            value={store.values.description}
+            onChange={store.handleChange}
+          />
+          <input
+            type="hidden"
+            name="company"
+            className="inputStyling"
+            onChange={store.handleChange}
+            value={(store.values.company = userProfile._id)}
+          />
+          <button className="primaryButton" type="submit">
+            Add review
+          </button>
+        </Container>
+      </form>
       <Container>
         <Container className="mt-3">
           <Row>

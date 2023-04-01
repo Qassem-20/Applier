@@ -73,9 +73,8 @@ const PatientApplicationStore = create((set) => ({
     symptoms: "",
   },
 
-  registerPatientApplication: async (e) => {
-    e.preventDefault();
-    const { values, patientApplications } = PatientApplicationStore.getState();
+  registerPatientApplication: async () => {
+    const { values } = PatientApplicationStore.getState();
 
     // add PatientApplication
     const res = await axios.post(
@@ -83,10 +82,6 @@ const PatientApplicationStore = create((set) => ({
       values,     { withCredentials: true }
     );
     set({
-      patientApplications: [
-        ...patientApplications,
-        res.data.patientApplication,
-      ],
       values: {
         symptoms: "",
       },

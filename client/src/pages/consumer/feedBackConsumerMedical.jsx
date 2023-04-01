@@ -4,10 +4,19 @@ import ConsumerNav from "../../components/Nav/consumerNav";
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import ReviewStore from "../../stores/ReviewStore";
 import { Container, Row, Col } from "react-bootstrap";
 
 const FeedBackConsumerMedical = () => {
   const { medicalId } = useParams();
+
+  const store = ReviewStore();
+
+  const createReview = async (e) => {
+    e.preventDefault();
+    await store.registerReviewMedical();
+    window.location.reload();
+  };
   const [userProfile, setUserProfile] = useState({});
 
   useEffect(() => {
@@ -41,38 +50,83 @@ const FeedBackConsumerMedical = () => {
           </Col>
         </Row>
       </Container>
-
-      <Container>
-        <h1>Add Review</h1>
-        <p>Rate</p>
-        <div className="rate">
-          <input type="radio" id="star5" name="rate" value="5" />
-          <label htmlFor="star5" title="text">
-            5 stars
-          </label>
-          <input type="radio" id="star4" name="rate" value="4" />
-          <label htmlFor="star4" title="text">
-            4 stars
-          </label>
-          <input type="radio" id="star3" name="rate" value="3" />
-          <label htmlFor="star3" title="text">
-            3 stars
-          </label>
-          <input type="radio" id="star2" name="rate" value="2" />
-          <label htmlFor="star2" title="text">
-            2 stars
-          </label>
-          <input type="radio" id="star1" name="rate" value="1" />
-          <label htmlFor="star1" title="text">
-            1 star
-          </label>
-        </div>
-        <input className="inputStyling" type="text" />
-        <a className="btn login" href="/feedBackConsumer">
-          Submit
-        </a>
-      </Container>
-
+      <form onSubmit={createReview}>
+        <Container className=" mt-4 p-5 bg-white">
+          <h1>Add Review</h1>
+          <p>Rate</p>
+          <div className="rate">
+            <input
+              type="radio"
+              id="star5"
+              name="rate"
+              value="5"
+              onChange={store.handleChange}
+            />
+            <label htmlFor="star5" title="text">
+              5 stars
+            </label>
+            <input
+              type="radio"
+              id="star4"
+              name="rate"
+              value="4"
+              onChange={store.handleChange}
+            />
+            <label htmlFor="star4" title="text">
+              4 stars
+            </label>
+            <input
+              type="radio"
+              id="star3"
+              name="rate"
+              value="3"
+              onChange={store.handleChange}
+            />
+            <label htmlFor="star3" title="text">
+              3 stars
+            </label>
+            <input
+              type="radio"
+              id="star2"
+              name="rate"
+              value="2"
+              onChange={store.handleChange}
+            />
+            <label htmlFor="star2" title="text">
+              2 stars
+            </label>
+            <input
+              type="radio"
+              id="star1"
+              name="rate"
+              value="1"
+              onChange={store.handleChange}
+            />
+            <label htmlFor="star1" title="text">
+              1 star
+            </label>
+          </div>
+          <textarea
+            className="inputStyling description"
+            type="text"
+            placeholder="Type your review here (max 500 character)"
+            maxlength="500"
+            name="description"
+            value={store.values.description}
+            onChange={store.handleChange}
+          />
+          <input
+            type="hidden"
+            name="medical"
+            className="inputStyling"
+            onChange={store.handleChange}
+            value={(store.values.medical = userProfile._id)}
+          />
+          <button className="primaryButton" type="submit">
+            Add review
+          </button>
+        </Container>
+      </form>
       <Container>
         <Container className="mt-3">
           <Row>

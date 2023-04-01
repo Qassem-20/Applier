@@ -40,7 +40,7 @@ const ReviewStore = create((set) => ({
 
     // Send the update request
     const res = await axios.put(
-      `http://localhost:4000/api/v1/admins/hideReview/:id${_id}`,
+      `http://localhost:4000/api/v1/admins/hideReview/${_id}`,
       {
         statue,
       },     { withCredentials: true }
@@ -65,22 +65,39 @@ const ReviewStore = create((set) => ({
   values: {
     rate: "",
     description: "",
+    company:"",
+    medical:"",
   },
 
-  registerReview: async (e) => {
-    e.preventDefault();
-    const { values, reviews } = ReviewStore.getState();
+  registerReviewCompany: async () => {
+    const { values } = ReviewStore.getState();
 
     // add review
     const res = await axios.post(
-      "http://localhost:4000/api/v1/reviews/registerReview",
+      "http://localhost:4000/api/v1/reviews/registerReviewCompany",
       values,     { withCredentials: true }
     );
     set({
-      reviews: [...reviews, res.data.review],
       values: {
         rate: "",
         description: "",
+        company:"",
+      },
+    });
+  },
+  registerReviewMedical: async () => {
+    const { values } = ReviewStore.getState();
+
+    // add review
+    const res = await axios.post(
+      "http://localhost:4000/api/v1/reviews/registerReviewMedical",
+      values,     { withCredentials: true }
+    );
+    set({
+      values: {
+        rate: "",
+        description: "",
+        medical:"",
       },
     });
   },

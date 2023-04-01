@@ -5,6 +5,9 @@
   filter: grayscale(100%); 
   opacity: .3;   
 }
+.description{
+  height: 150px;
+}
 .rate {
   float: left;
   height: 46px;

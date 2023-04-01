@@ -10,8 +10,7 @@ const reviewSchema = new mongoose.Schema({
     },
     description:{
         type:String,
-        required:[true, 'Please provide a description'],
-        minlength:3, 
+        required:[false, 'Please provide a description'],
         maxlength:500,
         trim:true    
     },
