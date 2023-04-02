@@ -21,12 +21,16 @@ const FeedBackConsumerCompany = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/v1/companies/${companyId}`)
+      .get(`http://localhost:4000/api/v1/companies/${companyId}`, {
+        withCredentials: true,
+      })
       .then((response) => {
         setUserProfile(response.data.company);
       });
     axios
-      .get(`http://localhost:4000/api/v1/reviewsCompany/${companyId}`)
+      .get(`http://localhost:4000/api/v1/reviewsCompany/${companyId}`, {
+        withCredentials: true,
+      })
       .then((response) => {
         setReviews(response.data.reviews);
       })
