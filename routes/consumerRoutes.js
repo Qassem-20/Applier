@@ -12,6 +12,7 @@ const apiLimiter = rateLimiter({
 import { requireAuthConsumer } from "../middleware/requireAuth.js";
 //exports from the controller
 import {
+  getConsumerProfile,
   fetchConsumers,
   fetchConsumer,
   createConsumer,
@@ -26,7 +27,9 @@ import {
   findConsumer,
 } from "../controllers/consumerController.js";
 //routes of the Consumer from the controllers
+router.route("/consumerProfile").get(requireAuthConsumer, getConsumerProfile);
 router.route("/consumers").get(fetchConsumers);
+
 router.route("/consumers/:id").get(fetchConsumer);
 router.route("/consumersId").get(loginConsumer);
 router.route("/registerConsumer").post(apiLimiter, createConsumer);

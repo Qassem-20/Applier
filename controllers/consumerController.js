@@ -2,13 +2,24 @@ import Consumer from "../models/Consumer.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
+const getConsumerProfile = async (req, res, next) => {
+  try {
+    const userId = req.consumer.id; // Assuming you're using JWT or session-based authentication
+    const user = await Consumer.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    return res.json(user);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Server error' });
+  }
+}
 const fetchConsumers = async (req, res) => {
   const consumers = await Consumer.find();
 
   res.json({ consumers });
 };
-
-
 
 const fetchConsumer = async (req, res) => {
   const consumerId = req.params.id;
@@ -199,6 +210,7 @@ const deleteConsumer = async (req, res) => {
 };
 
 export {
+  getConsumerProfile,
   fetchConsumers,
   fetchConsumer,
   createConsumer,

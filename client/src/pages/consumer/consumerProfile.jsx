@@ -5,22 +5,56 @@ import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
-
-import { useParams } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 const ConsumerProfile = () => {
-  const { consumerId } = useParams();
   const store = TraineeApplicationStore();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:4000/api/v1/consumerProfile",
+          {
+            withCredentials: true,
+          }
+        );
+        setUser(response.data);
+      } catch (error) {
+        console.error(error);
+        // TODO: Handle errors
+      }
+    };
+    fetchUserProfile();
+  }, []);
+  if (!user) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Fragment>
       <ConsumerNav />
 
       <div className="container backgroundProfile">
-        <p>Name: name</p>
-        <p>email: email</p>
-        <p>_id: </p>
+        <p>Name: {user.name}</p>
+        <p>Email: {user.email}</p>
+        <p>Phone: {user.phone}</p>
+        <hr />
+        <h4>Application (CV)</h4>
+        <Row>
+          <Col>
+            <p>University: {user.university}</p>
+            <p>Degree: {user.degree}</p>
+            <p>Major: {user.major}</p>
+          </Col>
+          <Col>
+            <p>Concentrated_major: {user.concentrated_major}</p>
+            <p>LinkedIn_profile: </p>
+            <a href={user.linkedIn_profile}>{user.linkedIn_profile}</a>
+            <p>Gpa: {user.gpa}</p>
+          </Col>
+        </Row>
       </div>
 
       <Container fluid>
