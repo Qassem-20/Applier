@@ -32,10 +32,12 @@ const fetchApplications = async (req, res) => {
   };
   
   const createApplication = async (req, res) => {
-    const { symptoms, createdBy} = req.body;
+    const { statue,opportunity} = req.body;
   
     const applicationStatus = await ApplicationStatus.create({
-      symptoms, 
+      statue, 
+      opportunity,
+      consumer: req.consumer._id,
     });
   
     res.json({ applicationStatus });
@@ -44,15 +46,16 @@ const fetchApplications = async (req, res) => {
   const updateApplication = async (req, res) => {
     const applicationStatusId = req.params.id;
   
-    const { symptoms } = req.body;
+    const { statue } = req.body;
   
     await ApplicationStatus.findByIdAndUpdate(applicationStatusId, {
-      symptoms,
+      statue,
+      consumer: req.consumer._id,
     });
   
-    const patientApplication = await ApplicationStatus.findById(applicationStatusId);
+    const applicationStatus = await ApplicationStatus.findById(applicationStatusId);
   
-    res.json({ patientApplication });
+    res.json({ applicationStatus });
   };
   
   const deleteApplication = async (req, res) => {

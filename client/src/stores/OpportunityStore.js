@@ -165,6 +165,9 @@ const OpportunityStore = create((set) => ({
       },
     });
   },
+  application: {
+    application:"",
+  },
 
   handleChange: async (e) => {
     const { name, value } = e.target;

@@ -11,7 +11,7 @@ const reviewSchema = new mongoose.Schema({
     description:{
         type:String,
         required:[false, 'Please provide a description'],
-        maxlength:500,
+        maxlength:502,
         trim:true    
     },
     statue:{

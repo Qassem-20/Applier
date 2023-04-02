@@ -4,8 +4,8 @@ const applicationStatusSchema = new mongoose.Schema(
   {
     statue: {
         type: String,
-        enum: ["Applied", "Available", "Interview", "Rejected", "Hired", "Not Available"],
-        default: "Not Available",
+        enum: ["Applied", "Interview", "Rejected", "Hired", "UnApplied"],
+        default: "UnApplied",
     },
     consumer: {
       type: mongoose.Schema.Types.ObjectId,

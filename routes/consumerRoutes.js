@@ -28,6 +28,7 @@ import {
 //routes of the Consumer from the controllers
 router.route("/consumers").get(fetchConsumers);
 router.route("/consumers/:id").get(fetchConsumer);
+router.route("/consumersId").get(loginConsumer);
 router.route("/registerConsumer").post(apiLimiter, createConsumer);
 router.route("/loginConsumer").post(apiLimiter, loginConsumer);
 router.route("/logoutConsumer").get(logoutConsumer);

@@ -74,7 +74,7 @@ const AppRoute = () => {
         <ForgottenPassword />
       </Route>
 
-      <Route path="/consumerProfile/:consumerId">
+      <Route path="/consumerProfile">
         <RequireAuthConsumer>
         <ConsumerProfile />
         </RequireAuthConsumer>

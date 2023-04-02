@@ -4,7 +4,7 @@ import ConsumerNav from "../../components/Nav/consumerNav";
 import OpportunityStore from "../../stores/OpportunityStore";
 import CompanyStore from "../../stores/CompanyStore";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
-
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 import React, { Fragment, useEffect, useState } from "react";
@@ -13,11 +13,27 @@ const Opportunities = () => {
   const opportunityStore = OpportunityStore();
   const company = CompanyStore();
 
-  const [Applied, setSuspended] = useState(false);
+  const [userData, setUserData] = useState({ statue: "", opportunity: "" });
 
-  const handleSuspensionUpdate = () => {
-    setSuspended(!Applied);
-  };
+  function handleUserDataChange(event) {
+    setUserData({
+      ...userData,
+      statue: event.target.value,
+      opportunity: event.target.value,
+    });
+  }
+  async function updateStatue(_id) {
+    try {
+      const response = await axios.post(
+        `http://localhost:4000/api/v1/applications/registerApplication/${_id}`,
+        userData,
+        { withCredentials: true }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
     opportunityStore.fetchOpportunities();
@@ -63,9 +79,22 @@ const Opportunities = () => {
                 {opportunity.major_preferred}
               </span>
               <span className="col-2 opportunitiesTags">
-                <button className="button" onClick={handleSuspensionUpdate}>
-                  {Applied ? "Apply" : "Applied"}
-                </button>
+                <form onClick={() => updateStatue(opportunity._id)}>
+                  <select
+                    name="statue"
+                    defaultValue={"UnApplied"}
+                    onChange={handleUserDataChange}
+                  >
+                    <option value="UnApplied">Apply</option>
+                    <option value="Applied">UnApply</option>
+                  </select>
+                  <input
+                    type="hidden"
+                    name="opportunity"
+                    value={(userData.opportunity = opportunity._id)}
+                    onChange={handleUserDataChange}
+                  />
+                </form>
               </span>
               <span className="col-2 opportunitiesTags">
                 {opportunity.city}

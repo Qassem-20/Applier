@@ -14,9 +14,8 @@ import {
 //routes of the review from the controllers
 router.route("/applications").get(fetchApplications);
 router.route("/applications/:id").get(fetchApplication);
-router.route("/applications/:id").put(updateApplication);
-router.route("/applications/:id").put(updateApplication);
-router.route("/applications/registerApplication").post(requireAuthConsumer, createApplication);
+router.route("/traineeApplications/:id").put(updateApplication);
+router.route("/applications/registerApplication/:id").post(requireAuthConsumer, createApplication);
 router.route("/applications/:id").delete(requireAuthConsumer, deleteApplication);
 router.route("/applications/sortApplications").get(sortApplication);
 

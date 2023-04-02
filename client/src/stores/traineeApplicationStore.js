@@ -7,7 +7,7 @@ const TraineeApplicationStore = create((set) => ({
   fetchTraineeApplications: async () => {
     // Fetch the traineeApplications
     const res = await axios.get(
-      "http://localhost:4000/api/v1/traineeApplications"
+      "http://localhost:4000/api/v1/applications"
     );
     // Set to state
     set({ traineeApplications: res.data.traineeApplications });
