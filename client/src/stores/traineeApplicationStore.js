@@ -15,7 +15,7 @@ const TraineeApplicationStore = create((set) => ({
 
   deleteTraineeApplication: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/traineeApplications/" + _id,     { withCredentials: true }
+      "http://localhost:4000/api/v1//applications/" + _id,     { withCredentials: true }
     );
 
     const { traineeApplications } = TraineeApplicationStore.getState();
@@ -90,28 +90,13 @@ const TraineeApplicationStore = create((set) => ({
       traineeApplications: newTraineeApplications,
       updateType: {
         _id: null,
-        university: "",
-        major: "",
-        gpa: "",
-        degree: "",
-        concentrated_major: "",
-        skills: "",
-
-        linkedIn_profile: "",
-        experience: "",
+        statue: "",
       },
     });
   },
 
   values: {
-    university: "",
-    major: "",
-    gpa: "",
-    degree: "",
-    concentrated_major: "",
-    skills: "",
-    linkedIn_profile: "",
-    experience: "",
+    statue: "",
   },
 
   registerTraineeApplication: async () => {
@@ -125,14 +110,8 @@ const TraineeApplicationStore = create((set) => ({
     );
     set({
       values: {
-        university: "",
-        major: "",
-        gpa: "",
-        degree: "",
-        concentrated_major: "",
-        skills: "",
-        linkedIn_profile: "",
-        experience: "",
+        statue: "",
+        
       },
     });
   },

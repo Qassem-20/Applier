@@ -12,6 +12,7 @@ import React, { Fragment, useEffect, useState } from "react";
 const Opportunities = () => {
   const opportunityStore = OpportunityStore();
   const company = CompanyStore();
+  const applicationStore = OpportunityStore();
 
   const [userData, setUserData] = useState({ statue: "", opportunity: "" });
 
@@ -79,11 +80,16 @@ const Opportunities = () => {
                 {opportunity.major_preferred}
               </span>
               <span className="col-2 opportunitiesTags">
-                <form onClick={() => updateStatue(opportunity._id)}>
+                <form
+                  onClick={() =>
+                    updateStatue((userData.opportunity = opportunity._id))
+                  }
+                >
                   <select
                     name="statue"
                     defaultValue={"UnApplied"}
                     onChange={handleUserDataChange}
+                    key={opportunity._id}
                   >
                     <option value="UnApplied">Apply</option>
                     <option value="Applied">UnApply</option>
@@ -91,6 +97,7 @@ const Opportunities = () => {
                   <input
                     type="hidden"
                     name="opportunity"
+                    className="inputStyling"
                     value={(userData.opportunity = opportunity._id)}
                     onChange={handleUserDataChange}
                   />
