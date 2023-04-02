@@ -1,6 +1,6 @@
 import "../../assets/css/consumer.css";
 import ConsumerNav from "../../components/Nav/consumerNav";
-import TraineeApplicationStore from "../../stores/traineeApplicationStore";
+import ConsumerStore from "../../stores/ConsumerStore";
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import ApplierButton from "../../components/applierComponents/applierButton";
@@ -8,11 +8,12 @@ import ApplierInputForm from "../../components/applierComponents/applierInputFor
 import { Container, Row, Col } from "react-bootstrap";
 
 const ConsumerProfile = () => {
-  const store = TraineeApplicationStore();
-  const [user, setUser] = useState(null);
-
+  const [consumer, setConsumer] = useState(null);
+  const store = ConsumerStore((store) => {
+    return { toggleUpdate: store.toggleUpdate };
+  });
   useEffect(() => {
-    const fetchUserProfile = async () => {
+    const fetchConsumerProfile = async () => {
       try {
         const response = await axios.get(
           "http://localhost:4000/api/v1/consumerProfile",
@@ -20,40 +21,42 @@ const ConsumerProfile = () => {
             withCredentials: true,
           }
         );
-        setUser(response.data);
+        setConsumer(response.data);
       } catch (error) {
         console.error(error);
         // TODO: Handle errors
       }
     };
-    fetchUserProfile();
+    fetchConsumerProfile();
   }, []);
-  if (!user) {
+  if (!consumer) {
     return <div>Loading...</div>;
   }
+  console.log(consumer);
 
   return (
     <Fragment>
       <ConsumerNav />
 
       <div className="container backgroundProfile">
-        <p>Name: {user.name}</p>
-        <p>Email: {user.email}</p>
-        <p>Phone: {user.phone}</p>
+        <p>Name: {consumer.name}</p>
+        <p>Email: {consumer.email}</p>
+        <p>Phone: {consumer.phone}</p>
         <hr />
         <h4>Application (CV)</h4>
         <Row>
           <Col>
-            <p>University: {user.university}</p>
-            <p>Degree: {user.degree}</p>
-            <p>Major: {user.major}</p>
+            <p>University: {consumer.university}</p>
+            <p>Degree: {consumer.degree}</p>
+            <p>Major: {consumer.major}</p>
           </Col>
           <Col>
-            <p>Concentrated_major: {user.concentrated_major}</p>
+            <p>Concentrated_major: {consumer.concentrated_major}</p>
             <p>LinkedIn_profile: </p>
-            <a href={user.linkedIn_profile}>{user.linkedIn_profile}</a>
-            <p>Gpa: {user.gpa}</p>
+            <a href={consumer.linkedIn_profile}>{consumer.linkedIn_profile}</a>
+            <p>Gpa: {consumer.gpa}</p>
           </Col>
+          <button onClick={() => store.toggleUpdate()}>Update Profile</button>
         </Row>
       </div>
 

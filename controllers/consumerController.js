@@ -4,12 +4,12 @@ import bcrypt from "bcryptjs";
 
 const getConsumerProfile = async (req, res, next) => {
   try {
-    const userId = req.consumer.id; // Assuming you're using JWT or session-based authentication
-    const user = await Consumer.findById(userId);
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+    const consumerId = req.consumer.id; // Assuming you're using JWT or session-based authentication
+    const consumer = await Consumer.findById(consumerId);
+    if (!consumer) {
+      return res.status(404).json({ error: 'consumer not found' });
     }
-    return res.json(user);
+    return res.json(consumer);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Server error' });

@@ -34,11 +34,6 @@ const ConsumerStore = create((set) => ({
     set({consumers : res.data.consumers})
   },
 
-
-
-
-
-
   searchForm: {
     phone: "",
     name: "",
@@ -90,7 +85,18 @@ const ConsumerStore = create((set) => ({
     phone: "",
     nationality: "",
   },
-
+  toggleUpdate: ({ _id,name,
+    email,
+    phone, }) => {
+    set({
+      updateProfile: {
+        name,
+        email,
+        phone,
+        _id,
+      },
+    });
+  },
   updateConsumer: async (e) => {
     e.preventDefault();
 
