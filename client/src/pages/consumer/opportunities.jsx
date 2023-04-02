@@ -2,7 +2,6 @@ import "../../assets/css/consumer.css";
 import InfoIcon from "../../assets/images/infoIcon.png";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import OpportunityStore from "../../stores/OpportunityStore";
-import CompanyStore from "../../stores/CompanyStore";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -11,11 +10,8 @@ import React, { Fragment, useEffect, useState } from "react";
 
 const Opportunities = () => {
   const opportunityStore = OpportunityStore();
-  const company = CompanyStore();
-  const applicationStore = OpportunityStore();
 
   const [userData, setUserData] = useState({ statue: "", opportunity: "" });
-
   function handleUserDataChange(event) {
     setUserData({
       ...userData,
@@ -23,7 +19,7 @@ const Opportunities = () => {
       opportunity: event.target.value,
     });
   }
-  async function updateStatue(_id) {
+  async function Apply(_id) {
     try {
       const response = await axios.post(
         `http://localhost:4000/api/v1/applications/registerApplication/${_id}`,
@@ -38,7 +34,6 @@ const Opportunities = () => {
 
   useEffect(() => {
     opportunityStore.fetchOpportunities();
-    company.fetchCompanies();
   }, []);
   return (
     <Fragment>
@@ -82,18 +77,9 @@ const Opportunities = () => {
               <span className="col-2 opportunitiesTags">
                 <form
                   onClick={() =>
-                    updateStatue((userData.opportunity = opportunity._id))
+                    Apply((userData.opportunity = opportunity._id))
                   }
                 >
-                  <select
-                    name="statue"
-                    defaultValue={"UnApplied"}
-                    onChange={handleUserDataChange}
-                    key={opportunity._id}
-                  >
-                    <option value="UnApplied">Apply</option>
-                    <option value="Applied">UnApply</option>
-                  </select>
                   <input
                     type="hidden"
                     name="opportunity"
@@ -101,6 +87,14 @@ const Opportunities = () => {
                     value={(userData.opportunity = opportunity._id)}
                     onChange={handleUserDataChange}
                   />
+                  <button
+                    type="submit"
+                    name="statue"
+                    className="button"
+                    value={(userData.statue = "Applied")}
+                  >
+                    Apply
+                  </button>
                 </form>
               </span>
               <span className="col-2 opportunitiesTags">
@@ -109,10 +103,7 @@ const Opportunities = () => {
               <span className="col-2 opportunitiesTags">
                 {opportunity.salary}
               </span>
-              <div
-                className="col-2 d-flex justify-content-center"
-                key={company._id}
-              >
+              <div className="col-2 d-flex justify-content-center">
                 <Link to={`/feedBackConsumerCompany/${opportunity.company}`}>
                   <img className="infoImg" src={InfoIcon} alt="InfoIcon" />
                 </Link>

@@ -57,7 +57,24 @@ const fetchApplications = async (req, res) => {
   
     res.json({ applicationStatus });
   };
+  const getApplicationStatus = async (req, res) => {
+    try {
+      const { opportunity } = req.params;
   
+      // Check if the user has applied for the opportunity
+      const application = await Application.findOne({
+        opportunity: opportunity,
+        consumer: req.consumer._id,
+      });
+  
+      const hasApplied = !!application; // Convert application object to boolean
+  
+      res.json({ hasApplied });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  };
   const deleteApplication = async (req, res) => {
     const applicationStatusId = req.params.id;
   
@@ -71,6 +88,7 @@ const fetchApplications = async (req, res) => {
     fetchApplication,
     createApplication,
     updateApplication,
+    getApplicationStatus,
     deleteApplication,
     sortApplication, 
     findApplication,
