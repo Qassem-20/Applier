@@ -137,11 +137,20 @@ const ConsumerStore = create((set) => ({
   },
 
   values: {
-    name: "",
-    email: "",
-    password: "",
-    phone: "",
-    nationality: "",
+    name:"",
+    email:"",
+    password:"",
+    phone:"",
+    nationality:"",
+    university:"",
+    major:"",
+    gpa:"",
+    concentrated_major:"",
+    skills:"",
+    linkedIn_profile:"",
+    experience:"",
+    degree:""
+
   },
 
   registerConsumer: async () => {

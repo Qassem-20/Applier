@@ -100,7 +100,7 @@ const consumerSchema = new mongoose.Schema(
       type: String,
       required: [false, "Please enter your experience"],
       enum: [
-        "none",
+        "",
         "less than a year",
         "an year",
         "2 years",

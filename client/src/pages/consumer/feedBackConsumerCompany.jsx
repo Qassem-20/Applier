@@ -38,7 +38,6 @@ const FeedBackConsumerCompany = () => {
         console.log(error);
       });
   }, []);
-  console.log(reviews);
 
   return (
     <Fragment>

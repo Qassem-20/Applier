@@ -53,7 +53,7 @@ const SignUpConsumer = () => {
                   value={store.values.name}
                   onChange={store.handleChange}
                   errorMessage="full_name"
-                  required="true"
+                  required={true}
                 />
                 <label>Nationality</label>
                 <select
@@ -74,7 +74,7 @@ const SignUpConsumer = () => {
                   value={store.values.phone}
                   onChange={store.handleChange}
                   errorMessage="phone"
-                  required="true"
+                  required={true}
                 />
 
                 <ApplierInputForm
@@ -85,7 +85,7 @@ const SignUpConsumer = () => {
                   errorMessage="email"
                   value={store.values.email}
                   onChange={store.handleChange}
-                  required="true"
+                  required={true}
                 />
 
                 <ApplierInputForm
@@ -96,13 +96,18 @@ const SignUpConsumer = () => {
                   errorMessage="password"
                   value={store.values.password}
                   onChange={store.handleChange}
-                  required="true"
+                  required={true}
                   pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                 />
               </div>
-              <button id="signInButton" onClick={showApplication}>
-                are you applying to COOP or Summer?
-              </button>
+              <div>
+                <button
+                  className=" btn btn-secondary"
+                  onClick={showApplication}
+                >
+                  are you applying to COOP or Summer?
+                </button>
+              </div>
               {!values.isApplication && (
                 <div>
                   <Row>
@@ -180,7 +185,7 @@ const SignUpConsumer = () => {
                         value={store.values.experience}
                         onChange={store.handleChange}
                       >
-                        <option value="none">None</option>
+                        <option value="">None</option>
                         <option value="less than a year">
                           less than a year
                         </option>
