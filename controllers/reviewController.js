@@ -5,7 +5,31 @@ const fetchReviews = async (req, res) => {
 
   res.json({ reviews });
 };
+const fetchReviewsCompany = async (req, res) => {
+  const company = req.params.company;
 
+  const reviews = await Review.find({company});
+
+  res.json({ reviews });
+};
+const fetchReviewsMedical = async (req, res) => {
+  try {
+
+  const medical = req.params.medical;
+
+  const reviews = await Review.find({ medical });
+  
+  if (!reviews) {
+    return res.status(404).json({ message: 'No reviews found for the specified product' });
+  }
+
+  res.status(200).json(reviews);
+} catch (error) {
+  console.error(error);
+  res.status(500).json({ message: 'Internal server error' });
+}
+ 
+};
 const fetchReview = async (req, res) => {
   const reviewId = req.params.id;
 
@@ -91,6 +115,8 @@ const deleteReview = async (req, res) => {
 export {
   fetchReviews,
   fetchReview,
+  fetchReviewsCompany,
+  fetchReviewsMedical,
   createReviewCompany,
   createReviewMedical,
   deleteReview,

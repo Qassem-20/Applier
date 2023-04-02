@@ -11,6 +11,19 @@ const ReviewStore = create((set) => ({
     set({ reviews: res.data.reviews });
   },
 
+  fetchReviewsCompany: async (_id) => {
+    // Fetch the reviews
+    const res = await axios.get("http://localhost:4000/api/v1/reviewsCompany/"+_id,     { withCredentials: true });
+    // Set to state
+    set({ reviews: res.data.reviews });
+  },
+  fetchReviewsMedical: async () => {
+    // Fetch the reviews
+    const res = await axios.get("http://localhost:4000/api/v1/reviewsMedical",     { withCredentials: true });
+    // Set to state
+    set({ reviews: res.data.reviews });
+  },
+
   deleteReview: async (_id) => {
     const res = await axios.delete(
       "http://localhost:4000/api/v1/reviews/" + _id,     { withCredentials: true }

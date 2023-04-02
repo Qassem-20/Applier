@@ -17,6 +17,7 @@ const FeedBackConsumerCompany = () => {
   };
 
   const [userProfile, setUserProfile] = useState({});
+  const [reviews, setReviews] = useState({});
 
   useEffect(() => {
     axios
@@ -24,7 +25,17 @@ const FeedBackConsumerCompany = () => {
       .then((response) => {
         setUserProfile(response.data.company);
       });
+    axios
+      .get(`http://localhost:4000/api/v1/reviewsCompany/${companyId}`)
+      .then((response) => {
+        setReviews(response.data.reviews);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
+  console.log(reviews);
+
   return (
     <Fragment>
       <ConsumerNav />
@@ -103,7 +114,7 @@ const FeedBackConsumerCompany = () => {
             className="inputStyling description"
             type="text"
             placeholder="Type your review here (max 500 character)"
-            maxlength="500"
+            maxLength="500"
             name="description"
             value={store.values.description}
             onChange={store.handleChange}
@@ -136,22 +147,24 @@ const FeedBackConsumerCompany = () => {
             </Col>
           </Row>
         </Container>
-        <Container className="mt-4 rounded bg-white border border-dark p-2">
-          <Row>
-            <Col sm={3}>
-              <img className="m-auto" src={profileIcon} alt="" />
-              <p className="text-center">Ahmed</p>
-            </Col>
-            <Col sm={7}>
-              <p>feiubrgbveiruibviure;auv;erbuvae;ribveira;buver;av</p>
-            </Col>
-            <Col className="m-auto" sm={2}>
-              <span>
-                3 <span>&#11088;</span>
-              </span>
-            </Col>
-          </Row>
-        </Container>
+        {Array.isArray(reviews) &&
+          reviews.map((review) => (
+            <Container
+              className="mt-4 rounded bg-white border border-dark p-5"
+              key={review._id}
+            >
+              <Row>
+                <Col sm={7}>
+                  <p>{review.description}</p>
+                </Col>
+                <Col className="m-auto" sm={2}>
+                  <span>
+                    {review.rate} <span>&#11088;</span>
+                  </span>
+                </Col>
+              </Row>
+            </Container>
+          ))}
       </Container>
     </Fragment>
   );
