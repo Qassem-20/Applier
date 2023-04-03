@@ -7,6 +7,7 @@ import CallIcon from "../../assets/images/callIcon.png";
 import WhatsAppIcon from "../../assets/images/whatsAppIcon.png";
 import MedicalStore from "../../stores/MedicalStore";
 import { Link } from "react-router-dom";
+import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 
 import React, { Fragment, useEffect } from "react";
 import { Row, Col, Container, Card } from "react-bootstrap";
@@ -19,44 +20,26 @@ const MedicalStudents = () => {
   return (
     <Fragment>
       <ConsumerNav />
-      <section>
-        <Container>
-          <h1>Medical Students</h1>
-          <Row>
-            <Col xl={3} md={6} sm={12}>
-              <input
-                className="inputStyling"
-                type="search"
-                name=""
-                placeholder="Location"
+
+      <Container>
+        <Row>
+          <Col>
+            <h1 id="opportunitiesHeader">Medical Students</h1>
+          </Col>
+          <Col>
+            <Col>
+              <ApplierInputForm
+                row={"row"}
+                label="Search"
+                type="text"
+                placeholder="Searching for ..."
+                id="searchInput"
               />
             </Col>
-            <Col xl={3} md={6} sm={12}>
-              <input
-                className="inputStyling"
-                type="search"
-                name=""
-                placeholder="specialty"
-              />
-            </Col>
-            <Col xl={3} md={6} sm={12}>
-              <select className="inputStyling" name="cars" placeholder="Gender">
-                <option value="saab">Null</option>
-                <option value="volvo">Male</option>
-                <option value="saab">Female</option>
-              </select>
-            </Col>
-            <Col xl={3} md={6} sm={12}>
-              <input
-                className="inputStyling"
-                type="search"
-                name=""
-                placeholder="Name"
-              />
-            </Col>
-          </Row>
-        </Container>
-      </section>
+          </Col>
+        </Row>
+      </Container>
+
       <hr />
       <Container className="mt-5 hiddenTransition">
         <Row className="justify-content-evenly">
@@ -99,26 +82,40 @@ const MedicalStudents = () => {
               return (
                 <Col xl={4} md={6} sm={12} key={medicalStudent._id}>
                   <Link to={`/feedBackConsumerMedical/${medicalStudent._id}`}>
-                    <Card className="m-1">
-                      <Row>
-                        <Col sm={3}>
-                          <img src={Profile} alt="" />
-                          <p>rate</p>
-                        </Col>
-                        <Col sm={7}>
-                          <p>{medicalStudent.name}</p>
-                          <p>{medicalStudent.specialty}</p>
-                          <p>{medicalStudent.city}</p>
-                        </Col>
-                        <Col sm={2}>
-                          <div>
-                            <img src={CallIcon} alt="whatsApp" />
-                          </div>
-                          <div>
-                            <img src={WhatsAppIcon} alt="Call" />
-                          </div>
-                        </Col>
-                      </Row>
+                    <Card className="flip-card">
+                      <div className="flip-card-inner">
+                        <div className="flip-card-front">
+                          <Row>
+                            <Col>
+                              <img src={Profile} alt="" />
+                            </Col>
+                            <Col className="mt-5">
+                              <p>{medicalStudent.name}</p>
+                            </Col>
+                          </Row>
+                        </div>
+                        <div className="flip-card-back">
+                          <Row className="pt-3">
+                            <Col xl={10} md={8}>
+                              <p>{medicalStudent.name}</p>
+                              <p>{medicalStudent.specialty}</p>
+                              <p>{medicalStudent.city}</p>
+                            </Col>
+                            <Col xl={2} md={4}>
+                              <img
+                                className="pt-2"
+                                src={CallIcon}
+                                alt="whatsApp"
+                              />
+                              <img
+                                className="pt-4"
+                                src={WhatsAppIcon}
+                                alt="Call"
+                              />
+                            </Col>
+                          </Row>
+                        </div>
+                      </div>
                     </Card>
                   </Link>
                 </Col>

@@ -6,6 +6,7 @@ import ApplierInputForm from "../../components/applierComponents/applierInputFor
 import ApplierButton from "../../components/applierComponents/applierButton";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Row, Col, Container } from "react-bootstrap";
 
 import React, { Fragment, useEffect, useState } from "react";
 
@@ -40,25 +41,24 @@ const Opportunities = () => {
   return (
     <Fragment>
       <ConsumerNav />
-      <section>
-        <div className="container">
-          <div className="row">
-            <div className="col-3 m-auto">
-              <h1 id="opportunitiesHeader">Opportunities</h1>
-            </div>
 
-            <div className="col-6 m-auto">
-              <ApplierInputForm
-                row={"row"}
-                label="Search"
-                type="text"
-                placeholder="Searching for ..."
-                id="searchInput"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <Container>
+        <Row>
+          <Col>
+            <h1 id="opportunitiesHeader">Opportunities</h1>
+          </Col>
+          <Col>
+            <ApplierInputForm
+              row={"row"}
+              label="Search"
+              type="text"
+              placeholder="Searching for ..."
+              id="searchInput"
+            />
+          </Col>
+        </Row>
+      </Container>
+
       <div className="row opportunitiesTag">
         <span className="col-2 opportunitiesMainTags">Role</span>
         <span className="col-2 opportunitiesMainTags">major</span>
