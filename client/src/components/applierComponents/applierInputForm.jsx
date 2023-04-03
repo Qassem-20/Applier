@@ -39,13 +39,16 @@ const ApplierInputForm = (props) => {
     required,
     errorMessage,
     label,
+    id,
+    row,
   } = props;
 
   return (
     <div>
-      <label className="labelStyling"> {label}</label>
+      <label className={`labelStyling ${row}`}> {label}</label>
       <input
-        className="inputStyling"
+        id={id}
+        className={`inputStyling ${row}`}
         name={name}
         type={type}
         value={value}

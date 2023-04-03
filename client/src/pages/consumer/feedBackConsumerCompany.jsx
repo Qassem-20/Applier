@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import ReviewStore from "../../stores/ReviewStore";
 import React, { Fragment, useState, useEffect } from "react";
+import ApplierAddingReview from "../../components/applierComponents/applierAddingReview";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 const FeedBackConsumerCompany = () => {
@@ -47,102 +48,33 @@ const FeedBackConsumerCompany = () => {
         <Row>
           <Col>
             <p>Company Name: {userProfile.organization_name}</p>
-            <p>Bio:</p>
-            <p>{userProfile.organization_bio}</p>
+            <p>Bio: {userProfile.organization_bio}</p>
+          </Col>
+          <Col>
             <p>City: {userProfile.city}</p>
-            <span>Website: </span>
-            <a href={userProfile.organization_website}>
-              {userProfile.organization_website}
-            </a>
+            <p>
+              Website:{"  "}
+              <a href={userProfile.organization_website}>
+                {userProfile.organization_website}
+              </a>
+            </p>
           </Col>
         </Row>
       </Container>
-      <form onSubmit={createReview}>
-        <Container className=" mt-4 p-5 bg-white">
-          <h1>Add Review</h1>
-          <p>Rate</p>
-          <div className="rate">
-            <input
-              type="radio"
-              id="star5"
-              name="rate"
-              value="5"
-              onChange={store.handleChange}
-            />
-            <label htmlFor="star5" title="text">
-              5 stars
-            </label>
-            <input
-              type="radio"
-              id="star4"
-              name="rate"
-              value="4"
-              onChange={store.handleChange}
-            />
-            <label htmlFor="star4" title="text">
-              4 stars
-            </label>
-            <input
-              type="radio"
-              id="star3"
-              name="rate"
-              value="3"
-              onChange={store.handleChange}
-            />
-            <label htmlFor="star3" title="text">
-              3 stars
-            </label>
-            <input
-              type="radio"
-              id="star2"
-              name="rate"
-              value="2"
-              onChange={store.handleChange}
-            />
-            <label htmlFor="star2" title="text">
-              2 stars
-            </label>
-            <input
-              type="radio"
-              id="star1"
-              name="rate"
-              value="1"
-              onChange={store.handleChange}
-            />
-            <label htmlFor="star1" title="text">
-              1 star
-            </label>
-          </div>
-          <textarea
-            className="inputStyling description"
-            type="text"
-            placeholder="Type your experiment (interview or job as trainee) here [max 500 character]"
-            maxLength="500"
-            name="description"
-            value={store.values.description}
-            onChange={store.handleChange}
-          />
-          <input
-            type="hidden"
-            name="company"
-            className="inputStyling"
-            onChange={store.handleChange}
-            value={(store.values.company = userProfile._id)}
-          />
-          <button className="primaryButton" type="submit">
-            Add review
-          </button>
-        </Container>
-      </form>
+      <ApplierAddingReview
+        store={store}
+        createReview={createReview}
+        userProfile={userProfile}
+      />
       <Container>
-        <Container className="mt-3">
-          <Row>
+        <Container>
+          <Row className="mt-5">
             <Col sm={6}>
               <h1>Reviews</h1>
             </Col>
-            <Col className="mt-5" sm={4}>
+            <Col sm={4}>
               <select className="inputStyling" name="" placeholder="">
-                <option value=""></option>
+                <option value="Rates Search"></option>
                 <option value="">Highly Rated</option>
                 <option value="">Recently Rated</option>
                 <option value="">Lowest Rated</option>

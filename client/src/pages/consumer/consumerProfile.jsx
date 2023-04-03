@@ -4,7 +4,7 @@ import ConsumerStore from "../../stores/ConsumerStore";
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import ApplierButton from "../../components/applierComponents/applierButton";
-import ApplierInputForm from "../../components/applierComponents/applierInputForm";
+
 import { Container, Row, Col } from "react-bootstrap";
 
 const ConsumerProfile = () => {
@@ -52,13 +52,20 @@ const ConsumerProfile = () => {
           <Col>
             <p>Concentrated_major: {consumer.concentrated_major}</p>
             <p>LinkedIn_profile: </p>
-            <a href={consumer.linkedIn_profile}>{consumer.linkedIn_profile}</a>
+
+            <p>
+              <a href={consumer.linkedIn_profile}>
+                {consumer.linkedIn_profile}
+              </a>
+            </p>
             <p>Gpa: {consumer.gpa}</p>
           </Col>
           <div>
-            <button className="button" onClick={() => store.toggleUpdate()}>
-              Update Profile
-            </button>
+            <ApplierButton
+              buttonType="Update Profile"
+              className="button"
+              onClick={() => store.toggleUpdate()}
+            />
           </div>
         </Row>
       </div>

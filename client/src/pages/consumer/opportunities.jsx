@@ -49,6 +49,7 @@ const Opportunities = () => {
 
             <div className="col-6 m-auto">
               <ApplierInputForm
+                row={"row"}
                 label="Search"
                 type="text"
                 placeholder="Searching for ..."
