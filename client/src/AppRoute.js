@@ -114,7 +114,7 @@ const AppRoute = () => {
             <EditOpportunity />
           </RequireAuthCompany>
         </Route>
-        <Route path="/traineeDetails">
+        <Route path="/traineeDetails/:consumerId">
           <RequireAuthCompany>
             <TraineeDetails />
           </RequireAuthCompany>

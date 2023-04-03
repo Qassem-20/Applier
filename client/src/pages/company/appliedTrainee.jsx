@@ -8,6 +8,7 @@ import CompanyChart from "../../components/charts/companyChart.jsx";
 import { useParams } from "react-router-dom";
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
+import Opportunities from "../admin/opportunities";
 
 const AppliedTrainee = () => {
   const { opportunityId } = useParams();
@@ -39,23 +40,26 @@ const AppliedTrainee = () => {
     <Fragment>
       <Nav />
       <div className="row">
-        <div className="col-3">
-          <h1 id="opportunitiesHeader">Qualified candidates</h1>
-          <p>Number of applications:</p>
-          <p>200</p>
+        <div className="col-4">
+          <h1 id="opportunitiesHeader">
+            &nbsp;&nbsp;&nbsp;Qualified candidates
+          </h1>
+          <div className="mt-3">
+            <CompanyChart />
+          </div>
         </div>
-        <div className="col-3">
-          <CompanyChart />
-        </div>
-        <div className="col-5">
+
+        <div className="col-8 mt-5">
           <div className="row">
-            <div className="col-sm-12 col-md-6 col-lg-3">
+            <h3 className="mb-3">Opportunity Details</h3>
+            <div className="col-4">
               <p>Job Role:</p>
-              <p>Software Engineer</p>
-              <p>Location:</p>
-              <p>Riyadh</p>
+              <p>Department:</p>
+              <p>Major:</p>
+              <p>Salary:</p>
+              <p>Type:</p>
             </div>
-            <div className="col-sm-12 col-md-6 col-lg-7">
+            <div className="col-5">
               <p>Job Description:</p>
               <p>
                 ieguheriughuerverbviberuvbreu
@@ -73,7 +77,7 @@ const AppliedTrainee = () => {
                 vbruvberuvibreuvberiuvberiuvbrivru
               </p>
             </div>
-            <div className="col-sm-12 col-md-6 col-lg-2">
+            <div className="col-3">
               <div>
                 <a href={`/editOpportunity/${opportunityId}`}>
                   <img src={CustomizeIcon} alt="CustomizeIcon" />
@@ -90,14 +94,14 @@ const AppliedTrainee = () => {
       </div>
       <section></section>
       <div className="row opportunitiesTag">
-        <span className="col-1 opportunitiesTags">Name &#8645;</span>
+        <span className="col-1 opportunitiesTags">Name</span>
         <span className="col-1 opportunitiesTags">CV</span>
         <span className="col-1 opportunitiesTags">LinkedIn</span>
         <span className="col-1 opportunitiesTags">Phone Number</span>
-        <span className="col-2 opportunitiesTags">University &#8645;</span>
+        <span className="col-2 opportunitiesTags">University</span>
         <span className="col-2 opportunitiesTags">Major</span>
-        <span className="col-1 opportunitiesTags">GPA &#8645;</span>
-        <span className="col-1 opportunitiesTags">City &#8645;</span>
+        <span className="col-1 opportunitiesTags">GPA </span>
+        <span className="col-1 opportunitiesTags">City</span>
         <span className="col-1 opportunitiesTags">Statues</span>
         <span className="col-1 opportunitiesTags">Info</span>
       </div>
@@ -118,7 +122,7 @@ const AppliedTrainee = () => {
         <span className="col-1 opportunitiesTags">Riyadh</span>
         <span className="col-1 opportunitiesTags">Applied</span>
         <div className="col-1 d-flex justify-content-center">
-          <a href="/traineeDetails">
+          <a href={`/traineeDetails/${opportunityId}`}>
             <img className="iconSize" src={OptionIcon} alt="OptionIcon" />
           </a>
         </div>
