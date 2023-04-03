@@ -65,14 +65,22 @@
   background-color: var(--color-button);
   color: var(--color-button-secondary);
 }
-
 .btnGp:nth-child(1) {
   border-radius: 10px 0 0 10px;
   border-width: 2px 0px 2px 2px;
 }
 .btnGp:last-child {
   border-radius: 0 10px 10px 0;
-  border-width: 2px 2px 2px 0px;
+}
+@media (min-width: 504px) {
+  .btnGp:nth-child(1) {
+    border-radius: 10px 0 0 10px;
+    border-width: 2px 0px 2px 2px;
+  }
+  .btnGp:last-child {
+    border-radius: 0 10px 10px 0;
+    border-width: 2px 2px 2px 0px;
+  }
 }
 
 .align {

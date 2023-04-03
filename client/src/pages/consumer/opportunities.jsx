@@ -3,6 +3,7 @@ import InfoIcon from "../../assets/images/infoIcon.png";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import OpportunityStore from "../../stores/OpportunityStore";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
+import ApplierButton from "../../components/applierComponents/applierButton";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -35,6 +36,7 @@ const Opportunities = () => {
   useEffect(() => {
     opportunityStore.fetchOpportunities();
   }, []);
+
   return (
     <Fragment>
       <ConsumerNav />
@@ -87,14 +89,13 @@ const Opportunities = () => {
                     value={(userData.opportunity = opportunity._id)}
                     onChange={handleUserDataChange}
                   />
-                  <button
+                  <ApplierButton
+                    buttonType={userData.statue}
                     type="submit"
                     name="statue"
                     className="button"
                     value={(userData.statue = "Applied")}
-                  >
-                    Apply
-                  </button>
+                  />
                 </form>
               </span>
               <span className="col-2 opportunitiesTags">
