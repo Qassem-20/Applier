@@ -5,22 +5,49 @@ import OptionIcon from "../../assets/images/optionIcon.png";
 import EyeIcon from "../../assets/images/eyeIcon.webp";
 import Nav from "../../components/Nav/companyNav";
 import CompanyChart from "../../components/charts/companyChart.jsx";
-import React, { Fragment } from "react";
+import { useParams } from "react-router-dom";
+import React, { Fragment, useState, useEffect } from "react";
+import axios from "axios";
 
-const appliedTrainee = () => {
+const AppliedTrainee = () => {
+  const { opportunityId } = useParams();
+
+  const [userProfile, setUserProfile] = useState({});
+  const [reviews, setReviews] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/api/v1/companies/${opportunityId}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setUserProfile(response.data.company);
+      });
+    axios
+      .get(`http://localhost:4000/api/v1/reviewsCompany/${opportunityId}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setReviews(response.data.reviews);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <Fragment>
       <Nav />
       <div className="row">
-        <div className="col-sm-12 col-md-6 col-lg-2">
+        <div className="col-3">
           <h1 id="opportunitiesHeader">Qualified candidates</h1>
           <p>Number of applications:</p>
           <p>200</p>
         </div>
-        <div className="col-sm-12 col-md-6 col-lg-4">
+        <div className="col-3">
           <CompanyChart />
         </div>
-        <div className="col-sm-12 col-md-6 col-lg-6">
+        <div className="col-5">
           <div className="row">
             <div className="col-sm-12 col-md-6 col-lg-3">
               <p>Job Role:</p>
@@ -48,12 +75,14 @@ const appliedTrainee = () => {
             </div>
             <div className="col-sm-12 col-md-6 col-lg-2">
               <div>
-                <img src={ShareIcon} alt="ShareIcon" />
-              </div>
-              <div>
-                <a href="/editOpportunity">
+                <a href={`/editOpportunity/${opportunityId}`}>
                   <img src={CustomizeIcon} alt="CustomizeIcon" />
                 </a>
+                <div className="mt-5">
+                  <button className="btn btn-danger" onClick="">
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -120,4 +149,4 @@ const appliedTrainee = () => {
   );
 };
 
-export default appliedTrainee;
+export default AppliedTrainee;

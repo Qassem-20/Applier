@@ -9,7 +9,7 @@ import {
   createPatientApplication,
   updatePatientApplication,
   deletePatientApplication,
-  sortPatientApplication, 
+  sortPatientApplication,
   findPatientApplication,
 } from "../controllers/patientApplicationController.js";
 //routes of the patientApplication from the controllers

@@ -12,19 +12,27 @@ const CompanyHomePage = () => {
     <Fragment>
       <Nav />
       <section>
-        <div className="container ">
+        <div className="mb-4">
+          <h1 id="opportunitiesHeader">&nbsp;&nbsp;&nbsp;Opportunities</h1>
+        </div>
+        <div className="container mb-3">
           <div className="row">
+            <div className="col-3"></div>
             <div className="col-3 m-auto">
-              <h1 id="opportunitiesHeader">Opportunities</h1>
-            </div>
-            <div className="col-3 m-auto">
-              <h1>Sorting</h1>
+              <input
+                type="date"
+                className="form-control"
+                placeholder="Created At"
+                name=""
+                value=""
+                id="searchInput"
+              />
             </div>
             <div className="col-6 m-auto">
               <input
                 type="text"
                 className="form-control"
-                placeholder="  Search"
+                placeholder="Job role"
                 name=""
                 value=""
                 id="searchInput"
@@ -35,11 +43,11 @@ const CompanyHomePage = () => {
       </section>
       <div className="row opportunitiesTag">
         <span className="col-2 opportunitiesMainTags">Role</span>
-        <span className="col-3 opportunitiesMainTags">Job Description</span>
-        <span className="col-1 opportunitiesMainTags">#Applications</span>
-        <span className="col-1 opportunitiesMainTags">duration</span>
+        <span className="col-2 opportunitiesMainTags">Job Description</span>
+        <span className="col-2 opportunitiesMainTags">Available Seats</span>
+        <span className="col-2 opportunitiesMainTags">duration</span>
         <span className="col-2 opportunitiesMainTags">Created at</span>
-        <span className="col-1 opportunitiesMainTags">View</span>
+        <span className="col-1 opportunitiesMainTags">Applications</span>
         <span className="col-1 opportunitiesMainTags">Edit</span>
       </div>
       {store.opportunities &&
@@ -49,14 +57,20 @@ const CompanyHomePage = () => {
               <span className="col-2 opportunitiesTags">
                 {opportunity.job_role}
               </span>
-              <span className="col-3 opportunitiesTags">
-                g4tg45g4g45g45g45g5g45gefrwe
+              <span className="col-2 opportunitiesTags">
+                {opportunity.description}
               </span>
-              <span className="col-1 opportunitiesTags">3/20</span>
-              <span className="col-1 opportunitiesTags">duration</span>
-              <span className="col-2 opportunitiesTags">12/2/2022</span>
+              <span className="col-2 opportunitiesTags">
+                {opportunity.availability_seats}
+              </span>
+              <span className="col-2 opportunitiesTags">
+                {opportunity.duration}
+              </span>
+              <span className="col-2 opportunitiesTags">
+                {opportunity.createdAt}
+              </span>
               <div className="col-1 d-flex justify-content-center">
-                <a href="/appliedTrainee">
+                <a href={`/appliedTrainee/${opportunity._id}`}>
                   <img
                     className="infoImg"
                     src={EyeIcon}
@@ -65,7 +79,7 @@ const CompanyHomePage = () => {
                 </a>
               </div>
               <div className="col-1 d-flex justify-content-center">
-                <a href="/editOpportunity">
+                <a href={`/editOpportunity/${opportunity._id}`}>
                   <img
                     className="infoImg"
                     src={EditOpportunities}

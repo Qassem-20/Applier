@@ -1,5 +1,5 @@
 import Review from "../models/review.js";
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const fetchReviews = async (req, res) => {
   const reviews = await Review.find();
@@ -8,7 +8,7 @@ const fetchReviews = async (req, res) => {
 };
 const fetchReviewsCompany = async (req, res) => {
   const company = mongoose.Types.ObjectId(req.params.company);
-  const reviews = await Review.find({company});
+  const reviews = await Review.find({ company });
 
   res.json({ reviews });
 };
@@ -17,7 +17,6 @@ const fetchReviewsMedical = async (req, res) => {
 
   const reviews = await Review.find({ medical });
   res.json({ reviews });
- 
 };
 const fetchReview = async (req, res) => {
   const reviewId = req.params.id;
@@ -27,14 +26,11 @@ const fetchReview = async (req, res) => {
   res.json({ review });
 };
 
-
-
 const sortReview = async (req, res) => {
   const review = await Review.find().sort({ rate: 1 });
 
   res.json({ review });
 };
-
 
 const createReviewCompany = async (req, res) => {
   const { company, rate, description } = req.body;
@@ -43,21 +39,21 @@ const createReviewCompany = async (req, res) => {
     rate,
     description,
     company,
-    isReported:'no',
-    statue:"shown",
+    isReported: "no",
+    statue: "shown",
     consumer: req.consumer._id,
   });
 
   res.json({ review });
 };
 const createReviewMedical = async (req, res) => {
-  const { medical,rate, description } = req.body;
+  const { medical, rate, description } = req.body;
 
   const review = await Review.create({
     rate,
     description,
-    isReported:'no',
-    statue:"shown",
+    isReported: "no",
+    statue: "shown",
     medical,
     consumer: req.consumer._id,
   });
@@ -91,7 +87,6 @@ const reportReview = async (req, res) => {
 
   res.json({ review });
 };
-
 
 const deleteReview = async (req, res) => {
   const reviewId = req.params.id;

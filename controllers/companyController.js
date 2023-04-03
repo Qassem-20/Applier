@@ -68,15 +68,17 @@ const fetchCompany = async (req, res) => {
   res.json({ company });
 };
 
-const findCompany =async (req, res) =>{
+const findCompany = async (req, res) => {
   try {
     const companyName = req.params.name;
-    const findName = await Company.find({organization_name:{ $regex:'.*'+companyName+'.*'} });
+    const findName = await Company.find({
+      organization_name: { $regex: ".*" + companyName + ".*" },
+    });
     res.json(findName);
   } catch (error) {
-    res.json({message: error});        
+    res.json({ message: error });
   }
-}
+};
 
 const sortCompanies = async (req, res) => {
   const companies = await Company.find().sort({ organization_name: 1 });
@@ -84,8 +86,8 @@ const sortCompanies = async (req, res) => {
   res.json({ companies });
 };
 
-// Create feedback and review 
-const creatFeedBack = async(req, res) =>{
+// Create feedback and review
+const creatFeedBack = async (req, res) => {
   const reviews = req.body;
 
   await Company.findByIdAndUpdate(companyId, reviews);
@@ -93,8 +95,7 @@ const creatFeedBack = async(req, res) =>{
   const company = await Company.findById(companyId);
 
   res.json({ company });
-
-}
+};
 
 const createCompany = async (req, res) => {
   try {
@@ -122,12 +123,12 @@ const createCompany = async (req, res) => {
       organization_website,
       organization_bio,
       supervisor_name,
-      password:hashedPassword,
+      password: hashedPassword,
       email,
       phone,
       country,
       city,
-      statue:'inactive',
+      statue: "inactive",
     });
 
     //respond
@@ -262,5 +263,4 @@ export {
   findCompany,
   sortCompanies,
   creatFeedBack,
-  
 };

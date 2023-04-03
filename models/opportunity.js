@@ -41,20 +41,18 @@ const opportunitySchema = new mongoose.Schema(
       required: [false, "Please provide number of available seats"],
       maxlength: 5,
       trim: true,
-      default:"Null",
+      default: "Null",
     },
     salary: {
       type: String,
       trim: true,
-      default:"None",
-
+      default: "None",
     },
     start_date: {
       type: String,
       required: [true, "Please enter the duration for the opportunity"],
       minlength: 1,
       maxlength: 100,
-
     },
     duration: {
       type: String,

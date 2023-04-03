@@ -1,8 +1,8 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
-mongoose.set('strictQuery', false);
+mongoose.set("strictQuery", false);
 
 const connectDB = (url) => {
-  return mongoose.connect(url)
-}
-export default connectDB
+  return mongoose.connect(url);
+};
+export default connectDB;

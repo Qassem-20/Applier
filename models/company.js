@@ -114,9 +114,7 @@ const companySchema = new mongoose.Schema(
     Opportunities: [
       { type: mongoose.Schema.Types.ObjectId, ref: "Opportunity" },
     ],
-    reviews: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "Review" }
-    ],
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
   },
   { timestamps: true }
 );

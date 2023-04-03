@@ -19,8 +19,12 @@ router.route("/reviews/:id").get(fetchReview);
 router.route("/reviewsCompany/:company").get(fetchReviewsCompany);
 router.route("/reviewsMedical/:medical").get(fetchReviewsMedical);
 
-router.route("/reviews/registerReviewCompany").post(requireAuthConsumer, createReviewCompany);
-router.route("/reviews/registerReviewMedical").post(requireAuthConsumer, createReviewMedical);
+router
+  .route("/reviews/registerReviewCompany")
+  .post(requireAuthConsumer, createReviewCompany);
+router
+  .route("/reviews/registerReviewMedical")
+  .post(requireAuthConsumer, createReviewMedical);
 router.route("/reviews/:id").delete(requireAuthConsumer, deleteReview);
 router.route("/reviews/sortReview").get(sortReview);
 

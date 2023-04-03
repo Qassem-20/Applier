@@ -3,15 +3,13 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 const getConsumerProfile = async (req, res, next) => {
-
-    const consumerId = req.consumer.id; // Assuming you're using JWT or session-based authentication
-    const consumer = await Consumer.findById(consumerId);
-    if (!consumer) {
-      return res.status(404).json({ error: 'consumer not found' });
-    }
-    return res.json({consumer});
- 
-}
+  const consumerId = req.consumer.id; // Assuming you're using JWT or session-based authentication
+  const consumer = await Consumer.findById(consumerId);
+  if (!consumer) {
+    return res.status(404).json({ error: "consumer not found" });
+  }
+  return res.json({ consumer });
+};
 const fetchConsumers = async (req, res) => {
   const consumers = await Consumer.find();
 
@@ -27,16 +25,15 @@ const fetchConsumer = async (req, res) => {
 };
 
 const findAll = async (req, res) => {
-
   const name = req.params.name;
-    const consumer = await Consumer.find({name:{ $regex:'.*'+name+'.*'} });
-
+  const consumer = await Consumer.find({
+    name: { $regex: ".*" + name + ".*" },
+  });
 
   res.json({ consumer });
 };
 
-
-const findConsumer =async (req, res) =>{
+const findConsumer = async (req, res) => {
   // try {
   //   const consumerName = req.params.name;
   //   const { name, phone } = req.body;
@@ -48,16 +45,16 @@ const findConsumer =async (req, res) =>{
   //   // const findName = await Consumer.find({name:{ $regex:'.*'+consumerName+'.*'} });
   //   res.json(consumer);
   // } catch (error) {
-  //   res.json({message: error});        
+  //   res.json({message: error});
   // }
 
   const name = req.params.name;
-  const consumer = await Consumer.find({name:{ $regex:'.*'+name+'.*'} });
+  const consumer = await Consumer.find({
+    name: { $regex: ".*" + name + ".*" },
+  });
 
-
-res.json({ consumer });
-}
-
+  res.json({ consumer });
+};
 
 const sortDateConsumers = async (req, res) => {
   const consumers = await Consumer.find().sort({ createdAt: -1 });
@@ -82,14 +79,39 @@ const sortNameConsumers = async (req, res) => {
 
 const createConsumer = async (req, res) => {
   try {
-    const { name, email, password, phone, nationality,university,major,gpa,concentrated_major,skills,linkedIn_profile,experience,degree } = req.body;
+    const {
+      name,
+      email,
+      password,
+      phone,
+      nationality,
+      university,
+      major,
+      gpa,
+      concentrated_major,
+      skills,
+      linkedIn_profile,
+      experience,
+      degree,
+    } = req.body;
 
     //hash the password
     const hashedPassword = bcrypt.hashSync(password, 8);
 
     await Consumer.create({
-
-      name, email, password:hashedPassword, phone, nationality,university,major,gpa,concentrated_major,skills,linkedIn_profile,experience,degree
+      name,
+      email,
+      password: hashedPassword,
+      phone,
+      nationality,
+      university,
+      major,
+      gpa,
+      concentrated_major,
+      skills,
+      linkedIn_profile,
+      experience,
+      degree,
     });
   } catch (err) {
     console.log(err);
@@ -154,28 +176,33 @@ function checkAuthConsumer(req, res) {
 const updateConsumer = async (req, res) => {
   const consumerId = req.params.id;
 
-  const { name, phone, nationality,    university, 
-    major, 
-    gpa, 
-    gpa_statue, 
-    concentrated_major, 
-    skills, 
-    cv, 
-    linkedIn_profile, 
-    experience, } = req.body;
+  const {
+    name,
+    phone,
+    nationality,
+    university,
+    major,
+    gpa,
+    gpa_statue,
+    concentrated_major,
+    skills,
+    cv,
+    linkedIn_profile,
+    experience,
+  } = req.body;
 
   await Consumer.findByIdAndUpdate(consumerId, {
     name,
     phone,
     nationality,
-    university, 
-    major, 
-    gpa, 
-    gpa_statue, 
-    concentrated_major, 
-    skills, 
-    cv, 
-    linkedIn_profile, 
+    university,
+    major,
+    gpa,
+    gpa_statue,
+    concentrated_major,
+    skills,
+    cv,
+    linkedIn_profile,
     experience,
   });
 

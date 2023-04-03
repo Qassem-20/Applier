@@ -38,6 +38,6 @@ router
 router
   .route("/medicalStudents/:id")
   .delete(requireAuthMedicalStudent, deleteMedicalStudent);
-  router.route("/sortMedicalStudent").get(sortMedicalStudent);
-  router.route("/findMedicalStudent/:name").get(findMedicalStudent);
+router.route("/sortMedicalStudent").get(sortMedicalStudent);
+router.route("/findMedicalStudent/:name").get(findMedicalStudent);
 export default router;

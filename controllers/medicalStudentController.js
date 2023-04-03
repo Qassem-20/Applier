@@ -16,15 +16,17 @@ const fetchMedicalStudent = async (req, res) => {
   res.json({ medicalStudent });
 };
 
-const findMedicalStudent =async (req, res) =>{
+const findMedicalStudent = async (req, res) => {
   try {
     const MedicalStudentName = req.params.name;
-    const findName = await medicalStudent.find({name:{ $regex:'.*'+MedicalStudentName+'.*'} });
+    const findName = await medicalStudent.find({
+      name: { $regex: ".*" + MedicalStudentName + ".*" },
+    });
     res.json(findName);
   } catch (error) {
-    res.json({message: error});        
+    res.json({ message: error });
   }
-}
+};
 
 const sortMedicalStudent = async (req, res) => {
   const medicalStudent = await medicalStudent.find().sort({ name: 1 });

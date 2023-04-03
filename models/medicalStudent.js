@@ -115,9 +115,7 @@ const MedicalStudentSchema = new mongoose.Schema(
       enum: ["active", "inactive"],
       default: "inactive",
     },
-    reviews: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "Review" }
-    ],
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
   },
   { timestamps: true }
 );

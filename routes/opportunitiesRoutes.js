@@ -18,7 +18,9 @@ import {
 //routes of the Opportunity from the controllers
 router.route("/opportunities").get(fetchOpportunities);
 router.route("/opportunities/:id").get(fetchOpportunity);
-router.route("/opportunitiesCompany").get(requireAuthCompany, fetchOpportunitiesCompany);
+router
+  .route("/opportunitiesCompany")
+  .get(requireAuthCompany, fetchOpportunitiesCompany);
 
 router
   .route("/opportunities/registerOpportunity")

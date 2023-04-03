@@ -51,21 +51,19 @@ const consumerSchema = new mongoose.Schema(
       type: String,
       maxlength: 50,
       trim: true,
-      default:"null"
-
+      default: "null",
     },
     major: {
       type: String,
       required: [false, "Provide your major"],
       //add all majors
       //enum: [""],
-      default:"null"
-
+      default: "null",
     },
     gpa: {
       type: String,
       required: [false, "Please provide your gpa"],
-      default:"null"
+      default: "null",
     },
 
     concentrated_major: {
@@ -73,15 +71,14 @@ const consumerSchema = new mongoose.Schema(
       required: [false, "concentrated_major"],
       maxlength: 20,
       trim: true,
-      default:"null"
+      default: "null",
     },
     skills: {
       type: String,
       required: [false, "Provide at least one skill"],
       //provide all skills for all majors
       //enum: [""],
-      default:"null"
-
+      default: "null",
     },
     /*cv: {
       file: { type: Buffer, required: true },
@@ -93,40 +90,24 @@ const consumerSchema = new mongoose.Schema(
       minlength: 0,
       maxlength: 100,
       trim: true,
-      default:"null"
-
+      default: "null",
     },
     experience: {
       type: String,
       required: [false, "Please enter your experience"],
-      enum: [
-        "",
-        "less than a year",
-        "an year",
-        "2 years",
-        "more than 2 years",
-      ],
+      enum: ["", "less than a year", "an year", "2 years", "more than 2 years"],
       default: "none",
     },
-    degree:{
+    degree: {
       type: String,
       required: [false, "Please enter your experience"],
-      enum: [
-        "null",
-        "High School",
-        "Bachelor",
-        "Master",
-        "Diploma",
-      ],
-      default:"null"
-
+      enum: ["null", "High School", "Bachelor", "Master", "Diploma"],
+      default: "null",
     },
     patientApplication: [
       { type: mongoose.Schema.Types.ObjectId, ref: "PatientApplication" },
     ],
-    opportunity: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "Opportunity" },
-    ],
+    opportunity: [{ type: mongoose.Schema.Types.ObjectId, ref: "Opportunity" }],
     applicationStatus: [
       { type: mongoose.Schema.Types.ObjectId, ref: "ApplicationStatus" },
     ],
