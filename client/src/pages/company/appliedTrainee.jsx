@@ -18,13 +18,6 @@ const AppliedTrainee = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/v1/consumers/${opportunityId}`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        setUserProfile(response.data);
-      });
-    axios
       .get(
         `http://localhost:4000/api/v1/applicationsOpportunity/${opportunityId}`,
         {
@@ -32,7 +25,7 @@ const AppliedTrainee = () => {
         }
       )
       .then((response) => {
-        setApplications(response.data.applicationStatus);
+        setApplications(response.data.applicationStatuses);
       })
       .catch((error) => {
         console.log(error);
@@ -107,55 +100,40 @@ const AppliedTrainee = () => {
         <span className="col-1 opportunitiesTags">Statues</span>
         <span className="col-1 opportunitiesTags">Info</span>
       </div>
-      <div className="row px-auto opportunitiesT">
-        <span className="col-1 mx-auto  opportunitiesTags">Ahmed</span>
-        <div className="col-1 d-flex justify-content-center">
-          <img className="iconSize" src={EyeIcon} alt="EyeIcon" />
-        </div>
-        <div className="col-1 d-flex justify-content-center">
-          <img className="iconSize" src={EyeIcon} alt="EyeIcon" />
-        </div>
-        <span className="col-1  opportunitiesTags">+9665476156</span>
-        <span className="col-2 opportunitiesTags">
-          King Fahad Petroleum and minerals
-        </span>
-        <span className="col-2 opportunitiesTags">Software Engineering</span>
-        <span className="col-1 opportunitiesTags">2/4</span>
-        <span className="col-1 opportunitiesTags">Riyadh</span>
-        <span className="col-1 opportunitiesTags">Applied</span>
-        <div className="col-1 d-flex justify-content-center">
-          <a href={`/traineeDetails/${opportunityId}`}>
-            <img className="iconSize" src={OptionIcon} alt="OptionIcon" />
-          </a>
-        </div>
-      </div>
-      <div className="row px-auto opportunitiesT">
-        <span className="col-1 mx-auto  opportunitiesTags">Ahmed</span>
-        <div className="col-1 d-flex justify-content-center">
-          <img className="iconSize" src={EyeIcon} alt="EyeIcon" />
-        </div>
-        <div className="col-1 d-flex justify-content-center">
-          <img className="iconSize" src={EyeIcon} alt="EyeIcon" />
-        </div>
-        <span className="col-1  opportunitiesTags">+9665476156</span>
-        <span className="col-2 opportunitiesTags">
-          King Fahad Petroleum and minerals
-        </span>
-        <span className="col-2 opportunitiesTags">Software Engineering</span>
-        <span className="col-1 opportunitiesTags">2/4</span>
-        <span className="col-1 opportunitiesTags">Riyadh</span>
-        {Array.isArray(applications) &&
-          applications.map((application) => (
-            <span className="col-1 opportunitiesTags" key={application._id}>
+
+      {Array.isArray(applications) &&
+        applications.map((application) => (
+          <div className="row px-auto opportunitiesT" key={application._id}>
+            <span className="col-1 mx-auto  opportunitiesTags">
+              {application.consumerInfo}
+            </span>
+            <div className="col-1 d-flex justify-content-center">
+              <img className="iconSize" src={EyeIcon} alt="EyeIcon" />
+            </div>
+            <div className="col-1 d-flex justify-content-center">
+              <img className="iconSize" src={EyeIcon} alt="EyeIcon" />
+            </div>
+            <span className="col-1  opportunitiesTags">+9665476156</span>
+            <span className="col-2 opportunitiesTags">
+              King Fahad Petroleum and minerals
+            </span>
+            <span className="col-2 opportunitiesTags">
+              Software Engineering
+            </span>
+            <span className="col-1 opportunitiesTags">2/4</span>
+            <span className="col-1 opportunitiesTags">Riyadh</span>
+
+            <span className="col-1 opportunitiesTags">
               {application.statue}
             </span>
-          ))}
-        <div className="col-1 d-flex justify-content-center">
-          <a href="/traineeDetails">
-            <img className="iconSize" src={OptionIcon} alt="OptionIcon" />
-          </a>
-        </div>
-      </div>
+
+            <div className="col-1 d-flex justify-content-center">
+              <a href="/traineeDetails">
+                <img className="iconSize" src={OptionIcon} alt="OptionIcon" />
+              </a>
+            </div>
+          </div>
+        ))}
     </Fragment>
   );
 };
