@@ -72,9 +72,9 @@ const FeedBackConsumerCompany = () => {
             <Col sm={6}>
               <h1>Reviews</h1>
             </Col>
-            <Col sm={4}>
+            <Col className="mt-3" sm={4}>
               <select className="inputStyling" name="" placeholder="">
-                <option value="Rates Search"></option>
+                <option value=""></option>
                 <option value="">Highly Rated</option>
                 <option value="">Recently Rated</option>
                 <option value="">Lowest Rated</option>
