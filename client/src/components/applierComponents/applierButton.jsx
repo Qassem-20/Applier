@@ -1,11 +1,12 @@
 import "react-bootstrap";
 
 const ApplierButton = (props) => {
-  const { className, onClick, buttonType } = props;
+  const { className, onClick, buttonType, isDisabled } = props;
 
   return (
     <button
-      className={`${className} btn btn-dark mt-1 ml-2`}
+      className={`${className} btn btn-dark ml-2`}
+      disabled={isDisabled}
       type="submit"
       onClick={onClick}
     >
