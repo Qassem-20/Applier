@@ -1,4 +1,5 @@
 import ApplicationStatus from "../models/applicationStatus.js";
+import mongoose from "mongoose";
 
 const fetchApplications = async (req, res) => {
   const applicationStatus = await ApplicationStatus.find();
@@ -12,6 +13,13 @@ const fetchApplication = async (req, res) => {
   const applicationStatus = await ApplicationStatus.findById(
     applicationStatusId
   );
+
+  res.json({ applicationStatus });
+};
+
+const fetchApplicationsOpportunity = async (req, res) => {
+  const opportunity = mongoose.Types.ObjectId(req.params.opportunity);
+  const applicationStatus = await ApplicationStatus.find({ opportunity });
 
   res.json({ applicationStatus });
 };
@@ -91,6 +99,7 @@ const deleteApplication = async (req, res) => {
 export {
   fetchApplications,
   fetchApplication,
+  fetchApplicationsOpportunity,
   createApplication,
   updateApplication,
   getApplicationStatus,

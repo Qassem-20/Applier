@@ -14,28 +14,32 @@ const AppliedTrainee = () => {
   const { opportunityId } = useParams();
 
   const [userProfile, setUserProfile] = useState({});
-  const [reviews, setReviews] = useState({});
+  const [applications, setApplications] = useState({});
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/v1/companies/${opportunityId}`, {
+      .get(`http://localhost:4000/api/v1/consumers/${opportunityId}`, {
         withCredentials: true,
       })
       .then((response) => {
-        setUserProfile(response.data.company);
+        setUserProfile(response.data.applications);
       });
     axios
-      .get(`http://localhost:4000/api/v1/reviewsCompany/${opportunityId}`, {
-        withCredentials: true,
-      })
+      .get(
+        `http://localhost:4000/api/v1/applicationsOpportunity/${opportunityId}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((response) => {
-        setReviews(response.data.reviews);
+        setApplications(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
+  console.log(applications);
   return (
     <Fragment>
       <Nav />
@@ -83,9 +87,7 @@ const AppliedTrainee = () => {
                   <img src={CustomizeIcon} alt="CustomizeIcon" />
                 </a>
                 <div className="mt-5">
-                  <button className="btn btn-danger" onClick="">
-                    Delete
-                  </button>
+                  <button className="btn btn-danger">Delete</button>
                 </div>
               </div>
             </div>

@@ -112,9 +112,7 @@ const Companies = () => {
                   <p className="opportunitiesTags">{company.register_number}</p>
                 </Col>
                 <Col xl={2}>
-                  <p className="opportunitiesTags">
-                    {company.supervisor_phone}
-                  </p>
+                  <p className="opportunitiesTags">{company.phone}</p>
                 </Col>
                 <Col xl={2}>
                   <p className="opportunitiesTags">{company.city}</p>

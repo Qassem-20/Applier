@@ -107,7 +107,9 @@ const MedicalStudents = () => {
                   </p>
                 </Col>
                 <Col xl={2}>
-                  <p className="opportunitiesTags">{medicalStudent.phone}</p>
+                  <p className="opportunitiesTags">
+                    {medicalStudent.phone_number}
+                  </p>
                 </Col>
                 <Col xl={2}>
                   <p className="opportunitiesTags">{medicalStudent.city}</p>

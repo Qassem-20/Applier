@@ -109,7 +109,9 @@ const consumerSchema = new mongoose.Schema(
     ],
     opportunity: [{ type: mongoose.Schema.Types.ObjectId, ref: "Opportunity" }],
     applicationStatus: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "ApplicationStatus" },
+      { type: mongoose.Schema.Types.ObjectId,
+        ref: "ApplicationStatus"
+      },
     ],
   },
   { timestamps: true }
