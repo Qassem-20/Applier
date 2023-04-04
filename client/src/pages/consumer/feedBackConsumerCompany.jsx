@@ -53,7 +53,7 @@ const FeedBackConsumerCompany = () => {
           <Col>
             <p>City: {userProfile.city}</p>
             <p>
-              Website:{"  "}
+              Website:
               <a href={userProfile.organization_website}>
                 {userProfile.organization_website}
               </a>

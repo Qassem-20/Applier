@@ -22,7 +22,7 @@ const AppliedTrainee = () => {
         withCredentials: true,
       })
       .then((response) => {
-        setUserProfile(response.data.applications);
+        setUserProfile(response.data);
       });
     axios
       .get(
@@ -32,7 +32,7 @@ const AppliedTrainee = () => {
         }
       )
       .then((response) => {
-        setApplications(response.data);
+        setApplications(response.data.applicationStatus);
       })
       .catch((error) => {
         console.log(error);
@@ -144,7 +144,12 @@ const AppliedTrainee = () => {
         <span className="col-2 opportunitiesTags">Software Engineering</span>
         <span className="col-1 opportunitiesTags">2/4</span>
         <span className="col-1 opportunitiesTags">Riyadh</span>
-        <span className="col-1 opportunitiesTags">Applied</span>
+        {Array.isArray(applications) &&
+          applications.map((application) => (
+            <span className="col-1 opportunitiesTags" key={application._id}>
+              {application.statue}
+            </span>
+          ))}
         <div className="col-1 d-flex justify-content-center">
           <a href="/traineeDetails">
             <img className="iconSize" src={OptionIcon} alt="OptionIcon" />

@@ -1,4 +1,5 @@
 import ApplicationStatus from "../models/applicationStatus.js";
+import Consumer from "../models/Consumer.js";
 import mongoose from "mongoose";
 
 const fetchApplications = async (req, res) => {
@@ -19,7 +20,27 @@ const fetchApplication = async (req, res) => {
 
 const fetchApplicationsOpportunity = async (req, res) => {
   const opportunity = mongoose.Types.ObjectId(req.params.opportunity);
-  const applicationStatus = await ApplicationStatus.find({ opportunity });
+  const consumer = req.params.consumer;
+
+  const personalInfo = await Consumer.findOne({ user_id: consumer });
+  const applicationStatus = await ApplicationStatus.findOne({ opportunity });
+
+  if (!personalInfo || !applicationStatus) {
+    return res.status(404).json({ message: 'User information not found' });
+  }
+
+  const userInfo = {
+    consumer: personalInfo._id,
+    name: personalInfo.name,
+    email: personalInfo.email,
+    gpa: personalInfo.gpa,
+    major: personalInfo.major,
+    university: personalInfo.university,
+    linkedIn_profile: personalInfo.linkedIn_profile,
+    statue: applicationStatus.statue
+  };
+
+  res.json(userInfo);
 
   res.json({ applicationStatus });
 };

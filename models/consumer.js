@@ -101,8 +101,8 @@ const consumerSchema = new mongoose.Schema(
     degree: {
       type: String,
       required: [false, "Please enter your experience"],
-      enum: ["null", "High School", "Bachelor", "Master", "Diploma"],
-      default: "null",
+      enum: ["", "High School", "Bachelor", "Master", "Diploma"],
+      default: "",
     },
     patientApplication: [
       { type: mongoose.Schema.Types.ObjectId, ref: "PatientApplication" },
