@@ -24,7 +24,7 @@ const CompanyHomePage = () => {
                 className="form-control"
                 placeholder="Created At"
                 name=""
-                value=""
+                defaultValue=""
                 id="searchInput"
               />
             </div>
@@ -34,7 +34,7 @@ const CompanyHomePage = () => {
                 className="form-control"
                 placeholder="Job role"
                 name=""
-                value=""
+                defaultValue=""
                 id="searchInput"
               />
             </div>

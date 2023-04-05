@@ -92,7 +92,7 @@ const Opportunities = () => {
                   />
                   <ApplierButton
                     buttonType={userData.statue}
-                    isDisabled={userData.statue === "Applied"}
+                    isDisabled={userData.statue === "Apply"}
                     type="submit"
                     name="statue"
                     className="button"

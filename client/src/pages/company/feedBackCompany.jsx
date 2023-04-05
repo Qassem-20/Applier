@@ -6,7 +6,7 @@ import React, { Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import CompanyNav from "../../components/Nav/companyNav";
 
-const feedBackCompany = () => {
+const FeedBackCompany = () => {
   return (
     <Fragment>
       <CompanyNav />
@@ -47,4 +47,4 @@ const feedBackCompany = () => {
   );
 };
 
-export default feedBackCompany;
+export default FeedBackCompany;

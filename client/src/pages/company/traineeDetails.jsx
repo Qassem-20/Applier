@@ -1,84 +1,54 @@
-import React, { Fragment } from 'react';
-import '../../assets/css/company.css';
-import Profile from '../../assets/images/profileIcon.png';
-import Nav from '../../components/Nav/companyNav';
+import React, { Fragment, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import "../../assets/css/company.css";
+import { Container, Row, Col } from "react-bootstrap";
 
-const traineeDetails = () => {
+import Nav from "../../components/Nav/companyNav";
+import axios from "axios";
+const TraineeDetails = () => {
+  const { consumerId } = useParams();
+  const [userProfile, setUserProfile] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/api/v1/userProfiles/${consumerId}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setUserProfile(response.data);
+      });
+  }, []);
   return (
     <Fragment>
-    <Nav />
-    <div className='container'>
-            <img src={Profile} className='mx-auto' id='imgProfile' alt='Change Profile' />
-        </div>
-        <div className='container backgroundProfile'>
-          <div className='row'>
-            <div className='col-sm-12 col-md-6'>
-              <p className='labelTag'>Full name</p>
-              <input type="name" className='inputUser' name="" value="" />
-              <p className='labelTag'>Date of Birth</p>
-              <input type="date" className='inputUser'name="" value="" />
-              <p className='labelTag'>Nationality</p>
-              <select>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-              <p className='labelTag'>Phone Number</p>
-              <input type="phone" className='inputUser'name="" value="" />
-              <p className='labelTag'>GBA</p>
-              <input type="number" className='inputUser'name="" value="" />
-              <span>out of</span>
-              <select>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-              <p className='labelTag'>Major</p>
-              <select>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-              <div>
-              <label className='labelTag'>Concentrated major?</label>
-              <input type="checkbox" name="" value="" /> 
-              </div>
-              <div>
-              <input type="text" className='inputUser' name="" value="" />          
-              </div>
-            </div>
-            <div className='col-sm-12 col-md-6'>
-              <p className='labelTag'>Degree</p>
-              <select>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-              <p className='labelTag'>Collage</p>
-              <select>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-              <br />
-              <p className='labelTag'>CV</p>
-              <input type="file" className='inputUser' name="" value="" />
-              <p className='labelTag'>Identification Letter <span>(IF EXISTS)</span></p>
-              <input type="file" className='inputUser' name="" value="" /> 
-              <p className='labelTag'>LinkedIn Profile<span>(IF EXISTS)</span></p>
-              <input type="link" className='inputUser' name="" value="" />
-              <p className='labelTag'>Profile Picture<span>(IF EXISTS)</span></p>
-              <input type="file" className='inputUser' name="" value="" />
-            </div>
-          </div>
-        </div>
-      </Fragment>
-  )
-}
+      <Nav />
+      <Container className="backgroundProfile">
+        <p>Name: {userProfile.name}</p>
+        <p>Email: {userProfile.email}</p>
+        <p>Phone: {userProfile.phone}</p>
+        <hr />
+        <h4>Application (CV)</h4>
+        <Row>
+          <Col>
+            <p>University: {userProfile.university}</p>
+            <p>Skills: {userProfile.skills}</p>
+            <p>Degree: {userProfile.degree}</p>
+            <p>Major: {userProfile.major}</p>
+          </Col>
+          <Col>
+            <p>Concentrated_major: {userProfile.concentrated_major}</p>
+            <p>LinkedIn_profile: </p>
 
-export default traineeDetails
+            <p>
+              <a href={userProfile.linkedIn_profile}>
+                {userProfile.linkedIn_profile}
+              </a>
+            </p>
+            <p>Gpa: {userProfile.gpa}</p>
+          </Col>
+        </Row>
+      </Container>
+    </Fragment>
+  );
+};
+
+export default TraineeDetails;

@@ -7,15 +7,28 @@ import Nav from "../../components/Nav/companyNav";
 import CompanyChart from "../../components/charts/companyChart.jsx";
 import { useParams } from "react-router-dom";
 import React, { Fragment, useState, useEffect } from "react";
+import OpportunityStore from "../../stores/OpportunityStore";
 import axios from "axios";
 
 const AppliedTrainee = () => {
   const { opportunityId } = useParams();
 
-  // const [userProfile, setUserProfile] = useState({});
+  const storeDelete = OpportunityStore((storeDelete) => {
+    return {
+      deleteOpportunity: storeDelete.deleteOpportunity,
+    };
+  });
+  const [userProfile, setUserProfile] = useState({});
   const [applications, setApplications] = useState({});
 
   useEffect(() => {
+    axios
+      .get(`http://localhost:4000/api/v1/opportunities/${opportunityId}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setUserProfile(response.data.opportunity);
+      });
     axios
       .get(
         `http://localhost:4000/api/v1/applicationsOpportunity/${opportunityId}`,
@@ -31,7 +44,6 @@ const AppliedTrainee = () => {
       });
   }, []);
 
-  console.log(applications);
   return (
     <Fragment>
       <Nav />
@@ -49,29 +61,15 @@ const AppliedTrainee = () => {
           <div className="row">
             <h3 className="mb-3">Opportunity Details</h3>
             <div className="col-4">
-              <p>Job Role:</p>
-              <p>Department:</p>
-              <p>Major:</p>
-              <p>Salary:</p>
-              <p>Type:</p>
+              <p>Job Role: {userProfile.job_role}</p>
+              <p>Department: {userProfile.departments_preferred}</p>
+              <p>Major: {userProfile.major_preferred}</p>
+              <p>Salary: {userProfile.salary}</p>
+              <p>Type: {userProfile.job_type}</p>
             </div>
             <div className="col-5">
               <p>Job Description:</p>
-              <p>
-                ieguheriughuerverbviberuvbreu
-                <wbr />
-                vbruvberuvibreuvberiuvberiuvbrivru
-                <wbr />
-                vbruvberuvibreuvberiuvberiuvbrivru
-                <wbr />
-                vbruvberuvibreuvberiuvberiuvbrivru
-                <wbr />
-                vbruvberuvibreuvberiuvberiuvbrivru
-                <wbr />
-                vbruvberuvibreuvberiuvberiuvbrivru
-                <wbr />
-                vbruvberuvibreuvberiuvberiuvbrivru
-              </p>
+              <p>{userProfile.description}</p>
             </div>
             <div className="col-3">
               <div>
@@ -79,7 +77,16 @@ const AppliedTrainee = () => {
                   <img src={CustomizeIcon} alt="CustomizeIcon" />
                 </a>
                 <div className="mt-5">
-                  <button className="btn btn-danger">Delete</button>
+                  <form action="/companyHomePage/">
+                    <button
+                      className="btn btn-danger"
+                      onClick={() =>
+                        storeDelete.deleteOpportunity(opportunityId)
+                      }
+                    >
+                      Delete
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
