@@ -7,7 +7,7 @@ export class welcomeNav extends Component {
       <Fragment>
         <Navbar bg="white" expand="lg" className="pt-2 pb-3 mb-5">
           <Container>
-            <Navbar.Brand href="/">Applier</Navbar.Brand>
+            <Navbar.Brand>Applier</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav>
