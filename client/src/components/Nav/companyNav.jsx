@@ -1,11 +1,4 @@
-import {
-  Container,
-  Nav,
-  Navbar,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import React, { Component, Fragment } from "react";
 
 export class companyNav extends Component {

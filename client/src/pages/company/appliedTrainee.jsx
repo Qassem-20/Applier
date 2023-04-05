@@ -1,5 +1,5 @@
 import "../../assets/css/company.css";
-import ShareIcon from "../../assets/images/ShareIcon.png";
+
 import CustomizeIcon from "../../assets/images/customizeIcon.png";
 import OptionIcon from "../../assets/images/optionIcon.png";
 import EyeIcon from "../../assets/images/eyeIcon.webp";
@@ -8,12 +8,11 @@ import CompanyChart from "../../components/charts/companyChart.jsx";
 import { useParams } from "react-router-dom";
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
-import Opportunities from "../admin/opportunities";
 
 const AppliedTrainee = () => {
   const { opportunityId } = useParams();
 
-  const [userProfile, setUserProfile] = useState({});
+  // const [userProfile, setUserProfile] = useState({});
   const [applications, setApplications] = useState({});
 
   useEffect(() => {
