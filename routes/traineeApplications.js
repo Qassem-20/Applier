@@ -19,7 +19,9 @@ import {
 //routes of the review from the controllers
 router.route("/applications").get(fetchApplications);
 router.route("/applications/:id").get(fetchApplication);
-router.route("/applicationsOpportunity/:opportunity").get(fetchApplicationsOpportunity);
+router
+  .route("/applicationsOpportunity/:opportunity")
+  .get(fetchApplicationsOpportunity);
 router
   .route("/traineeApplications/:id")
   .put(requireAuthCompany, updateApplication);
