@@ -17,7 +17,7 @@ export class routeSignUp extends Component {
             <div className="row">
               <a className="col-4 align" href="/signUpConsumer">
                 <img className="img-fluid" src={traineeBackground} alt="" />
-                <h2 className="align">Trainee</h2>
+                <h2 className="align">User</h2>
               </a>
               <a className="col-4 align" href="/signUpCompany">
                 <img className="img-fluid" src={companyBackground} alt="" />

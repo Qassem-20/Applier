@@ -24,8 +24,7 @@ const SignUpCompany = () => {
       <div className="container SignUpFormat">
         <Row>
           <Col xl={8}>
-            <h1>Welcome to Applier</h1>
-            <p>Register your account</p>
+            <h1>Create Your Orgnization Account</h1>
           </Col>
           <Col>
             <span> Already have an account? </span>

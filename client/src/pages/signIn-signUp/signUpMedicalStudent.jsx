@@ -80,9 +80,9 @@ const SignUpMedicalStudent = () => {
                   pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                 />
 
-                <label>Nationality</label>
+                <label className="labelStyling">Nationality</label>
                 <select
-                  className="inputStyling"
+                  className="inputStyling mb-3"
                   name="nationality"
                   placeholder="nationality"
                   value={store.values.nationality}
@@ -94,10 +94,10 @@ const SignUpMedicalStudent = () => {
                 </select>
               </Col>
               <Col md={6} sm={12}>
-                <label>Gender</label>
+                <label className="labelStyling">Gender</label>
                 <select
                   name="gender"
-                  className="inputStyling"
+                  className="inputStyling mb-3"
                   placeholder="gender"
                   value={store.values.gender}
                   onChange={store.handleChange}
@@ -115,9 +115,9 @@ const SignUpMedicalStudent = () => {
                   required="true"
                   errorMessage="city"
                 />
-                <label>Major</label>
+                <label className="labelStyling">Major</label>
                 <select
-                  className="inputStyling"
+                  className="inputStyling mb-3"
                   name="main_major"
                   placeholder="main_major"
                   value={store.values.main_major}

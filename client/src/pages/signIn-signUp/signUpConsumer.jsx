@@ -33,8 +33,7 @@ const SignUpConsumer = () => {
       <div className="SignUpFormat container">
         <Row>
           <Col xl={8}>
-            <h1>Welcome to Applier</h1>
-            <p>Register your account</p>
+            <h1>Create Your Account</h1>
           </Col>
           <Col>
             <span> Already have an account? </span>
@@ -55,12 +54,12 @@ const SignUpConsumer = () => {
                   errorMessage="full_name"
                   required={true}
                 />
-                <label>Nationality</label>
+                <label className="labelStyling">Nationality</label>
                 <select
-                  className="inputStyling"
                   name="nationality"
                   value={store.values.nationality}
                   onChange={store.handleChange}
+                  className="inputStyling mb-3"
                 >
                   <option>Please select</option>
                   <option value="saudi">Saudi</option>
@@ -114,7 +113,6 @@ const SignUpConsumer = () => {
                       <ApplierInputForm
                         label="GPA"
                         type="text"
-                        className="inputStyling"
                         name="gpa"
                         value={store.values.gpa}
                         onChange={store.handleChange}
@@ -123,7 +121,6 @@ const SignUpConsumer = () => {
                       <ApplierInputForm
                         label="Major"
                         type="text"
-                        className="inputStyling"
                         name="major"
                         value={store.values.major}
                         onChange={store.handleChange}
@@ -132,7 +129,6 @@ const SignUpConsumer = () => {
                       <ApplierInputForm
                         label="Minor"
                         type="text"
-                        className="inputStyling"
                         name="concentrated_major"
                         value={store.values.concentrated_major}
                         onChange={store.handleChange}
@@ -141,16 +137,15 @@ const SignUpConsumer = () => {
                       <ApplierInputForm
                         label="Skills"
                         type="text"
-                        className="inputStyling"
                         name="skills"
                         value={store.values.skills}
                         onChange={store.handleChange}
                       />
                     </div>
                     <div className="col-sm-12 col-md-6">
-                      <label className="labelTag">Degree</label>
+                      <label className="labelStyling font-bold">Degree</label>
                       <select
-                        className="inputStyling"
+                        className="inputStyling mb-3"
                         name="degree"
                         placeholder="degree"
                         value={store.values.degree}
@@ -165,7 +160,6 @@ const SignUpConsumer = () => {
                       <ApplierInputForm
                         label="Collage"
                         type="text"
-                        className="inputStyling"
                         name="university"
                         value={store.values.university}
                         onChange={store.handleChange}
@@ -174,15 +168,14 @@ const SignUpConsumer = () => {
                       <ApplierInputForm
                         label="LinkedIn Profile"
                         type="link"
-                        className="inputStyling"
                         name="linkedIn_profile"
                         value={store.values.linkedIn_profile}
                         onChange={store.handleChange}
                       />
 
-                      <label className="labelTag">Experience</label>
+                      <label className="labelStyling">Experience</label>
                       <select
-                        className="inputStyling"
+                        className="inputStyling mb-3"
                         name="experience"
                         placeholder="duration"
                         value={store.values.experience}
