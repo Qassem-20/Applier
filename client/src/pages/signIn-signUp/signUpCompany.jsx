@@ -59,7 +59,7 @@ const SignUpCompany = () => {
 
                 <ApplierInputForm
                   type="link"
-                  label="Organization website <span>(if exists)</span>"
+                  label="Organization website (if exists)"
                   placeholder="http://google.com"
                   name="organization_website"
                   onChange={store.handleChange}
