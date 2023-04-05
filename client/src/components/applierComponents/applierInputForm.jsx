@@ -59,6 +59,7 @@ const ApplierInputForm = (props) => {
         focused={focused.toString()}
         required={required}
       />
+
       <span className="errorMessage">{errorMeassages[errorMessage]}</span>
     </div>
   );

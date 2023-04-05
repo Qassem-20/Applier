@@ -5,7 +5,7 @@ const ApplierButton = (props) => {
 
   return (
     <button
-      className={`${className} btn btn-dark ml-2`}
+      className={`${className} btn btn-dark ml-2 mt-2`}
       disabled={isDisabled}
       type="submit"
       onClick={onClick}

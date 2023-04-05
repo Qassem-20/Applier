@@ -101,27 +101,27 @@ const SignUpConsumer = () => {
                 />
               </div>
               <div>
-                <button
-                  className=" btn btn-secondary"
+                <ApplierButton
+                  className="mt-3"
                   onClick={showApplication}
-                >
-                  are you applying to COOP or Summer?
-                </button>
+                  buttonType="Looking for internship?"
+                />
               </div>
               {!values.isApplication && (
                 <div>
                   <Row>
                     <div className="col-sm-12 col-md-6">
-                      <label className="labelTag">GPA</label>
-                      <input
+                      <ApplierInputForm
+                        label="GPA"
                         type="text"
                         className="inputStyling"
                         name="gpa"
                         value={store.values.gpa}
                         onChange={store.handleChange}
                       />
-                      <label className="labelTag">Major</label>
-                      <input
+
+                      <ApplierInputForm
+                        label="Major"
                         type="text"
                         className="inputStyling"
                         name="major"
@@ -129,16 +129,17 @@ const SignUpConsumer = () => {
                         onChange={store.handleChange}
                       />
 
-                      <label className="labelTag">Concentrated major</label>
-                      <input
+                      <ApplierInputForm
+                        label="Minor"
                         type="text"
                         className="inputStyling"
                         name="concentrated_major"
                         value={store.values.concentrated_major}
                         onChange={store.handleChange}
                       />
-                      <label className="labelTag">skills</label>
-                      <input
+
+                      <ApplierInputForm
+                        label="Skills"
                         type="text"
                         className="inputStyling"
                         name="skills"
@@ -160,23 +161,25 @@ const SignUpConsumer = () => {
                         <option value="Diploma">diploma</option>
                         <option value="Master">master</option>
                       </select>
-                      <label className="labelTag">Collage</label>
-                      <input
+
+                      <ApplierInputForm
+                        label="Collage"
                         type="text"
                         className="inputStyling"
                         name="university"
                         value={store.values.university}
                         onChange={store.handleChange}
                       />
-                      <br />
-                      <label className="labelTag">LinkedIn Profile</label>
-                      <input
+
+                      <ApplierInputForm
+                        label="LinkedIn Profile"
                         type="link"
                         className="inputStyling"
                         name="linkedIn_profile"
                         value={store.values.linkedIn_profile}
                         onChange={store.handleChange}
                       />
+
                       <label className="labelTag">Experience</label>
                       <select
                         className="inputStyling"
@@ -189,7 +192,7 @@ const SignUpConsumer = () => {
                         <option value="less than a year">
                           less than a year
                         </option>
-                        <option value="an year">an year</option>
+                        <option value="an year">a year</option>
                         <option value="2 years">2 years</option>
                         <option value="more than 2 years">
                           more than 2 years
