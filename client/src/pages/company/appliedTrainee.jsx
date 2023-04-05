@@ -24,7 +24,7 @@ const AppliedTrainee = () => {
         }
       )
       .then((response) => {
-        setApplications(response.data.applicationStatuses);
+        setApplications(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -89,45 +89,37 @@ const AppliedTrainee = () => {
       <section></section>
       <div className="row opportunitiesTag">
         <span className="col-1 opportunitiesTags">Name</span>
-        <span className="col-1 opportunitiesTags">CV</span>
         <span className="col-1 opportunitiesTags">LinkedIn</span>
-        <span className="col-1 opportunitiesTags">Phone Number</span>
-        <span className="col-2 opportunitiesTags">University</span>
+        <span className="col-1 opportunitiesTags">Email</span>
+        <span className="col-2 opportunitiesTags">Phone Number</span>
+        <span className="col-1 opportunitiesTags">University</span>
         <span className="col-2 opportunitiesTags">Major</span>
         <span className="col-1 opportunitiesTags">GPA </span>
-        <span className="col-1 opportunitiesTags">City</span>
-        <span className="col-1 opportunitiesTags">Statues</span>
+        <span className="col-2 opportunitiesTags">Statues</span>
         <span className="col-1 opportunitiesTags">Info</span>
       </div>
 
-      {Array.isArray(applications) &&
-        applications.map((application) => (
-          <div className="row px-auto opportunitiesT" key={application._id}>
-            <span className="col-1 mx-auto  opportunitiesTags">
-              {application.consumerInfo}
-            </span>
-            <div className="col-1 d-flex justify-content-center">
-              <img className="iconSize" src={EyeIcon} alt="EyeIcon" />
+      {applications.consumerInfo &&
+        applications.consumerInfo.map((consumer) => (
+          <div className="row  opportunitiesT" key={consumer._id}>
+            <div className="col-1 mx-auto  opportunitiesTags">
+              {consumer.name}
             </div>
-            <div className="col-1 d-flex justify-content-center">
-              <img className="iconSize" src={EyeIcon} alt="EyeIcon" />
+            <div className="col-1 d-flex justify-content-center opportunitiesTags">
+              <a href={`${consumer.linkedin}`}>
+                <img className="iconSize" src={EyeIcon} alt="LinkedInProfile" />
+              </a>
             </div>
-            <span className="col-1  opportunitiesTags">+9665476156</span>
-            <span className="col-2 opportunitiesTags">
-              King Fahad Petroleum and minerals
-            </span>
-            <span className="col-2 opportunitiesTags">
-              Software Engineering
-            </span>
-            <span className="col-1 opportunitiesTags">2/4</span>
-            <span className="col-1 opportunitiesTags">Riyadh</span>
-
+            <span className="col-1  opportunitiesTags">{consumer.email}</span>
+            <span className="col-2  opportunitiesTags">{consumer.phone}</span>
             <span className="col-1 opportunitiesTags">
-              {application.statue}
+              {consumer.university}
             </span>
-
+            <span className="col-2 opportunitiesTags">{consumer.major}</span>
+            <span className="col-1 opportunitiesTags">{consumer.gpa}</span>
+            <span className="col-2 opportunitiesTags">{consumer.status}</span>
             <div className="col-1 d-flex justify-content-center">
-              <a href="/traineeDetails">
+              <a href={`/traineeDetails/${consumer._id}`}>
                 <img className="iconSize" src={OptionIcon} alt="OptionIcon" />
               </a>
             </div>

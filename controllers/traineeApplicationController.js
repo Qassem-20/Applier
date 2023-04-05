@@ -37,27 +37,30 @@ const fetchApplicationsOpportunity = async (req, res) => {
       const applicationStatuses = await ApplicationStatus.find({ opportunity: opportunityId });
   
       // Get the consumer IDs from the application statuses
-      const consumerIds = applicationStatuses.map(status => status.consumer);
+      const consumerId = applicationStatuses.map(status => status.consumer);
   
       // Find all the consumers with the given IDs
-      const consumers = await Consumer.find({ _id: { $in: consumerIds } });
-  
+      const consumers = await Consumer.find({ _id: { $in: consumerId } });
+
       // Extract the desired fields from the consumer documents
-      const consumerInfo = consumers.map(consumer => ({
-        name: consumer.name,
-        email: consumer.email,
-        phone: consumer.phone,
-        linkedin: consumer.linkedin,
-        major: consumer.major,
-        gpa: consumer.gpa,
-        city: consumer.city
-      }));
+      const consumerInfo = consumers.map(consumer => {
+        const status = applicationStatuses.find(status => status.consumer.equals(consumer._id));
+        return {
+          _id: consumer._id,
+          name: consumer.name,
+          email: consumer.email,
+          phone: consumer.phone,
+          linkedin: consumer.linkedIn_profile,
+          university:consumer.university,
+          major: consumer.major,
+          gpa: consumer.gpa,
+          status: status ? status.statue : null
+        };
+      });
+      
   
       // Return the application statuses and consumer information
-      res.json({
-        applicationStatuses: applicationStatuses.map(status => status.statue),
-        consumerInfo
-      });
+      res.json({consumerInfo});
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Server error' });
