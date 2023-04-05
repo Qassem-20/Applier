@@ -11,11 +11,11 @@ const TraineeDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/v1/userProfiles/${consumerId}`, {
+      .get(`http://localhost:4000/api/v1/consumers/${consumerId}`, {
         withCredentials: true,
       })
       .then((response) => {
-        setUserProfile(response.data);
+        setUserProfile(response.data.consumer);
       });
   }, []);
   return (
