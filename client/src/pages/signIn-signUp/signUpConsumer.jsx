@@ -185,7 +185,7 @@ const SignUpConsumer = () => {
                         <option value="less than a year">
                           less than a year
                         </option>
-                        <option value="an year">a year</option>
+                        <option value="a year">a year</option>
                         <option value="2 years">2 years</option>
                         <option value="more than 2 years">
                           more than 2 years
