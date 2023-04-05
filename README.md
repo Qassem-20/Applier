@@ -11,11 +11,11 @@ SECRET=P7Q9SATBVDWEXGZH2J4M5N6Q8R9SAUCVDWFYGZH3K4M5P7Q8RATBUCWEXF
 6- if some pages didn't work... especially signIn signUp -follow steps one by one-  
 a)cd client  
 b)npm uninstall react-router-dom  
-c)npm install react-router-dom@5
-
-7- if your code doesn't work try this:
-
-- npm i
-- and also run it in (client)
-  a) cd client
-  b) npm i
+c)npm install react-router-dom@5  
+  
+7- if your code doesn't work try this:  
+  
+- npm i  
+- and also run it in (client)  
+  a) cd client  
+  b) npm i  
