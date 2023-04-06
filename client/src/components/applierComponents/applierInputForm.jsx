@@ -48,7 +48,7 @@ const ApplierInputForm = (props) => {
       <label className={`labelStyling ${row}`}> {label}</label>
       <input
         id={id}
-        className={`inputStyling ${row}`}
+        className={`inputStyling ${row} mb-3`}
         name={name}
         type={type}
         value={value}

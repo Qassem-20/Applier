@@ -3,6 +3,9 @@ import Nav from "../../components/Nav/companyNav";
 import EditOpportunities from "../../assets/images/customizeIcon.png";
 import EyeIcon from "../../assets/images/eyeIcon.webp";
 import opportunityStore from "../../stores/OpportunityStore";
+import { Container, Row, Col } from "react-bootstrap";
+import ApplierInputForm from "../../components/applierComponents/applierInputForm";
+
 const CompanyHomePage = () => {
   const store = opportunityStore();
   useEffect(() => {
@@ -11,36 +14,33 @@ const CompanyHomePage = () => {
   return (
     <Fragment>
       <Nav />
-      <section>
-        <div className="mb-4">
-          <h1 id="opportunitiesHeader">&nbsp;&nbsp;&nbsp;Opportunities</h1>
-        </div>
-        <div className="container mb-3">
-          <div className="row">
-            <div className="col-3"></div>
-            <div className="col-3 m-auto">
-              <input
-                type="date"
-                className="form-control"
-                placeholder="Created At"
-                name=""
-                defaultValue=""
-                id="searchInput"
-              />
-            </div>
-            <div className="col-6 m-auto">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Job role"
-                name=""
-                defaultValue=""
-                id="searchInput"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <Container className="mb-4">
+        <Row>
+          <Col>
+            <h1 id="opportunitiesHeader">Opportunities</h1>
+          </Col>
+
+          <Col className="pt-3">
+            <ApplierInputForm
+              type="date"
+              placeholder="Created At"
+              name=""
+              defaultValue=""
+              id="searchInput"
+            />
+          </Col>
+          <Col className="pt-3">
+            <ApplierInputForm
+              type="text"
+              placeholder="Job role"
+              name=""
+              defaultValue=""
+              id="searchInput"
+            />
+          </Col>
+        </Row>
+      </Container>
+
       <div className="row opportunitiesTag">
         <span className="col-2 opportunitiesMainTags">Role</span>
         <span className="col-2 opportunitiesMainTags">Job Description</span>
