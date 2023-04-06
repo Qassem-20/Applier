@@ -24,12 +24,12 @@ const SignUpMedicalStudent = () => {
       <div className="SignUpFormat container">
         <Row>
           <Col xl={8}>
-            <h1>Welcome to Applier</h1>
-            <p>Register your account</p>
+            <h1>Create Your Account</h1>
           </Col>
           <Col>
-            <span> Already have an account? </span>
-            <a href="/signIn">Sign In</a>
+            <h6 className="mt-4">
+              Already have an account? <a href="/signIn">Sign In</a>
+            </h6>
           </Col>
         </Row>
         <hr />

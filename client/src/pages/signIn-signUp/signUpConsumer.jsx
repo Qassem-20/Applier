@@ -36,8 +36,9 @@ const SignUpConsumer = () => {
             <h1>Create Your Account</h1>
           </Col>
           <Col>
-            <span> Already have an account? </span>
-            <a href="/signIn">Sign In</a>
+            <h6 className="mt-4">
+              Already have an account? <a href="/signIn">Sign In</a>
+            </h6>
           </Col>
         </Row>
         <hr />
