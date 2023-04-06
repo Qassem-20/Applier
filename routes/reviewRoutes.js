@@ -21,6 +21,8 @@ router.route("/reviews/:id").get(fetchReview);
 router.route("/reviewsCompany/:company").get(requireAuthConsumer,fetchReviewsCompany);
 router.route("/reviewsMedical/:medical").get(requireAuthConsumer,fetchReviewsMedical);
 
+// fetch reviews from Producer side
+
 router
   .route("/reviews/registerReviewCompany")
   .post(requireAuthConsumer, createReviewCompany);
