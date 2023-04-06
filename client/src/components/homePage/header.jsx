@@ -13,7 +13,7 @@ export class header extends Component {
             trainee.
           </p>
           <div className=" d-flex justify-content-center">
-            <a href="/signIn" className="btn active" id="signInButton">
+            <a href="/routeSignUp" className="btn active" id="signInButton">
               start your journey with Applier
             </a>
           </div>
