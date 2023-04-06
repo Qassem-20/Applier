@@ -124,18 +124,6 @@ const SignUpConsumer = () => {
                         onChange={store.handleChange}
                       />
 
-                      {/* <ApplierInputForm
-                        label="Major"
-                        type="text"
-                        name="major"
-                        value={store.values.major}
-                        onChange={store.handleChange}
-                        />
-                      <datalist id="majorList">
-                        {options.map((option) => (
-                          <option key={option} value={option} />
-                        ))}
-                      </datalist> */}
                       <label className="labelStyling font-bold">Major</label>
                       <select
                         className="inputStyling mb-3"
@@ -151,14 +139,20 @@ const SignUpConsumer = () => {
                         ))}
                       </select>
 
-
-                      <ApplierInputForm
-                        label="Minor"
-                        type="text"
-                        name="concentrated_major"
-                        value={store.values.concentrated_major}
+                      <label className="labelStyling font-bold">Minor</label>
+                      <select
+                        className="inputStyling mb-3"
+                        name="minor"
+                        placeholder="minor"
+                        value={store.values.minor}
                         onChange={store.handleChange}
-                      />
+                      >
+                        {options.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
 
                       <ApplierInputForm
                         label="Skills"
