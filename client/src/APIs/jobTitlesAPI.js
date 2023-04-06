@@ -1,16 +1,62 @@
-
-export const getJobTitles = async (query) => {
-  const response = await fetch(`https://job-titles1.p.rapidapi.com/v1/jobtitle?q=${query}`, {
-    headers: {
-      'x-rapidapi-key': '28d1ac8b52msh04506973993a7b8p1f8a8ejsn7fb7763b5465',
-      'x-rapidapi-host': 'job-titles1.p.rapidapi.com',
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-
-  const data = await response.json();
-  return data.data;
-};
+export const options = [
+  'Accounting',
+  'Aerospace Engineering',
+  'Anthropology',
+  'Architecture',
+  'Art History',
+  'Artificial Intelligence',
+  'Biology',
+  'Business Administration',
+  'Chemical Engineering',
+  'Chemistry',
+  'Civil Engineering',
+  'Communications',
+  'Computer Science',
+  'Criminal Justice',
+  'Cybersecurity',
+  'Data Science',
+  'Digital Media',
+  'Economics',
+  'Education',
+  'Electrical Engineering',
+  'English',
+  'Environmental Science',
+  'Finance',
+  'Fine Arts',
+  'Game Design',
+  'Geology',
+  'Graphic Design',
+  'History',
+  'Information Systems',
+  'Information Technology',
+  'International Relations',
+  'Journalism',
+  'Law',
+  'Linguistics',
+  'Management',
+  'Marketing',
+  'Mathematics',
+  'Mechanical Engineering',
+  'Medicine',
+  'Music',
+  'Network Administration',
+  'Nursing',
+  'Philosophy',
+  'Physics',
+  'Political Science',
+  'Psychology',
+  'Public Health',
+  'Public Relations',
+  'Religious Studies',
+  'Robotics',
+  'Social Work',
+  'Sociology',
+  'Software Development',
+  'Software Engineering',
+  'Sports Science',
+  'Statistics',
+  'Theater',
+  'Urban Planning',
+  'Web Development',
+  'Women\'s Studies'
+];

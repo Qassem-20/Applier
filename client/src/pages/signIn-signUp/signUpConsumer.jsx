@@ -6,7 +6,7 @@ import consumerStore from "../../stores/ConsumerStore.js";
 import { useHistory } from "react-router-dom";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
-import { getJobTitles } from '../../APIs/jobTitlesAPI.js';
+import { options } from "../../APIs/jobTitlesAPI.js";
 
 const initialState = {
   isApplication: true,
@@ -17,17 +17,6 @@ const SignUpConsumer = () => {
   const history = useHistory();
 
   //fetching university majors from the jobsAPI.js
-  const [jobTitles, setJobTitles] = useState([]);
-
-  const handleInputChange = async (event) => {
-    const query = event.target.value;
-    if (query) {
-      const data = await getJobTitles(query);
-      setJobTitles(data);
-    } else {
-      setJobTitles([]);
-    }
-  };
   
 
   const [values, setValues] = useState(initialState);
@@ -135,20 +124,33 @@ const SignUpConsumer = () => {
                         onChange={store.handleChange}
                       />
 
-                      <div>
-                      <ApplierInputForm
+                      {/* <ApplierInputForm
                         label="Major"
                         type="text"
                         name="major"
                         value={store.values.major}
                         onChange={store.handleChange}
-                      />
-                      <ul>
-                        {jobTitles.map((jobTitle) => (
-                          <li key={jobTitle}>{jobTitle}</li>
+                        />
+                      <datalist id="majorList">
+                        {options.map((option) => (
+                          <option key={option} value={option} />
                         ))}
-                      </ul>
-                      </div>
+                      </datalist> */}
+                      <label className="labelStyling font-bold">Major</label>
+                      <select
+                        className="inputStyling mb-3"
+                        name="major"
+                        placeholder="major"
+                        value={store.values.major}
+                        onChange={store.handleChange}
+                      >
+                        {options.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+
 
                       <ApplierInputForm
                         label="Minor"
