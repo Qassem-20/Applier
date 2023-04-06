@@ -2,6 +2,15 @@ import Company from "../models/Company.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
+const getCompanyProfile = async (req, res, next) => {
+  const companyId = req.company.id; // Assuming you're using JWT or session-based authentication
+  const company = await Company.findById(companyId);
+  if (!company) {
+    return res.status(404).json({ error: "company not found" });
+  }
+  return res.json({ company });
+};
+
 const fetchCompanies = async (req, res) => {
   const companies = await Company.find();
 
@@ -87,7 +96,7 @@ const sortCompanies = async (req, res) => {
 };
 
 // Create feedback and review
-const creatFeedBack = async (req, res) => {
+const createFeedBack = async (req, res) => {
   const reviews = req.body;
 
   await Company.findByIdAndUpdate(companyId, reviews);
@@ -251,6 +260,7 @@ const activateCompany = async (req, res) => {
 };
 
 export {
+  getCompanyProfile,
   fetchCompanies,
   fetchCompany,
   createCompany,
@@ -262,5 +272,5 @@ export {
   activateCompany,
   findCompany,
   sortCompanies,
-  creatFeedBack,
+  createFeedBack,
 };

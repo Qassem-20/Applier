@@ -13,7 +13,7 @@ export class medicalStudentNav extends Component {
               <Nav className="me-auto">
                 <Nav.Link href="/medicalHomePage">Home</Nav.Link>
                 <Nav.Link href="/medicalStudents">Medical Students</Nav.Link>
-                <Nav.Link href="/feedBackCompany">Feedback</Nav.Link>
+                <Nav.Link href="/feedBackMedical">Feedback</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

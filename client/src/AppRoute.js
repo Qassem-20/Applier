@@ -19,7 +19,6 @@ import EditOpportunity from "./pages/company/editOpportunity";
 import TraineeDetails from "./pages/company/traineeDetails";
 
 import MedicalHomePage from "./pages/medicalStudent/homePageMedicalStudent";
-import MedicalProfile from "./pages/medicalStudent/MedicalStudentProfile";
 
 import AdminHomePage from "./pages/admin/adminHomePage";
 import UnauthorizedMiddleWare from "./pages/admin/unauthorizedMiddleWare";
@@ -174,17 +173,26 @@ const AppRoute = () => {
           </RequireAuthAdmin>
         </Route>
         <Route path="/feedBackConsumerCompany/:companyId">
-          <FeedBackConsumerCompany />
+          <RequireAuthConsumer>
+            <FeedBackConsumerCompany />
+          </RequireAuthConsumer>
         </Route>
 
         <Route path="/feedBackConsumerMedical/:medicalId">
-          <FeedBackConsumerMedical />
+          <RequireAuthConsumer>
+            <FeedBackConsumerMedical />
+          </RequireAuthConsumer>
         </Route>
         <Route path="/feedBackMedical">
-          <FeedBackMedical />
+          <RequireAuthMedical>
+            <FeedBackMedical />
+          </RequireAuthMedical>
         </Route>
         <Route path="/feedBackCompany">
-          <FeedBackCompany />
+          <RequireAuthCompany>
+            <FeedBackCompany />
+          </RequireAuthCompany>
+
         </Route>
       </Switch>
     </Fragment>

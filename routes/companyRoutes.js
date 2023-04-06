@@ -22,9 +22,13 @@ import {
   deleteCompany,
   findCompany,
   sortCompanies,
+  getCompanyProfile,
 } from "../controllers/companyController.js";
 import { reportReview } from "../controllers/reviewController.js";
+
 //routes of the Company from the controllers
+router.route("/companyProfile").get(requireAuthCompany, getCompanyProfile);
+
 router.route("/companies").get(fetchCompanies);
 router.route("/companies/:id").get(fetchCompany);
 router.route("/registerCompany").post(apiLimiter, createCompany);
