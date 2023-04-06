@@ -2,6 +2,15 @@ import MedicalStudent from "../models/MedicalStudent.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
+const getMedicalStudentProfile = async (req, res, next) => {
+  const medicalStudentId = req.medicalStudent.id; // Assuming you're using JWT or session-based authentication
+  const medicalStudent = await MedicalStudent.findById(medicalStudentId);
+  if (!medicalStudent) {
+    return res.status(404).json({ error: "medicalStudent not found" });
+  }
+  return res.json({ medicalStudent });
+};
+
 const fetchMedicalStudents = async (req, res) => {
   const medicalStudents = await MedicalStudent.find();
 
@@ -180,6 +189,7 @@ const deleteMedicalStudent = async (req, res) => {
 };
 
 export {
+  getMedicalStudentProfile,
   fetchMedicalStudents,
   fetchMedicalStudent,
   createMedicalStudent,

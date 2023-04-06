@@ -1,12 +1,37 @@
 import "../../assets/css/medicalStudent.css";
 import MedicalStore from "../../stores/MedicalStore";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import axios from "axios";
 import { Container, Row, Col, Card } from "react-bootstrap";
 
 const HomePageMedicalStudent = () => {
+  const [medical, setMedical] = useState(null);
+
+  useEffect(() => {
+    const fetchMedicalProfile = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:4000/api/v1/medicalStudentProfile",
+          {
+            withCredentials: true,
+          }
+        );
+        setMedical(response.data.medicalStudent);
+      } catch (error) {
+        console.error(error);
+        // TODO: Handle errors
+      }
+    };
+    fetchMedicalProfile();
+  }, []);
+  if (!medical) {
+    return <div>Loading...</div>;
+  }
   return (
     <Fragment>
       <Container>
+        <h1 className="opportunitiesHeader">My Profile</h1>
+
         <Row>
           <Col>
             <p>Nationality:</p>

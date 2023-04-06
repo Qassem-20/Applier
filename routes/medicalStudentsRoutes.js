@@ -22,8 +22,11 @@ import {
   checkAuthMedicalStudent,
   sortMedicalStudent,
   findMedicalStudent,
+  getMedicalStudentProfile,
 } from "../controllers/medicalStudentController.js";
 //routes of the medicalStudent from the controllers
+router.route("/medicalStudentProfile").get(requireAuthMedicalStudent, getMedicalStudentProfile);
+
 router.route("/medicalStudents").get(fetchMedicalStudents);
 router.route("/medicalStudents/:id").get(fetchMedicalStudent);
 router.route("/registerMedicalStudent").post(apiLimiter, createMedicalStudent);

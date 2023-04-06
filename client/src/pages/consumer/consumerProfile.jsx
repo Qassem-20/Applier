@@ -8,10 +8,11 @@ import ApplierButton from "../../components/applierComponents/applierButton";
 import { Container, Row, Col } from "react-bootstrap";
 
 const ConsumerProfile = () => {
-  const [consumer, setConsumer] = useState(null);
   const store = ConsumerStore((store) => {
     return { toggleUpdate: store.toggleUpdate };
   });
+  const [consumer, setConsumer] = useState(null);
+
   useEffect(() => {
     const fetchConsumerProfile = async () => {
       try {
@@ -36,6 +37,7 @@ const ConsumerProfile = () => {
   return (
     <Fragment>
       <ConsumerNav />
+      <h1 className="opportunitiesHeader">My Profile</h1>
 
       <div className="container backgroundProfile">
         <p>Name: {consumer.name}</p>

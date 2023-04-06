@@ -1,11 +1,13 @@
 import "../../assets/css/signUpSignIn.css";
 import WelcomeNav from "../../components/Nav/welcomeNav";
 import { Col, Row, Container } from "react-bootstrap";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import consumerStore from "../../stores/ConsumerStore.js";
 import { useHistory } from "react-router-dom";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
+import { getJobTitles } from '../../APIs/jobTitlesAPI.js';
+
 const initialState = {
   isApplication: true,
 };
@@ -13,6 +15,20 @@ const SignUpConsumer = () => {
   const store = consumerStore();
 
   const history = useHistory();
+
+  //fetching university majors from the jobsAPI.js
+  const [jobTitles, setJobTitles] = useState([]);
+
+  const handleInputChange = async (event) => {
+    const query = event.target.value;
+    if (query) {
+      const data = await getJobTitles(query);
+      setJobTitles(data);
+    } else {
+      setJobTitles([]);
+    }
+  };
+  
 
   const [values, setValues] = useState(initialState);
   const showApplication = () => {
@@ -119,6 +135,7 @@ const SignUpConsumer = () => {
                         onChange={store.handleChange}
                       />
 
+                      <div>
                       <ApplierInputForm
                         label="Major"
                         type="text"
@@ -126,6 +143,12 @@ const SignUpConsumer = () => {
                         value={store.values.major}
                         onChange={store.handleChange}
                       />
+                      <ul>
+                        {jobTitles.map((jobTitle) => (
+                          <li key={jobTitle}>{jobTitle}</li>
+                        ))}
+                      </ul>
+                      </div>
 
                       <ApplierInputForm
                         label="Minor"
@@ -186,7 +209,7 @@ const SignUpConsumer = () => {
                         <option value="less than a year">
                           less than a year
                         </option>
-                        <option value="a year">a year</option>
+                        <option value="an year">an year</option>
                         <option value="2 years">2 years</option>
                         <option value="more than 2 years">
                           more than 2 years

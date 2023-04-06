@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import axios from "axios";
 import Nav from "../../components/Nav/companyNav";
 import "../../assets/css/company.css";
 import { Container, Row, Col } from "react-bootstrap";
@@ -19,7 +20,28 @@ const CompanyProfile = () => {
 
     history.push("/companyHomePage");
   };
+  const [company, setCompany] = useState(null);
 
+  useEffect(() => {
+    const fetchCompanyProfile = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:4000/api/v1/companyProfile",
+          {
+            withCredentials: true,
+          }
+        );
+        setCompany(response.data.company);
+      } catch (error) {
+        console.error(error);
+        // TODO: Handle errors
+      }
+    };
+    fetchCompanyProfile();
+  }, []);
+  if (!company) {
+    return <div>Loading...</div>;
+  }
   return (
     <Fragment>
       <Nav />
@@ -27,102 +49,38 @@ const CompanyProfile = () => {
         <Container>
           <h1 className="opportunitiesHeader">Company Profile</h1>
         </Container>
-        <Container className="backgroundProfile">
-          <form onSubmit={handleUpdate}>
-            <Row>
-              <Col md={6} sm={12}>
-                <ApplierInputForm
-                  type="text"
-                  label="Organization name"
-                  name="organization_name"
-                  onChange={store.handleChange}
-                  value={store.values.organization_name}
-                />
+        <div className="container backgroundProfile">
+          <p>Company name: {company.organization_name}</p>
+          <p>Email: {company.email}</p>
+          <p>Supervisor name (HR): {company.supervisor_name}</p>
+          <p>Phone Number: {company.phone}</p>
+          <hr />
+          <Row>
+            <Col>
+              <p>Register number: {company.register_number}</p>
+              <p>Bio: {company.organization_bio}</p>
+              <p>Statue of the Account: {company.statue}</p>
+            </Col>
+            <Col>
+              <p>Country: {company.country}</p>
+              <p>City: {company.city}</p>
 
-                <ApplierInputForm
-                  type="text"
-                  label="Organization registration number"
-                  name="register_number"
-                  onChange={store.handleChange}
-                  value={store.values.register_number}
-                  errorMessage="register_number"
-                />
-
-                <ApplierInputForm
-                  type="link"
-                  label="Organization website (if exists)"
-                  placeholder="http://google.com"
-                  name="organization_website"
-                  onChange={store.handleChange}
-                  value={store.values.organization_website}
-                />
-
-                <ApplierInputForm
-                  type="text"
-                  label="About organization"
-                  name="organization_bio"
-                  onChange={store.handleChange}
-                  value={store.values.organization_bio}
-                />
-
-                <ApplierInputForm
-                  type="password"
-                  label="Password"
-                  placeholder="**********"
-                  name="password"
-                  onChange={store.handleChange}
-                  value={store.values.password}
-                  errorMessage="password"
-                  pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-                />
-              </Col>
-              <Col md={6} sm={12}>
-                <ApplierInputForm
-                  type="name"
-                  label="Supervisor full name"
-                  name="supervisor_name"
-                  onChange={store.handleChange}
-                  value={store.values.supervisor_name}
-                />
-
-                <ApplierInputForm
-                  type="email"
-                  label="Supervisor email"
-                  name="email"
-                  placeholder="Fouad28@gmail.com"
-                  errorMessage="email"
-                  onChange={store.handleChange}
-                  value={store.values.email}
-                />
-                <ApplierInputForm
-                  type="phone"
-                  label="Supervisor phone"
-                  name="phone"
-                  onChange={store.handleChange}
-                  value={store.values.phone}
-                />
-
-                <ApplierInputForm
-                  type="text"
-                  name="country"
-                  label="Country"
-                  onChange={store.handleChange}
-                  value={store.values.country}
-                  errorMessage="country"
-                />
-
-                <ApplierInputForm
-                  type="text"
-                  name="city"
-                  label="City"
-                  onChange={store.handleChange}
-                  value={store.values.city}
-                />
-              </Col>
-            </Row>
-            <ApplierButton onClick={handleUpdate} buttonType="Update Profile" />
-          </form>
-        </Container>
+              <span>Organization website: </span>
+              <span>
+                <a href={company.organization_website}>
+                  {company.organization_website}
+                </a>
+              </span>
+            </Col>
+            <div>
+              <ApplierButton
+                buttonType="Update Profile"
+                className="button"
+                onClick={() => store.toggleUpdate()}
+              />
+            </div>
+          </Row>
+        </div>
       </Container>
     </Fragment>
   );
