@@ -13,13 +13,13 @@ const CompanyProfile = () => {
 
   const history = useHistory();
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
+  // const handleUpdate = async (e) => {
+  //   e.preventDefault();
 
-    await store.updateProfileCompany();
+  //   await store.updateProfileCompany();
 
-    history.push("/companyHomePage");
-  };
+  //   history.push("/companyHomePage");
+  // };
   const [company, setCompany] = useState(null);
 
   useEffect(() => {

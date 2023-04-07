@@ -13,9 +13,9 @@ const FeedBackCompany = () => {
       <Container className="mt-5">
         <Row>
           <Col sm={6}>
-            <h1>My Reviews</h1>
+            <h1>Feedback</h1>
           </Col>
-          <Col className="mt-5" sm={4}>
+          <Col className="mt-3" sm={4}>
             <select className="inputStyling" name="" placeholder="">
               <option value=""></option>
               <option value="">Highly Rated</option>

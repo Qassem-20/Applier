@@ -11,9 +11,17 @@ const SignInUser = () => {
 
   const handleLoginConsumer = async (e) => {
     e.preventDefault();
-    await storeConsumer.loginConsumer();
-    //Navigate
-    history.push("/opportunities");
+
+    try {
+      await storeConsumer.loginConsumer();
+      //Navigate
+      history.push("/opportunities");
+    } catch (err) {
+      console.error(err.response.data);
+      alert(
+        "Enter a vaild login credentials, or please sign up if you don't have an account"
+      );
+    }
   };
 
   return (

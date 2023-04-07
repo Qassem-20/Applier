@@ -46,21 +46,23 @@ const ApplierInputForm = (props) => {
   return (
     <div>
       <label className={`labelStyling ${row}`}> {label}</label>
-      <input
-        id={id}
-        className={`inputStyling ${row} mb-3`}
-        name={name}
-        type={type}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        pattern={pattern}
-        onBlur={handleFocus}
-        focused={focused.toString()}
-        required={required}
-      />
+      <div className="mb-3">
+        <input
+          id={id}
+          className={`inputStyling ${row}`}
+          name={name}
+          type={type}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          pattern={pattern}
+          onBlur={handleFocus}
+          focused={focused.toString()}
+          required={required}
+        />
 
-      <span className="errorMessage">{errorMeassages[errorMessage]}</span>
+        <span className="errorMessage">{errorMeassages[errorMessage]}</span>
+      </div>
     </div>
   );
 };
