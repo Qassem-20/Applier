@@ -14,9 +14,17 @@ const SignUpCompany = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    await store.registerCompany();
-    //Navigate
-    history.push("/signIn");
+
+    try {
+      await store.registerCompany();
+      //Navigate
+      history.push("/signIn");
+    } catch (err) {
+      console.error(err.response.data);
+      alert(
+        "This email address is already associated with an account, please try again or go ahead to the Sign In page."
+      );
+    }
   };
   return (
     <Fragment>
