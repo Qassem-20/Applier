@@ -1,7 +1,7 @@
 import "../../assets/css/signUpSignIn.css";
 import WelcomeNav from "../../components/Nav/welcomeNav";
 import { Col, Row, Container } from "react-bootstrap";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import consumerStore from "../../stores/ConsumerStore.js";
 import { useHistory } from "react-router-dom";
 import ApplierButton from "../../components/applierComponents/applierButton";
@@ -17,7 +17,6 @@ const SignUpConsumer = () => {
   const history = useHistory();
 
   //fetching university majors from the jobsAPI.js
-  
 
   const [values, setValues] = useState(initialState);
   const showApplication = () => {
