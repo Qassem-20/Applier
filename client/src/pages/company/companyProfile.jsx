@@ -59,7 +59,7 @@ const CompanyProfile = () => {
             <Col>
               <p>Register number: {company.register_number}</p>
               <p>Bio: {company.organization_bio}</p>
-              <p>Statue of the Account: {company.statue}</p>
+              <p>Status of the Account: {company.statue}</p>
             </Col>
             <Col>
               <p>Country: {company.country}</p>
