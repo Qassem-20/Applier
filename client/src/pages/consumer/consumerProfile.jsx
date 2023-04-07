@@ -37,40 +37,42 @@ const ConsumerProfile = () => {
   return (
     <Fragment>
       <ConsumerNav />
-      <h1 className="opportunitiesHeader">My Profile</h1>
+      <Container>
+        <h1 className="opportunitiesHeader">My Profile</h1>
 
-      <div className="container backgroundProfile">
-        <p>Name: {consumer.name}</p>
-        <p>Email: {consumer.email}</p>
-        <p>Phone: {consumer.phone}</p>
-        <hr />
-        <h4>Application (CV)</h4>
-        <Row>
-          <Col>
-            <p>University: {consumer.university}</p>
-            <p>Degree: {consumer.degree}</p>
-            <p>Major: {consumer.major}</p>
-          </Col>
-          <Col>
-            <p>Concentrated_major: {consumer.concentrated_major}</p>
-            <p>LinkedIn_profile: </p>
+        <div className="container backgroundProfile">
+          <p>Name: {consumer.name}</p>
+          <p>Email: {consumer.email}</p>
+          <p>Phone: {consumer.phone}</p>
+          <hr />
+          <h4>Application (CV)</h4>
+          <Row>
+            <Col>
+              <p>University: {consumer.university}</p>
+              <p>Degree: {consumer.degree}</p>
+              <p>Major: {consumer.major}</p>
+            </Col>
+            <Col>
+              <p>Concentrated_major: {consumer.concentrated_major}</p>
+              <p>LinkedIn_profile: </p>
 
-            <p>
-              <a href={consumer.linkedIn_profile}>
-                {consumer.linkedIn_profile}
-              </a>
-            </p>
-            <p>Gpa: {consumer.gpa}</p>
-          </Col>
-          <div>
-            <ApplierButton
-              buttonType="Update Profile"
-              className="button"
-              onClick={() => store.toggleUpdate()}
-            />
-          </div>
-        </Row>
-      </div>
+              <p>
+                <a href={consumer.linkedIn_profile}>
+                  {consumer.linkedIn_profile}
+                </a>
+              </p>
+              <p>Gpa: {consumer.gpa}</p>
+            </Col>
+            <div>
+              <ApplierButton
+                buttonType="Update Profile"
+                className="button"
+                onClick={() => store.toggleUpdate()}
+              />
+            </div>
+          </Row>
+        </div>
+      </Container>
     </Fragment>
   );
 };

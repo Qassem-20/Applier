@@ -4,7 +4,6 @@ import Nav from "../../components/Nav/companyNav";
 import "../../assets/css/company.css";
 import { Container, Row, Col } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore";
-import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import { useHistory } from "react-router-dom";
 
