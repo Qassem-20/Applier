@@ -15,6 +15,7 @@ export class companyNav extends Component {
                 <Nav.Link href="/CompanyProfile">Company Profile</Nav.Link>
                 <Nav.Link href="/feedBackCompany">Feedback</Nav.Link>
                 <Nav.Link href="/addOpportunity">Add Opportunity</Nav.Link>
+                <Nav.Link href="/"> Sign Out</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
