@@ -32,7 +32,7 @@ const SignUpMedicalStudent = () => {
       <div className="SignUpFormat container">
         <Row>
           <Col xl={8}>
-            <h1>Create Your Account</h1>
+            <h1>Create Your Medical Account</h1>
           </Col>
           <Col>
             <h6 className="mt-4">
