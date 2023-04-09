@@ -7,6 +7,8 @@ import { useHistory } from "react-router-dom";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 import { options } from "../../APIs/jobTitlesAPI.js";
+import Checkbox from "../../components/applierComponents/applierSelect.tsx";
+import { skillsList } from '../../APIs/skillSets';
 
 const initialState = {
   isApplication: true,
@@ -159,13 +161,20 @@ const SignUpConsumer = () => {
                         ))}
                       </select>
 
-                      <ApplierInputForm
+                      {/* <ApplierInputForm
                         label="Skills"
                         type="text"
                         name="skills"
                         value={store.values.skills}
                         onChange={store.handleChange}
-                      />
+                      /> */}
+                      <Checkbox
+                        label="Skills"
+                        name="skills"
+                        value={store.values.skills}
+                        onChange={store.handleChange}
+                        options={skillsList}
+                        />
                     </div>
                     <div className="col-sm-12 col-md-6">
                       <label className="labelStyling font-bold">Degree</label>
