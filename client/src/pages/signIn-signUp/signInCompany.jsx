@@ -8,11 +8,19 @@ import ApplierInputForm from "../../components/applierComponents/applierInputFor
 const SignInCompany = () => {
   const storeCompany = CompanyStore();
   const navigate = useHistory();
+
   const handleLoginCompany = async (e) => {
     e.preventDefault();
-    await storeCompany.loginCompany();
-    //Navigate
-    navigate.push("/companyHomePage");
+    try {
+      await storeCompany.loginCompany();
+      //Navigate
+      navigate.push("/companyHomePage");
+    } catch (err) {
+      console.error(err.response.data);
+      alert(
+        "Enter a vaild login credentials, or please sign up if you don't have an account"
+      );
+    }
   };
   return (
     <Col xl={5} sm={12} className="mx-3">
@@ -26,7 +34,7 @@ const SignInCompany = () => {
           name="email"
           value={storeCompany.loginFormCompany.email}
           onChange={storeCompany.handleChangeLogin}
-          required="true"
+          required={true}
         />
 
         <ApplierInputForm
@@ -37,7 +45,7 @@ const SignInCompany = () => {
           errorMessage="orgPassword"
           value={storeCompany.loginFormCompany.password}
           onChange={storeCompany.handleChangeLogin}
-          required="true"
+          required={true}
         />
 
         <Row>

@@ -14,7 +14,7 @@ export class medicalStudentNav extends Component {
                 <Nav.Link href="/medicalHomePage">Home</Nav.Link>
                 <Nav.Link href="/medicalStudents">Medical Students</Nav.Link>
                 <Nav.Link href="/feedBackCompany">Feedback</Nav.Link>
-                <Nav.Link href="/">Sign Out</Nav.Link>
+                <Nav.Link href="/"> Sign Out</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

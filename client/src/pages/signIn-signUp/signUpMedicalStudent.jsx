@@ -14,9 +14,17 @@ const SignUpMedicalStudent = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    await store.registerMedical();
-    //Navigate
-    history.push("/signIn");
+
+    try {
+      await store.registerMedical();
+      //Navigate
+      history.push("/signIn");
+    } catch (err) {
+      console.error(err.response.data);
+      alert(
+        "This email address is already associated with an account, please try again or go ahead to the Sign In page."
+      );
+    }
   };
   return (
     <Fragment>
@@ -24,7 +32,7 @@ const SignUpMedicalStudent = () => {
       <div className="SignUpFormat container">
         <Row>
           <Col xl={8}>
-            <h1>Create Your Account</h1>
+            <h1>Create Your Medical Account</h1>
           </Col>
           <Col>
             <h6 className="mt-4">
@@ -44,7 +52,7 @@ const SignUpMedicalStudent = () => {
                   value={store.values.name}
                   onChange={store.handleChange}
                   errorMessage="full_name"
-                  required="true"
+                  required={true}
                 />
 
                 <ApplierInputForm
@@ -54,7 +62,7 @@ const SignUpMedicalStudent = () => {
                   value={store.values.phone_number}
                   onChange={store.handleChange}
                   errorMessage="phone"
-                  required="true"
+                  required={true}
                 />
 
                 <ApplierInputForm
@@ -64,7 +72,7 @@ const SignUpMedicalStudent = () => {
                   value={store.values.email}
                   onChange={store.handleChange}
                   placeholder="Fouad28@gmail.com"
-                  required="true"
+                  required={true}
                   errorMessage="email"
                 />
 
@@ -76,7 +84,7 @@ const SignUpMedicalStudent = () => {
                   errorMessage="password"
                   value={store.values.password}
                   onChange={store.handleChange}
-                  required="true"
+                  required={true}
                   pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                 />
 
@@ -112,7 +120,7 @@ const SignUpMedicalStudent = () => {
                   name="city"
                   value={store.values.city}
                   onChange={store.handleChange}
-                  required="true"
+                  required={true}
                   errorMessage="city"
                 />
                 <label className="labelStyling">Major</label>
@@ -122,7 +130,7 @@ const SignUpMedicalStudent = () => {
                   placeholder="main_major"
                   value={store.values.main_major}
                   onChange={store.handleChange}
-                  required="true"
+                  required={true}
                 >
                   <option>Please select</option>
                   <option value="Doctor">Doctor</option>
@@ -135,7 +143,7 @@ const SignUpMedicalStudent = () => {
                   name="specialty"
                   value={store.values.specialty}
                   onChange={store.handleChange}
-                  required="true"
+                  required={true}
                   errorMessage="specialty"
                 />
               </Col>

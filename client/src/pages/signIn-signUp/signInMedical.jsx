@@ -8,12 +8,24 @@ import ApplierInputForm from "../../components/applierComponents/applierInputFor
 const SignInMedical = () => {
   const storeMedical = MedicalStore();
   const navigate = useHistory();
+
   const handleLoginMedical = async (e) => {
     e.preventDefault();
-    await storeMedical.loginMedicalStudent();
-    //Navigate
-    navigate.push("/medicalHomePage");
+
+    try {
+      const response = await storeMedical.loginMedicalStudent();
+
+      console.log(response.data);
+      //Navigate
+      navigate.push("/medicalHomePage");
+    } catch (err) {
+      console.error(err.response.data);
+      alert(
+        "Enter a vaild login credentials, or please sign up if you don't have an account"
+      );
+    }
   };
+
   return (
     <Col xl={5} sm={12} className="mx-3">
       <h4>Medical Student</h4>
@@ -26,7 +38,7 @@ const SignInMedical = () => {
           errorMessage="userEmail"
           value={storeMedical.loginFormMedical.email}
           onChange={storeMedical.handleChangeLogin}
-          required="true"
+          required={true}
         />
 
         <ApplierInputForm
@@ -37,7 +49,7 @@ const SignInMedical = () => {
           errorMessage="userPassword"
           value={storeMedical.loginFormMedical.password}
           onChange={storeMedical.handleChangeLogin}
-          required="true"
+          required={true}
         />
 
         <Row>

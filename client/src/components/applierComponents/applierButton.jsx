@@ -1,7 +1,7 @@
 import "react-bootstrap";
 
 const ApplierButton = (props) => {
-  const { className, onClick, buttonType, isDisabled } = props;
+  const { className, onClick, buttonType, isDisabled, value } = props;
 
   return (
     <button
@@ -9,6 +9,7 @@ const ApplierButton = (props) => {
       disabled={isDisabled}
       type="submit"
       onClick={onClick}
+      value={value}
     >
       {buttonType}
     </button>

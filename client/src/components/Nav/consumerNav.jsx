@@ -14,6 +14,7 @@ export class consumerNav extends Component {
                 <Nav.Link href="/consumerProfile">Profile</Nav.Link>
                 <Nav.Link href="/opportunities">Opportunities</Nav.Link>
                 <Nav.Link href="/medicalStudents">Medical Students</Nav.Link>
+                <Nav.Link href="/"> Sign Out</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

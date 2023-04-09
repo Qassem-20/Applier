@@ -55,6 +55,8 @@ const createMedicalStudent = async (req, res) => {
       gender,
       main_major,
       specialty,
+      statue,
+      profile_visibility,
     } = req.body;
 
     //hash the password
@@ -70,6 +72,8 @@ const createMedicalStudent = async (req, res) => {
       gender,
       main_major,
       specialty,
+      profile_visibility: "shown",
+      statue: "inactive",
     });
   } catch (err) {
     console.log(err);

@@ -34,6 +34,11 @@ const Opportunities = () => {
     }
   }
 
+  // For getting the status of the application (will work on it later)
+  // async function applicationStatus(_id) {
+  //   const response = await axios.get;
+  // }
+
   useEffect(() => {
     opportunityStore.fetchOpportunities();
   }, []);

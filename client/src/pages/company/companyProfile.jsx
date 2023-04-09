@@ -4,7 +4,6 @@ import Nav from "../../components/Nav/companyNav";
 import "../../assets/css/company.css";
 import { Container, Row, Col } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore";
-import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import { useHistory } from "react-router-dom";
 
@@ -13,13 +12,13 @@ const CompanyProfile = () => {
 
   const history = useHistory();
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
+  // const handleUpdate = async (e) => {
+  //   e.preventDefault();
 
-    await store.updateProfileCompany();
+  //   await store.updateProfileCompany();
 
-    history.push("/companyHomePage");
-  };
+  //   history.push("/companyHomePage");
+  // };
   const [company, setCompany] = useState(null);
 
   useEffect(() => {
@@ -59,7 +58,7 @@ const CompanyProfile = () => {
             <Col>
               <p>Register number: {company.register_number}</p>
               <p>Bio: {company.organization_bio}</p>
-              <p>Statue of the Account: {company.statue}</p>
+              <p>Status of the Account: {company.statue}</p>
             </Col>
             <Col>
               <p>Country: {company.country}</p>
