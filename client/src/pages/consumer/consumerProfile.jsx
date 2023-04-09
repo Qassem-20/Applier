@@ -9,6 +9,12 @@ import { Container, Row, Col } from "react-bootstrap";
 const ConsumerProfile = () => {
   const store = ConsumerStore();
 
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    await store.updateConsumer();
+    window.location.reload();
+  };
+
   useEffect(() => {
     store.fetchConsumerProfile();
   }, []);
@@ -19,46 +25,52 @@ const ConsumerProfile = () => {
     <Fragment>
       <ConsumerNav />
       <Container>
-        <h1 className="opportunitiesHeader">My Profile</h1>
+        {!store.updateProfile._id && (
+          <Container>
+            <h1 className="opportunitiesHeader">My Profile</h1>
 
-        <div className="container backgroundProfile">
-          <p>Name: {store.consumer.name}</p>
-          <p>Email: {store.consumer.email}</p>
-          <p>Phone: {store.consumer.phone}</p>
-          <hr />
-          <h4>Application (CV)</h4>
-          <Row>
-            <Col>
-              <p>University: {store.consumer.university}</p>
-              <p>Degree: {store.consumer.degree}</p>
-              <p>Major: {store.consumer.major}</p>
-            </Col>
-            <Col>
-              <p>Concentrated_major: {store.consumer.concentrated_major}</p>
-              <p>LinkedIn_profile: </p>
+            <div className="container backgroundProfile">
+              <p>Name: {store.consumer.name}</p>
+              <p>Email: {store.consumer.email}</p>
+              <p>Phone: {store.consumer.phone}</p>
+              <p>Nationality: {store.consumer.nationality}</p>
+              <hr />
+              <h4>Application (CV)</h4>
+              <Row>
+                <Col>
+                  <p>University: {store.consumer.university}</p>
+                  <p>Degree: {store.consumer.degree}</p>
+                  <p>Major: {store.consumer.major}</p>
+                  <p>Experience: {store.consumer.experience}</p>
+                </Col>
+                <Col>
+                  <p>Concentrated_major: {store.consumer.concentrated_major}</p>
+                  <p>LinkedIn_profile: </p>
 
-              <p>
-                <a href={store.linkedIn_profile}>
-                  {store.consumer.linkedIn_profile}
-                </a>
-              </p>
-              <p>Gpa: {store.consumer.gpa}</p>
-            </Col>
-            <div>
-              <ApplierButton
-                buttonType="Update Profile"
-                onClick={() => store.toggleUpdate(store.consumer)}
-                className="button"
-              />
+                  <p>
+                    <a href={store.linkedIn_profile}>
+                      {store.consumer.linkedIn_profile}
+                    </a>
+                  </p>
+                  <p>Gpa: {store.consumer.gpa}</p>
+                </Col>
+                <div>
+                  <ApplierButton
+                    buttonType="Update Profile"
+                    onClick={() => store.toggleUpdate(store.consumer)}
+                    className="button"
+                  />
+                </div>
+              </Row>
             </div>
-          </Row>
-        </div>
+          </Container>
+        )}
       </Container>
       {store.updateProfile._id && (
         <Container>
-          <h2>Update Profile</h2>
+          <h1 className="opportunitiesHeader">Update Profile</h1>
           <div className="container backgroundProfile">
-            <form onSubmit={store.updateConsumer(store.consumer._id)}>
+            <form onSubmit={handleUpdate}>
               <Row>
                 <Col>
                   <p className="labelStyling">Name:</p>
@@ -77,12 +89,15 @@ const ConsumerProfile = () => {
                   />
                   <p className="labelStyling">Nationality:</p>
 
-                  <input
+                  <select
                     className="inputStyling"
-                    onChange={store.handleUpdate}
-                    value={store.updateProfile.nationality}
                     name="nationality"
-                  />
+                    defaultValue={store.updateProfile.nationality}
+                    onChange={store.handleUpdate}
+                  >
+                    <option value="saudi">Saudi</option>
+                    <option value="foreign">Foreign</option>
+                  </select>
                   <p className="labelStyling">University:</p>
                   <input
                     className="inputStyling"
@@ -98,8 +113,6 @@ const ConsumerProfile = () => {
                     value={store.updateProfile.major}
                     name="major"
                   />
-                </Col>
-                <Col>
                   <p className="labelStyling">Gpa:</p>
 
                   <input
@@ -108,6 +121,8 @@ const ConsumerProfile = () => {
                     value={store.updateProfile.gpa}
                     name="gpa"
                   />
+                </Col>
+                <Col>
                   <p className="labelStyling">Concentrated_major:</p>
 
                   <input
@@ -132,12 +147,30 @@ const ConsumerProfile = () => {
                     name="linkedIn_profile"
                   />
                   <p className="labelStyling">Experience:</p>
-                  <input
+                  <select
                     className="inputStyling"
-                    onChange={store.handleUpdate}
-                    value={store.updateProfile.experience}
                     name="experience"
-                  />
+                    defaultValue={store.updateProfile.experience}
+                    onChange={store.handleUpdate}
+                  >
+                    <option value="">None</option>
+                    <option value="less than a year">less than a year</option>
+                    <option value="an year">an year</option>
+                    <option value="2 years">2 years</option>
+                    <option value="more than 2 years">more than 2 years</option>
+                  </select>
+                  <p className="labelStyling">Degree:</p>
+                  <select
+                    className="inputStyling"
+                    name="degree"
+                    defaultValue={store.updateProfile.degree}
+                    onChange={store.handleUpdate}
+                  >
+                    <option value="High school">high school</option>
+                    <option value="Bachelor">bachelor</option>
+                    <option value="Diploma">diploma</option>
+                    <option value="Master">master</option>
+                  </select>
                 </Col>
               </Row>
               <ApplierButton
