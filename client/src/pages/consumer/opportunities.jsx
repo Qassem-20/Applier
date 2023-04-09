@@ -12,7 +12,7 @@ import React, { Fragment, useEffect, useState } from "react";
 const Opportunities = () => {
   const opportunityStore = OpportunityStore();
 
-  const [applied, setApplied] = useState();
+  const [applied, setApplied] = useState(null);
 
   const [userData, setUserData] = useState({
     statue: "",
@@ -53,8 +53,7 @@ const Opportunities = () => {
         );
 
         // Do something with the application status
-
-        setApplied(response.data);
+        setApplied(response.data.hasApplied);
       } catch (error) {
         console.error(error);
       }
@@ -111,7 +110,7 @@ const Opportunities = () => {
                     type="hidden"
                     name="opportunity"
                     className="inputStyling"
-                    value={opportunity._id}
+                    value={(userData.opportunity = opportunity._id)}
                     onChange={handleUserDataChange}
                   />
                   <ApplierButton
@@ -120,7 +119,9 @@ const Opportunities = () => {
                     type="submit"
                     name="statue"
                     className="button"
-                    // value={(opportunity.statue = "Applied")}
+                    value={
+                      (userData.statue = applied ? "Applied" : "UnApplied")
+                    }
                   />
                 </form>
               </span>
