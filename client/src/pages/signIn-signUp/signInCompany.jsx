@@ -18,7 +18,7 @@ const SignInCompany = () => {
     } catch (err) {
       console.error(err.response.data);
       alert(
-        "Enter a vaild login credentials, or please sign up if you don't have an account"
+        `${err.response.data}, Please enter a vaild login credentials, or sign up if you don't have an account`
       );
     }
   };
@@ -53,7 +53,7 @@ const SignInCompany = () => {
             <ApplierButton buttonType="Log In" />
           </Col>
           <Col>
-            <a href="/ForgottenPassword">Forgot Password?</a>
+            <a href="/ForgottenPassword">Forget Password?</a>
             <div className="mt-2">
               <a href="/signUpCompany">Don’t have an Account? Register</a>
             </div>

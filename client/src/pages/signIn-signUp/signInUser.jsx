@@ -19,7 +19,7 @@ const SignInUser = () => {
     } catch (err) {
       console.error(err.response.data);
       alert(
-        "Enter a vaild login credentials, or please sign up if you don't have an account"
+        `${err.response.data}, Please enter a vaild login credentials, or sign up if you don't have an account`
       );
     }
   };

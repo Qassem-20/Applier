@@ -21,9 +21,7 @@ const SignUpMedicalStudent = () => {
       history.push("/signIn");
     } catch (err) {
       console.error(err.response.data);
-      alert(
-        "This email address is already associated with an account, please try again or go ahead to the Sign In page."
-      );
+      alert(err.response.data);
     }
   };
   return (
