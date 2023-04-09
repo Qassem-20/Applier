@@ -6,13 +6,15 @@ const CompanyStore = create((set) => ({
 
   fetchCompany: async (_id) => {
     try {
-      const res = await axios.get(`http://localhost:4000/api/v1/companies/${_id}`,     { withCredentials: true });
+      const res = await axios.get(
+        `http://localhost:4000/api/v1/companies/${_id}`,
+        { withCredentials: true }
+      );
       set({ company: res.data.companies });
     } catch (error) {
       console.error(error);
     }
   },
- 
 
   // searchCompanies:async(e) => {
   //   e.preventDefault();
@@ -21,14 +23,17 @@ const CompanyStore = create((set) => ({
 
   fetchCompanies: async () => {
     // Fetch the companies
-    const res = await axios.get("http://localhost:4000/api/v1/companies",     { withCredentials: true });
+    const res = await axios.get("http://localhost:4000/api/v1/companies", {
+      withCredentials: true,
+    });
     // Set to state
     set({ companies: res.data.companies });
   },
 
   deleteCompany: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/companies/" + _id,     { withCredentials: true }
+      "http://localhost:4000/api/v1/companies/" + _id,
+      { withCredentials: true }
     );
 
     const { companies } = CompanyStore.getState();
@@ -82,7 +87,8 @@ const CompanyStore = create((set) => ({
         phone,
         country,
         city,
-      },     { withCredentials: true }
+      },
+      { withCredentials: true }
     );
 
     // Update state
@@ -181,9 +187,13 @@ const CompanyStore = create((set) => ({
   loginCompany: async () => {
     const { loginFormCompany } = CompanyStore.getState();
 
-    await axios.post("http://localhost:4000/api/v1/loginCompany", loginFormCompany, {
-      withCredentials: true,
-    });
+    await axios.post(
+      "http://localhost:4000/api/v1/loginCompany",
+      loginFormCompany,
+      {
+        withCredentials: true,
+      }
+    );
 
     set({ loggedIn: true });
   },

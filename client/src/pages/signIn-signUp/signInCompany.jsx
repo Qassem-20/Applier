@@ -34,7 +34,7 @@ const SignInCompany = () => {
           name="email"
           value={storeCompany.loginFormCompany.email}
           onChange={storeCompany.handleChangeLogin}
-          required="true"
+          required={true}
         />
 
         <ApplierInputForm
@@ -45,7 +45,7 @@ const SignInCompany = () => {
           errorMessage="orgPassword"
           value={storeCompany.loginFormCompany.password}
           onChange={storeCompany.handleChangeLogin}
-          required="true"
+          required={true}
         />
 
         <Row>

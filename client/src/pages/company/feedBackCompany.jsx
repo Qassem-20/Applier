@@ -2,17 +2,41 @@ import "../../assets/css/feedback.css";
 import profileImg from "../../assets/images/profileIcon.png";
 import flagIcon from "../../assets/images/flagIcon.png";
 import replyIcon from "../../assets/images/replyIcon.webp";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import CompanyNav from "../../components/Nav/companyNav";
-import ReviewStore from "../../stores/ReviewStore";
+import axios from "axios";
 
 const FeedBackCompany = () => {
-  const reviewStore = ReviewStore();
+  const [reviews, setReviews] = useState([]);
 
-  // useEffect(() => {
-  //   reviewStore.fetchReviewsCompany();
-  // }, []);
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:4000/api/v1/reviews",
+          {
+            withCredentials: true,
+          }
+        );
+
+        setReviews(response.data.reviews);
+      } catch (error) {
+        console.error(error);
+        // TODO: Handle errors
+      }
+    };
+    fetchReviews();
+  }, []);
+
+  const handleReport = (reportedReview) => {
+    axios.put(
+      `http://localhost:4000/api/v1/reportReviewCompany/:${reportedReview}`,
+      {
+        withCredentials: true,
+      }
+    );
+  };
 
   return (
     <Fragment>
@@ -33,27 +57,26 @@ const FeedBackCompany = () => {
         </Row>
       </Container>
       <Container className="mt-4 rounded bg-white border border-dark p-2">
-        {/* {reviewStore.reviews &&
-          reviewStore.reviews.map((review) => {
-            <Row>
-              <Col sm={3}>
-                <img className="m-auto" src={profileImg} alt="" />
-                <p className="text-center">{review.consumer}</p>
-              </Col>
-              <Col sm={7}>
-                <p>{review.description}</p>
-              </Col>
-              <Col className="m-auto" sm={2}>
+        {reviews.map((review) => (
+          <Row key={review._id} className="rounded border-bottom p-5">
+            <Col sm={3}>
+              <img className="m-auto" src={profileImg} alt="" />
+            </Col>
+            <Col sm={7}>
+              <p className="pt-5">{review.description}</p>
+            </Col>
+            <Col className="m-auto" sm={2}>
+              <a href="" onClick={handleReport(review)}>
                 <img className="infoImg" src={flagIcon} alt="Report Icon" />
-                <img className="infoImg" src={replyIcon} alt="Reply Icon" />
-                <span>
-                  {review.rate} <span>&#11088;</span>
-                </span>
-              </Col>
-            </Row>;
-            
-          })} */}
-        <div>SJSKSKKS</div>
+              </a>
+
+              <img className="infoImg" src={replyIcon} alt="Reply Icon" />
+              <span>
+                {review.rate} <span>&#11088;</span>
+              </span>
+            </Col>
+          </Row>
+        ))}
       </Container>
     </Fragment>
   );

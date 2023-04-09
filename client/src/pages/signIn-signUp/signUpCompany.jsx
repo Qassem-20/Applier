@@ -52,7 +52,7 @@ const SignUpCompany = () => {
                   onChange={store.handleChange}
                   value={store.values.organization_name}
                   errorMessage="organization"
-                  required="true"
+                  required={true}
                 />
 
                 <ApplierInputForm
@@ -62,7 +62,7 @@ const SignUpCompany = () => {
                   onChange={store.handleChange}
                   value={store.values.register_number}
                   errorMessage="register_number"
-                  required="true"
+                  required={true}
                 />
 
                 <ApplierInputForm
@@ -90,7 +90,7 @@ const SignUpCompany = () => {
                   onChange={store.handleChange}
                   value={store.values.password}
                   errorMessage="password"
-                  required="true"
+                  required={true}
                   pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                 />
               </Col>
@@ -102,7 +102,7 @@ const SignUpCompany = () => {
                   errorMessage="supervisor_name"
                   onChange={store.handleChange}
                   value={store.values.supervisor_name}
-                  required="true"
+                  required={true}
                 />
 
                 <ApplierInputForm
@@ -113,7 +113,7 @@ const SignUpCompany = () => {
                   errorMessage="email"
                   onChange={store.handleChange}
                   value={store.values.email}
-                  required="true"
+                  required={true}
                 />
                 <ApplierInputForm
                   type="phone"
@@ -129,7 +129,7 @@ const SignUpCompany = () => {
                   label="Country"
                   onChange={store.handleChange}
                   value={store.values.country}
-                  required="true"
+                  required={true}
                   errorMessage="country"
                 />
 
@@ -139,7 +139,7 @@ const SignUpCompany = () => {
                   label="City"
                   onChange={store.handleChange}
                   value={store.values.city}
-                  required="true"
+                  required={true}
                   errorMessage="city"
                 />
               </Col>
