@@ -61,10 +61,11 @@
   background-color: var(--color-button);
 }
 
-.btnGp:focus {
+.focused {
   background-color: var(--color-button);
   color: var(--color-button-secondary);
 }
+
 .btnGp:nth-child(1) {
   border-radius: 10px 0 0 10px;
   border-width: 2px 0px 2px 2px;

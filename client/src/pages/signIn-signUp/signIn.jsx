@@ -15,27 +15,35 @@ const initialState = {
 const SignIn = () => {
   const [values, setValues] = useState(initialState);
 
+  const [activeLinkIndex, setActiveLinkIndex] = useState(0);
+
   const showUser = () => {
+    setActiveLinkIndex(0);
+    console.log(activeLinkIndex);
     setValues({
       ...values,
-      isUser: !values.isUser,
+      isUser: values.isUser ? !values.isUser : values.isUser,
       isMedical: true,
       isCompany: true,
     });
   };
 
   const showCompany = () => {
+    setActiveLinkIndex(2);
+    console.log(activeLinkIndex);
     setValues({
       ...values,
-      isCompany: !values.isCompany,
+      isCompany: values.isCompany ? !values.isCompany : values.isCompany,
       isMedical: true,
       isUser: true,
     });
   };
   const showMedical = () => {
+    setActiveLinkIndex(1);
+    console.log(activeLinkIndex);
     setValues({
       ...values,
-      isMedical: !values.isMedical,
+      isMedical: values.isMedical ? !values.isMedical : values.isMedical,
       isCompany: true,
       isUser: true,
     });
@@ -51,19 +59,19 @@ const SignIn = () => {
             <Row className=" alignmentCenter justify-content-center ">
               <ApplierButton
                 buttonType="User"
-                className="btnGp"
+                className={activeLinkIndex === 0 ? `btnGp focused` : `btnGp`}
                 onClick={showUser}
               />
 
               <ApplierButton
                 buttonType="Medical Student"
-                className="btnGp"
+                className={activeLinkIndex === 1 ? `btnGp focused` : `btnGp `}
                 onClick={showMedical}
               />
 
               <ApplierButton
                 buttonType="Company"
-                className="btnGp"
+                className={activeLinkIndex === 2 ? `btnGp focused` : `btnGp`}
                 onClick={showCompany}
               />
             </Row>
