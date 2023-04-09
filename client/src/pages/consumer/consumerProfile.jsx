@@ -8,9 +8,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const ConsumerProfile = () => {
   const store = ConsumerStore();
-  const updateStore = ConsumerStore((updateStore) => {
-    return { toggleUpdate: updateStore.toggleUpdate };
-  });
+
   useEffect(() => {
     store.fetchConsumerProfile();
   }, []);
@@ -49,30 +47,108 @@ const ConsumerProfile = () => {
             <div>
               <ApplierButton
                 buttonType="Update Profile"
-                onClick={() => updateStore.toggleUpdate(store.consumer._id)}
+                onClick={() => store.toggleUpdate(store.consumer)}
                 className="button"
               />
             </div>
           </Row>
         </div>
       </Container>
-      <Container>
-        <h2>Update Profile</h2>
-        <div className="container backgroundProfile">
-          <form onSubmit={store.updateConsumer}>
-            <input
-              onChange={store.handleChange}
-              value={store.updateProfile.name}
-              name="name"
-            />
-            <ApplierButton
-              buttonType="Submit"
-              type="submit"
-              className="button"
-            />
-          </form>
-        </div>
-      </Container>
+      {store.updateProfile._id && (
+        <Container>
+          <h2>Update Profile</h2>
+          <div className="container backgroundProfile">
+            <form onSubmit={store.updateConsumer(store.consumer._id)}>
+              <Row>
+                <Col>
+                  <p className="labelStyling">Name:</p>
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.name}
+                    name="name"
+                  />
+                  <p className="labelStyling">Phone:</p>
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.phone}
+                    name="phone"
+                  />
+                  <p className="labelStyling">Nationality:</p>
+
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.nationality}
+                    name="nationality"
+                  />
+                  <p className="labelStyling">University:</p>
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.university}
+                    name="university"
+                  />
+                  <p className="labelStyling">Major:</p>
+
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.major}
+                    name="major"
+                  />
+                </Col>
+                <Col>
+                  <p className="labelStyling">Gpa:</p>
+
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.gpa}
+                    name="gpa"
+                  />
+                  <p className="labelStyling">Concentrated_major:</p>
+
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.concentrated_major}
+                    name="concentrated_major"
+                  />
+                  <p className="labelStyling">Skills:</p>
+
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.skills}
+                    name="skills"
+                  />
+                  <p className="labelStyling">LinkedIn Profile:</p>
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.linkedIn_profile}
+                    name="linkedIn_profile"
+                  />
+                  <p className="labelStyling">Experience:</p>
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.experience}
+                    name="experience"
+                  />
+                </Col>
+              </Row>
+              <ApplierButton
+                buttonType="Submit"
+                type="submit"
+                className="button"
+              />
+            </form>
+          </div>
+        </Container>
+      )}
     </Fragment>
   );
 };

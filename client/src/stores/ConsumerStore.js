@@ -102,7 +102,6 @@ const ConsumerStore = create((set) => ({
     university: "",
     major: "",
     gpa: "",
-    gpa_statue: "",
     concentrated_major: "",
     skills: "",
     cv: "",
@@ -117,7 +116,6 @@ const ConsumerStore = create((set) => ({
     university,
     major,
     gpa,
-    gpa_statue,
     concentrated_major,
     skills,
     cv,
@@ -132,7 +130,6 @@ const ConsumerStore = create((set) => ({
         university,
         major,
         gpa,
-        gpa_statue,
         concentrated_major,
         skills,
         cv,
@@ -146,13 +143,13 @@ const ConsumerStore = create((set) => ({
     e.preventDefault();
 
     const {
-      updateProfile: {         name,
+      updateProfile: {         
+        name,
         phone,
         nationality,
         university,
         major,
         gpa,
-        gpa_statue,
         concentrated_major,
         skills,
         cv,
@@ -172,7 +169,6 @@ const ConsumerStore = create((set) => ({
         university,
         major,
         gpa,
-        gpa_statue,
         concentrated_major,
         skills,
         cv,
@@ -248,7 +244,18 @@ const ConsumerStore = create((set) => ({
     });
   },
 
+  handleUpdate: async (e) => {
+    const { name, value } = e.target;
 
+    set((state) => {
+      return {
+        updateProfile: {
+          ...state.updateProfile,
+          [name]: value,
+        },
+      };
+    });
+  },
 
   handleChange: async (e) => {
     const { name, value } = e.target;
