@@ -1,15 +1,16 @@
 import "../../assets/css/consumer.css";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import ConsumerStore from "../../stores/ConsumerStore";
-import React, { Fragment, useEffect, useState } from "react";
-import axios from "axios";
+import React, { Fragment, useEffect } from "react";
 import ApplierButton from "../../components/applierComponents/applierButton";
 
 import { Container, Row, Col } from "react-bootstrap";
 
 const ConsumerProfile = () => {
   const store = ConsumerStore();
-
+  const updateStore = ConsumerStore((updateStore) => {
+    return { toggleUpdate: updateStore.toggleUpdate };
+  });
   useEffect(() => {
     store.fetchConsumerProfile();
   }, []);
@@ -46,9 +47,30 @@ const ConsumerProfile = () => {
               <p>Gpa: {store.consumer.gpa}</p>
             </Col>
             <div>
-              <ApplierButton buttonType="Update Profile" className="button" />
+              <ApplierButton
+                buttonType="Update Profile"
+                onClick={() => updateStore.toggleUpdate(store.consumer._id)}
+                className="button"
+              />
             </div>
           </Row>
+        </div>
+      </Container>
+      <Container>
+        <h2>Update Profile</h2>
+        <div className="container backgroundProfile">
+          <form onSubmit={store.updateConsumer}>
+            <input
+              onChange={store.handleChange}
+              value={store.updateProfile.name}
+              name="name"
+            />
+            <ApplierButton
+              buttonType="Submit"
+              type="submit"
+              className="button"
+            />
+          </form>
         </div>
       </Container>
     </Fragment>
