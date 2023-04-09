@@ -1,8 +1,10 @@
 import { create } from "zustand";
 import axios from "axios";
 
+
 const ConsumerStore = create((set) => ({
   consumers: null,
+  consumer:null,
   fetchConsumer: async ( _id) => {
     // Fetch the consumers
     const res = await axios.get(`http://localhost:4000/api/v1/consumers/${_id}`, {
@@ -12,6 +14,20 @@ const ConsumerStore = create((set) => ({
     set({ consumers: res.data.consumers });
   },
 
+  fetchConsumerProfile : async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:4000/api/v1/consumerProfile",
+        {
+          withCredentials: true,
+        }
+      );
+      set({consumer:response.data.consumer});
+    } catch (error) {
+      console.error(error);
+      // TODO: Handle errors
+    }
+  },
   fetchConsumers: async () => {
     // Fetch the consumers
     const res = await axios.get("http://localhost:4000/api/v1/consumers", {
@@ -81,18 +97,47 @@ const ConsumerStore = create((set) => ({
   updateProfile: {
     _id: null,
     name: "",
-    email: "",
     phone: "",
     nationality: "",
+    university: "",
+    major: "",
+    gpa: "",
+    gpa_statue: "",
+    concentrated_major: "",
+    skills: "",
+    cv: "",
+    linkedIn_profile: "",
+    experience: "",
   },
-  toggleUpdate: ({ _id,name,
-    email,
-    phone, }) => {
+  toggleUpdate: ({ 
+    _id,
+    name,
+    phone,
+    nationality,
+    university,
+    major,
+    gpa,
+    gpa_statue,
+    concentrated_major,
+    skills,
+    cv,
+    linkedIn_profile,
+    experience,
+   }) => {
     set({
       updateProfile: {
         name,
-        email,
         phone,
+        nationality,
+        university,
+        major,
+        gpa,
+        gpa_statue,
+        concentrated_major,
+        skills,
+        cv,
+        linkedIn_profile,
+        experience,
         _id,
       },
     });
@@ -101,7 +146,19 @@ const ConsumerStore = create((set) => ({
     e.preventDefault();
 
     const {
-      updateProfile: { name, email, phone, nationality, _id },
+      updateProfile: {         name,
+        phone,
+        nationality,
+        university,
+        major,
+        gpa,
+        gpa_statue,
+        concentrated_major,
+        skills,
+        cv,
+        linkedIn_profile,
+        experience,
+         _id },
       consumers,
     } = ConsumerStore.getState();
 
@@ -110,9 +167,17 @@ const ConsumerStore = create((set) => ({
       `http://localhost:4000/api/v1/consumers/${_id}`,
       {
         name,
-        email,
         phone,
         nationality,
+        university,
+        major,
+        gpa,
+        gpa_statue,
+        concentrated_major,
+        skills,
+        cv,
+        linkedIn_profile,
+        experience,
       },
       { withCredentials: true }
     );
