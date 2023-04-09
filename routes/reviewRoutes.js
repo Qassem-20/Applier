@@ -10,6 +10,8 @@ import {
   fetchReviewsMedical,
   createReviewCompany,
   createReviewMedical,
+  fetchCompanyReviews,
+  fetchMedicalReviews,
   deleteReview,
   sortReview,
   reportReview,
@@ -22,14 +24,22 @@ router.route("/reviewsCompany/:company").get(requireAuthConsumer,fetchReviewsCom
 router.route("/reviewsMedical/:medical").get(requireAuthConsumer,fetchReviewsMedical);
 
 // fetch reviews from Producer side
+router
+  .route("/companyReviews")
+  .get(requireAuthCompany, fetchCompanyReviews);
 
+router
+  .route("/medicalReviews")
+  .get(requireAuthMedicalStudent, fetchMedicalReviews);
+
+// fetch reviews from consumer side
 router
   .route("/reviews/registerReviewCompany")
   .post(requireAuthConsumer, createReviewCompany);
 router
   .route("/reviews/registerReviewMedical")
   .post(requireAuthConsumer, createReviewMedical);
-
+//
 router
   .route("/reviews/reportReviewMedical/:id")
   .put(requireAuthMedicalStudent,reportReview);

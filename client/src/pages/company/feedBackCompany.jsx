@@ -14,7 +14,7 @@ const FeedBackCompany = () => {
     const fetchReviews = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/v1/reviews",
+          "http://localhost:4000/api/v1/reviewsCompany",
           {
             withCredentials: true,
           }
@@ -70,7 +70,6 @@ const FeedBackCompany = () => {
                 <img className="infoImg" src={flagIcon} alt="Report Icon" />
               </a>
 
-              <img className="infoImg" src={replyIcon} alt="Reply Icon" />
               <span>
                 {review.rate} <span>&#11088;</span>
               </span>

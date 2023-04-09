@@ -6,6 +6,16 @@ const fetchReviews = async (req, res) => {
 
   res.json({ reviews });
 };
+const fetchCompanyReviews = async (req, res) => {
+  const reviews = await Review.find({ company: req.company._id });
+
+  res.json({ reviews });
+};
+const fetchMedicalReviews = async (req, res) => {
+  const reviews = await Review.find({ medical: req.medical._id });
+
+  res.json({ reviews });
+};
 const fetchReviewsCompany = async (req, res) => {
   const company = mongoose.Types.ObjectId(req.params.company);
   const reviews = await Review.find({ company });
@@ -103,6 +113,8 @@ export {
   fetchReviewsMedical,
   createReviewCompany,
   createReviewMedical,
+  fetchCompanyReviews,
+  fetchMedicalReviews,
   deleteReview,
   hideReview,
   reportReview,
