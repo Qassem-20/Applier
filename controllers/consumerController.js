@@ -183,10 +183,8 @@ const updateConsumer = async (req, res) => {
     university,
     major,
     gpa,
-    gpa_statue,
     concentrated_major,
     skills,
-    cv,
     linkedIn_profile,
     experience,
   } = req.body;
@@ -198,10 +196,8 @@ const updateConsumer = async (req, res) => {
     university,
     major,
     gpa,
-    gpa_statue,
     concentrated_major,
     skills,
-    cv,
     linkedIn_profile,
     experience,
   });
