@@ -53,7 +53,7 @@ const SignInCompany = () => {
             <ApplierButton buttonType="Log In" />
           </Col>
           <Col>
-            <a href="/ForgottenPassword">Forget Password?</a>
+            <a href="/ForgottenPassword">Forgot Password?</a>
             <div className="mt-2">
               <a href="/signUpCompany">Don’t have an Account? Register</a>
             </div>

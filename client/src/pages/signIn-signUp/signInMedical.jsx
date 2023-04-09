@@ -57,7 +57,7 @@ const SignInMedical = () => {
             <ApplierButton buttonType="Log In" />
           </Col>
           <Col>
-            <a href="/ForgottenPassword">Forget Password?</a>
+            <a href="/ForgottenPassword">Forgot Password?</a>
 
             <div className="mt-2">
               <a href="/signUpMedicalStudent">
