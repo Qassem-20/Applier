@@ -25,10 +25,9 @@ router
 router
   .route("/traineeApplications/:id")
   .put(requireAuthCompany, updateApplication);
-router.get(
-  "/opportunity/:opportunityId/applicationStatus",
-  getApplicationStatus
-);
+router
+  .route("/opportunity/:opportunityId/applicationStatus")
+  .get(requireAuthConsumer, getApplicationStatus);
 
 router
   .route("/applications/registerApplication/:id")

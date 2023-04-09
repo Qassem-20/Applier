@@ -7,13 +7,18 @@ import ApplierButton from "../../components/applierComponents/applierButton";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
-
 import React, { Fragment, useEffect, useState } from "react";
 
 const Opportunities = () => {
   const opportunityStore = OpportunityStore();
 
-  const [userData, setUserData] = useState({ statue: "", opportunity: "" });
+  const [applied, setApplied] = useState();
+
+  const [userData, setUserData] = useState({
+    statue: "",
+    opportunity: "",
+  });
+
   function handleUserDataChange(event) {
     setUserData({
       ...userData,
@@ -21,6 +26,7 @@ const Opportunities = () => {
       opportunity: event.target.value,
     });
   }
+
   async function Apply(_id) {
     try {
       const response = await axios.post(
@@ -34,14 +40,31 @@ const Opportunities = () => {
     }
   }
 
-  // For getting the status of the application (will work on it later)
-  // async function applicationStatus(_id) {
-  //   const response = await axios.get;
-  // }
-
   useEffect(() => {
     opportunityStore.fetchOpportunities();
   }, []);
+
+  useEffect(() => {
+    async function fetchApplicationStatus(_id) {
+      try {
+        const response = await axios.get(
+          `http://localhost:4000/api/v1/opportunity/${_id}/applicationStatus`,
+          { withCredentials: true }
+        );
+
+        // Do something with the application status
+
+        setApplied(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    opportunityStore.opportunities &&
+      opportunityStore.opportunities.forEach((opportunity) => {
+        fetchApplicationStatus(opportunity._id);
+      });
+  }, [opportunityStore.opportunities]);
 
   return (
     <Fragment>
@@ -83,25 +106,21 @@ const Opportunities = () => {
                 {opportunity.major_preferred}
               </span>
               <span className="col-2 opportunitiesTags">
-                <form
-                  onClick={() =>
-                    Apply((userData.opportunity = opportunity._id))
-                  }
-                >
+                <form onClick={() => Apply(opportunity._id)}>
                   <input
                     type="hidden"
                     name="opportunity"
                     className="inputStyling"
-                    value={(userData.opportunity = opportunity._id)}
+                    value={opportunity._id}
                     onChange={handleUserDataChange}
                   />
                   <ApplierButton
-                    buttonType={userData.statue}
-                    isDisabled={userData.statue === "Apply"}
+                    buttonType={applied ? "Applied" : "Apply"}
+                    isDisabled={applied}
                     type="submit"
                     name="statue"
                     className="button"
-                    value={(userData.statue = "Applied")}
+                    // value={(opportunity.statue = "Applied")}
                   />
                 </form>
               </span>
@@ -122,5 +141,4 @@ const Opportunities = () => {
     </Fragment>
   );
 };
-
 export default Opportunities;

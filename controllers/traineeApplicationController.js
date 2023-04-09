@@ -22,49 +22,50 @@ const fetchApplication = async (req, res) => {
 
 const fetchApplicationsOpportunity = async (req, res) => {
   try {
-
     const opportunityId = mongoose.Types.ObjectId(req.params.opportunity);
-  
- 
-      // Find the opportunity in the database
-      const opportunity = await Opportunity.findById(opportunityId);
-  
-      if (!opportunity) {
-        return res.status(404).json({ error: 'Opportunity not found' });
-      }
-  
-      // Find all the application statuses for the given opportunity
-      const applicationStatuses = await ApplicationStatus.find({ opportunity: opportunityId });
-  
-      // Get the consumer IDs from the application statuses
-      const consumerId = applicationStatuses.map(status => status.consumer);
-  
-      // Find all the consumers with the given IDs
-      const consumers = await Consumer.find({ _id: { $in: consumerId } });
 
-      // Extract the desired fields from the consumer documents
-      const consumerInfo = consumers.map(consumer => {
-        const status = applicationStatuses.find(status => status.consumer.equals(consumer._id));
-        return {
-          _id: consumer._id,
-          name: consumer.name,
-          email: consumer.email,
-          phone: consumer.phone,
-          linkedin: consumer.linkedIn_profile,
-          university:consumer.university,
-          major: consumer.major,
-          gpa: consumer.gpa,
-          status: status ? status.statue : null
-        };
-      });
-      
-  
-      // Return the application statuses and consumer information
-      res.json({consumerInfo});
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Server error' });
+    // Find the opportunity in the database
+    const opportunity = await Opportunity.findById(opportunityId);
+
+    if (!opportunity) {
+      return res.status(404).json({ error: "Opportunity not found" });
     }
+
+    // Find all the application statuses for the given opportunity
+    const applicationStatuses = await ApplicationStatus.find({
+      opportunity: opportunityId,
+    });
+
+    // Get the consumer IDs from the application statuses
+    const consumerId = applicationStatuses.map((status) => status.consumer);
+
+    // Find all the consumers with the given IDs
+    const consumers = await Consumer.find({ _id: { $in: consumerId } });
+
+    // Extract the desired fields from the consumer documents
+    const consumerInfo = consumers.map((consumer) => {
+      const status = applicationStatuses.find((status) =>
+        status.consumer.equals(consumer._id)
+      );
+      return {
+        _id: consumer._id,
+        name: consumer.name,
+        email: consumer.email,
+        phone: consumer.phone,
+        linkedin: consumer.linkedIn_profile,
+        university: consumer.university,
+        major: consumer.major,
+        gpa: consumer.gpa,
+        status: status ? status.statue : null,
+      };
+    });
+
+    // Return the application statuses and consumer information
+    res.json({ consumerInfo });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
 };
 
 const findApplication = async (req, res) => {
@@ -118,7 +119,7 @@ const getApplicationStatus = async (req, res) => {
     const { opportunity } = req.params;
 
     // Check if the user has applied for the opportunity
-    const application = await Application.findOne({
+    const application = await ApplicationStatus.findOne({
       opportunity: opportunity,
       consumer: req.consumer._id,
     });
