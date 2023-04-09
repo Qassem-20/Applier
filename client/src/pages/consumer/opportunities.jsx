@@ -76,7 +76,7 @@ const Opportunities = () => {
           </Col>
           <Col>
             <ApplierInputForm
-              row={"row"}
+              className="row"
               label="Search"
               type="text"
               placeholder="Searching for ..."

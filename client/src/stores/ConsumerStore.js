@@ -121,6 +121,7 @@ const ConsumerStore = create((set) => ({
     cv,
     linkedIn_profile,
     experience,
+    degree,
    }) => {
     set({
       updateProfile: {
@@ -135,15 +136,16 @@ const ConsumerStore = create((set) => ({
         cv,
         linkedIn_profile,
         experience,
+        degree,
         _id,
       },
     });
   },
-  updateConsumer: async (e) => {
-    e.preventDefault();
+  updateConsumer: async () => {
 
     const {
-      updateProfile: {         
+      updateProfile: {     
+        _id,    
         name,
         phone,
         nationality,
@@ -155,8 +157,9 @@ const ConsumerStore = create((set) => ({
         cv,
         linkedIn_profile,
         experience,
-         _id },
-      consumers,
+        degree,
+
+      },
     } = ConsumerStore.getState();
 
     // Send the update request
@@ -174,25 +177,27 @@ const ConsumerStore = create((set) => ({
         cv,
         linkedIn_profile,
         experience,
+        degree,
+
       },
       { withCredentials: true }
     );
 
-    // Update state
-    const newConsumers = [...consumers];
-    const consumerIndex = consumers.findIndex((consumer) => {
-      return consumer._id === _id;
-    });
-    newConsumers[consumerIndex] = res.data.consumer;
-
     set({
-      consumers: newConsumers,
       updateProfile: {
         _id: null,
         name: "",
-        email: "",
         phone: "",
         nationality: "",
+        university: "",
+        major: "",
+        gpa: "",
+        concentrated_major: "",
+        skills: "",
+        cv: "",
+        linkedIn_profile: "",
+        experience: "",
+        degree:"",
       },
     });
   },

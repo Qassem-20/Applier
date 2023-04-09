@@ -187,6 +187,7 @@ const updateConsumer = async (req, res) => {
     skills,
     linkedIn_profile,
     experience,
+    degree,
   } = req.body;
 
   await Consumer.findByIdAndUpdate(consumerId, {
@@ -200,6 +201,8 @@ const updateConsumer = async (req, res) => {
     skills,
     linkedIn_profile,
     experience,
+    degree,
+
   });
 
   const consumer = await Consumer.findById(consumerId);
