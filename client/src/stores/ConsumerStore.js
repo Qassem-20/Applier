@@ -1,8 +1,10 @@
 import { create } from "zustand";
 import axios from "axios";
 
+
 const ConsumerStore = create((set) => ({
   consumers: null,
+  consumer:null,
   fetchConsumer: async ( _id) => {
     // Fetch the consumers
     const res = await axios.get(`http://localhost:4000/api/v1/consumers/${_id}`, {
@@ -12,6 +14,20 @@ const ConsumerStore = create((set) => ({
     set({ consumers: res.data.consumers });
   },
 
+  fetchConsumerProfile : async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:4000/api/v1/consumerProfile",
+        {
+          withCredentials: true,
+        }
+      );
+      set({consumer:response.data.consumer});
+    } catch (error) {
+      console.error(error);
+      // TODO: Handle errors
+    }
+  },
   fetchConsumers: async () => {
     // Fetch the consumers
     const res = await axios.get("http://localhost:4000/api/v1/consumers", {
