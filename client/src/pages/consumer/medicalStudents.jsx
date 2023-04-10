@@ -6,7 +6,7 @@ import Profile from "../../assets/images/profileIcon.png";
 import CallIcon from "../../assets/images/callIcon.png";
 import WhatsAppIcon from "../../assets/images/whatsAppIcon.png";
 import MedicalStore from "../../stores/MedicalStore";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 
 import React, { Fragment, useEffect } from "react";
@@ -17,10 +17,19 @@ const MedicalStudents = () => {
   useEffect(() => {
     store.fetchMedicalStudents();
   }, []);
+
+  const history = useHistory();
+  const goBack = () => {
+    history.goBack();
+  };
+
   return (
     <Fragment>
-      <ConsumerNav />
-
+      <div className="bg-white p-4 mb-5">
+        <button className="back-button" onClick={goBack}>
+          &#8592; back
+        </button>
+      </div>
       <Container>
         <Row>
           <Col>
@@ -86,9 +95,6 @@ const MedicalStudents = () => {
                       <div className="flip-card-inner">
                         <div className="flip-card-front">
                           <Row>
-                            <Col>
-                              <img src={Profile} alt="" />
-                            </Col>
                             <Col className="mt-5">
                               <p>{medicalStudent.name}</p>
                             </Col>
@@ -100,18 +106,6 @@ const MedicalStudents = () => {
                               <p>{medicalStudent.name}</p>
                               <p>{medicalStudent.specialty}</p>
                               <p>{medicalStudent.city}</p>
-                            </Col>
-                            <Col xl={2} md={4}>
-                              <img
-                                className="pt-2"
-                                src={CallIcon}
-                                alt="whatsApp"
-                              />
-                              <img
-                                className="pt-4"
-                                src={WhatsAppIcon}
-                                alt="Call"
-                              />
                             </Col>
                           </Row>
                         </div>
