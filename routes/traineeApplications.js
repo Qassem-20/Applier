@@ -15,13 +15,18 @@ import {
   sortApplication,
   getApplicationStatus,
   fetchApplicationsOpportunity,
+  fetchOpportunityApplications,
 } from "../controllers/traineeApplicationController.js";
 //routes of the review from the controllers
 router.route("/applications").get(fetchApplications);
 router.route("/applications/:id").get(fetchApplication);
 router
   .route("/applicationsOpportunity/:opportunity")
-  .get(fetchApplicationsOpportunity);
+  .get(requireAuthCompany, fetchApplicationsOpportunity);
+router
+router
+  .route("/OpportunitiesApplications")
+  .get(fetchOpportunityApplications);
 router
   .route("/traineeApplications/:id")
   .put(requireAuthCompany, updateApplication);

@@ -67,7 +67,40 @@ const fetchApplicationsOpportunity = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+const fetchOpportunityApplications = async (req, res) => {
 
+try {
+  // Find all opportunities in the database
+  const opportunities = await Opportunity.find({});
+
+  // For each opportunity, find its application statuses
+  const opportunityInfo = await Promise.all(
+    opportunities.map(async (opportunity) => {
+      const applicationStatuses = await ApplicationStatus.find({
+        opportunity: opportunity._id,
+      });
+
+      return {
+        _id: opportunity._id,
+        company: opportunity.company,
+        job_role: opportunity.job_role,
+        major_preferred: opportunity.major_preferred,
+        city: opportunity.city,
+        start_date: opportunity.start_date,
+        applicationStatuses: applicationStatuses.map((status) => ({
+          consumer: status.consumer,
+          status: status ? status.statue : null,
+        })),
+      };
+    })
+  );
+
+  return res.status(200).json(opportunityInfo);
+} catch (error) {
+  console.error(error);
+  return res.status(500).json({ error: "Server error" });
+}
+}
 const findApplication = async (req, res) => {
   try {
     const symptoms = req.params.symptoms;
@@ -144,6 +177,7 @@ export {
   fetchApplications,
   fetchApplication,
   fetchApplicationsOpportunity,
+  fetchOpportunityApplications,
   createApplication,
   updateApplication,
   getApplicationStatus,

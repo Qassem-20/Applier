@@ -117,13 +117,20 @@ const Opportunities = () => {
                     value={(userData.opportunity = opportunity._id)}
                     onChange={handleUserDataChange}
                   />
+                  <input
+                    type="hidden"
+                    name="statue"
+                    className="inputStyling"
+                    value={(userData.statue = "Applied")}
+                    onChange={handleUserDataChange}
+                  />
                   <ApplierButton
                     buttonType={applied ? "Applied" : "Apply"}
                     isDisabled={applied}
                     type="submit"
                     name="statue"
                     className="button"
-                    value={(userData.statue = "Applied")}
+                    value={userData.statue}
                   />
                 </form>
               </span>
