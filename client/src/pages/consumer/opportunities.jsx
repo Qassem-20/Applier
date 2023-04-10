@@ -44,27 +44,7 @@ const Opportunities = () => {
     opportunityStore.fetchOpportunities();
   }, []);
 
-  useEffect(() => {
-    async function fetchApplicationStatus(_id) {
-      try {
-        const response = await axios.get(
-          `http://localhost:4000/api/v1/OpportunitiesApplications`,
-          { withCredentials: true }
-        );
-
-        // Do something with the application status
-        setUserData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    console.log(opportunityStore.statue);
-
-    opportunityStore.opportunities &&
-      opportunityStore.opportunities.forEach((opportunity) => {
-        fetchApplicationStatus(opportunity._id);
-      });
-  }, [opportunityStore.opportunities]);
+  console.log(opportunityStore.statue);
 
   return (
     <Fragment>
