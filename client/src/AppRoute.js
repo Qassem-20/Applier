@@ -145,7 +145,7 @@ const AppRoute = () => {
           </RequireAuthAdmin>
         </Route>
         <Route path="/addAdmin">
-            <AddAdmin />
+          <AddAdmin />
         </Route>
         <Route path="/consumers">
           <RequireAuthAdmin>
@@ -192,7 +192,6 @@ const AppRoute = () => {
           <RequireAuthCompany>
             <FeedBackCompany />
           </RequireAuthCompany>
-
         </Route>
       </Switch>
     </Fragment>

@@ -119,9 +119,7 @@ const Opportunities = () => {
                     type="submit"
                     name="statue"
                     className="button"
-                    value={
-                      (userData.statue = applied ? "Applied" : "UnApplied")
-                    }
+                    value={(userData.statue = "Applied")}
                   />
                 </form>
               </span>
