@@ -143,7 +143,6 @@ const updateMedicalStudent = async (req, res) => {
 
   const {
     name,
-    email,
     phone_number,
     nationality,
     city,
@@ -155,7 +154,6 @@ const updateMedicalStudent = async (req, res) => {
 
   await MedicalStudent.findByIdAndUpdate(medicalStudentId, {
     name,
-    email,
     phone_number,
     nationality,
     city,

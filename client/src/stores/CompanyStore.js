@@ -3,7 +3,22 @@ import axios from "axios";
 
 const CompanyStore = create((set) => ({
   companies: null,
+  company:null,
 
+  fetchCompanyProfile : async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:4000/api/v1/companyProfile",
+        {
+          withCredentials: true,
+        }
+      );
+      set({consumer:response.data.company});
+    } catch (error) {
+      console.error(error);
+      // TODO: Handle errors
+    }
+  },
   fetchCompany: async (_id) => {
     try {
       const res = await axios.get(
@@ -48,28 +63,56 @@ const CompanyStore = create((set) => ({
   updateProfile: {
     _id: null,
     organization_name: "",
+    organization_name: "",
     register_number: "",
+    organization_phone: "",
     organization_website: "",
     organization_bio: "",
     supervisor_name: "",
-    phone: "",
     country: "",
     city: "",
+    phone: "",
   },
-
-  updateProfileCompany: async (e) => {
-    e.preventDefault();
+  toggleUpdate: ({ 
+    _id,
+    organization_name,
+    register_number,
+    organization_phone,
+    organization_website,
+    organization_bio,
+    supervisor_name,
+    country,
+    city,
+    phone,
+   }) => {
+    set({
+      updateProfile: {
+        organization_name,
+        register_number,
+        organization_phone,
+        organization_website,
+        organization_bio,
+        supervisor_name,
+        country,
+        city,
+        phone,
+        _id,
+      },
+    });
+  },
+  updateProfileCompany: async () => {
 
     const {
       updateProfile: {
         organization_name,
         register_number,
+        organization_phone,
         organization_website,
         organization_bio,
         supervisor_name,
-        phone,
         country,
         city,
+        phone,
         _id,
       },
       companies,
@@ -81,12 +124,13 @@ const CompanyStore = create((set) => ({
       {
         organization_name,
         register_number,
+        organization_phone,
         organization_website,
         organization_bio,
         supervisor_name,
-        phone,
         country,
         city,
+        phone,
       },
       { withCredentials: true }
     );
@@ -99,22 +143,32 @@ const CompanyStore = create((set) => ({
     newCompanies[companyIndex] = res.data.company;
 
     set({
-      companies: newCompanies,
       updateProfile: {
         _id: null,
         organization_name: "",
         register_number: "",
+        organization_phone: "",
         organization_website: "",
         organization_bio: "",
         supervisor_name: "",
-        password: "",
-        phone: "",
         country: "",
         city: "",
+        phone: "",
       },
     });
   },
+  handleUpdate: async (e) => {
+    const { name, value } = e.target;
 
+    set((state) => {
+      return {
+        updateProfile: {
+          ...state.updateProfile,
+          [name]: value,
+        },
+      };
+    });
+  },
   values: {
     organization_name: "",
     register_number: "",

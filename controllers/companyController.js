@@ -211,11 +211,9 @@ const updateCompany = async (req, res) => {
     organization_website,
     organization_bio,
     supervisor_name,
-    supervisor_phone,
     country,
     city,
-    statue,
-    activatedBy,
+    phone,
   } = req.body;
 
   await Company.findByIdAndUpdate(companyId, {
@@ -225,11 +223,9 @@ const updateCompany = async (req, res) => {
     organization_website,
     organization_bio,
     supervisor_name,
-    supervisor_phone,
     country,
     city,
-    statue,
-    activatedBy,
+    phone,
   });
 
   const company = await Company.findById(companyId);

@@ -3,7 +3,22 @@ import axios from "axios";
 
 const MedicalStore = create((set) => ({
   medicalStudents: null,
+  medicalStudent:null,
 
+  fetchMedicalProfile : async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:4000/api/v1/medicalStudentProfile",
+        {
+          withCredentials: true,
+        }
+      );
+      set({consumer:response.data.medicalStudent});
+    } catch (error) {
+      console.error(error);
+      // TODO: Handle errors
+    }
+  },
   fetchMedicalStudents: async () => {
     // Fetch the medicalStudents
     const res = await axios.get(
@@ -44,20 +59,43 @@ const MedicalStore = create((set) => ({
     main_major: "",
     specialty: "",
   },
-
-  updateMedicalStudents: async (e) => {
-    e.preventDefault();
-
-    const {
+  toggleUpdate: ({ 
+    _id,
+    name,
+    phone_number,
+    nationality,
+    city,
+    gender,
+    profile_visibility,
+    main_major,
+    specialty,
+   }) => {
+    set({
       updateProfile: {
         name,
+        phone_number,
         nationality,
         city,
         gender,
         profile_visibility,
         main_major,
         specialty,
+        _id,
+      },
+    });
+  },
+  updateMedicalStudents: async () => {
+
+    const {
+      updateProfile: {
+        name,
         phone_number,
+        nationality,
+        city,
+        gender,
+        profile_visibility,
+        main_major,
+        specialty,
         _id,
       },
       medicalStudents,
@@ -89,7 +127,6 @@ const MedicalStore = create((set) => ({
     newMedicalStudents[medicalStudentIndex] = res.data.medicalStudent;
 
     set({
-      medicalStudents: newMedicalStudents,
       updateProfile: {
         _id: null,
         name: "",
@@ -114,6 +151,19 @@ const MedicalStore = create((set) => ({
     gender: "",
     main_major: "",
     specialty: "",
+  },
+
+  handleUpdate: async (e) => {
+    const { name, value } = e.target;
+
+    set((state) => {
+      return {
+        updateProfile: {
+          ...state.updateProfile,
+          [name]: value,
+        },
+      };
+    });
   },
 
   registerMedical: async () => {

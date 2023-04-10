@@ -1,86 +1,153 @@
-import React, { Fragment, useState, useEffect } from "react";
-import axios from "axios";
+import React, { Fragment, useEffect } from "react";
 import Nav from "../../components/Nav/companyNav";
 import "../../assets/css/company.css";
 import { Container, Row, Col } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore";
 import ApplierButton from "../../components/applierComponents/applierButton";
-import { useHistory } from "react-router-dom";
 
 const CompanyProfile = () => {
   const store = CompanyStore();
 
-  const history = useHistory();
-
-  // const handleUpdate = async (e) => {
-  //   e.preventDefault();
-
-  //   await store.updateProfileCompany();
-
-  //   history.push("/companyHomePage");
-  // };
-  const [company, setCompany] = useState(null);
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    await store.updateCompany();
+    window.location.reload();
+  };
 
   useEffect(() => {
-    const fetchCompanyProfile = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:4000/api/v1/companyProfile",
-          {
-            withCredentials: true,
-          }
-        );
-        setCompany(response.data.company);
-      } catch (error) {
-        console.error(error);
-        // TODO: Handle errors
-      }
-    };
-    fetchCompanyProfile();
+    store.fetchCompanyProfile();
   }, []);
-  if (!company) {
+  if (!store.company) {
     return <div>Loading...</div>;
   }
   return (
     <Fragment>
       <Nav />
-      <Container>
+      {!store.updateProfile._id && (
         <Container>
           <h1 className="opportunitiesHeader">Company Profile</h1>
-        </Container>
-        <div className="container backgroundProfile">
-          <p>Company name: {company.organization_name}</p>
-          <p>Email: {company.email}</p>
-          <p>Supervisor name (HR): {company.supervisor_name}</p>
-          <p>Phone Number: {company.phone}</p>
-          <hr />
-          <Row>
-            <Col>
-              <p>Register number: {company.register_number}</p>
-              <p>Bio: {company.organization_bio}</p>
-              <p>Status of the Account: {company.statue}</p>
-            </Col>
-            <Col>
-              <p>Country: {company.country}</p>
-              <p>City: {company.city}</p>
 
-              <span>Organization website: </span>
-              <span>
-                <a href={company.organization_website}>
-                  {company.organization_website}
-                </a>
-              </span>
-            </Col>
-            <div>
+          <div className="container backgroundProfile">
+            <p>Company name: {store.company.organization_name}</p>
+            <p>Email: {store.company.email}</p>
+            <p>Supervisor name (HR): {store.company.supervisor_name}</p>
+            <p>Phone Number: {store.company.phone}</p>
+            <hr />
+            <Row>
+              <Col>
+                <p>Register number: {store.company.register_number}</p>
+                <p>Bio: {store.company.organization_bio}</p>
+                <p>Status of the Account: {store.company.statue}</p>
+              </Col>
+              <Col>
+                <p>Country: {store.company.country}</p>
+                <p>City: {store.company.city}</p>
+
+                <span>Organization website: </span>
+                <span>
+                  <a href={store.company.organization_website}>
+                    {store.company.organization_website}
+                  </a>
+                </span>
+              </Col>
+              <div>
+                <ApplierButton
+                  buttonType="Update Profile"
+                  onClick={() => store.toggleUpdate(store.company)}
+                  className="button"
+                />
+              </div>
+            </Row>
+          </div>
+        </Container>
+      )}
+      {store.updateProfile._id && (
+        <Container>
+          <h1 className="opportunitiesHeader">Update Profile</h1>
+          <div className="container backgroundProfile">
+            <form onSubmit={handleUpdate}>
+              <Row>
+                <Col>
+                  <p className="labelStyling">Organization:</p>
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.organization_name}
+                    name="organization_name"
+                  />
+                  <p className="labelStyling">Register number:</p>
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.register_number}
+                    name="register_number"
+                  />
+
+                  <p className="labelStyling">About Organization:</p>
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.organization_bio}
+                    name="organization_bio"
+                  />
+                  <p className="labelStyling">Organization Website:</p>
+
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.organization_website}
+                    name="organization_website"
+                  />
+                  <p className="labelStyling">Gpa:</p>
+
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.gpa}
+                    name="gpa"
+                  />
+                </Col>
+                <Col>
+                  <p className="labelStyling">Supervisor Name(HR):</p>
+
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.supervisor_name}
+                    name="supervisor_name"
+                  />
+                  <p className="labelStyling">Phone:</p>
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.phone}
+                    name="phone"
+                  />
+                  <p className="labelStyling">City:</p>
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.city}
+                    name="city"
+                  />
+                  <p className="labelStyling">Country:</p>
+                  <input
+                    className="inputStyling"
+                    onChange={store.handleUpdate}
+                    value={store.updateProfile.country}
+                    name="country"
+                  />
+                </Col>
+              </Row>
               <ApplierButton
-                buttonType="Update Profile"
+                buttonType="Submit"
+                type="submit"
                 className="button"
-                onClick={() => store.toggleUpdate()}
               />
-            </div>
-          </Row>
-        </div>
-      </Container>
+            </form>
+          </div>
+        </Container>
+      )}
     </Fragment>
   );
 };
