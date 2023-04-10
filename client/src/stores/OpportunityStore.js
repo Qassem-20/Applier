@@ -6,9 +6,9 @@ const OpportunityStore = create((set) => ({
 
   fetchOpportunities: async () => {
     // Fetch the opportunities
-    const res = await axios.get("http://localhost:4000/api/v1/opportunities",     { withCredentials: true });
+    const res = await axios.get("http://localhost:4000/api/v1/OpportunitiesApplications",     { withCredentials: true });
     // Set to state
-    set({ opportunities: res.data.opportunities });
+    set({ opportunities: res.data });
   },
 
   fetchOpportunitiesCompany: async () => {

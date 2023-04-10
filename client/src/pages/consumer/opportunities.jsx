@@ -58,7 +58,7 @@ const Opportunities = () => {
         console.error(error);
       }
     }
-    console.log(userData.statue);
+    console.log(opportunityStore.statue);
 
     opportunityStore.opportunities &&
       opportunityStore.opportunities.forEach((opportunity) => {
@@ -92,7 +92,7 @@ const Opportunities = () => {
         <span className="col-2 opportunitiesMainTags">major</span>
         <span className="col-2 opportunitiesMainTags">Statues</span>
         <span className="col-2 opportunitiesMainTags">City</span>
-        <span className="col-2 opportunitiesMainTags">Salary</span>
+        <span className="col-2 opportunitiesMainTags">Started At</span>
         <span className="col-2 opportunitiesMainTags">Company info</span>
       </div>
       {opportunityStore.opportunities &&
@@ -131,7 +131,7 @@ const Opportunities = () => {
                     type="submit"
                     name="statue"
                     className="button"
-                    value={userData.statue}
+                    value={opportunity.statue}
                   />
                 </form>
               </span>
@@ -139,7 +139,7 @@ const Opportunities = () => {
                 {opportunity.city}
               </span>
               <span className="col-2 opportunitiesTags">
-                {opportunity.salary}
+                {opportunity.start_date}
               </span>
               <div className="col-2 d-flex justify-content-center">
                 <Link to={`/feedBackConsumerCompany/${opportunity.company}`}>
