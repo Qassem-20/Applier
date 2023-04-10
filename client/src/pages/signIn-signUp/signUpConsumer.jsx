@@ -7,8 +7,10 @@ import { useHistory } from "react-router-dom";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 import { options } from "../../APIs/jobTitlesAPI.js";
-import Checkbox from "../../components/applierComponents/applierSelect.tsx";
+import Checkbox from "../../components/applierComponents/applierSelect.jsx";
 import { skillsList } from '../../APIs/skillSets';
+import Select from 'react-select';
+
 
 const initialState = {
   isApplication: true,
@@ -161,19 +163,14 @@ const SignUpConsumer = () => {
                         ))}
                       </select>
 
-                      {/* <ApplierInputForm
-                        label="Skills"
-                        type="text"
-                        name="skills"
-                        value={store.values.skills}
-                        onChange={store.handleChange}
-                      /> */}
                       <Checkbox
+                        className="inputStyling mb-3"
                         label="Skills"
                         name="skills"
+                        placeholder="Select your skills"
+                        options={skillsList}
                         value={store.values.skills}
                         onChange={store.handleChange}
-                        options={skillsList}
                         />
                     </div>
                     <div className="col-sm-12 col-md-6">
