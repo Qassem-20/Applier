@@ -13,7 +13,7 @@ const CompanyStore = create((set) => ({
           withCredentials: true,
         }
       );
-      set({consumer:response.data.company});
+      set({company:response.data.company});
     } catch (error) {
       console.error(error);
       // TODO: Handle errors

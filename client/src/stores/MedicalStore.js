@@ -13,7 +13,7 @@ const MedicalStore = create((set) => ({
           withCredentials: true,
         }
       );
-      set({consumer:response.data.medicalStudent});
+      set({medicalStudent:response.data.medicalStudent});
     } catch (error) {
       console.error(error);
       // TODO: Handle errors

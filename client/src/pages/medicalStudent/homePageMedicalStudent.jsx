@@ -8,14 +8,14 @@ const HomePageMedicalStudent = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    await store.updateMedical();
+    await store.updateMedicalStudents();
     window.location.reload();
   };
 
   useEffect(() => {
     store.fetchMedicalProfile();
   }, []);
-  if (!store.medical) {
+  if (!store.medicalStudent) {
     return <div>Loading...</div>;
   }
   return (
@@ -24,13 +24,13 @@ const HomePageMedicalStudent = () => {
         <h1 className="opportunitiesHeader">My Profile</h1>
         <Row>
           <Col>
-            <p>Nationality: {store.medical.nationality}</p>
-            <p>Major: {store.medical.major}</p>
-            <p>City: {store.medical.city}</p>
+            <p>Nationality: {store.medicalStudent.nationality}</p>
+            <p>Major: {store.medicalStudent.major}</p>
+            <p>City: {store.medicalStudent.city}</p>
           </Col>
 
           <Col>
-            <p>Profile Visibility: {store.medical.profile_visibility}</p>
+            <p>Profile Visibility: {store.medicalStudent.profile_visibility}</p>
           </Col>
         </Row>
       </Container>

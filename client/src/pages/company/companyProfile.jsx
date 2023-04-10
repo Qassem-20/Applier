@@ -10,7 +10,7 @@ const CompanyProfile = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    await store.updateCompany();
+    await store.updateProfileCompany();
     window.location.reload();
   };
 
@@ -97,14 +97,6 @@ const CompanyProfile = () => {
                     onChange={store.handleUpdate}
                     value={store.updateProfile.organization_website}
                     name="organization_website"
-                  />
-                  <p className="labelStyling">Gpa:</p>
-
-                  <input
-                    className="inputStyling"
-                    onChange={store.handleUpdate}
-                    value={store.updateProfile.gpa}
-                    name="gpa"
                   />
                 </Col>
                 <Col>
