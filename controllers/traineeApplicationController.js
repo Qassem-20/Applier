@@ -89,7 +89,7 @@ try {
         start_date: opportunity.start_date,
         applicationStatuses: applicationStatuses.map((status) => ({
           consumer: status.consumer,
-          status: status ? status.statue : null,
+          status: status ? status.statue : apply,
         })),
       };
     })

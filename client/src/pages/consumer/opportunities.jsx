@@ -48,16 +48,17 @@ const Opportunities = () => {
     async function fetchApplicationStatus(_id) {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/v1/opportunity/${_id}/applicationStatus`,
+          `http://localhost:4000/api/v1/OpportunitiesApplications`,
           { withCredentials: true }
         );
 
         // Do something with the application status
-        setApplied(response.data.hasApplied);
+        setUserData(response.data);
       } catch (error) {
         console.error(error);
       }
     }
+    console.log(userData.statue);
 
     opportunityStore.opportunities &&
       opportunityStore.opportunities.forEach((opportunity) => {
