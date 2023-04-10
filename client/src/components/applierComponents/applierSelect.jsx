@@ -4,6 +4,11 @@ import "../../assets/css/signUpSignIn.css";
 import "../../assets/css/custom.css";
 import Select from 'react-select';
 
+const styles = {
+  control: styles => ({ ...styles, backgroundColor: 'eaeaeb'}),
+  
+}
+
 const Checkbox = (props) => {
   const [selectedSkills, setSelectedSkills] = useState(null);
 
@@ -20,7 +25,7 @@ const Checkbox = (props) => {
   
     return (
       <div>
-        <label className="inputStyling mb-3">{label}</label>
+        <label className="labelStyling font-bold">{label}</label>
         <Select
           className="inputStyling mb-3"
           name={name}
@@ -29,6 +34,7 @@ const Checkbox = (props) => {
           placeholder={placeholder}
           options={options}
           isMulti
+          styles={styles}
         />
       </div>
     );
