@@ -105,7 +105,11 @@ const Opportunities = () => {
                 {opportunity.major_preferred}
               </span>
               <span className="col-2 opportunitiesTags">
-                <form onClick={() => Apply(opportunity._id)}>
+                <form
+                  onClick={() =>
+                    Apply((userData.opportunity = opportunity._id))
+                  }
+                >
                   <input
                     type="hidden"
                     name="opportunity"
