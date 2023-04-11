@@ -73,7 +73,7 @@ const createMedicalStudent = async (req, res) => {
       main_major,
       specialty,
       profile_visibility: "shown",
-      statue: "inactive",
+      statue: "false",
     });
   } catch (err) {
     console.log(err);

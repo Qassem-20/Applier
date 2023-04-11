@@ -120,7 +120,6 @@ const createCompany = async (req, res) => {
       phone,
       country,
       city,
-      statue,
     } = req.body;
 
     //hash the password
@@ -137,7 +136,7 @@ const createCompany = async (req, res) => {
       phone,
       country,
       city,
-      statue: "inactive",
+      statue: "false",
     });
 
     //respond

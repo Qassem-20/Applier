@@ -103,8 +103,8 @@ const companySchema = new mongoose.Schema(
     },
     statue: {
       type: String,
-      enum: ["active", "inactive"],
-      default: "inactive",
+      enum: ["true", "false"],
+      default: "false",
     },
     activatedBy: {
       type: mongoose.Types.ObjectId,

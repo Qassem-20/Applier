@@ -125,8 +125,8 @@ const MedicalStudents = () => {
                       onChange={handleUserDataChange}
                       onClick={() => updateStatue(medicalStudent._id)}
                     >
-                      <option value="inactive">inactive</option>
-                      <option value="active">active</option>
+                      <option value="false">inactive</option>
+                      <option value="true">active</option>
                     </select>
                   </form>
                 </Col>

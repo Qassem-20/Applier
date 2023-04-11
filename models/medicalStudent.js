@@ -67,8 +67,8 @@ const MedicalStudentSchema = new mongoose.Schema(
     },
     statue: {
       type: String,
-      enum: ["active", "inactive"],
-      default: "inactive",
+      enum: ["true", "false"],
+      default: "false",
     },
     reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
   },

@@ -174,8 +174,8 @@ const Consumers = () => {
                     onClick={() => updateStatue(consumer._id)}
                     defaultValue={consumer.statue}
                   >
-                    <option value="suspend">suspend</option>
-                    <option value="unsuspend">unsuspend</option>
+                    <option value="true">suspend</option>
+                    <option value="false">unsuspend</option>
                   </select>
                 </Col>
               </Row>

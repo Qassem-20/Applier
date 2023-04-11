@@ -38,8 +38,8 @@ const consumerSchema = new mongoose.Schema(
     },
     statue: {
       type: String,
-      enum: ["suspend", "unsuspend"],
-      default: "unsuspend",
+      enum: ["true", "false"],
+      default: "false",
     },
     suspendBy: {
       type: mongoose.Types.ObjectId,
