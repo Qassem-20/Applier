@@ -15,7 +15,7 @@ const Checkbox = (props) => {
     setSelectedSkills(selectedSkills);
   };
 
-  const { name, placeholder, label, options, isMulti } = props;
+  const { name, placeholder, label, options, isMulti, required } = props;
 
   return (
     <div>
@@ -29,6 +29,7 @@ const Checkbox = (props) => {
         options={options}
         isMulti={isMulti}
         styles={styles}
+        required={required}
       />
     </div>
   );
