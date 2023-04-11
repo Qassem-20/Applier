@@ -77,12 +77,12 @@ const createOpportunity = async (req, res) => {
 const updateOpportunity = async (req, res) => {
   const opportunityId = req.params.id;
 
-  const { type } = req.body;
+  const { job_role,description,skills,job_type,departments_preferred,major_preferred,availability_seats,salary,start_date,duration,city,visibility } = req.body;
 
   await Opportunity.findOneAndUpdate(
     { _id: opportunityId, company: req.company._id },
     {
-      type,
+      job_role,description,skills,job_type,departments_preferred,major_preferred,availability_seats,salary,start_date,duration,city,visibility,
     }
   );
 

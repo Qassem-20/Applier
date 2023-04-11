@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 import "../../assets/css/company.css";
 import { Container, Row, Col } from "react-bootstrap";
-
 import Nav from "../../components/Nav/companyNav";
-import axios from "axios";
+
 const TraineeDetails = () => {
   const { consumerId } = useParams();
   const [userProfile, setUserProfile] = useState({});

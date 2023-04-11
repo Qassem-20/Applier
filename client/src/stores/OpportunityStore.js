@@ -3,12 +3,21 @@ import axios from "axios";
 
 const OpportunityStore = create((set) => ({
   opportunities: null,
-
+  opportunity: null,
   fetchOpportunities: async () => {
     // Fetch the opportunities
     const res = await axios.get("http://localhost:4000/api/v1/OpportunitiesApplications",     { withCredentials: true });
     // Set to state
-    set({ opportunities: res.data });
+    set({ opportunities: res.data.opportunity });
+  },
+
+  fetchOpportunity: async (_id) => {
+    // Fetch the consumers
+    const res = await axios.get(`http://localhost:4000/api/v1/opportunities/${_id}`, {
+      withCredentials: true,
+    });
+    // Set to state
+    set({ opportunity: res.data.opportunity });
   },
 
   fetchOpportunitiesCompany: async () => {
@@ -18,14 +27,6 @@ const OpportunityStore = create((set) => ({
     set({ opportunities: res.data.opportunities });
   },
 
-  fetchOpportunity: async(_id) => {
-    const res = await axios.get(
-      "http://localhost:4000/api/v1/opportunities/" + _id,     { withCredentials: true }
-    );
-
-    set({ opportunities: res.data.opportunities });
-
-  },
 
   deleteOpportunity: async (_id) => {
     const res = await axios.delete(
@@ -56,9 +57,18 @@ const OpportunityStore = create((set) => ({
     city: "",
     visibility: "",
   },
-
-  updateOpportunity: async (e) => {
-    e.preventDefault();
+  toggleUpdate: ({ 
+    _id,
+    job_role,description,skills,job_type,departments_preferred,major_preferred,availability_seats,salary,start_date,duration,city,visibility,
+   }) => {
+    set({
+      updateStatue: {
+        job_role,description,skills,job_type,departments_preferred,major_preferred,availability_seats,salary,start_date,duration,city,visibility,
+        _id,
+      },
+    });
+  },
+  updateOpportunity: async () => {
 
     const {
       updateStatue: {
@@ -98,16 +108,8 @@ const OpportunityStore = create((set) => ({
       },     { withCredentials: true }
     );
 
-    // Update state
-    const newOpportunities = [...opportunities];
-    const opportunityIndex = opportunities.findIndex((opportunity) => {
-      return opportunity._id === _id;
-    });
-    newOpportunities[opportunityIndex] = res.data.opportunity;
-
     set({
-      opportunities: newOpportunities,
-      updateType: {
+      updateStatue: {
         _id: null,
         job_role: "",
         description: "",
@@ -168,7 +170,18 @@ const OpportunityStore = create((set) => ({
   application: {
     application:"",
   },
+  handleUpdate: async (e) => {
+    const { name, value } = e.target;
 
+    set((state) => {
+      return {
+        updateStatue: {
+          ...state.updateStatue,
+          [name]: value,
+        },
+      };
+    });
+  },
   handleChange: async (e) => {
     const { name, value } = e.target;
 

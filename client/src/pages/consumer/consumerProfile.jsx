@@ -3,7 +3,6 @@ import ConsumerNav from "../../components/Nav/consumerNav";
 import ConsumerStore from "../../stores/ConsumerStore";
 import React, { Fragment, useEffect } from "react";
 import ApplierButton from "../../components/applierComponents/applierButton";
-
 import { Container, Row, Col } from "react-bootstrap";
 
 const ConsumerProfile = () => {
