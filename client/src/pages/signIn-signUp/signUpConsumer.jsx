@@ -171,6 +171,7 @@ const SignUpConsumer = () => {
                         options={skillsList}
                         value={store.values.skills}
                         onChange={store.handleChange}
+                        isMulti={true}
                         />
                     </div>
                     <div className="col-sm-12 col-md-6">
@@ -182,10 +183,10 @@ const SignUpConsumer = () => {
                         value={store.values.degree}
                         onChange={store.handleChange}
                       >
-                        <option value="High school">high school</option>
-                        <option value="Bachelor">bachelor</option>
-                        <option value="Diploma">diploma</option>
-                        <option value="Master">master</option>
+                        <option value="High school">High school</option>
+                        <option value="Bachelor">Bachelor's</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Master">Master's</option>
                       </select>
 
                       <ApplierInputForm

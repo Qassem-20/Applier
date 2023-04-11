@@ -15,7 +15,7 @@ const Checkbox = (props) => {
     setSelectedSkills(selectedSkills);
   };
 
-  const { name, placeholder, label, options } = props;
+  const { name, placeholder, label, options, isMulti } = props;
 
   return (
     <div>
@@ -27,7 +27,7 @@ const Checkbox = (props) => {
         onChange={handleSkillsChange}
         placeholder={placeholder}
         options={options}
-        isMulti
+        isMulti={isMulti}
         styles={styles}
       />
     </div>
