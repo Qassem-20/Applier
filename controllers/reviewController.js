@@ -6,6 +6,15 @@ const fetchReviews = async (req, res) => {
 
   res.json({ reviews });
 };
+const fetchReportedReviews = async (req, res) => {
+  try {
+    const reportedReviews = await Review.find({ isReported: "yes" });
+    return res.status(200).json(reportedReviews);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Server error" });
+  }
+};
 const fetchCompanyReviews = async (req, res) => {
   const reviews = await Review.find({ company: req.company._id });
 
@@ -116,6 +125,7 @@ export {
   fetchCompanyReviews,
   fetchMedicalReviews,
   deleteReview,
+  fetchReportedReviews,
   hideReview,
   reportReview,
   sortReview,

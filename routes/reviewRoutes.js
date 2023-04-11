@@ -15,6 +15,7 @@ import {
   deleteReview,
   sortReview,
   reportReview,
+  fetchReportedReviews,
 } from "../controllers/reviewController.js";
 //routes of the review from the controllers
 router.route("/reviews").get(fetchReviews);
@@ -22,6 +23,9 @@ router.route("/reviews/:id").get(fetchReview);
 //from consumer side
 router.route("/reviewsCompany/:company").get(requireAuthConsumer,fetchReviewsCompany);
 router.route("/reviewsMedical/:medical").get(requireAuthConsumer,fetchReviewsMedical);
+
+//fetch reported Reviews
+router.route("/reportedReviews").get(requireAuthAdmin,fetchReportedReviews);
 
 // fetch reviews from Producer side
 router

@@ -1,7 +1,4 @@
 import "../../assets/css/feedback.css";
-import profileImg from "../../assets/images/profileIcon.png";
-import flagIcon from "../../assets/images/flagIcon.png";
-import replyIcon from "../../assets/images/replyIcon.webp";
 import React, { Fragment, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import CompanyNav from "../../components/Nav/companyNav";
