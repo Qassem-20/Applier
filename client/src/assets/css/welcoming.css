@@ -1,84 +1,84 @@
 @import url(//fonts.googleapis.com/css?family=Lora);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-.container-about{
-    background-color: #d6d6d6 ;
-    height: 15rem;
+.container-about {
+  background-color: #d6d6d6;
+  height: 15rem;
 }
-.ServicesImgs{
-    height: 15rem;
-    width: 100%;
-    border-radius:10px 10px 0px 0px;
+.ServicesImgs {
+  height: 15rem;
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
 }
-.centerAlignment{
-    align-items: center;
-    text-align: center;
-    color: #000000;
-    margin-bottom: 1rem;
-    text-decoration: underline;
-  }
-.card{
-    margin: 2px;
-    text-align: center;
+.centerAlignment {
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 1rem;
+  text-decoration: underline;
 }
-#card1{
-    background-color: #42b5dff2;
-    border: 0ch;
-    border-radius: 10px;
+.card {
+  margin: 2px;
+  text-align: center;
 }
-#card2{
-    background-color: #70b164e2;
-    border: 0ch;
-    border-radius: 10px;
+#card1 {
+  background-color: #42b5dff2;
+  border: 0ch;
+  border-radius: 10px;
 }
-#card3{
-    background-color: #e8206de3;
-    border: 0ch;
-    border-radius: 10px;
+#card2 {
+  background-color: #70b164e2;
+  border: 0ch;
+  border-radius: 10px;
 }
-#card4{
-    background-color: #c7bb54eb;
-    border: 0ch;
-    border-radius: 10px;
+#card3 {
+  background-color: #e8206de3;
+  border: 0ch;
+  border-radius: 10px;
+}
+#card4 {
+  background-color: #c7bb54eb;
+  border: 0ch;
+  border-radius: 10px;
 }
 
-.header_container{
-    font-size: 40px;
-    height: 100%;
-    color: black;
-    background-color: whitesmoke;
-    border-radius: 25px;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border-style: solid;
-    border-width: 2px;
+.header_container {
+  font-size: 40px;
+  height: 100%;
+  color: black;
+  background-color: whitesmoke;
+  border-radius: 25px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-style: solid;
+  border-width: 2px;
 }
-.heading{
-    font-size: 40px;
+.heading {
+  font-size: 40px;
 }
-.textStyling{
-    text-align: center;
-    font-size: 28px;
+.textStyling {
+  text-align: center;
+  font-size: 28px;
 }
-#signInButton:hover{
-    color: white;
-    background-color: black;
+#signInButton:hover {
+  color: white;
+  background-color: black;
 }
-.achievementsImgs{
-    width:7rem;
-    height: 7rem;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.achievementsImgs {
+  width: 7rem;
+  height: 7rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-.achievementsTextStyle{
-    font-size: larger;
-    text-align: center;
+.achievementsTextStyle {
+  font-size: larger;
+  text-align: center;
 }
-#achievementsContainer{
-    border-style: solid;
-    border-width: 2px;
-    background-color: whitesmoke;
-    border-radius: 80px;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+#achievementsContainer {
+  border-style: solid;
+  border-width: 2px;
+  background-color: whitesmoke;
+  border-radius: 80px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
