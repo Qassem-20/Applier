@@ -1,16 +1,11 @@
 import "../../assets/css/consumer.css";
 import ConsumerNav from "../../components/Nav/consumerNav";
-import PIcon from "../../assets/images/primaryCareIcon.png";
-import DIcon from "../../assets/images/dentalIcon.png";
-import Profile from "../../assets/images/profileIcon.png";
-import CallIcon from "../../assets/images/callIcon.png";
-import WhatsAppIcon from "../../assets/images/whatsAppIcon.png";
 import MedicalStore from "../../stores/MedicalStore";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
-
+import ApplierPopUp from "../../components/applierComponents/applierPopUp/applierPopup";
 import React, { Fragment, useEffect } from "react";
-import { Row, Col, Container, Card } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 
 const MedicalStudents = () => {
   const store = MedicalStore();
@@ -18,18 +13,9 @@ const MedicalStudents = () => {
     store.fetchMedicalStudents();
   }, []);
 
-  const history = useHistory();
-  const goBack = () => {
-    history.goBack();
-  };
-
   return (
     <Fragment>
-      <div className="bg-white p-4 mb-5">
-        <button className="back-button" onClick={goBack}>
-          &#8592; back
-        </button>
-      </div>
+      <ConsumerNav />
       <Container>
         <Row>
           <Col>
@@ -38,7 +24,6 @@ const MedicalStudents = () => {
           <Col>
             <Col>
               <ApplierInputForm
-                row={"row"}
                 label="Search"
                 type="text"
                 placeholder="Searching for ..."
@@ -48,69 +33,18 @@ const MedicalStudents = () => {
           </Col>
         </Row>
       </Container>
-
       <hr />
-      <Container className="mt-5 hiddenTransition">
-        <Row className="justify-content-evenly">
-          <Col sm={4}>
-            <div className="flip-card">
-              <div className="flip-card-inner">
-                <div className="flip-card-front">
-                  <img src={PIcon} alt="Avatar" />
-                  <h3>Primary Care</h3>
-                </div>
-                <div className="flip-card-back">
-                  <h1>Primary Care</h1>
-                  <p>eofenpofenr</p>
-                  <p>fpriuferpifuberpb</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col sm={4}>
-            <div className="flip-card">
-              <div className="flip-card-inner">
-                <div className="flip-card-front">
-                  <img src={DIcon} alt="Avatar" />
-                  <h3>Dental</h3>
-                </div>
-                <div className="flip-card-back">
-                  <h1>Dental</h1>
-                  <p>voiernvoernv</p>
-                  <p>nceirverui</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-      <Container className="fluid">
+      <Container className="containerOfMeds">
         <Row>
           {store.medicalStudents &&
             store.medicalStudents.map((medicalStudent) => {
               return (
                 <Col xl={4} md={6} sm={12} key={medicalStudent._id}>
-                  <Link to={`/feedBackConsumerMedical/${medicalStudent._id}`}>
-                    <Card className="flip-card">
-                      <div className="flip-card-inner">
-                        <div className="flip-card-front">
-                          <Row>
-                            <Col className="mt-5">
-                              <p>{medicalStudent.name}</p>
-                            </Col>
-                          </Row>
-                        </div>
-                        <div className="flip-card-back">
-                          <Row className="pt-3">
-                            <Col xl={10} md={8}>
-                              <p>{medicalStudent.name}</p>
-                              <p>{medicalStudent.specialty}</p>
-                              <p>{medicalStudent.city}</p>
-                            </Col>
-                          </Row>
-                        </div>
-                      </div>
-                    </Card>
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/feedBackConsumerMedical/${medicalStudent._id}`}
+                  >
+                    <ApplierPopUp medicalStudent={medicalStudent} />
                   </Link>
                 </Col>
               );
