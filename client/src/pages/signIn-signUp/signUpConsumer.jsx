@@ -9,7 +9,7 @@ import ApplierInputForm from "../../components/applierComponents/applierInputFor
 import { options } from "../../APIs/jobTitlesAPI.js";
 import Checkbox from "../../components/applierComponents/applierSelect.jsx";
 import { skillsList } from '../../APIs/skillSets';
-import Select from 'react-select';
+
 
 
 const initialState = {
@@ -140,6 +140,7 @@ const SignUpConsumer = () => {
                         placeholder="major"
                         value={store.values.major}
                         onChange={store.handleChange}
+                        required={true}
                       >
                         {options.map((option) => (
                           <option key={option} value={option}>
@@ -155,6 +156,7 @@ const SignUpConsumer = () => {
                         placeholder="minor"
                         value={store.values.minor}
                         onChange={store.handleChange}
+                        required={true}
                       >
                         {options.map((option) => (
                           <option key={option} value={option}>
@@ -183,7 +185,7 @@ const SignUpConsumer = () => {
                         value={store.values.degree}
                         onChange={store.handleChange}
                       >
-                        <option value="High school">High school</option>
+                        <option value="High school">High School</option>
                         <option value="Bachelor">Bachelor's</option>
                         <option value="Diploma">Diploma</option>
                         <option value="Master">Master's</option>

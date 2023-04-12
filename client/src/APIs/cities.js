@@ -1,4 +1,4 @@
-const saudiCities = [
+export const cities = [
     { value: 'riyadh', label: 'Riyadh' },
     { value: 'jeddah', label: 'Jeddah' },
     { value: 'mecca', label: 'Mecca' },
