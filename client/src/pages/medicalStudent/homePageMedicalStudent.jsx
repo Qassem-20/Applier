@@ -1,4 +1,5 @@
 import "../../assets/css/medicalStudent.css";
+import MedicalNav from "../../components/Nav/medicalStudentNav";
 import MedicalStore from "../../stores/MedicalStore";
 import React, { Fragment, useState, useEffect } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
@@ -20,6 +21,7 @@ const HomePageMedicalStudent = () => {
   }
   return (
     <Fragment>
+      <MedicalNav />
       <Container>
         <h1 className="opportunitiesHeader">My Profile</h1>
         <Row>

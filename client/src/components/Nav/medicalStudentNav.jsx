@@ -12,8 +12,8 @@ export class medicalStudentNav extends Component {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="/medicalHomePage">Home</Nav.Link>
-                <Nav.Link href="/medicalStudents">Medical Students</Nav.Link>
-                <Nav.Link href="/feedBackCompany">Feedback</Nav.Link>
+                <Nav.Link href="/medicalStudentsM">Medical Students</Nav.Link>
+                <Nav.Link href="/feedBackMedical">Feedback</Nav.Link>
                 <Nav.Link href="/"> Sign Out</Nav.Link>
               </Nav>
             </Navbar.Collapse>

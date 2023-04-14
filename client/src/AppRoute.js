@@ -19,6 +19,7 @@ import EditOpportunity from "./pages/company/editOpportunity";
 import TraineeDetails from "./pages/company/traineeDetails";
 
 import MedicalHomePage from "./pages/medicalStudent/homePageMedicalStudent";
+import MedicalStudentsM from "./pages/medicalStudent/medicalStudentsM";
 
 import AdminHomePage from "./pages/admin/adminHomePage";
 import UnauthorizedMiddleWare from "./pages/admin/unauthorizedMiddleWare";
@@ -86,6 +87,10 @@ const AppRoute = () => {
 
         <Route path="/medicalStudents">
           <MedicalStudents />
+        </Route>
+
+        <Route path="/medicalStudentsM">
+          <MedicalStudentsM />
         </Route>
 
         <Route path="/addOpportunity">
