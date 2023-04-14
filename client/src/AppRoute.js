@@ -40,7 +40,7 @@ import FeedBackCompany from "./pages/company/feedBackCompany";
 import RequireAuthCompany from "./pages/middleware/RequireAuthCompany";
 import RequireAuthAdmin from "./pages/middleware/RequireAuthAdmin";
 import RequireAuthConsumer from "./pages/middleware/RequireAuthConsumer";
-import RequireAuthMedical from "./pages/middleware/RequireAuthAdmin";
+import RequireAuthMedical from "./pages/middleware/RequireAuthMedical";
 
 import WelcomePage from "./pages/HomePage";
 import React, { Fragment } from "react";
