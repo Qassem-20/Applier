@@ -136,7 +136,7 @@ const SignUpMedicalStudent = () => {
                 </select>
 
                 <ApplierInputForm
-                  label="Specialty"
+                  label="Speciality"
                   type="text"
                   name="specialty"
                   value={store.values.specialty}
