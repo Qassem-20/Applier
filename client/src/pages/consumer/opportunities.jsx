@@ -10,9 +10,11 @@ import { Row, Col, Container } from "react-bootstrap";
 import React, { Fragment, useEffect, useState } from "react";
 
 const Opportunities = () => {
-  const opportunityStore = OpportunityStore();
+  const store = OpportunityStore();
 
   const [applied, setApplied] = useState(null);
+  //for searching opportunities
+  const [searchTerm, setSearchTerm] = useState("");
 
   const [userData, setUserData] = useState({
     statue: "",
@@ -41,10 +43,18 @@ const Opportunities = () => {
   }
 
   useEffect(() => {
-    opportunityStore.fetchOpportunities();
+    store.fetchOpportunities();
   }, []);
 
-  console.log(opportunityStore.statue);
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filterOpportunities = store.opportunities
+    ? store.opportunities.filter((opportunity) =>
+        opportunity.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : [];
 
   return (
     <Fragment>
@@ -62,6 +72,8 @@ const Opportunities = () => {
               type="text"
               placeholder="Searching for ..."
               id="searchInput"
+              value={searchTerm}
+              onChange={handleSearch}
             />
           </Col>
         </Row>
@@ -75,60 +87,55 @@ const Opportunities = () => {
         <span className="col-2 opportunitiesMainTags">Started At</span>
         <span className="col-2 opportunitiesMainTags">Company info</span>
       </div>
-      {opportunityStore.opportunities &&
-        opportunityStore.opportunities.map((opportunity) => {
-          return (
-            <div className="row opportunitiesT" key={opportunity._id}>
-              <span className="col-2 opportunitiesTags">
-                {opportunity.job_role}
-              </span>
-              <span className="col-2 opportunitiesTags">
-                {opportunity.major_preferred}
-              </span>
-              <span className="col-2 opportunitiesTags">
-                <form
-                  onClick={() =>
-                    Apply((userData.opportunity = opportunity._id))
-                  }
-                >
-                  <input
-                    type="hidden"
-                    name="opportunity"
-                    className="inputStyling"
-                    value={(userData.opportunity = opportunity._id)}
-                    onChange={handleUserDataChange}
-                  />
-                  <input
-                    type="hidden"
-                    name="statue"
-                    className="inputStyling"
-                    value={(userData.statue = "Applied")}
-                    onChange={handleUserDataChange}
-                  />
-                  <ApplierButton
-                    buttonType={applied ? "Applied" : "Apply"}
-                    isDisabled={applied}
-                    type="submit"
-                    name="statue"
-                    className="button"
-                    value={opportunity.statue}
-                  />
-                </form>
-              </span>
-              <span className="col-2 opportunitiesTags">
-                {opportunity.city}
-              </span>
-              <span className="col-2 opportunitiesTags">
-                {opportunity.start_date}
-              </span>
-              <div className="col-2 d-flex justify-content-center">
-                <Link to={`/feedBackConsumerCompany/${opportunity.company}`}>
-                  <img className="infoImg" src={InfoIcon} alt="InfoIcon" />
-                </Link>
-              </div>
+      {filterOpportunities.map((opportunity) => {
+        return (
+          <div className="row opportunitiesT" key={opportunity._id}>
+            <span className="col-2 opportunitiesTags">
+              {opportunity.job_role}
+            </span>
+            <span className="col-2 opportunitiesTags">
+              {opportunity.major_preferred}
+            </span>
+            <span className="col-2 opportunitiesTags">
+              <form
+                onClick={() => Apply((userData.opportunity = opportunity._id))}
+              >
+                <input
+                  type="hidden"
+                  name="opportunity"
+                  className="inputStyling"
+                  value={(userData.opportunity = opportunity._id)}
+                  onChange={handleUserDataChange}
+                />
+                <input
+                  type="hidden"
+                  name="statue"
+                  className="inputStyling"
+                  value={(userData.statue = "Applied")}
+                  onChange={handleUserDataChange}
+                />
+                <ApplierButton
+                  buttonType={applied ? "Applied" : "Apply"}
+                  isDisabled={applied}
+                  type="submit"
+                  name="statue"
+                  className="button"
+                  value={opportunity.statue}
+                />
+              </form>
+            </span>
+            <span className="col-2 opportunitiesTags">{opportunity.city}</span>
+            <span className="col-2 opportunitiesTags">
+              {opportunity.start_date}
+            </span>
+            <div className="col-2 d-flex justify-content-center">
+              <Link to={`/feedBackConsumerCompany/${opportunity.company}`}>
+                <img className="infoImg" src={InfoIcon} alt="InfoIcon" />
+              </Link>
             </div>
-          );
-        })}
+          </div>
+        );
+      })}
     </Fragment>
   );
 };

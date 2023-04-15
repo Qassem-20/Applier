@@ -4,14 +4,26 @@ import MedicalStore from "../../stores/MedicalStore";
 import { Link } from "react-router-dom";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 import ApplierPopUp from "../../components/applierComponents/applierPopUp/applierPopup";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 
 const MedicalStudents = () => {
   const store = MedicalStore();
+  const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     store.fetchMedicalStudents();
   }, []);
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredMedicalStudents = store.medicalStudents
+    ? store.medicalStudents.filter((medicalStudent) =>
+        medicalStudent.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : [];
 
   return (
     <Fragment>
@@ -28,6 +40,8 @@ const MedicalStudents = () => {
                 type="text"
                 placeholder="Searching for ..."
                 id="searchInput"
+                value={searchTerm}
+                onChange={handleSearch}
               />
             </Col>
           </Col>
@@ -36,19 +50,18 @@ const MedicalStudents = () => {
       <hr />
       <Container className="containerOfMeds">
         <Row>
-          {store.medicalStudents &&
-            store.medicalStudents.map((medicalStudent) => {
-              return (
-                <Col xl={4} md={6} sm={12} key={medicalStudent._id}>
-                  <Link
-                    style={{ textDecoration: "none" }}
-                    to={`/feedBackConsumerMedical/${medicalStudent._id}`}
-                  >
-                    <ApplierPopUp medicalStudent={medicalStudent} />
-                  </Link>
-                </Col>
-              );
-            })}
+          {filteredMedicalStudents.map((medicalStudent) => {
+            return (
+              <Col xl={4} md={6} sm={12} key={medicalStudent._id}>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to={`/feedBackConsumerMedical/${medicalStudent._id}`}
+                >
+                  <ApplierPopUp medicalStudent={medicalStudent} />
+                </Link>
+              </Col>
+            );
+          })}
         </Row>
       </Container>
     </Fragment>
