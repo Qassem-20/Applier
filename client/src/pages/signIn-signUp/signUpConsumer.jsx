@@ -8,9 +8,7 @@ import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 import { options } from "../../APIs/jobTitlesAPI.js";
 import Checkbox from "../../components/applierComponents/applierSelect.jsx";
-import { skillsList } from '../../APIs/skillSets';
-
-
+import { skillsList } from "../../APIs/skillSets";
 
 const initialState = {
   isApplication: true,
@@ -166,15 +164,12 @@ const SignUpConsumer = () => {
                       </select>
 
                       <Checkbox
-                        className="inputStyling mb-3"
                         label="Skills"
                         name="skills"
-                        placeholder="Select your skills"
                         options={skillsList}
                         value={store.values.skills}
                         onChange={store.handleChange}
-                        isMulti={true}
-                        />
+                      />
                     </div>
                     <div className="col-sm-12 col-md-6">
                       <label className="labelStyling font-bold">Degree</label>

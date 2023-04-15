@@ -186,3 +186,15 @@ input:invalid[focused="true"] ~ span {
   color: white;
   background-color: black;
 }
+.selceted {
+  background-color: rgba(229, 229, 229, 0.901);
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  justify-items: end;
+  width: fit-content;
+  margin: 5px;
+}
+.reomveSelection {
+  cursor: pointer;
+}
