@@ -12,7 +12,7 @@ import {
   updateOpportunity,
   hideOpportunity,
   deleteOpportunity,
-  sortOpportunities,
+  fetchOpportunitiesCompanySorted,
   findOpportunity,
 } from "../controllers/opportunitiesController.js";
 //routes of the Opportunity from the controllers
@@ -21,6 +21,10 @@ router.route("/opportunities/:id").get(fetchOpportunity);
 router
   .route("/opportunitiesCompany")
   .get(requireAuthCompany, fetchOpportunitiesCompany);
+
+router
+  .route("/fetchOpportunitiesCompanySorted")
+  .get(requireAuthCompany, fetchOpportunitiesCompanySorted);
 
 router
   .route("/opportunities/registerOpportunity")
@@ -32,6 +36,8 @@ router
 router
   .route("/opportunities/:id")
   .delete(requireAuthCompany, deleteOpportunity);
-router.route("/sortOpportunities").get(sortOpportunities);
+  
+
+
 router.route("/findOpportunity/:name").get(findOpportunity);
 export default router;

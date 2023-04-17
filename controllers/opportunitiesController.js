@@ -9,7 +9,7 @@ const fetchOpportunities = async (req, res) => {
 
 //Company to fetch Opportunities for each company
 const fetchOpportunitiesCompany = async (req, res) => {
-  const opportunities = await Opportunity.find({ company: req.company._id });
+  const opportunities = await Opportunity.find({ company: req.company._id }).sort({createdAt: 1});
 
   res.json({ opportunities });
 };
@@ -25,7 +25,7 @@ const fetchOpportunity = async (req, res) => {
 const findOpportunity = async (req, res) => {
   try {
     const opportunityName = req.params.name;
-    const findName = await opportunity.find({
+    const findName = await Opportunity.find({
       job_role: { $regex: ".*" + opportunityName + ".*" },
     });
     res.json(findName);
@@ -34,11 +34,13 @@ const findOpportunity = async (req, res) => {
   }
 };
 
-const sortOpportunities = async (req, res) => {
-  const opportunities = await opportunity.find().sort({ job_role: 1 });
+const fetchOpportunitiesCompanySorted = async (req, res) => {
+  const opportunities = await Opportunity.find({ company: req.company._id }).sort({createdAt: -1});
 
   res.json({ opportunities });
 };
+
+
 
 const createOpportunity = async (req, res) => {
   const {
@@ -133,6 +135,6 @@ export {
   updateOpportunity,
   deleteOpportunity,
   hideOpportunity,
-  sortOpportunities,
+  fetchOpportunitiesCompanySorted,
   findOpportunity,
 };

@@ -1,16 +1,50 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Nav from "../../components/Nav/companyNav";
 import EditOpportunities from "../../assets/images/customizeIcon.png";
 import EyeIcon from "../../assets/images/eyeIcon.webp";
 import opportunityStore from "../../stores/OpportunityStore";
 import { Container, Row, Col } from "react-bootstrap";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
+
+
 
 const CompanyHomePage = () => {
+
   const store = opportunityStore();
+
   useEffect(() => {
     store.fetchOpportunitiesCompany();
   }, []);
+
+
+  const [sorted, setSorted] = useState({});
+
+  const sortNew = () =>{
+    setSorted(store.fetchOpportunitiesCompanySorted)
+    return sorted;
+  }
+
+  const sortOld = () =>{
+    setSorted(store.fetchOpportunitiesCompany)
+    return sorted;
+  }
+
+  const onSelect = (e) => {
+    const value = e.target.value;
+    console.log(value);
+
+    if (value === "new"){
+      return sortNew();
+    }
+    else if (value === "early"){
+      return sortOld();
+    }
+  }
+
+
   return (
     <Fragment>
       <Nav />
@@ -38,11 +72,21 @@ const CompanyHomePage = () => {
               id="searchInput"
             />
           </Col>
+          <Col>
+          <label className="labelStyling">Sort By Date</label>
+              <select
+                className="inputStyling mb-3"
+                name="sort"
+                onChangeCapture={onSelect}
+              >
+                <option value="new" >Newest</option>
+                <option value="early" >Earliest</option>
+              </select></Col>
         </Row>
       </Container>
 
       <div className="row opportunitiesTag">
-        <span className="col-2 opportunitiesMainTags">Role</span>
+        <span  className="col-2 opportunitiesMainTags">Role</span>
         <span className="col-2 opportunitiesMainTags">Job Description</span>
         <span className="col-2 opportunitiesMainTags">Available Seats</span>
         <span className="col-2 opportunitiesMainTags">duration</span>
@@ -51,7 +95,7 @@ const CompanyHomePage = () => {
         <span className="col-1 opportunitiesMainTags">Edit</span>
       </div>
       {store.opportunities &&
-        store.opportunities.map((opportunity) => {
+        store.opportunities.sort((a,b)=> a.date < b.date).map((opportunity) => {
           return (
             <div className="row opportunitiesT" key={opportunity._id}>
               <span className="col-2 opportunitiesTags">
@@ -67,7 +111,7 @@ const CompanyHomePage = () => {
                 {opportunity.duration}
               </span>
               <span className="col-2 opportunitiesTags">
-                {opportunity.createdAt}
+                {opportunity.createdAt.slice(0,10)}
               </span>
               <div className="col-1 d-flex justify-content-center">
                 <a href={`/appliedTrainee/${opportunity._id}`}>

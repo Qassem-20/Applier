@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
+
 const OpportunityStore = create((set) => ({
   opportunities: null,
   opportunity: null,
@@ -23,6 +24,16 @@ const OpportunityStore = create((set) => ({
   fetchOpportunitiesCompany: async () => {
     // Fetch the opportunities
     const res = await axios.get("http://localhost:4000/api/v1/opportunitiesCompany",     { withCredentials: true });
+    // Set to state
+    set({ opportunities: res.data.opportunities });
+  },
+
+
+
+  // fetchOpportunitiesCompanySorted
+  fetchOpportunitiesCompanySorted: async () => {
+    // Fetch the opportunities
+    const res = await axios.get("http://localhost:4000/api/v1/fetchOpportunitiesCompanySorted",     { withCredentials: true });
     // Set to state
     set({ opportunities: res.data.opportunities });
   },
@@ -194,6 +205,8 @@ const OpportunityStore = create((set) => ({
       };
     });
   },
+
 }));
+
 
 export default OpportunityStore;
