@@ -1,47 +1,57 @@
 import { create } from "zustand";
 import axios from "axios";
 
-
 const OpportunityStore = create((set) => ({
   opportunities: null,
   opportunity: null,
   fetchOpportunities: async () => {
     // Fetch the opportunities
-    const res = await axios.get("http://localhost:4000/api/v1/OpportunitiesApplications",     { withCredentials: true });
+    const res = await axios.get(
+      "http://localhost:4000/api/v1/OpportunitiesApplications",
+      { withCredentials: true }
+    );
+
     // Set to state
-    set({ opportunities: res.data.opportunity });
+    set({ opportunities: res.data });
   },
 
   fetchOpportunity: async (_id) => {
     // Fetch the consumers
-    const res = await axios.get(`http://localhost:4000/api/v1/opportunities/${_id}`, {
-      withCredentials: true,
-    });
+    const res = await axios.get(
+      `http://localhost:4000/api/v1/opportunities/${_id}`,
+      {
+        withCredentials: true,
+      }
+    );
     // Set to state
     set({ opportunity: res.data.opportunity });
   },
 
   fetchOpportunitiesCompany: async () => {
     // Fetch the opportunities
-    const res = await axios.get("http://localhost:4000/api/v1/opportunitiesCompany",     { withCredentials: true });
+    const res = await axios.get(
+      "http://localhost:4000/api/v1/opportunitiesCompany",
+      { withCredentials: true }
+    );
     // Set to state
     set({ opportunities: res.data.opportunities });
   },
-
-
 
   // fetchOpportunitiesCompanySorted
   fetchOpportunitiesCompanySorted: async () => {
     // Fetch the opportunities
-    const res = await axios.get("http://localhost:4000/api/v1/fetchOpportunitiesCompanySorted",     { withCredentials: true });
+    const res = await axios.get(
+      "http://localhost:4000/api/v1/fetchOpportunitiesCompanySorted",
+      { withCredentials: true }
+    );
     // Set to state
     set({ opportunities: res.data.opportunities });
   },
 
-
   deleteOpportunity: async (_id) => {
     const res = await axios.delete(
-      "http://localhost:4000/api/v1/opportunities/" + _id,     { withCredentials: true }
+      "http://localhost:4000/api/v1/opportunities/" + _id,
+      { withCredentials: true }
     );
 
     const { opportunities } = OpportunityStore.getState();
@@ -68,19 +78,40 @@ const OpportunityStore = create((set) => ({
     city: "",
     visibility: "",
   },
-  toggleUpdate: ({ 
+  toggleUpdate: ({
     _id,
-    job_role,description,skills,job_type,departments_preferred,major_preferred,availability_seats,salary,start_date,duration,city,visibility,
-   }) => {
+    job_role,
+    description,
+    skills,
+    job_type,
+    departments_preferred,
+    major_preferred,
+    availability_seats,
+    salary,
+    start_date,
+    duration,
+    city,
+    visibility,
+  }) => {
     set({
       updateStatue: {
-        job_role,description,skills,job_type,departments_preferred,major_preferred,availability_seats,salary,start_date,duration,city,visibility,
+        job_role,
+        description,
+        skills,
+        job_type,
+        departments_preferred,
+        major_preferred,
+        availability_seats,
+        salary,
+        start_date,
+        duration,
+        city,
+        visibility,
         _id,
       },
     });
   },
   updateOpportunity: async () => {
-
     const {
       updateStatue: {
         job_role,
@@ -116,7 +147,8 @@ const OpportunityStore = create((set) => ({
         duration,
         city,
         visibility,
-      },     { withCredentials: true }
+      },
+      { withCredentials: true }
     );
 
     set({
@@ -153,14 +185,13 @@ const OpportunityStore = create((set) => ({
   },
 
   registerOpportunity: async () => {
-
     const { values } = OpportunityStore.getState();
 
     // add opportunity
     const res = await axios.post(
       "http://localhost:4000/api/v1/opportunities/registerOpportunity",
-      values,      { withCredentials: true }
-
+      values,
+      { withCredentials: true }
     );
     set({
       values: {
@@ -179,7 +210,7 @@ const OpportunityStore = create((set) => ({
     });
   },
   application: {
-    application:"",
+    application: "",
   },
   handleUpdate: async (e) => {
     const { name, value } = e.target;
@@ -205,8 +236,6 @@ const OpportunityStore = create((set) => ({
       };
     });
   },
-
 }));
-
 
 export default OpportunityStore;

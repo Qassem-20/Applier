@@ -13,7 +13,7 @@ const Opportunities = () => {
   const store = OpportunityStore();
 
   const [applied, setApplied] = useState(null);
-  //for searching opportunities
+  // for searching opportunities
   const [searchTerm, setSearchTerm] = useState("");
 
   const [userData, setUserData] = useState({
@@ -36,6 +36,7 @@ const Opportunities = () => {
         userData,
         { withCredentials: true }
       );
+      setApplied("applied");
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -52,7 +53,9 @@ const Opportunities = () => {
 
   const filterOpportunities = store.opportunities
     ? store.opportunities.filter((opportunity) =>
-        opportunity.name.toLowerCase().includes(searchTerm.toLowerCase())
+        opportunity.major_preferred
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
       )
     : [];
 
