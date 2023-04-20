@@ -2,6 +2,7 @@ import "../../assets/css/consumer.css";
 import InfoIcon from "../../assets/images/infoIcon.png";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import OpportunityStore from "../../stores/OpportunityStore";
+import TraineeApplicationStore from "../../stores/traineeApplicationStore";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import axios from "axios";
@@ -11,8 +12,10 @@ import React, { Fragment, useEffect, useState } from "react";
 
 const Opportunities = () => {
   const store = OpportunityStore();
+  const applicationStore = TraineeApplicationStore();
 
-  const [applied, setApplied] = useState(null);
+  const [traineeApplications, setTraineeApplications] = useState([]);
+
   // for searching opportunities
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -44,6 +47,7 @@ const Opportunities = () => {
 
   useEffect(() => {
     store.fetchOpportunities();
+    applicationStore.fetchTraineeApplications();
   }, []);
 
   const handleSearch = (event) => {
@@ -90,6 +94,12 @@ const Opportunities = () => {
         <span className="col-2 opportunitiesMainTags">Company info</span>
       </div>
       {filterOpportunities.map((opportunity) => {
+        // Check if the opportunity ID is in the traineeApplications array
+        const isApplied = traineeApplications.some(
+          (application) =>
+            application.applicationStatus.opportunity === opportunity._id
+        );
+
         return (
           <div className="row opportunitiesT" key={opportunity._id}>
             <span className="col-2 opportunitiesTags">
@@ -117,8 +127,8 @@ const Opportunities = () => {
                   onChange={handleUserDataChange}
                 />
                 <ApplierButton
-                  buttonType={applied ? "Applied" : "Apply"}
-                  isDisabled={applied}
+                  buttonType={isApplied === "unApplied" ? "Applied" : "Apply"}
+                  isDisabled={isApplied === "Applied"}
                   type="submit"
                   name="statue"
                   className="button"
