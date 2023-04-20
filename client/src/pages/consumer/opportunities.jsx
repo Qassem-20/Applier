@@ -36,7 +36,6 @@ const Opportunities = () => {
         userData,
         { withCredentials: true }
       );
-      setApplied("applied");
       console.log(response.data);
     } catch (error) {
       console.error(error);
