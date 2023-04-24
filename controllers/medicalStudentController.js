@@ -55,8 +55,6 @@ const createMedicalStudent = async (req, res) => {
       gender,
       main_major,
       specialty,
-      statue,
-      profile_visibility,
     } = req.body;
 
     //hash the password
