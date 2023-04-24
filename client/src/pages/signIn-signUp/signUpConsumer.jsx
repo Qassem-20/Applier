@@ -36,7 +36,7 @@ const SignUpConsumer = () => {
       history.push("/signIn");
     } catch (err) {
       console.error(err.response.data);
-      alert(err.response.data);
+      alert(`this account already registered`);
     }
   };
   return (

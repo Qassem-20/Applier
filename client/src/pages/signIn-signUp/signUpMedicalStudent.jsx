@@ -21,7 +21,7 @@ const SignUpMedicalStudent = () => {
       history.push("/signIn");
     } catch (err) {
       console.error(err.response.data);
-      alert(err.response.data);
+      alert(`this account already registered`);
     }
   };
   return (
@@ -40,7 +40,7 @@ const SignUpMedicalStudent = () => {
         </Row>
         <hr />
         <Container>
-          <form onSubmit={handleSignUp}>
+          <form action="/signIn" onSubmit={handleSignUp}>
             <Row>
               <Col md={6} sm={12}>
                 <ApplierInputForm

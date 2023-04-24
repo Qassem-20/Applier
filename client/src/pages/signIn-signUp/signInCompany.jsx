@@ -18,7 +18,7 @@ const SignInCompany = () => {
     } catch (err) {
       console.error(err.response.data);
       alert(
-        `${err.response.data}, Please enter a vaild login credentials, or sign up if you don't have an account`
+        `${err.response.data}, Please enter a valid login credentials, or sign up if you don't have an account`
       );
     }
   };
