@@ -74,7 +74,7 @@ const ApplierAddingReview = (props) => {
           onChange={store.handleChange}
         />
 
-        <ApplierInputForm
+        <input
           type="hidden"
           name="company"
           className="inputStyling"

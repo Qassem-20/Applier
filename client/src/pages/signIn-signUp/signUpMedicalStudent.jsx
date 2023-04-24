@@ -1,8 +1,8 @@
 import "../../assets/css/signUpSignIn.css";
 import WelcomeNav from "../../components/Nav/welcomeNav";
+import { useHistory } from "react-router-dom";
 import { Col, Row, Container } from "react-bootstrap";
 import React, { Fragment } from "react";
-import { useHistory } from "react-router-dom";
 import MedicalStore from "../../stores/MedicalStore";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";

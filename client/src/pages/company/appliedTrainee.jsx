@@ -52,9 +52,6 @@ const AppliedTrainee = () => {
           <h1 id="opportunitiesHeader">
             &nbsp;&nbsp;&nbsp;Qualified candidates
           </h1>
-          <div className="mt-3">
-            <CompanyChart />
-          </div>
         </div>
 
         <div className="col-8 mt-5">
