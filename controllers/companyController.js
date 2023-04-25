@@ -3,19 +3,25 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 const getCompanyProfile = async (req, res, next) => {
-  const companyId = req.company.id; // Assuming you're using JWT or session-based authentication
-  const company = await Company.findById(companyId);
-  if (!company) {
-    return res.status(404).json({ error: "company not found" });
+  try {
+    const companyId = req.company.id; // Assuming you're using JWT or session-based authentication
+    const company = await Company.findById(companyId);
+    if (!company) {
+      return res.status(404).json({ error: "company not found" });
+    }
+    return res.json({ company });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
   }
-  return res.json({ company });
 };
 
 const fetchCompanies = async (req, res) => {
-  const companies = await Company.find();
+  try {
+    const companies = await Company.find();
 
-  res.json({ companies });
-  /*
+    res.json({ companies });
+    /*
       const { status, jobType, sort, search } = req.query;
 
       const queryObject = {
@@ -67,14 +73,23 @@ const fetchCompanies = async (req, res) => {
     
       res.status(StatusCodes.OK).json({ jobs, totalJobs, numOfPages });
     */
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const fetchCompany = async (req, res) => {
-  const companyId = req.params.id;
+  try {
+    const companyId = req.params.id;
 
-  const company = await Company.findById(companyId);
+    const company = await Company.findById(companyId);
 
-  res.json({ company });
+    res.json({ company });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const findCompany = async (req, res) => {
@@ -90,20 +105,30 @@ const findCompany = async (req, res) => {
 };
 
 const sortCompanies = async (req, res) => {
-  const companies = await Company.find().sort({ organization_name: 1 });
+  try {
+    const companies = await Company.find().sort({ organization_name: 1 });
 
-  res.json({ companies });
+    res.json({ companies });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 // Create feedback and review
 const createFeedBack = async (req, res) => {
-  const reviews = req.body;
+  try {
+    const reviews = req.body;
 
-  await Company.findByIdAndUpdate(companyId, reviews);
+    await Company.findByIdAndUpdate(companyId, reviews);
 
-  const company = await Company.findById(companyId);
+    const company = await Company.findById(companyId);
 
-  res.json({ company });
+    res.json({ company });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const createCompany = async (req, res) => {
@@ -201,57 +226,72 @@ function checkAuthCompany(req, res) {
   }
 }
 const updateCompany = async (req, res) => {
-  const companyId = req.params.id;
+  try {
+    const companyId = req.params.id;
 
-  const {
-    organization_name,
-    register_number,
-    organization_phone,
-    organization_website,
-    organization_bio,
-    supervisor_name,
-    country,
-    city,
-    phone,
-  } = req.body;
+    const {
+      organization_name,
+      register_number,
+      organization_phone,
+      organization_website,
+      organization_bio,
+      supervisor_name,
+      country,
+      city,
+      phone,
+    } = req.body;
 
-  await Company.findByIdAndUpdate(companyId, {
-    organization_name,
-    register_number,
-    organization_phone,
-    organization_website,
-    organization_bio,
-    supervisor_name,
-    country,
-    city,
-    phone,
-  });
+    await Company.findByIdAndUpdate(companyId, {
+      organization_name,
+      register_number,
+      organization_phone,
+      organization_website,
+      organization_bio,
+      supervisor_name,
+      country,
+      city,
+      phone,
+    });
 
-  const company = await Company.findById(companyId);
+    const company = await Company.findById(companyId);
 
-  res.json({ company });
+    res.json({ company });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const deleteCompany = async (req, res) => {
-  const companyId = req.params.id;
+  try {
+    const companyId = req.params.id;
 
-  await Company.findByIdAndDelete(companyId);
+    await Company.findByIdAndDelete(companyId);
 
-  res.json({ success: "Record deleted" });
+    res.json({ success: "Record deleted" });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const activateCompany = async (req, res) => {
-  const companyId = req.params.id;
+  try {
+    const companyId = req.params.id;
 
-  const { statue } = req.body;
+    const { statue } = req.body;
 
-  await Company.findByIdAndUpdate(companyId, {
-    statue,
-  });
+    await Company.findByIdAndUpdate(companyId, {
+      statue,
+    });
 
-  const company = await Company.findById(companyId);
+    const company = await Company.findById(companyId);
 
-  res.json({ company });
+    res.json({ company });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 export {
