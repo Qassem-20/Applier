@@ -18,7 +18,9 @@ const getMedicalStudentProfile = async (req, res, next) => {
 
 const fetchMedicalStudents = async (req, res) => {
   try {
-    const medicalStudents = await MedicalStudent.find({ visibility: "shown" });
+    const medicalStudents = await MedicalStudent.find({
+      profile_visibility: "shown",
+    });
 
     res.json({ medicalStudents });
   } catch (err) {
