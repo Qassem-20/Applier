@@ -3,9 +3,9 @@ import axios from "axios";
 
 const CompanyStore = create((set) => ({
   companies: null,
-  company:null,
+  company: null,
 
-  fetchCompanyProfile : async () => {
+  fetchCompanyProfile: async () => {
     try {
       const response = await axios.get(
         "http://localhost:4000/api/v1/companyProfile",
@@ -13,7 +13,7 @@ const CompanyStore = create((set) => ({
           withCredentials: true,
         }
       );
-      set({company:response.data.company});
+      set({ company: response.data.company });
     } catch (error) {
       console.error(error);
       // TODO: Handle errors
@@ -46,10 +46,9 @@ const CompanyStore = create((set) => ({
   },
 
   deleteCompany: async (_id) => {
-    const res = await axios.delete(
-      "http://localhost:4000/api/v1/companies/" + _id,
-      { withCredentials: true }
-    );
+    await axios.delete("http://localhost:4000/api/v1/companies/" + _id, {
+      withCredentials: true,
+    });
 
     const { companies } = CompanyStore.getState();
 
@@ -63,7 +62,6 @@ const CompanyStore = create((set) => ({
   updateProfile: {
     _id: null,
     organization_name: "",
-    organization_name: "",
     register_number: "",
     organization_phone: "",
     organization_website: "",
@@ -73,7 +71,7 @@ const CompanyStore = create((set) => ({
     city: "",
     phone: "",
   },
-  toggleUpdate: ({ 
+  toggleUpdate: ({
     _id,
     organization_name,
     register_number,
@@ -84,7 +82,7 @@ const CompanyStore = create((set) => ({
     country,
     city,
     phone,
-   }) => {
+  }) => {
     set({
       updateProfile: {
         organization_name,
@@ -101,7 +99,6 @@ const CompanyStore = create((set) => ({
     });
   },
   updateProfileCompany: async () => {
-
     const {
       updateProfile: {
         organization_name,
@@ -186,11 +183,9 @@ const CompanyStore = create((set) => ({
     const { values } = CompanyStore.getState();
 
     // add company
-    const res = await axios.post(
-      "http://localhost:4000/api/v1/registerCompany",
-      values,
-      { withCredentials: true }
-    );
+    await axios.post("http://localhost:4000/api/v1/registerCompany", values, {
+      withCredentials: true,
+    });
     set({
       values: {
         organization_name: "",

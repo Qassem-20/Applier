@@ -3,9 +3,9 @@ import axios from "axios";
 
 const MedicalStore = create((set) => ({
   medicalStudents: null,
-  medicalStudent:null,
+  medicalStudent: null,
 
-  fetchMedicalProfile : async () => {
+  fetchMedicalProfile: async () => {
     try {
       const response = await axios.get(
         "http://localhost:4000/api/v1/medicalStudentProfile",
@@ -13,7 +13,7 @@ const MedicalStore = create((set) => ({
           withCredentials: true,
         }
       );
-      set({medicalStudent:response.data.medicalStudent});
+      set({ medicalStudent: response.data.medicalStudent });
     } catch (error) {
       console.error(error);
       // TODO: Handle errors
@@ -32,12 +32,9 @@ const MedicalStore = create((set) => ({
   },
 
   deleteMedicalStudent: async (_id) => {
-    const res = await axios.delete(
-      "http://localhost:4000/api/v1/medicalStudents/" + _id,
-      {
-        withCredentials: true,
-      }
-    );
+    await axios.delete("http://localhost:4000/api/v1/medicalStudents/" + _id, {
+      withCredentials: true,
+    });
 
     const { medicalStudents } = MedicalStore.getState();
 
@@ -59,7 +56,7 @@ const MedicalStore = create((set) => ({
     main_major: "",
     specialty: "",
   },
-  toggleUpdate: ({ 
+  toggleUpdate: ({
     _id,
     name,
     phone_number,
@@ -69,7 +66,7 @@ const MedicalStore = create((set) => ({
     profile_visibility,
     main_major,
     specialty,
-   }) => {
+  }) => {
     set({
       updateProfile: {
         name,
@@ -85,7 +82,6 @@ const MedicalStore = create((set) => ({
     });
   },
   updateMedicalStudents: async () => {
-
     const {
       updateProfile: {
         name,
@@ -170,7 +166,7 @@ const MedicalStore = create((set) => ({
     const { values } = MedicalStore.getState();
 
     // add medicalStudent
-    const res = await axios.post(
+    await axios.post(
       "http://localhost:4000/api/v1/registerMedicalStudent",
       values,
       {

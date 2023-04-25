@@ -14,10 +14,9 @@ const AdminsStore = create((set) => ({
   },
 
   deleteAdmin: async (_id) => {
-    const res = await axios.delete(
-      "http://localhost:4000/api/v1/admins/" + _id,
-      { withCredentials: true }
-    );
+    await axios.delete("http://localhost:4000/api/v1/admins/" + _id, {
+      withCredentials: true,
+    });
 
     const { admins } = AdminsStore.getState();
 
@@ -98,11 +97,9 @@ const AdminsStore = create((set) => ({
     const { values } = AdminsStore.getState();
 
     // add admin
-    const res = await axios.post(
-      "http://localhost:4000/api/v1/registerAdmin",
-      values,
-      { withCredentials: true }
-    );
+    await axios.post("http://localhost:4000/api/v1/registerAdmin", values, {
+      withCredentials: true,
+    });
     set({
       values: {
         name: "",

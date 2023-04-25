@@ -1,7 +1,6 @@
 import { Container } from "react-bootstrap";
 import "../../assets/css/feedback.css";
 import ApplierButton from "./applierButton";
-import ApplierInputForm from "./applierInputForm";
 
 const ApplierAddingReview = (props) => {
   const { store, createReview, userProfile } = props;

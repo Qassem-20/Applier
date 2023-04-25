@@ -1,7 +1,7 @@
 import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
 import React, { Fragment, useEffect, useState } from "react";
-import { Container, Row, Col, SortButton, SortIcon } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import ConsumerStore from "../../stores/ConsumerStore.js";
 
@@ -30,22 +30,22 @@ const Consumers = () => {
   }
   useEffect(() => {
     store.fetchConsumers();
-  }, []);
+  }, [store]);
 
   useEffect(() => {
     store.sortNameConsumers();
-  }, []);
+  }, [store]);
 
   useEffect(() => {
     store.sortDateConsumers();
-  }, []);
-  const storeSearch = ConsumerStore((s) => s.searchConsumers());
+  }, [store]);
+  /*const storeSearch = ConsumerStore((s) => s.searchConsumers());
 
   const handleSearch = async (e) => {
     e.preventDefault();
     await store.searchConsumers();
   };
-
+*/
   return (
     <Fragment>
       <AdminNav />

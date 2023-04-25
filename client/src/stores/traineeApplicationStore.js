@@ -6,17 +6,15 @@ const TraineeApplicationStore = create((set) => ({
 
   fetchTraineeApplications: async () => {
     // Fetch the traineeApplications
-    const res = await axios.get(
-      "http://localhost:4000/api/v1/applications"
-    );
+    const res = await axios.get("http://localhost:4000/api/v1/applications");
     // Set to state
     set({ traineeApplications: res.data.traineeApplications });
   },
 
   deleteTraineeApplication: async (_id) => {
-    const res = await axios.delete(
-      "http://localhost:4000/api/v1//applications/" + _id,     { withCredentials: true }
-    );
+    await axios.delete("http://localhost:4000/api/v1//applications/" + _id, {
+      withCredentials: true,
+    });
 
     const { traineeApplications } = TraineeApplicationStore.getState();
 
@@ -73,7 +71,8 @@ const TraineeApplicationStore = create((set) => ({
 
         linkedIn_profile,
         experience,
-      },     { withCredentials: true }
+      },
+      { withCredentials: true }
     );
 
     // Update state
@@ -103,15 +102,14 @@ const TraineeApplicationStore = create((set) => ({
     const { values } = TraineeApplicationStore.getState();
 
     // add traineeApplication
-    const res = await axios.post(
+    await axios.post(
       "http://localhost:4000/api/v1/traineeApplications/registerTraineeApplications",
-      values,     
+      values,
       { withCredentials: true }
     );
     set({
       values: {
         statue: "",
-        
       },
     });
   },

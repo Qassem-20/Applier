@@ -30,10 +30,9 @@ const ReviewStore = create((set) => ({
   },
 
   deleteReview: async (_id) => {
-    const res = await axios.delete(
-      "http://localhost:4000/api/v1/reviews/" + _id,
-      { withCredentials: true }
-    );
+    await axios.delete("http://localhost:4000/api/v1/reviews/" + _id, {
+      withCredentials: true,
+    });
 
     const { reviews } = ReviewStore.getState();
 
@@ -93,7 +92,7 @@ const ReviewStore = create((set) => ({
     const { values } = ReviewStore.getState();
 
     // add review
-    const res = await axios.post(
+    await axios.post(
       "http://localhost:4000/api/v1/reviews/registerReviewCompany",
       values,
       { withCredentials: true }
@@ -110,7 +109,7 @@ const ReviewStore = create((set) => ({
     const { values } = ReviewStore.getState();
 
     // add review
-    const res = await axios.post(
+    await axios.post(
       "http://localhost:4000/api/v1/reviews/registerReviewMedical",
       values,
       { withCredentials: true }

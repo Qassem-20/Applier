@@ -6,7 +6,6 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import ReviewStore from "../../stores/ReviewStore";
 import { Container, Row, Col } from "react-bootstrap";
-import ApplierAddingReview from "../../components/applierComponents/applierAddingReview";
 
 const FeedBackConsumerMedical = () => {
   const { medicalId } = useParams();
@@ -39,7 +38,7 @@ const FeedBackConsumerMedical = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [medicalId]);
   return (
     <Fragment>
       <ConsumerNav />

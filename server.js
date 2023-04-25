@@ -30,10 +30,6 @@ app.get("", (req, res) => {
   res.send("Welcome to Applier project");
 });
 
-//admin routes
-import adminRoutes from "./routes/adminRoutes.js";
-app.use("/api/v1", adminRoutes);
-
 //company routes
 import companyRoutes from "./routes/companyRoutes.js";
 app.use("/api/v1", companyRoutes);
@@ -45,6 +41,10 @@ app.use("/api/v1", consumerRoutes);
 //medicalStudents routes
 import medicalStudentsRoutes from "./routes/medicalStudentsRoutes.js";
 app.use("/api/v1", medicalStudentsRoutes);
+
+//admin routes
+import adminRoutes from "./routes/adminRoutes.js";
+app.use("/api/v1", adminRoutes);
 
 //review routes
 import reviewRoutes from "./routes/reviewRoutes.js";

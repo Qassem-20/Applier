@@ -1,10 +1,8 @@
 import "../../assets/css/company.css";
-
 import CustomizeIcon from "../../assets/images/customizeIcon.png";
 import OptionIcon from "../../assets/images/optionIcon.png";
 import EyeIcon from "../../assets/images/eyeIcon.webp";
 import Nav from "../../components/Nav/companyNav";
-import CompanyChart from "../../components/charts/companyChart.jsx";
 import { useParams } from "react-router-dom";
 import React, { Fragment, useState, useEffect } from "react";
 import OpportunityStore from "../../stores/OpportunityStore";
@@ -42,7 +40,7 @@ const AppliedTrainee = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [opportunityId]);
 
   return (
     <Fragment>

@@ -49,10 +49,9 @@ const OpportunityStore = create((set) => ({
   },
 
   deleteOpportunity: async (_id) => {
-    const res = await axios.delete(
-      "http://localhost:4000/api/v1/opportunities/" + _id,
-      { withCredentials: true }
-    );
+    await axios.delete("http://localhost:4000/api/v1/opportunities/" + _id, {
+      withCredentials: true,
+    });
 
     const { opportunities } = OpportunityStore.getState();
 
@@ -128,11 +127,10 @@ const OpportunityStore = create((set) => ({
         visibility,
         _id,
       },
-      opportunities,
     } = OpportunityStore.getState();
 
     // Send the update request
-    const res = await axios.put(
+    await axios.put(
       `http://localhost:4000/api/v1/opportunities/${_id}`,
       {
         job_role,
@@ -188,7 +186,7 @@ const OpportunityStore = create((set) => ({
     const { values } = OpportunityStore.getState();
 
     // add opportunity
-    const res = await axios.post(
+    await axios.post(
       "http://localhost:4000/api/v1/opportunities/registerOpportunity",
       values,
       { withCredentials: true }

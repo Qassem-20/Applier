@@ -13,9 +13,7 @@ const SignInMedical = () => {
     e.preventDefault();
 
     try {
-      const response = await storeMedical.loginMedicalStudent();
-
-      console.log(response.data);
+      await storeMedical.loginMedicalStudent();
       //Navigate
       navigate.push("/medicalHomePage");
     } catch (err) {

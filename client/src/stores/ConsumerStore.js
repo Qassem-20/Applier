@@ -1,20 +1,22 @@
 import { create } from "zustand";
 import axios from "axios";
 
-
 const ConsumerStore = create((set) => ({
   consumers: null,
-  consumer:null,
-  fetchConsumer: async ( _id) => {
+  consumer: null,
+  fetchConsumer: async (_id) => {
     // Fetch the consumers
-    const res = await axios.get(`http://localhost:4000/api/v1/consumers/${_id}`, {
-      withCredentials: true,
-    });
+    const res = await axios.get(
+      `http://localhost:4000/api/v1/consumers/${_id}`,
+      {
+        withCredentials: true,
+      }
+    );
     // Set to state
     set({ consumers: res.data.consumers });
   },
 
-  fetchConsumerProfile : async () => {
+  fetchConsumerProfile: async () => {
     try {
       const response = await axios.get(
         "http://localhost:4000/api/v1/consumerProfile",
@@ -22,7 +24,7 @@ const ConsumerStore = create((set) => ({
           withCredentials: true,
         }
       );
-      set({consumer:response.data.consumer});
+      set({ consumer: response.data.consumer });
     } catch (error) {
       console.error(error);
       // TODO: Handle errors
@@ -37,29 +39,31 @@ const ConsumerStore = create((set) => ({
     set({ consumers: res.data.consumers });
   },
 
-  sortNameConsumers:async () =>{
+  sortNameConsumers: async () => {
+    const res = await axios.get(
+      "http://localhost:4000/api/v1/sortNameConsumers"
+    );
 
-    const res = await axios.get("http://localhost:4000/api/v1/sortNameConsumers")
-
-    set({consumers : res.data.consumers})
+    set({ consumers: res.data.consumers });
   },
-  sortDateConsumers:async () =>{
+  sortDateConsumers: async () => {
+    const res = await axios.get(
+      "http://localhost:4000/api/v1/sortDateConsumers"
+    );
 
-    const res = await axios.get("http://localhost:4000/api/v1/sortDateConsumers")
-
-    set({consumers : res.data.consumers})
+    set({ consumers: res.data.consumers });
   },
 
   searchForm: {
     phone: "",
     name: "",
   },
-  searchConsumers: async(e) =>{
-
+  searchConsumers: async (e) => {
     const { searchForm } = ConsumerStore.getState().searchForm;
 
-
-    const res = await axios.get("http://localhost:4000/api/v1//findConsumer/" + searchForm.name);
+    const res = await axios.get(
+      "http://localhost:4000/api/v1//findConsumer/" + searchForm.name
+    );
 
     console.log(res);
     set((state) => {
@@ -72,16 +76,12 @@ const ConsumerStore = create((set) => ({
     });
 
     set({ consumers: res.data.consumers });
-
-
   },
 
-
   deleteConsumer: async (_id) => {
-    const res = await axios.delete(
-      "http://localhost:4000/api/v1//findConsumer/" + _id,
-      { withCredentials: true }
-    );
+    await axios.delete("http://localhost:4000/api/v1//findConsumer/" + _id, {
+      withCredentials: true,
+    });
 
     const { consumers } = ConsumerStore.getState();
 
@@ -91,8 +91,6 @@ const ConsumerStore = create((set) => ({
     });
     set({ consumers: newConsumers });
   },
-
-
 
   updateProfile: {
     _id: null,
@@ -108,7 +106,7 @@ const ConsumerStore = create((set) => ({
     linkedIn_profile: "",
     experience: "",
   },
-  toggleUpdate: ({ 
+  toggleUpdate: ({
     _id,
     name,
     phone,
@@ -122,7 +120,7 @@ const ConsumerStore = create((set) => ({
     linkedIn_profile,
     experience,
     degree,
-   }) => {
+  }) => {
     set({
       updateProfile: {
         name,
@@ -142,10 +140,9 @@ const ConsumerStore = create((set) => ({
     });
   },
   updateConsumer: async () => {
-
     const {
-      updateProfile: {     
-        _id,    
+      updateProfile: {
+        _id,
         name,
         phone,
         nationality,
@@ -158,12 +155,11 @@ const ConsumerStore = create((set) => ({
         linkedIn_profile,
         experience,
         degree,
-
       },
     } = ConsumerStore.getState();
 
     // Send the update request
-    const res = await axios.put(
+    await axios.put(
       `http://localhost:4000/api/v1/consumers/${_id}`,
       {
         name,
@@ -178,7 +174,6 @@ const ConsumerStore = create((set) => ({
         linkedIn_profile,
         experience,
         degree,
-
       },
       { withCredentials: true }
     );
@@ -197,54 +192,49 @@ const ConsumerStore = create((set) => ({
         cv: "",
         linkedIn_profile: "",
         experience: "",
-        degree:"",
+        degree: "",
       },
     });
   },
 
   values: {
-    name:"",
-    email:"",
-    password:"",
-    phone:"",
-    nationality:"",
-    university:"",
-    major:"",
-    gpa:"",
-    concentrated_major:"",
-    skills:"",
-    linkedIn_profile:"",
-    experience:"",
-    degree:""
-
+    name: "",
+    email: "",
+    password: "",
+    phone: "",
+    nationality: "",
+    university: "",
+    major: "",
+    gpa: "",
+    concentrated_major: "",
+    skills: "",
+    linkedIn_profile: "",
+    experience: "",
+    degree: "",
   },
 
   registerConsumer: async () => {
     const { values } = ConsumerStore.getState();
 
     // add consumer
-    const res = await axios.post(
-      "http://localhost:4000/api/v1/registerConsumer",
-      values,
-      {
-        withCredentials: true,
-      }
-    );
+    await axios.post("http://localhost:4000/api/v1/registerConsumer", values, {
+      withCredentials: true,
+    });
     set({
       values: {
-        name:"",
-        email:"",
-        password:"",
-        phone:"",
-        nationality:"",
-        university:"",
-        major:"",
-        gpa:"",
-        concentrated_major:"",
-        skills:"",
-        linkedIn_profile:"",
-        experience:"",
-        degree:""
+        name: "",
+        email: "",
+        password: "",
+        phone: "",
+        nationality: "",
+        university: "",
+        major: "",
+        gpa: "",
+        concentrated_major: "",
+        skills: "",
+        linkedIn_profile: "",
+        experience: "",
+        degree: "",
       },
     });
   },
@@ -278,13 +268,14 @@ const ConsumerStore = create((set) => ({
   handleSearchForm: async (e) => {
     const { name, value } = e.target;
 
-    set(state => {
-      return{
-        searchForm:{
-          ...state.searchForm, [name]: value,
+    set((state) => {
+      return {
+        searchForm: {
+          ...state.searchForm,
+          [name]: value,
         },
       };
-    }) ;
+    });
   },
 
   // login
@@ -308,9 +299,13 @@ const ConsumerStore = create((set) => ({
   loginConsumer: async () => {
     const { loginFormConsumer } = ConsumerStore.getState();
 
-    await axios.post("http://localhost:4000/api/v1/loginConsumer", loginFormConsumer, {
-      withCredentials: true,
-    });
+    await axios.post(
+      "http://localhost:4000/api/v1/loginConsumer",
+      loginFormConsumer,
+      {
+        withCredentials: true,
+      }
+    );
 
     set({ loggedIn: true });
   },
@@ -330,8 +325,6 @@ const ConsumerStore = create((set) => ({
     });
     set({ loggedIn: false });
   },
-
 }));
-
 
 export default ConsumerStore;

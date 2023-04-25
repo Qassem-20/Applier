@@ -28,7 +28,7 @@ const MedicalStudents = () => {
   }
   useEffect(() => {
     store.fetchMedicalStudents();
-  }, []);
+  }, [store]);
   return (
     <Fragment>
       <AdminNav />

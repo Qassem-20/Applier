@@ -1,5 +1,4 @@
 import "../../assets/css/feedback.css";
-import profileIcon from "../../assets/images/profileIcon.png";
 import { Container, Row, Col } from "react-bootstrap";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import ReviewStore from "../../stores/ReviewStore";
@@ -38,7 +37,7 @@ const FeedBackConsumerCompany = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [companyId]);
 
   return (
     <Fragment>

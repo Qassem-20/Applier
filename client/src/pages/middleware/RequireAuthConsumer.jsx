@@ -10,7 +10,7 @@ export default function RequireAuthConsumer(props) {
     if (store.loggedIn === null) {
       store.checkAuth();
     }
-  }, []);
+  }, [store]);
 
   if (store.loggedIn === null) {
     return (

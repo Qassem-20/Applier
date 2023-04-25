@@ -6,7 +6,7 @@ import { Col, Row } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
-import { cities } from "../../APIs/cities.js";
+//import { cities } from "../../APIs/cities.js";
 
 const SignUpCompany = () => {
   const store = CompanyStore();

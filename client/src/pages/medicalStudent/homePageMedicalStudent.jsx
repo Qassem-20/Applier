@@ -1,21 +1,21 @@
 import "../../assets/css/medicalStudent.css";
 import MedicalNav from "../../components/Nav/medicalStudentNav";
 import MedicalStore from "../../stores/MedicalStore";
-import React, { Fragment, useState, useEffect } from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import React, { Fragment, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 const HomePageMedicalStudent = () => {
   const store = MedicalStore();
-
+  /*
   const handleUpdate = async (e) => {
     e.preventDefault();
     await store.updateMedicalStudents();
     window.location.reload();
   };
-
+*/
   useEffect(() => {
     store.fetchMedicalProfile();
-  }, []);
+  }, [store]);
   if (!store.medicalStudent) {
     return <div>Loading...</div>;
   }

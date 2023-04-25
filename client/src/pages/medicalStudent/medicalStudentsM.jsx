@@ -11,7 +11,7 @@ const MedicalStudents = () => {
   const store = MedicalStore();
   useEffect(() => {
     store.fetchMedicalStudents();
-  }, []);
+  }, [store]);
 
   return (
     <Fragment>
