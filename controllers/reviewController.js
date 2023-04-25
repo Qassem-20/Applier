@@ -2,9 +2,14 @@ import Review from "../models/review.js";
 import mongoose from "mongoose";
 
 const fetchReviews = async (req, res) => {
-  const reviews = await Review.find();
+  try {
+    const reviews = await Review.find();
 
-  res.json({ reviews });
+    res.json({ reviews });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 const fetchReportedReviews = async (req, res) => {
   try {
@@ -16,103 +21,158 @@ const fetchReportedReviews = async (req, res) => {
   }
 };
 const fetchCompanyReviews = async (req, res) => {
-  const reviews = await Review.find({ company: req.company._id });
+  try {
+    const reviews = await Review.find({ company: req.company._id });
 
-  res.json({ reviews });
+    res.json({ reviews });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 const fetchMedicalReviews = async (req, res) => {
-  const reviews = await Review.find({ medical: req.medical._id });
+  try {
+    const reviews = await Review.find({ medical: req.medical._id });
 
-  res.json({ reviews });
+    res.json({ reviews });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 const fetchReviewsCompany = async (req, res) => {
-  const company = mongoose.Types.ObjectId(req.params.company);
-  const reviews = await Review.find({ company });
+  try {
+    const company = mongoose.Types.ObjectId(req.params.company);
+    const reviews = await Review.find({ company });
 
-  res.json({ reviews });
+    res.json({ reviews });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 const fetchReviewsMedical = async (req, res) => {
-  const medical = mongoose.Types.ObjectId(req.params.medical);
+  try {
+    const medical = mongoose.Types.ObjectId(req.params.medical);
 
-  const reviews = await Review.find({ medical });
-  res.json({ reviews });
+    const reviews = await Review.find({ medical });
+    res.json({ reviews });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 const fetchReview = async (req, res) => {
-  const reviewId = req.params.id;
+  try {
+    const reviewId = req.params.id;
 
-  const review = await Review.findById(reviewId);
+    const review = await Review.findById(reviewId);
 
-  res.json({ review });
+    res.json({ review });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const sortReview = async (req, res) => {
-  const review = await Review.find().sort({ rate: 1 });
+  try {
+    const review = await Review.find().sort({ rate: 1 });
 
-  res.json({ review });
+    res.json({ review });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const createReviewCompany = async (req, res) => {
-  const { company, rate, description } = req.body;
+  try {
+    const { company, rate, description } = req.body;
 
-  const review = await Review.create({
-    rate,
-    description,
-    company,
-    isReported: "no",
-    statue: "shown",
-    consumer: req.consumer._id,
-  });
+    const review = await Review.create({
+      rate,
+      description,
+      company,
+      isReported: "no",
+      statue: "shown",
+      consumer: req.consumer._id,
+    });
 
-  res.json({ review });
+    res.json({ review });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 const createReviewMedical = async (req, res) => {
-  const { medical, rate, description } = req.body;
+  try {
+    const { medical, rate, description } = req.body;
 
-  const review = await Review.create({
-    rate,
-    description,
-    isReported: "no",
-    statue: "shown",
-    medical,
-    consumer: req.consumer._id,
-  });
+    const review = await Review.create({
+      rate,
+      description,
+      isReported: "no",
+      statue: "shown",
+      medical,
+      consumer: req.consumer._id,
+    });
 
-  res.json({ review });
+    res.json({ review });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 const hideReview = async (req, res) => {
-  const reviewId = req.params.id;
+  try {
+    const reviewId = req.params.id;
 
-  const { statue } = req.body;
+    const { statue } = req.body;
 
-  await Review.findByIdAndUpdate(reviewId, {
-    statue,
-  });
+    await Review.findByIdAndUpdate(reviewId, {
+      statue,
+    });
 
-  const review = await Review.findById(reviewId);
+    const review = await Review.findById(reviewId);
 
-  res.json({ review });
+    res.json({ review });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const reportReview = async (req, res) => {
-  const reviewId = req.params.id;
+  try {
+    const reviewId = req.params.id;
 
-  const { isReported } = req.body;
+    const { isReported } = req.body;
 
-  await Review.findByIdAndUpdate(reviewId, {
-    isReported,
-  });
+    await Review.findByIdAndUpdate(reviewId, {
+      isReported,
+    });
 
-  const review = await Review.findById(reviewId);
+    const review = await Review.findById(reviewId);
 
-  res.json({ review });
+    res.json({ review });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const deleteReview = async (req, res) => {
-  const reviewId = req.params.id;
+  try {
+    const reviewId = req.params.id;
 
-  await Review.findByIdAndDelete(reviewId);
+    await Review.findByIdAndDelete(reviewId);
 
-  res.json({ success: "Record deleted" });
+    res.json({ success: "Record deleted" });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 export {
