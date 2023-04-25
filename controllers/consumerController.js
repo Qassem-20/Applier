@@ -3,78 +3,99 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 const getConsumerProfile = async (req, res, next) => {
-  const consumerId = req.consumer.id; // Assuming you're using JWT or session-based authentication
-  const consumer = await Consumer.findById(consumerId);
-  if (!consumer) {
-    return res.status(404).json({ error: "consumer not found" });
+  try {
+    const consumerId = req.consumer.id; // Assuming you're using JWT or session-based authentication
+    const consumer = await Consumer.findById(consumerId);
+    if (!consumer) {
+      return res.status(404).json({ error: "consumer not found" });
+    }
+    return res.json({ consumer });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
   }
-  return res.json({ consumer });
 };
 const fetchConsumers = async (req, res) => {
-  const consumers = await Consumer.find();
+  try {
+    const consumers = await Consumer.find();
 
-  res.json({ consumers });
+    res.json({ consumers });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const fetchConsumer = async (req, res) => {
-  const consumerId = req.params.id;
+  try {
+    const consumerId = req.params.id;
 
-  const consumer = await Consumer.findById(consumerId);
+    const consumer = await Consumer.findById(consumerId);
 
-  res.json({ consumer });
+    res.json({ consumer });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const findAll = async (req, res) => {
-  const name = req.params.name;
-  const consumer = await Consumer.find({
-    name: { $regex: ".*" + name + ".*" },
-  });
+  try {
+    const name = req.params.name;
+    const consumer = await Consumer.find({
+      name: { $regex: ".*" + name + ".*" },
+    });
 
-  res.json({ consumer });
+    res.json({ consumer });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const findConsumer = async (req, res) => {
-  // try {
-  //   const consumerName = req.params.name;
-  //   const { name, phone } = req.body;
+  try {
+    const name = req.params.name;
+    const consumer = await Consumer.find({
+      name: { $regex: ".*" + name + ".*" },
+    });
 
-  //   const consumer = await Consumer.find({ name, phone });
-
-  //   if (!consumer) return res.sendStatus("not found");
-
-  //   // const findName = await Consumer.find({name:{ $regex:'.*'+consumerName+'.*'} });
-  //   res.json(consumer);
-  // } catch (error) {
-  //   res.json({message: error});
-  // }
-
-  const name = req.params.name;
-  const consumer = await Consumer.find({
-    name: { $regex: ".*" + name + ".*" },
-  });
-
-  res.json({ consumer });
+    res.json({ consumer });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const sortDateConsumers = async (req, res) => {
-  const consumers = await Consumer.find().sort({ createdAt: -1 });
+  try {
+    const consumers = await Consumer.find().sort({ createdAt: -1 });
 
-  res.json({ consumers });
-  // var btnName = document.getElementById('btnName');
-  // var btnDate = document.getElementById('btnDate');
+    res.json({ consumers });
+    // var btnName = document.getElementById('btnName');
+    // var btnDate = document.getElementById('btnDate');
 
-  // function handleClick()  {
-  //   const consumers =  Consumer.find().sort({ name: -1 });
-  //   res.json({ consumers });
-  // }
+    // function handleClick()  {
+    //   const consumers =  Consumer.find().sort({ name: -1 });
+    //   res.json({ consumers });
+    // }
 
-  // btnName.addEventListener('click', handleClick() );
+    // btnName.addEventListener('click', handleClick() );
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const sortNameConsumers = async (req, res) => {
-  const consumers = await Consumer.find().sort({ name: -1 });
+  try {
+    const consumers = await Consumer.find().sort({ name: -1 });
 
-  res.json({ consumers });
+    res.json({ consumers });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const createConsumer = async (req, res) => {
@@ -112,7 +133,7 @@ const createConsumer = async (req, res) => {
       linkedIn_profile,
       experience,
       degree,
-      statue:"true",
+      statue: "true",
     });
   } catch (err) {
     console.log(err);
@@ -175,62 +196,76 @@ function checkAuthConsumer(req, res) {
 }
 
 const updateConsumer = async (req, res) => {
-  const consumerId = req.params.id;
+  try {
+    const consumerId = req.params.id;
 
-  const {
-    name,
-    phone,
-    nationality,
-    university,
-    major,
-    gpa,
-    concentrated_major,
-    skills,
-    linkedIn_profile,
-    experience,
-    degree,
-  } = req.body;
+    const {
+      name,
+      phone,
+      nationality,
+      university,
+      major,
+      gpa,
+      concentrated_major,
+      skills,
+      linkedIn_profile,
+      experience,
+      degree,
+    } = req.body;
 
-  await Consumer.findByIdAndUpdate(consumerId, {
-    name,
-    phone,
-    nationality,
-    university,
-    major,
-    gpa,
-    concentrated_major,
-    skills,
-    linkedIn_profile,
-    experience,
-    degree,
+    await Consumer.findByIdAndUpdate(consumerId, {
+      name,
+      phone,
+      nationality,
+      university,
+      major,
+      gpa,
+      concentrated_major,
+      skills,
+      linkedIn_profile,
+      experience,
+      degree,
+    });
 
-  });
+    const consumer = await Consumer.findById(consumerId);
 
-  const consumer = await Consumer.findById(consumerId);
-
-  res.json({ consumer });
+    res.json({ consumer });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const suspendConsumer = async (req, res) => {
-  const consumerId = req.params.id;
+  try {
+    const consumerId = req.params.id;
 
-  const { statue } = req.body;
+    const { statue } = req.body;
 
-  await Consumer.findByIdAndUpdate(consumerId, {
-    statue,
-  });
+    await Consumer.findByIdAndUpdate(consumerId, {
+      statue,
+    });
 
-  const consumer = await Consumer.findById(consumerId);
+    const consumer = await Consumer.findById(consumerId);
 
-  res.json({ consumer });
+    res.json({ consumer });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const deleteConsumer = async (req, res) => {
-  const consumerId = req.params.id;
+  try {
+    const consumerId = req.params.id;
 
-  await Consumer.findByIdAndDelete(consumerId);
+    await Consumer.findByIdAndDelete(consumerId);
 
-  res.json({ success: "Record deleted" });
+    res.json({ success: "Record deleted" });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 export {
