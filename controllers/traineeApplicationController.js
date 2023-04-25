@@ -5,19 +5,29 @@ import Opportunity from "../models/Opportunity.js";
 import mongoose from "mongoose";
 
 const fetchApplications = async (req, res) => {
-  const applicationStatus = await ApplicationStatus.find();
+  try {
+    const applicationStatus = await ApplicationStatus.find();
 
-  res.json({ applicationStatus });
+    res.json({ applicationStatus });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const fetchApplication = async (req, res) => {
-  const applicationStatusId = req.params.id;
+  try {
+    const applicationStatusId = req.params.id;
 
-  const applicationStatus = await ApplicationStatus.findById(
-    applicationStatusId
-  );
+    const applicationStatus = await ApplicationStatus.findById(
+      applicationStatusId
+    );
 
-  res.json({ applicationStatus });
+    res.json({ applicationStatus });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const fetchApplicationsOpportunity = async (req, res) => {
@@ -68,39 +78,38 @@ const fetchApplicationsOpportunity = async (req, res) => {
   }
 };
 const fetchOpportunityApplications = async (req, res) => {
+  try {
+    // Find all opportunities in the database
+    const opportunities = await Opportunity.find({});
 
-try {
-  // Find all opportunities in the database
-  const opportunities = await Opportunity.find({});
+    // For each opportunity, find its application statuses
+    const opportunityInfo = await Promise.all(
+      opportunities.map(async (opportunity) => {
+        const applicationStatuses = await ApplicationStatus.find({
+          opportunity: opportunity._id,
+        });
 
-  // For each opportunity, find its application statuses
-  const opportunityInfo = await Promise.all(
-    opportunities.map(async (opportunity) => {
-      const applicationStatuses = await ApplicationStatus.find({
-        opportunity: opportunity._id,
-      });
+        return {
+          _id: opportunity._id,
+          company: opportunity.company,
+          job_role: opportunity.job_role,
+          major_preferred: opportunity.major_preferred,
+          city: opportunity.city,
+          start_date: opportunity.start_date,
+          applicationStatuses: applicationStatuses.map((status) => ({
+            consumer: status.consumer,
+            status: status ? status.statue : apply,
+          })),
+        };
+      })
+    );
 
-      return {
-        _id: opportunity._id,
-        company: opportunity.company,
-        job_role: opportunity.job_role,
-        major_preferred: opportunity.major_preferred,
-        city: opportunity.city,
-        start_date: opportunity.start_date,
-        applicationStatuses: applicationStatuses.map((status) => ({
-          consumer: status.consumer,
-          status: status ? status.statue : apply,
-        })),
-      };
-    })
-  );
-
-  return res.status(200).json(opportunityInfo);
-} catch (error) {
-  console.error(error);
-  return res.status(500).json({ error: "Server error" });
-}
-}
+    return res.status(200).json(opportunityInfo);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Server error" });
+  }
+};
 const findApplication = async (req, res) => {
   try {
     const symptoms = req.params.symptoms;
@@ -114,38 +123,53 @@ const findApplication = async (req, res) => {
 };
 
 const sortApplication = async (req, res) => {
-  const symptoms = await ApplicationStatus.find().sort({ symptoms: 1 });
+  try {
+    const symptoms = await ApplicationStatus.find().sort({ symptoms: 1 });
 
-  res.json({ symptoms });
+    res.json({ symptoms });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const createApplication = async (req, res) => {
-  const { statue, opportunity } = req.body;
+  try {
+    const { statue, opportunity } = req.body;
 
-  const applicationStatus = await ApplicationStatus.create({
-    statue,
-    opportunity,
-    consumer: req.consumer._id,
-  });
+    const applicationStatus = await ApplicationStatus.create({
+      statue,
+      opportunity,
+      consumer: req.consumer._id,
+    });
 
-  res.json({ applicationStatus });
+    res.json({ applicationStatus });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const updateApplication = async (req, res) => {
-  const applicationStatusId = req.params.id;
+  try {
+    const applicationStatusId = req.params.id;
 
-  const { statue } = req.body;
+    const { statue } = req.body;
 
-  await ApplicationStatus.findByIdAndUpdate(applicationStatusId, {
-    statue,
-    consumer: req.consumer._id,
-  });
+    await ApplicationStatus.findByIdAndUpdate(applicationStatusId, {
+      statue,
+      consumer: req.consumer._id,
+    });
 
-  const applicationStatus = await ApplicationStatus.findById(
-    applicationStatusId
-  );
+    const applicationStatus = await ApplicationStatus.findById(
+      applicationStatusId
+    );
 
-  res.json({ applicationStatus });
+    res.json({ applicationStatus });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 const getApplicationStatus = async (req, res) => {
   try {
@@ -166,11 +190,16 @@ const getApplicationStatus = async (req, res) => {
   }
 };
 const deleteApplication = async (req, res) => {
-  const applicationStatusId = req.params.id;
+  try {
+    const applicationStatusId = req.params.id;
 
-  await ApplicationStatus.findByIdAndDelete(applicationStatusId);
+    await ApplicationStatus.findByIdAndDelete(applicationStatusId);
 
-  res.json({ success: "Record deleted" });
+    res.json({ success: "Record deleted" });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 export {
