@@ -3,26 +3,41 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 const getMedicalStudentProfile = async (req, res, next) => {
-  const medicalStudentId = req.medicalStudent.id; // Assuming you're using JWT or session-based authentication
-  const medicalStudent = await MedicalStudent.findById(medicalStudentId);
-  if (!medicalStudent) {
-    return res.status(404).json({ error: "medicalStudent not found" });
+  try {
+    const medicalStudentId = req.medicalStudent.id; // Assuming you're using JWT or session-based authentication
+    const medicalStudent = await MedicalStudent.findById(medicalStudentId);
+    if (!medicalStudent) {
+      return res.status(404).json({ error: "medicalStudent not found" });
+    }
+    return res.json({ medicalStudent });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
   }
-  return res.json({ medicalStudent });
 };
 
 const fetchMedicalStudents = async (req, res) => {
-  const medicalStudents = await MedicalStudent.find();
+  try {
+    const medicalStudents = await MedicalStudent.find({ visibility: "shown" });
 
-  res.json({ medicalStudents });
+    res.json({ medicalStudents });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const fetchMedicalStudent = async (req, res) => {
-  const medicalStudentId = req.params.id;
+  try {
+    const medicalStudentId = req.params.id;
 
-  const medicalStudent = await MedicalStudent.findById(medicalStudentId);
+    const medicalStudent = await MedicalStudent.findById(medicalStudentId);
 
-  res.json({ medicalStudent });
+    res.json({ medicalStudent });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const findMedicalStudent = async (req, res) => {
@@ -137,55 +152,70 @@ function checkAuthMedicalStudent(req, res) {
 }
 
 const updateMedicalStudent = async (req, res) => {
-  const medicalStudentId = req.params.id;
+  try {
+    const medicalStudentId = req.params.id;
 
-  const {
-    name,
-    phone_number,
-    nationality,
-    city,
-    gender,
-    profile_visibility,
-    main_major,
-    specialty,
-  } = req.body;
+    const {
+      name,
+      phone_number,
+      nationality,
+      city,
+      gender,
+      profile_visibility,
+      main_major,
+      specialty,
+    } = req.body;
 
-  await MedicalStudent.findByIdAndUpdate(medicalStudentId, {
-    name,
-    phone_number,
-    nationality,
-    city,
-    gender,
-    profile_visibility,
-    main_major,
-    specialty,
-  });
+    await MedicalStudent.findByIdAndUpdate(medicalStudentId, {
+      name,
+      phone_number,
+      nationality,
+      city,
+      gender,
+      profile_visibility,
+      main_major,
+      specialty,
+    });
 
-  const medicalStudent = await MedicalStudent.findById(medicalStudentId);
+    const medicalStudent = await MedicalStudent.findById(medicalStudentId);
 
-  res.json({ medicalStudent });
+    res.json({ medicalStudent });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const activateMedicalStudent = async (req, res) => {
-  const medicalStudentId = req.params.id;
+  try {
+    const medicalStudentId = req.params.id;
 
-  const { statue } = req.body;
+    const { statue } = req.body;
 
-  await MedicalStudent.findByIdAndUpdate(medicalStudentId, {
-    statue,
-  });
+    await MedicalStudent.findByIdAndUpdate(medicalStudentId, {
+      statue,
+    });
 
-  const medicalStudent = await MedicalStudent.findById(medicalStudentId);
+    const medicalStudent = await MedicalStudent.findById(medicalStudentId);
 
-  res.json({ medicalStudent });
+    res.json({ medicalStudent });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const deleteMedicalStudent = async (req, res) => {
-  const medicalStudentId = req.params.id;
+  try {
+    const medicalStudentId = req.params.id;
 
-  await MedicalStudent.findByIdAndDelete(medicalStudentId);
+    await MedicalStudent.findByIdAndDelete(medicalStudentId);
 
-  res.json({ success: "Record deleted" });
+    res.json({ success: "Record deleted" });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 export {
