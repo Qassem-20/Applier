@@ -2,24 +2,41 @@ import Opportunity from "../models/Opportunity.js";
 
 //Consumer and Admin to fetch all Opportunities
 const fetchOpportunities = async (req, res) => {
-  const opportunities = await Opportunity.find();
+  try {
+    const opportunities = await Opportunity.find();
 
-  res.json({ opportunities });
+    res.json({ opportunities });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 //Company to fetch Opportunities for each company
 const fetchOpportunitiesCompany = async (req, res) => {
-  const opportunities = await Opportunity.find({ company: req.company._id }).sort({createdAt: 1});
+  try {
+    const opportunities = await Opportunity.find({
+      company: req.company._id,
+    }).sort({ createdAt: 1 });
 
-  res.json({ opportunities });
+    res.json({ opportunities });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const fetchOpportunity = async (req, res) => {
-  const opportunityId = req.params.id;
+  try {
+    const opportunityId = req.params.id;
 
-  const opportunity = await Opportunity.findById(opportunityId);
+    const opportunity = await Opportunity.findById(opportunityId);
 
-  res.json({ opportunity });
+    res.json({ opportunity });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const findOpportunity = async (req, res) => {
@@ -35,96 +52,136 @@ const findOpportunity = async (req, res) => {
 };
 
 const fetchOpportunitiesCompanySorted = async (req, res) => {
-  const opportunities = await Opportunity.find({ company: req.company._id }).sort({createdAt: -1});
+  try {
+    const opportunities = await Opportunity.find({
+      company: req.company._id,
+    }).sort({ createdAt: -1 });
 
-  res.json({ opportunities });
+    res.json({ opportunities });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
-
-
 const createOpportunity = async (req, res) => {
-  const {
-    job_role,
-    description,
-    skills,
-    job_type,
-    departments_preferred,
-    major_preferred,
-    availability_seats,
-    salary,
-    start_date,
-    duration,
-    city,
-  } = req.body;
+  try {
+    const {
+      job_role,
+      description,
+      skills,
+      job_type,
+      departments_preferred,
+      major_preferred,
+      availability_seats,
+      salary,
+      start_date,
+      duration,
+      city,
+    } = req.body;
 
-  const opportunity = await Opportunity.create({
-    job_role,
-    description,
-    skills,
-    job_type,
-    departments_preferred,
-    major_preferred,
-    availability_seats,
-    salary,
-    start_date,
-    duration,
-    city,
-    visibility: "shown",
-    company: req.company._id,
-  });
+    const opportunity = await Opportunity.create({
+      job_role,
+      description,
+      skills,
+      job_type,
+      departments_preferred,
+      major_preferred,
+      availability_seats,
+      salary,
+      start_date,
+      duration,
+      city,
+      visibility: "shown",
+      company: req.company._id,
+    });
 
-  res.json({ opportunity });
+    res.json({ opportunity });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const updateOpportunity = async (req, res) => {
-  const opportunityId = req.params.id;
+  try {
+    const opportunityId = req.params.id;
 
-  const { job_role,description,skills,job_type,departments_preferred,major_preferred,availability_seats,salary,start_date,duration,city,visibility } = req.body;
+    const {
+      job_role,
+      description,
+      skills,
+      job_type,
+      departments_preferred,
+      major_preferred,
+      availability_seats,
+      salary,
+      start_date,
+      duration,
+      city,
+      visibility,
+    } = req.body;
 
-  await Opportunity.findOneAndUpdate(
-    { _id: opportunityId, company: req.company._id },
-    {
-      job_role,description,skills,job_type,departments_preferred,major_preferred,availability_seats,salary,start_date,duration,city,visibility,
-    }
-  );
+    await Opportunity.findOneAndUpdate(
+      { _id: opportunityId, company: req.company._id },
+      {
+        job_role,
+        description,
+        skills,
+        job_type,
+        departments_preferred,
+        major_preferred,
+        availability_seats,
+        salary,
+        start_date,
+        duration,
+        city,
+        visibility,
+      }
+    );
 
-  const opportunity = await Opportunity.findById(opportunityId);
+    const opportunity = await Opportunity.findById(opportunityId);
 
-  res.json({ opportunity });
+    res.json({ opportunity });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
-// const infoShow = async(req, res) => {
-//   const opportunityId = req.params.id;
-
-//   const opportunity = await Opportunity.findById(opportunityId);
-
-//   res.json({ opportunity });
-
-// };
-
 const hideOpportunity = async (req, res) => {
-  const opportunityId = req.params.id;
+  try {
+    const opportunityId = req.params.id;
 
-  const { visibility } = req.body;
+    const { visibility } = req.body;
 
-  await Opportunity.findOneAndUpdate(
-    { _id: opportunityId, company: req.company._id },
-    {
-      visibility,
-    }
-  );
+    await Opportunity.findOneAndUpdate(
+      { _id: opportunityId, company: req.company._id },
+      {
+        visibility,
+      }
+    );
 
-  const opportunity = await Opportunity.findById(opportunityId);
+    const opportunity = await Opportunity.findById(opportunityId);
 
-  res.json({ opportunity });
+    res.json({ opportunity });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const deleteOpportunity = async (req, res) => {
-  const opportunityId = req.params.id;
+  try {
+    const opportunityId = req.params.id;
 
-  await Opportunity.findByIdAndDelete(opportunityId);
+    await Opportunity.findByIdAndDelete(opportunityId);
 
-  res.json({ success: "Record deleted" });
+    res.json({ success: "Record deleted" });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 export {
