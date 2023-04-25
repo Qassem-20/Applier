@@ -16,5 +16,6 @@ c)npm install react-router-dom@5
 
 - npm i
 - and also run it in (client)  
-  a) cd client  
-  b) npm i
+   a) cd client  
+   b) npm i
+  ..
