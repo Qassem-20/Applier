@@ -3,17 +3,27 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 const fetchAdmins = async (req, res) => {
-  const admins = await Admin.find();
+  try {
+    const admins = await Admin.find();
 
-  res.json({ admins });
+    res.json({ admins });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const fetchAdmin = async (req, res) => {
-  const adminId = req.params.id;
+  try {
+    const adminId = req.params.id;
 
-  const admin = await Admin.findById(adminId);
+    const admin = await Admin.findById(adminId);
 
-  res.json({ admin });
+    res.json({ admin });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 async function createAdmin(req, res) {
@@ -97,25 +107,35 @@ function checkAuthAdmin(req, res) {
 }
 
 const updateAdmin = async (req, res) => {
-  const adminId = req.params.id;
+  try {
+    const adminId = req.params.id;
 
-  const { type } = req.body;
+    const { type } = req.body;
 
-  await Admin.findByIdAndUpdate(adminId, {
-    type,
-  });
+    await Admin.findByIdAndUpdate(adminId, {
+      type,
+    });
 
-  const admin = await Admin.findById(adminId);
+    const admin = await Admin.findById(adminId);
 
-  res.json({ admin });
+    res.json({ admin });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const deleteAdmin = async (req, res) => {
-  const adminId = req.params.id;
+  try {
+    const adminId = req.params.id;
 
-  await Admin.findByIdAndDelete(adminId);
+    await Admin.findByIdAndDelete(adminId);
 
-  res.json({ success: "Record deleted" });
+    res.json({ success: "Record deleted" });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 export {
