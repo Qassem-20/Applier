@@ -94,11 +94,10 @@ const MedicalStore = create((set) => ({
         specialty,
         _id,
       },
-      medicalStudents,
     } = MedicalStore.getState();
 
     // Send the update request
-    const res = await axios.put(
+    await axios.put(
       `http://localhost:4000/api/v1/medicalStudents/${_id}`,
       {
         withCredentials: true,
@@ -114,14 +113,6 @@ const MedicalStore = create((set) => ({
         specialty,
       }
     );
-
-    // Update state
-    const newMedicalStudents = [...medicalStudents];
-    const medicalStudentIndex = medicalStudents.findIndex((medicalStudent) => {
-      return medicalStudent._id === _id;
-    });
-    newMedicalStudents[medicalStudentIndex] = res.data.medicalStudent;
-
     set({
       updateProfile: {
         _id: null,
