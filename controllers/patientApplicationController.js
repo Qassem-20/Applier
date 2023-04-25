@@ -1,19 +1,29 @@
 import PatientApplication from "../models/PatientApplication.js";
 
 const fetchPatientApplications = async (req, res) => {
-  const patientApplications = await PatientApplication.find();
+  try {
+    const patientApplications = await PatientApplication.find();
 
-  res.json({ patientApplications });
+    res.json({ patientApplications });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const fetchPatientApplication = async (req, res) => {
-  const patientApplicationId = req.params.id;
+  try {
+    const patientApplicationId = req.params.id;
 
-  const patientApplication = await PatientApplication.findById(
-    patientApplicationId
-  );
+    const patientApplication = await PatientApplication.findById(
+      patientApplicationId
+    );
 
-  res.json({ patientApplication });
+    res.json({ patientApplication });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const findPatientApplication = async (req, res) => {
@@ -29,43 +39,63 @@ const findPatientApplication = async (req, res) => {
 };
 
 const sortPatientApplication = async (req, res) => {
-  const symptoms = await patientApplication.find().sort({ symptoms: 1 });
+  try {
+    const symptoms = await patientApplication.find().sort({ symptoms: 1 });
 
-  res.json({ symptoms });
+    res.json({ symptoms });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const createPatientApplication = async (req, res) => {
-  const { symptoms, createdBy } = req.body;
+  try {
+    const { symptoms, createdBy } = req.body;
 
-  const patientApplication = await PatientApplication.create({
-    symptoms,
-  });
+    const patientApplication = await PatientApplication.create({
+      symptoms,
+    });
 
-  res.json({ patientApplication });
+    res.json({ patientApplication });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const updatePatientApplication = async (req, res) => {
-  const patientApplicationId = req.params.id;
+  try {
+    const patientApplicationId = req.params.id;
 
-  const { symptoms } = req.body;
+    const { symptoms } = req.body;
 
-  await PatientApplication.findByIdAndUpdate(patientApplicationId, {
-    symptoms,
-  });
+    await PatientApplication.findByIdAndUpdate(patientApplicationId, {
+      symptoms,
+    });
 
-  const patientApplication = await PatientApplication.findById(
-    patientApplicationId
-  );
+    const patientApplication = await PatientApplication.findById(
+      patientApplicationId
+    );
 
-  res.json({ patientApplication });
+    res.json({ patientApplication });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 const deletePatientApplication = async (req, res) => {
-  const patientApplicationId = req.params.id;
+  try {
+    const patientApplicationId = req.params.id;
 
-  await PatientApplication.findByIdAndDelete(patientApplicationId);
+    await PatientApplication.findByIdAndDelete(patientApplicationId);
 
-  res.json({ success: "Record deleted" });
+    res.json({ success: "Record deleted" });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 };
 
 export {
