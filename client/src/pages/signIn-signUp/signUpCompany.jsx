@@ -6,7 +6,7 @@ import { Col, Row } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
-//import { cities } from "../../APIs/cities.js";
+import { cities } from "../../APIs/cities.js";
 
 const SignUpCompany = () => {
   const store = CompanyStore();
@@ -132,20 +132,11 @@ const SignUpCompany = () => {
                   errorMessage="country"
                 />
 
-                <ApplierInputForm
-                  type="text"
-                  name="city"
-                  label="City"
-                  onChange={store.handleChange}
-                  value={store.values.city}
-                  required={true}
-                  errorMessage="city"
-                />
-
-                {/* <label className="labelStyling font-bold">City</label>
+                  <label className="labelStyling font-bold">City</label>
                   <select
                     className="inputStyling mb-3"
                     name="city"
+                    placeholder="city"
                     value={store.values.city}
                     onChange={store.handleChange}
                     required={true}
@@ -155,7 +146,8 @@ const SignUpCompany = () => {
                         {city}
                       </option>
                     ))}
-                  </select> */}
+                  </select>
+
               </Col>
             </Row>
             <ApplierButton buttonType="Sign Up" />

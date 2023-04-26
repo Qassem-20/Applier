@@ -6,6 +6,7 @@ import React, { Fragment } from "react";
 import MedicalStore from "../../stores/MedicalStore";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
+import { cities } from "../../APIs/cities.js";
 
 const SignUpMedicalStudent = () => {
   const store = MedicalStore();
@@ -112,15 +113,23 @@ const SignUpMedicalStudent = () => {
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                 </select>
-                <ApplierInputForm
-                  label="City"
-                  type="text"
-                  name="city"
-                  value={store.values.city}
-                  onChange={store.handleChange}
-                  required={true}
-                  errorMessage="city"
-                />
+
+                <label className="labelStyling font-bold">City</label>
+                  <select
+                    className="inputStyling mb-3"
+                    name="city"
+                    placeholder="city"
+                    value={store.values.city}
+                    onChange={store.handleChange}
+                    required={true}
+                  >
+                    {cities.map((city) => (
+                      <option key={city} value={city}>
+                        {city}
+                      </option>
+                    ))}
+                  </select>
+
                 <label className="labelStyling">Major</label>
                 <select
                   className="inputStyling mb-3"
