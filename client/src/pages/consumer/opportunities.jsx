@@ -142,19 +142,19 @@ const Opportunities = () => {
                   className="button"
                   value={opportunity.statue}
                 />
-                {opportunity.applicationStatuses.map((status) => (
-                  <span key={status._id}>
-                    <button
-                      className="deleteBtn"
-                      onClick={() =>
-                        storeDelete.deleteTraineeApplication(status._id)
-                      }
-                    >
-                      {status.statue} | X
-                    </button>
-                  </span>
-                ))}
               </form>
+              {opportunity.applicationStatuses.map((status) => (
+                <span key={status._id}>
+                  <button
+                    className="deleteBtn"
+                    onClick={() =>
+                      storeDelete.deleteTraineeApplication(status._id)
+                    }
+                  >
+                    {status.statue} | X
+                  </button>
+                </span>
+              ))}
             </span>
             <span className="col-2 opportunitiesTags">{opportunity.city}</span>
             <span className="col-2 opportunitiesTags">
