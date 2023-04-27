@@ -32,8 +32,10 @@ const fetchCompanyReviews = async (req, res) => {
 };
 const fetchMedicalReviews = async (req, res) => {
   try {
-    const reviews = await Review.find({ medical: req.medical._id });
-
+    const reviews = await Review.find({
+      medicalStudent: req.medicalStudent._id,
+    });
+    console.log(reviews);
     res.json({ reviews });
   } catch (err) {
     console.log(err);
@@ -53,9 +55,9 @@ const fetchReviewsCompany = async (req, res) => {
 };
 const fetchReviewsMedical = async (req, res) => {
   try {
-    const medical = mongoose.Types.ObjectId(req.params.medical);
+    const medicalStudent = mongoose.Types.ObjectId(req.params.medical);
 
-    const reviews = await Review.find({ medical });
+    const reviews = await Review.find({ medicalStudent });
     res.json({ reviews });
   } catch (err) {
     console.log(err);
@@ -107,14 +109,14 @@ const createReviewCompany = async (req, res) => {
 };
 const createReviewMedical = async (req, res) => {
   try {
-    const { medical, rate, description } = req.body;
+    const { medicalStudent, rate, description } = req.body;
 
     const review = await Review.create({
       rate,
       description,
       isReported: "no",
       statue: "shown",
-      medical,
+      medicalStudent,
       consumer: req.consumer._id,
     });
 

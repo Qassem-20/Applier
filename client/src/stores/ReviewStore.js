@@ -85,7 +85,7 @@ const ReviewStore = create((set) => ({
     rate: "",
     description: "",
     company: "",
-    medical: "",
+    medicalStudent: "",
   },
 
   registerReviewCompany: async () => {
@@ -118,7 +118,7 @@ const ReviewStore = create((set) => ({
       values: {
         rate: "",
         description: "",
-        medical: "",
+        medicalStudent: "",
       },
     });
   },

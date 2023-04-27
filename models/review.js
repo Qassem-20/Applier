@@ -29,7 +29,7 @@ const reviewSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Company",
     },
-    medical: {
+    medicalStudent: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "MedicalStudent",
     },

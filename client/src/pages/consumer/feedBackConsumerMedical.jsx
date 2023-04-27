@@ -135,7 +135,7 @@ const FeedBackConsumerMedical = () => {
             name="medical"
             className="inputStyling"
             onChange={store.handleChange}
-            value={(store.values.medical = userProfile._id)}
+            value={(store.values.medicalStudent = userProfile._id)}
           />
 
           <button type="submit" className="btn btn-dark mt-1">

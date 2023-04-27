@@ -1,6 +1,11 @@
 import express from "express";
 const router = express.Router();
-import { requireAuthConsumer,requireAuthAdmin,requireAuthCompany,requireAuthMedicalStudent } from "../middleware/requireAuth.js";
+import {
+  requireAuthConsumer,
+  requireAuthAdmin,
+  requireAuthCompany,
+  requireAuthMedicalStudent,
+} from "../middleware/requireAuth.js";
 
 //exports from the controller
 import {
@@ -21,16 +26,18 @@ import {
 router.route("/reviews").get(fetchReviews);
 router.route("/reviews/:id").get(fetchReview);
 //from consumer side
-router.route("/reviewsCompany/:company").get(requireAuthConsumer,fetchReviewsCompany);
-router.route("/reviewsMedical/:medical").get(requireAuthConsumer,fetchReviewsMedical);
+router
+  .route("/reviewsCompany/:company")
+  .get(requireAuthConsumer, fetchReviewsCompany);
+router
+  .route("/reviewsMedical/:medical")
+  .get(requireAuthConsumer, fetchReviewsMedical);
 
 //fetch reported Reviews
-router.route("/reportedReviews").get(requireAuthAdmin,fetchReportedReviews);
+router.route("/reportedReviews").get(requireAuthAdmin, fetchReportedReviews);
 
 // fetch reviews from Producer side
-router
-  .route("/companyReviews")
-  .get(requireAuthCompany, fetchCompanyReviews);
+router.route("/companyReviews").get(requireAuthCompany, fetchCompanyReviews);
 
 router
   .route("/medicalReviews")
@@ -46,10 +53,10 @@ router
 //
 router
   .route("/reviews/reportReviewMedical/:id")
-  .put(requireAuthMedicalStudent,reportReview);
+  .put(requireAuthMedicalStudent, reportReview);
 router
   .route("/reviews/reportReviewCompany/:id")
-  .put(requireAuthCompany,reportReview);
+  .put(requireAuthCompany, reportReview);
 
 router.route("/reviews/:id").delete(requireAuthAdmin, deleteReview);
 router.route("/reviews/sortReview").get(sortReview);
