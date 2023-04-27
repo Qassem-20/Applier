@@ -10,6 +10,8 @@ const apiLimiter = rateLimiter({
 });
 //middleware
 import { requireAuthMedicalStudent } from "../middleware/requireAuth.js";
+import { checkStatueMedical } from "../middleware/activation.js";
+
 //exports from the controller
 import {
   fetchMedicalStudents,
@@ -20,6 +22,7 @@ import {
   updateMedicalStudent,
   deleteMedicalStudent,
   checkAuthMedicalStudent,
+  checkStatuesMedical,
   sortMedicalStudent,
   findMedicalStudent,
   getMedicalStudentProfile,
@@ -38,6 +41,11 @@ router.route("/logoutMedicalStudent").get(logoutMedicalStudent);
 router
   .route("/checkAuthMedical")
   .get(requireAuthMedicalStudent, checkAuthMedicalStudent);
+
+router
+  .route("/checkStatueMedical")
+  .get(checkStatueMedical, checkStatuesMedical);
+
 router
   .route("/medicalStudents/:id")
   .put(requireAuthMedicalStudent, updateMedicalStudent);

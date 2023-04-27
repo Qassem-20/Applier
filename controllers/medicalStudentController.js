@@ -87,7 +87,7 @@ const createMedicalStudent = async (req, res) => {
       gender,
       main_major,
       specialty,
-      profile_visibility: "shown",
+      profile_visibility: "hidden",
       statue: "false",
     });
   } catch (err) {
@@ -152,7 +152,13 @@ function checkAuthMedicalStudent(req, res) {
     return res.sendStatus(400);
   }
 }
-
+function checkStatuesMedical(req, res) {
+  try {
+    res.sendStatus(200);
+  } catch (err) {
+    return res.sendStatus(400);
+  }
+}
 const updateMedicalStudent = async (req, res) => {
   try {
     const medicalStudentId = req.params.id;
@@ -228,6 +234,7 @@ export {
   loginMedicalStudent,
   logoutMedicalStudent,
   checkAuthMedicalStudent,
+  checkStatuesMedical,
   updateMedicalStudent,
   deleteMedicalStudent,
   activateMedicalStudent,

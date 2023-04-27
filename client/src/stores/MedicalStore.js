@@ -235,6 +235,17 @@ const MedicalStore = create((set) => ({
     });
     set({ loggedIn: false });
   },
+
+  checkStatue: async () => {
+    try {
+      await axios.get("http://localhost:4000/api/v1/checkStatueMedical", {
+        withCredentials: true,
+      });
+      set({ statue: true });
+    } catch (err) {
+      set({ statue: false });
+    }
+  },
 }));
 
 export default MedicalStore;
