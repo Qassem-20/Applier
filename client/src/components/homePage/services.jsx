@@ -41,7 +41,7 @@ export class services extends Component {
               <div className="card" id="card4">
                 <img src={Service4} alt="Service4" className="ServicesImgs" />
                 <div class="card-body">
-                  <p>Share your CV</p>
+                  <p>Share your skills</p>
                 </div>
               </div>
             </Col>

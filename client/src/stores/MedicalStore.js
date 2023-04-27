@@ -100,9 +100,6 @@ const MedicalStore = create((set) => ({
     await axios.put(
       `http://localhost:4000/api/v1/medicalStudents/${_id}`,
       {
-        withCredentials: true,
-      },
-      {
         name,
         phone_number,
         nationality,
@@ -111,6 +108,9 @@ const MedicalStore = create((set) => ({
         profile_visibility,
         main_major,
         specialty,
+      },
+      {
+        withCredentials: true,
       }
     );
     set({
