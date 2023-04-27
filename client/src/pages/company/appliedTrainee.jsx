@@ -69,7 +69,7 @@ const AppliedTrainee = () => {
             <div className="col-3">
               <div>
                 <a href={`/editOpportunity/${opportunityId}`}>
-                  <img src={CustomizeIcon} alt="CustomizeIcon" />
+                  <img src={CustomizeIcon} alt="editOpportunity" />
                 </a>
                 <div className="mt-5">
                   <form action="/companyHomePage/">

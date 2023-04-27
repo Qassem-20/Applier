@@ -115,20 +115,20 @@ const SignUpMedicalStudent = () => {
                 </select>
 
                 <label className="labelStyling font-bold">City</label>
-                  <select
-                    className="inputStyling mb-3"
-                    name="city"
-                    placeholder="city"
-                    value={store.values.city}
-                    onChange={store.handleChange}
-                    required={true}
-                  >
-                    {cities.map((city) => (
-                      <option key={city} value={city}>
-                        {city}
-                      </option>
-                    ))}
-                  </select>
+                <select
+                  className="inputStyling mb-3"
+                  name="city"
+                  placeholder="city"
+                  value={store.values.city}
+                  onChange={store.handleChange}
+                  required={true}
+                >
+                  {cities.map((city) => (
+                    <option key={city} value={city}>
+                      {city}
+                    </option>
+                  ))}
+                </select>
 
                 <label className="labelStyling">Major</label>
                 <select

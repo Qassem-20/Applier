@@ -13,7 +13,7 @@ const AdminSignIn = () => {
     e.preventDefault();
     await store.loginAdmin();
     //Navigate
-    navigate.push("/adminHomePage");
+    navigate.push("/adminPanel");
   };
 
   return (

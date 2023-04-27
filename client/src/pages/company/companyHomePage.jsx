@@ -44,25 +44,6 @@ const CompanyHomePage = () => {
           <Col>
             <h1 id="opportunitiesHeader">Opportunities</h1>
           </Col>
-
-          <Col className="pt-3">
-            <ApplierInputForm
-              type="date"
-              placeholder="Created At"
-              name=""
-              defaultValue=""
-              id="searchInput"
-            />
-          </Col>
-          <Col className="pt-3">
-            <ApplierInputForm
-              type="text"
-              placeholder="Job role"
-              name=""
-              defaultValue=""
-              id="searchInput"
-            />
-          </Col>
           <Col>
             <label className="labelStyling">Sort By Date</label>
             <select

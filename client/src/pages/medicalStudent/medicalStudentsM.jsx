@@ -21,16 +21,6 @@ const MedicalStudents = () => {
           <Col>
             <h1 id="opportunitiesHeader">Medical Students</h1>
           </Col>
-          <Col>
-            <Col>
-              <ApplierInputForm
-                label="Search"
-                type="text"
-                placeholder="Searching for ..."
-                id="searchInput"
-              />
-            </Col>
-          </Col>
         </Row>
       </Container>
       <hr />

@@ -11,7 +11,6 @@ const AdminNav = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              <Nav.Link href="/adminHomePage">Home</Nav.Link>
               <Nav.Link href="/reportedFeedBack">Reported FeedBack</Nav.Link>
               <Nav.Link href="/opportunitiesPanel">
                 Opportunities Panel

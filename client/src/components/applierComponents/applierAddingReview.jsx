@@ -9,7 +9,7 @@ const ApplierAddingReview = (props) => {
     <form onSubmit={createReview}>
       <Container className=" mt-4 p-5 bg-white">
         <h1>Add Review</h1>
-        <p>Rate</p>
+        <p className="m-0">Rate</p>
         <div className="rate">
           <input
             type="radio"

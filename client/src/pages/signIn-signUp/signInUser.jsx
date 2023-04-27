@@ -56,8 +56,6 @@ const SignInUser = () => {
           </Col>
 
           <Col>
-            <a href="/ForgottenPassword">Forgot Password?</a>
-
             <div className="mt-2">
               <a href="/signUpConsumer">Don’t have an Account? Register</a>
             </div>
