@@ -35,7 +35,6 @@ const fetchMedicalReviews = async (req, res) => {
     const reviews = await Review.find({
       medicalStudent: req.medicalStudent._id,
     });
-    console.log(reviews);
     res.json({ reviews });
   } catch (err) {
     console.log(err);

@@ -37,7 +37,7 @@ const FeedBackMedical = () => {
   const handleReport = (_id) => {
     try {
       const response = axios.put(
-        `http://localhost:4000/api/v1/companies/reportReview/${_id}`,
+        `http://localhost:4000/api/v1/medicalStudents/reportReview/${_id}`,
         userData,
         { withCredentials: true }
       );

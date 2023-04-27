@@ -24,6 +24,7 @@ import {
   findMedicalStudent,
   getMedicalStudentProfile,
 } from "../controllers/medicalStudentController.js";
+import { reportReview } from "../controllers/reviewController.js";
 //routes of the medicalStudent from the controllers
 router
   .route("/medicalStudentProfile")
@@ -45,4 +46,10 @@ router
   .delete(requireAuthMedicalStudent, deleteMedicalStudent);
 router.route("/sortMedicalStudent").get(sortMedicalStudent);
 router.route("/findMedicalStudent/:name").get(findMedicalStudent);
+
+//report Review
+router
+  .route("/medicalStudents/reportReview/:id")
+  .put(requireAuthMedicalStudent, reportReview);
+
 export default router;
