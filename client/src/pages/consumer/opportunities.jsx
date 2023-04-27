@@ -12,7 +12,12 @@ import React, { Fragment, useEffect, useState } from "react";
 
 const Opportunities = () => {
   const store = OpportunityStore();
-  const applicationStore = TraineeApplicationStore();
+
+  const storeDelete = TraineeApplicationStore((storeDelete) => {
+    return {
+      deleteTraineeApplication: storeDelete.deleteTraineeApplication,
+    };
+  });
 
   const [traineeApplications, setTraineeApplications] = useState([]);
 
@@ -47,7 +52,6 @@ const Opportunities = () => {
 
   useEffect(() => {
     store.fetchOpportunities();
-    applicationStore.fetchTraineeApplications();
   }, []);
 
   const handleSearch = (event) => {
@@ -87,11 +91,12 @@ const Opportunities = () => {
 
       <div className="row opportunitiesTag">
         <span className="col-2 opportunitiesMainTags">Role</span>
+        <span className="col-2 opportunitiesMainTags">Description</span>
         <span className="col-2 opportunitiesMainTags">major</span>
-        <span className="col-2 opportunitiesMainTags">Statues</span>
+        <span className="col-1 opportunitiesMainTags">Statues</span>
         <span className="col-2 opportunitiesMainTags">City</span>
         <span className="col-2 opportunitiesMainTags">Started At</span>
-        <span className="col-2 opportunitiesMainTags">Company info</span>
+        <span className="col-1 opportunitiesMainTags">Company info</span>
       </div>
       {filterOpportunities.map((opportunity) => {
         // Check if the opportunity ID is in the traineeApplications array
@@ -106,9 +111,12 @@ const Opportunities = () => {
               {opportunity.job_role}
             </span>
             <span className="col-2 opportunitiesTags">
-              {opportunity.major_preferred}
+              {opportunity.description}
             </span>
             <span className="col-2 opportunitiesTags">
+              {opportunity.major_preferred}
+            </span>
+            <span className="col-1 opportunitiesTags">
               <form
                 onClick={() => Apply((userData.opportunity = opportunity._id))}
               >
@@ -134,13 +142,25 @@ const Opportunities = () => {
                   className="button"
                   value={opportunity.statue}
                 />
+                {opportunity.applicationStatuses.map((status) => (
+                  <span key={status._id}>
+                    <button
+                      className="deleteBtn"
+                      onClick={() =>
+                        storeDelete.deleteTraineeApplication(status._id)
+                      }
+                    >
+                      {status.statue} | X
+                    </button>
+                  </span>
+                ))}
               </form>
             </span>
             <span className="col-2 opportunitiesTags">{opportunity.city}</span>
             <span className="col-2 opportunitiesTags">
               {opportunity.start_date}
             </span>
-            <div className="col-2 d-flex justify-content-center">
+            <div className="col-1 d-flex justify-content-center">
               <Link to={`/feedBackConsumerCompany/${opportunity.company}`}>
                 <img className="infoImg" src={InfoIcon} alt="InfoIcon" />
               </Link>

@@ -12,19 +12,24 @@ const TraineeApplicationStore = create((set) => ({
   },
 
   deleteTraineeApplication: async (_id) => {
-    await axios.delete("http://localhost:4000/api/v1//applications/" + _id, {
-      withCredentials: true,
-    });
+    try {
+      await axios.delete("http://localhost:4000/api/v1/applications/" + _id, {
+        withCredentials: true,
+      });
 
-    const { traineeApplications } = TraineeApplicationStore.getState();
+      const { traineeApplications } = TraineeApplicationStore.getState();
 
-    //update page;
-    const newTraineeApplications = [...traineeApplications].filter(
-      (traineeApplication) => {
-        return traineeApplication._id !== _id;
-      }
-    );
-    set({ traineeApplications: newTraineeApplications });
+      //update page;
+      const newTraineeApplications = [...traineeApplications].filter(
+        (traineeApplication) => {
+          return traineeApplication._id !== _id;
+        }
+      );
+      set({ traineeApplications: newTraineeApplications });
+    } catch (error) {
+      console.error(error);
+      // handle error here
+    }
   },
 
   updateStatue: {
