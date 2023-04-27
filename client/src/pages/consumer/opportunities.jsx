@@ -117,44 +117,50 @@ const Opportunities = () => {
               {opportunity.major_preferred}
             </span>
             <span className="col-1 opportunitiesTags">
-              <form
-                onClick={() => Apply((userData.opportunity = opportunity._id))}
-              >
-                <input
-                  type="hidden"
-                  name="opportunity"
-                  className="inputStyling"
-                  value={(userData.opportunity = opportunity._id)}
-                  onChange={handleUserDataChange}
-                />
-                <input
-                  type="hidden"
-                  name="statue"
-                  className="inputStyling"
-                  value={(userData.statue = "Applied")}
-                  onChange={handleUserDataChange}
-                />
-                <ApplierButton
-                  buttonType={isApplied === "unApplied" ? "Applied" : "Apply"}
-                  isDisabled={isApplied === "Applied"}
-                  type="submit"
-                  name="statue"
-                  className="button"
-                  value={opportunity.statue}
-                />
-              </form>
-              {opportunity.applicationStatuses.map((status) => (
-                <span key={status._id}>
-                  <button
-                    className="deleteBtn"
-                    onClick={() =>
-                      storeDelete.deleteTraineeApplication(status._id)
-                    }
-                  >
-                    {status.statue} | X
-                  </button>
-                </span>
-              ))}
+              {opportunity.applicationStatuses &&
+              opportunity.applicationStatuses.length > 0 ? (
+                opportunity.applicationStatuses.map((status) => (
+                  <span key={status._id}>
+                    <button
+                      className="deleteBtn"
+                      onClick={() =>
+                        storeDelete.deleteTraineeApplication(status._id)
+                      }
+                    >
+                      {status.statue} | X
+                    </button>
+                  </span>
+                ))
+              ) : (
+                <form
+                  onClick={() =>
+                    Apply((userData.opportunity = opportunity._id))
+                  }
+                >
+                  <input
+                    type="hidden"
+                    name="opportunity"
+                    className="inputStyling"
+                    value={(userData.opportunity = opportunity._id)}
+                    onChange={handleUserDataChange}
+                  />
+                  <input
+                    type="hidden"
+                    name="statue"
+                    className="inputStyling"
+                    value={(userData.statue = "Applied")}
+                    onChange={handleUserDataChange}
+                  />
+                  <ApplierButton
+                    buttonType={isApplied === "unApplied" ? "Applied" : "Apply"}
+                    isDisabled={isApplied === "Applied"}
+                    type="submit"
+                    name="statue"
+                    className="button"
+                    value={opportunity.statue}
+                  />
+                </form>
+              )}
             </span>
             <span className="col-2 opportunitiesTags">{opportunity.city}</span>
             <span className="col-2 opportunitiesTags">

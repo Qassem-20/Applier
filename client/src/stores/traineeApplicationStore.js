@@ -16,16 +16,7 @@ const TraineeApplicationStore = create((set) => ({
       await axios.delete("http://localhost:4000/api/v1/applications/" + _id, {
         withCredentials: true,
       });
-
-      const { traineeApplications } = TraineeApplicationStore.getState();
-
-      //update page;
-      const newTraineeApplications = [...traineeApplications].filter(
-        (traineeApplication) => {
-          return traineeApplication._id !== _id;
-        }
-      );
-      set({ traineeApplications: newTraineeApplications });
+      window.location.reload();
     } catch (error) {
       console.error(error);
       // handle error here
