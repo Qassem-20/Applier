@@ -34,42 +34,6 @@ const MedicalStudents = () => {
       <AdminNav />
       <Container className="mt-3 mb-2">
         <h1>Medical Students</h1>
-        <Row className="m-auto pt-3 pb-1">
-          <Col xl={3} md={6} sm={12}>
-            <input
-              className="inputStyling"
-              type="search"
-              name=""
-              value=""
-              placeholder="Phone Number "
-            />
-          </Col>
-          <Col xl={3} md={6} sm={12}>
-            <input
-              className="inputStyling"
-              type="search"
-              name=""
-              value=""
-              placeholder="Trainee Name"
-            />
-          </Col>
-          <Col xl={3} md={6} sm={12}>
-            <input
-              className="inputStyling"
-              type="date"
-              name=""
-              value=""
-              placeholder="Joined Date"
-            />
-          </Col>
-          <Col xl={3} md={6} sm={12}>
-            <select className="inputStyling" name="cars" placeholder="Status">
-              <option value="saab">Null</option>
-              <option value="volvo">Active</option>
-              <option value="saab">Inactive</option>
-            </select>
-          </Col>
-        </Row>
       </Container>
       <Container fluid>
         <Row className="opportunitiesTag">

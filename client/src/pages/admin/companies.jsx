@@ -37,44 +37,6 @@ const Companies = () => {
       <AdminNav />
       <Container className="mt-3 mb-2">
         <h1>Companies</h1>
-        <Row className=" pt-3 pb-1">
-          <Col xl={3} md={6} sm={12}>
-            <input
-              className="inputStyling"
-              type="search"
-              name=""
-              placeholder="Phone Number "
-            />
-          </Col>
-          <Col xl={3} md={6} sm={12}>
-            <input
-              className="inputStyling"
-              type="search"
-              name=""
-              placeholder="Trainee Name"
-            />
-          </Col>
-          <Col xl={3} md={6} sm={12}>
-            <input
-              className="inputStyling"
-              type="date"
-              name=""
-              placeholder="Joined Date"
-            />
-          </Col>
-          <Col xl={3} md={6} sm={12}>
-            <select
-              className="inputStyling"
-              name="cars"
-              defaultValue=""
-              placeholder="Status"
-            >
-              <option defaultValue="saab">Null</option>
-              <option defaultValue="volvo">Active</option>
-              <option defaultValue="saab">Inactive</option>
-            </select>
-          </Col>
-        </Row>
       </Container>
       <Container fluid>
         <Row className="opportunitiesTag">

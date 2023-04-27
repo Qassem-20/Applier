@@ -46,25 +46,25 @@ const AppliedTrainee = () => {
     <Fragment>
       <Nav />
       <div className="row">
-        <div className="col-4">
+        <div className="col-4 mt-2">
           <h1 id="opportunitiesHeader">
             &nbsp;&nbsp;&nbsp;Qualified candidates
           </h1>
         </div>
 
-        <div className="col-8 mt-5">
+        <div className="col-8 mt-2">
           <div className="row">
             <h3 className="mb-3">Opportunity Details</h3>
             <div className="col-4">
               <p>Job Role: {userProfile.job_role}</p>
               <p>Department: {userProfile.departments_preferred}</p>
               <p>Major: {userProfile.major_preferred}</p>
-              <p>Salary: {userProfile.salary}</p>
               <p>Type: {userProfile.job_type}</p>
             </div>
             <div className="col-5">
               <p>Job Description:</p>
               <p>{userProfile.description}</p>
+              <p>Salary: {userProfile.salary}</p>
             </div>
             <div className="col-3">
               <div>
@@ -88,7 +88,6 @@ const AppliedTrainee = () => {
           </div>
         </div>
       </div>
-      <section></section>
       <div className="row opportunitiesTag">
         <span className="col-1 opportunitiesTags">Name</span>
         <span className="col-1 opportunitiesTags">LinkedIn</span>

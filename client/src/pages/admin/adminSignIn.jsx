@@ -44,13 +44,9 @@ const AdminSignIn = () => {
             />
           </Col>
           <Col className="m-auto" xl={8}>
-            <Row>
-              <Col md={8} sm={6} xs={4}>
-                <a href="/adminForgottenPassword">Forget Password?</a>
-              </Col>
-              <Col md={1} sm={1} xs={3}></Col>
+            <Row className="mt-3">
               <Col md={2} sm={3} xs={1}>
-                <button type="submit" className="btn login">
+                <button type="submit" className="btn btn-dark login">
                   Login
                 </button>
               </Col>

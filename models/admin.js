@@ -1,8 +1,5 @@
 import mongoose from "mongoose";
 import validator from "validator";
-
-//you can find all validation here -> [Validator Package](https://www.npmjs.com/package/validator?activeTab=readme)
-
 const adminSchema = new mongoose.Schema(
   {
     name: {

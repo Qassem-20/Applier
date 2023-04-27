@@ -9,12 +9,6 @@ const MedicalStudentSchema = new mongoose.Schema(
       maxlength: 30,
       trim: true,
     },
-    /*identification_letter:{
-        file: { type: Buffer, required: true },
-        filename: { type: String, required: true },
-        mimetype: { type: String, required: true },
-        required:[true, 'Provide your identification letter from your university']
-    },*/
     password: {
       type: String,
       required: [true, "Please enter password"],
@@ -44,7 +38,8 @@ const MedicalStudentSchema = new mongoose.Schema(
     },
     city: {
       type: String,
-      required: [true, "Please enter your city"],
+      required: [false, "Please enter your city"],
+      default: "",
     },
     gender: {
       type: String,

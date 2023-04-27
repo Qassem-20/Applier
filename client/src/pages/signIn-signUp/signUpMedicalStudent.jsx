@@ -122,6 +122,7 @@ const SignUpMedicalStudent = () => {
                   value={store.values.city}
                   onChange={store.handleChange}
                   required={true}
+                  selected
                 >
                   {cities.map((city) => (
                     <option key={city} value={city}>
@@ -145,7 +146,7 @@ const SignUpMedicalStudent = () => {
                 </select>
 
                 <ApplierInputForm
-                  label="Speciality"
+                  label="Specialty"
                   type="text"
                   name="specialty"
                   value={store.values.specialty}
@@ -155,7 +156,7 @@ const SignUpMedicalStudent = () => {
                 />
               </Col>
             </Row>
-            <ApplierButton buttonType="Sign Up" />
+            <button type="submit">Sign Up</button>
           </form>
         </Container>
       </div>

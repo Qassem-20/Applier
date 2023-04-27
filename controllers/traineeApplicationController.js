@@ -97,6 +97,9 @@ const fetchOpportunityApplications = async (req, res) => {
           major_preferred: opportunity.major_preferred,
           city: opportunity.city,
           start_date: opportunity.start_date,
+          duration: opportunity.duration,
+          createdAt: opportunity.createdAt,
+          job_type: opportunity.job_type,
           applicationStatuses: applicationStatuses.map((statue) => ({
             _id: statue._id,
             consumer: statue.consumer,

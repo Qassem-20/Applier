@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 const opportunitySchema = new mongoose.Schema(
   {
-    // -added by (id_company)
     job_role: {
       type: String,
       required: [true, "Please provide the job role"],
@@ -19,7 +18,7 @@ const opportunitySchema = new mongoose.Schema(
     skills: {
       type: String,
       required: [true, "Provide at least one skill"],
-      //provide all skills for all majors
+      default: "",
     },
     job_type: {
       type: String,
@@ -29,7 +28,6 @@ const opportunitySchema = new mongoose.Schema(
     departments_preferred: {
       type: String,
       required: [true, "Please add the preferred departments"],
-      //categorize them by (Computer/engineer/Management)
       enum: ["Technical", "Engineer", "Management"],
     },
     major_preferred: {

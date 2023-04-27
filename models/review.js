@@ -3,7 +3,6 @@ import validator from "validator";
 
 const reviewSchema = new mongoose.Schema(
   {
-    //add review by (consumer_id)
     rate: {
       type: String,
       required: [true, "Please enter the rate"],
