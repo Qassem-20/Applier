@@ -1,5 +1,6 @@
 import "../../assets/css/welcoming.css";
 import "../../assets/css/footer.css"
+import "../../assets/css/custom.css"
 import React, { Component } from "react";
 
 export class about extends Component {
