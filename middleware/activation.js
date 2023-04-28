@@ -17,24 +17,21 @@ async function checkStatueMedical(req, res, next) {
     const user = await MedicalStudent.findById(decoded.sub);
     if (!user) return res.sendStatus(401);
 
-    // Check user's statue
+    // Check user's status
     if (user.statue === "false") {
       return res.status(401).json({
         message: "Access denied. Your account has been deactivated.",
       });
     } else {
-      return res.status(401).json({
-        message: "Your account is active",
-      });
+      req.user = user;
+      next(); // Call next to allow the request to continue
     }
-
-    // attach user to req
-    req.user = user;
-
-    // continue on
-    next();
   } catch (err) {
-    return res.sendStatus(401);
+    console.error(err); // Log the error for debugging purposes
+    return res.status(500).json({
+      message: "An error occurred while processing your request.",
+    });
   }
 }
+
 export { checkStatueMedical };
