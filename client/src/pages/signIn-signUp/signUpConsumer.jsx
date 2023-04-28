@@ -73,6 +73,7 @@ const SignUpConsumer = () => {
                   value={store.values.nationality}
                   onChange={store.handleChange}
                   className="inputStyling mb-3"
+                  required={true}
                 >
                   <option>Please select</option>
                   <option value="saudi">Saudi</option>
@@ -137,7 +138,6 @@ const SignUpConsumer = () => {
                         placeholder="major"
                         value={store.values.major}
                         onChange={store.handleChange}
-                        required={true}
                       >
                         {options.map((option) => (
                           <option key={option} value={option}>
@@ -150,10 +150,8 @@ const SignUpConsumer = () => {
                       <select
                         className="inputStyling mb-3"
                         name="concentrated_major"
-                        placeholder="concentrated_major"
                         value={store.values.concentrated_major}
                         onChange={store.handleChange}
-                        required={true}
                       >
                         {options.map((option) => (
                           <option key={option} value={option}>
@@ -164,6 +162,7 @@ const SignUpConsumer = () => {
                       <Checkbox
                         label="Skills"
                         name="skills"
+                        type="text"
                         options={skillsList}
                         value={store.values.skills}
                         onChange={store.handleChange}
