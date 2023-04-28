@@ -10,7 +10,7 @@ export class about extends Component {
         {/* <h4>About</h4>
         <p>change your language</p>
         <div id="google_translate_element"> </div> */}
-        <div className="sb_footer section_padding">
+        <div className="sb_footer section_padding container">
           <div className="sb_footer-Links">
             <div className="sb_footer-Links_div">
               <h4>Company</h4>
