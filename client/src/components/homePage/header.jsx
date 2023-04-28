@@ -26,7 +26,7 @@ export class header extends Component {
       <Fragment>
         <Container className=" header_container">
           <p className={`textStyling ${this.state.showText ? "showText" : ""}`}>
-            A venue where university students can get opportunities with
+            A platform where university students can get opportunities with
             companies or patients, and where companies and patients can find
             trainees!
           </p>
