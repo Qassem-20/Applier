@@ -32,7 +32,7 @@ const MedicalStudentSchema = new mongoose.Schema(
 
     nationality: {
       type: String,
-      required: [true, "Please enter your nationality"],
+      required: [false, "Please enter your nationality"],
       enum: ["Saudi", "Foreign"],
       default: "Saudi",
     },
@@ -43,8 +43,9 @@ const MedicalStudentSchema = new mongoose.Schema(
     },
     gender: {
       type: String,
-      required: [true, "Please enter your gender"],
-      enum: ["male", "female"],
+      required: [false, "Please enter your gender"],
+      enum: ["", "male", "female"],
+      default: "",
     },
     profile_visibility: {
       type: String,

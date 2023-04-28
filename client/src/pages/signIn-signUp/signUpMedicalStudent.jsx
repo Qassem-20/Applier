@@ -157,7 +157,7 @@ const SignUpMedicalStudent = () => {
                 />
               </Col>
             </Row>
-            <button type="submit">Sign Up</button>
+            <ApplierButton buttonType="Sign Up" />
           </form>
         </Container>
       </div>

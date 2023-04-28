@@ -56,7 +56,8 @@ const companySchema = new mongoose.Schema(
     },
     city: {
       type: String,
-      required: [true, "Please enter your city"],
+      required: [false, "Please enter your city"],
+      default: "",
     },
     statue: {
       type: String,
