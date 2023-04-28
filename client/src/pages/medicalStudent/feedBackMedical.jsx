@@ -7,14 +7,6 @@ import axios from "axios";
 const FeedBackMedical = () => {
   const [reviews, setReviews] = useState([]);
 
-  const [userData, setUserData] = useState({ isReported: "" });
-
-  function handleUserDataChange(event) {
-    setUserData({
-      ...userData,
-      isReported: event.target.value,
-    });
-  }
   useEffect(() => {
     const fetchReviews = async () => {
       try {
@@ -24,7 +16,6 @@ const FeedBackMedical = () => {
             withCredentials: true,
           }
         );
-
         setReviews(response.data.reviews);
       } catch (error) {
         console.error(error);
@@ -34,18 +25,32 @@ const FeedBackMedical = () => {
     fetchReviews();
   }, []);
 
-  const handleReport = (_id) => {
+  const [userData, setUserData] = useState({});
+
+  function handleUserDataChange(event) {
+    const newValue = event.target.value;
+    setUserData({
+      ...userData,
+      isReported: newValue,
+    });
+  }
+
+  const handleReport = async (_id) => {
     try {
-      const response = axios.put(
-        `http://localhost:4000/api/v1/medicalStudents/reportReview/${_id}`,
-        userData,
-        { withCredentials: true }
-      );
-      console.log(response.data);
+      if (userData.isReported !== undefined) {
+        const response = await axios.put(
+          `http://localhost:4000/api/v1/medicalStudents/reportReview/${_id}`,
+          { isReported: userData.isReported },
+          { withCredentials: true }
+        );
+        console.log(response.data);
+        window.location.reload();
+      }
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <Fragment>
       <MedicalNav />

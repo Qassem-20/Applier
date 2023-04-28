@@ -34,9 +34,9 @@ const FeedBackCompany = () => {
     fetchReviews();
   }, []);
 
-  const handleReport = (_id) => {
+  const handleReport = async (_id) => {
     try {
-      const response = axios.put(
+      const response = await axios.put(
         `http://localhost:4000/api/v1/companies/reportReview/${_id}`,
         userData,
         { withCredentials: true }
