@@ -145,8 +145,8 @@ const SignUpConsumer = () => {
                           </option>
                         ))}
                       </select>
-                      Minor
-                      <label className="labelStyling font-bold"></label>
+                      
+                      <label className="labelStyling font-bold">Minor</label>
                       <select
                         className="inputStyling mb-3"
                         name="concentrated_major"
