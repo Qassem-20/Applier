@@ -32,7 +32,7 @@ const consumerSchema = new mongoose.Schema(
     },
     nationality: {
       type: String,
-      required: [true, "Please enter your nationality"],
+      required: [false, "Please enter your nationality"],
       enum: ["saudi", "foreign"],
       default: "saudi",
     },
