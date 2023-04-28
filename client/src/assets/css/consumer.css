@@ -98,3 +98,10 @@
   margin-bottom: 200px;
   overflow: scroll;
 }
+#msg{
+  color: #485089;
+  text-shadow: #000000;
+  margin-left: 1rem;
+  font-size:medium;
+  font-style: italic;
+}

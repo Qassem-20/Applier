@@ -74,6 +74,7 @@ const Opportunities = () => {
         <Row>
           <Col>
             <h1 id="opportunitiesHeader">Opportunities</h1>
+            <span id="msg">Make sure you completed your Profile</span>
           </Col>
           <Col>
             <ApplierInputForm
