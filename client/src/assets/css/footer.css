@@ -53,8 +53,7 @@
   }
   
   .sb_footer-below {
-    display: flex;
-    flex-direction: row;
+    
     justify-content: space-between;
     margin-top: 0.2rem;
   }
@@ -79,6 +78,8 @@
 
   .sb_footer-copyright {
     margin-left: 1rem;
+    display: flex;
+    justify-content: center;
   }
   
   .sb_footer-copyright p {
