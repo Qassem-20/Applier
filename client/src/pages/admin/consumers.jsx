@@ -1,6 +1,6 @@
 import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import ConsumerStore from "../../stores/ConsumerStore.js";
@@ -8,19 +8,11 @@ import ConsumerStore from "../../stores/ConsumerStore.js";
 const Consumers = () => {
   const store = ConsumerStore();
 
-  const [userData, setUserData] = useState({ statue: "" });
-
-  function handleUserDataChange(event) {
-    setUserData({
-      ...userData,
-      statue: event.target.value,
-    });
-  }
-  async function updateStatue(_id) {
+  async function updateStatue(_id, data) {
     try {
       const response = await axios.put(
         `http://localhost:4000/api/v1/admins/suspendConsumer/${_id}`,
-        userData,
+        data,
         { withCredentials: true }
       );
       console.log(response.data);
@@ -30,15 +22,8 @@ const Consumers = () => {
   }
   useEffect(() => {
     store.fetchConsumers();
-  }, []);
+  }, [store]);
 
-  useEffect(() => {
-    store.sortNameConsumers();
-  }, []);
-
-  useEffect(() => {
-    store.sortDateConsumers();
-  }, []);
   return (
     <Fragment>
       <AdminNav />
@@ -93,16 +78,19 @@ const Consumers = () => {
                 <Col xl={2}>
                   <p className="opportunitiesTags">{consumer.createdAt}</p>
                 </Col>
-                <Col xl={1}>
-                  <select
-                    name="statue"
-                    onChange={handleUserDataChange}
-                    onClick={() => updateStatue(consumer._id)}
-                    defaultValue={consumer.statue}
+                <Col xl={1} className="ml-1">
+                  <button
+                    className={`btn ${
+                      consumer.statue === "true" ? "btn-danger" : "btn-success"
+                    }`}
+                    onClick={() => {
+                      const newStatue =
+                        consumer.statue === "true" ? "false" : "true";
+                      updateStatue(consumer._id, { statue: newStatue });
+                    }}
                   >
-                    <option value="true">suspend</option>
-                    <option value="false">unsuspend</option>
-                  </select>
+                    {consumer.statue === "true" ? "Suspended" : "Unsuspend"}
+                  </button>
                 </Col>
               </Row>
             </Container>

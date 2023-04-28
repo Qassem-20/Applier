@@ -1,33 +1,24 @@
 import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import CompanyStore from "../../stores/CompanyStore.js";
 
 const Companies = () => {
   const store = CompanyStore();
-
-  const [userData, setUserData] = useState({ statue: "" });
-
-  function handleUserDataChange(event) {
-    setUserData({
-      ...userData,
-      statue: event.target.value,
-    });
-  }
-  const updateStatue = async (_id) => {
+  async function updateStatue(_id, newStatue) {
     try {
       const response = await axios.put(
-        `http://localhost:4000/api/v1/admins/activateCompanies/${_id}`,
-        userData,
+        `  http://localhost:4000/api/v1/admins/activateCompanies/${_id}`,
+        { statue: newStatue },
         { withCredentials: true }
       );
       console.log(response.data);
     } catch (error) {
       console.error(error);
     }
-  };
+  }
 
   useEffect(() => {
     store.fetchCompanies();
@@ -85,15 +76,18 @@ const Companies = () => {
                   </p>
                 </Col>
                 <Col xl={1}>
-                  <select
-                    name="statue"
-                    defaultValue={company.statue}
-                    onChange={handleUserDataChange}
-                    onClick={() => updateStatue(company._id)}
+                  <button
+                    className={`btn ${
+                      company.statue === "true" ? "btn-success" : "btn-danger"
+                    }`}
+                    onClick={() => {
+                      const newStatue =
+                        company.statue === "true" ? "false" : "true";
+                      updateStatue(company._id, newStatue);
+                    }}
                   >
-                    <option value="false">inactive</option>
-                    <option value="true">active</option>
-                  </select>
+                    {company.statue === "true" ? "Active" : "Inactive"}
+                  </button>
                 </Col>
               </Row>
             </Container>

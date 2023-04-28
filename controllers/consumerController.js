@@ -133,7 +133,7 @@ const createConsumer = async (req, res) => {
       linkedIn_profile,
       experience,
       degree,
-      statue: "true",
+      statue: "false",
     });
   } catch (err) {
     console.log(err);

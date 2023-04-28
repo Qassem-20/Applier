@@ -2,7 +2,7 @@ import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
 import { Container, Row, Col } from "react-bootstrap";
 import adminsStore from "../../stores/AdminsStore.js";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import axios from "axios";
 const AdminPanel = () => {
   const store = adminsStore();

@@ -1,24 +1,17 @@
 import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import MedicalStore from "../../stores/MedicalStore.js";
 const MedicalStudents = () => {
   const store = MedicalStore();
-  const [userData, setUserData] = useState({ statue: "" });
 
-  function handleUserDataChange(event) {
-    setUserData({
-      ...userData,
-      statue: event.target.value,
-    });
-  }
-  async function updateStatue(_id) {
+  async function updateStatue(_id, newStatue) {
     try {
       const response = await axios.put(
         `http://localhost:4000/api/v1/admins/activateMedicalStudent/${_id}`,
-        userData,
+        { statue: newStatue },
         { withCredentials: true }
       );
       console.log(response.data);
@@ -82,17 +75,20 @@ const MedicalStudents = () => {
                   <p className="opportunitiesTags">Identification Letter</p>
                 </Col>
                 <Col xl={1}>
-                  <form onSubmit={store.updateMedicalStudents}>
-                    <select
-                      name="statue"
-                      defaultValue={medicalStudent.statue}
-                      onChange={handleUserDataChange}
-                      onClick={() => updateStatue(medicalStudent._id)}
-                    >
-                      <option value="false">inactive</option>
-                      <option value="true">active</option>
-                    </select>
-                  </form>
+                  <button
+                    className={`btn ${
+                      medicalStudent.statue === "true"
+                        ? "btn-success"
+                        : "btn-danger"
+                    }`}
+                    onClick={() => {
+                      const newStatue =
+                        medicalStudent.statue === "true" ? "false" : "true";
+                      updateStatue(medicalStudent._id, newStatue);
+                    }}
+                  >
+                    {medicalStudent.statue === "true" ? "Active" : "Inactive"}
+                  </button>
                 </Col>
               </Row>
             </Container>
