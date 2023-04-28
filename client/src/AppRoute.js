@@ -47,6 +47,7 @@ import activationMedicalMiddleware from "./pages/middleware/activationMedicalMid
 import MedicalActivation from "./pages/middleware/MedicalActivation";
 
 import WelcomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
 import React, { Fragment } from "react";
 
 const AppRoute = () => {
@@ -55,6 +56,10 @@ const AppRoute = () => {
       <Switch>
         <Route exact path="/">
           <WelcomePage />
+        </Route>
+
+        <Route path="/about">
+          <AboutPage />
         </Route>
 
         <Route path="/signIn">
