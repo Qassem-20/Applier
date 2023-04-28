@@ -1,8 +1,26 @@
-import React, { Fragment } from "react";
-import React from "react";
+import React, { useEffect } from "react";
+import { Container } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
+import ConsumerStore from "../../stores/ConsumerStore";
 
-const suspendedMiddleWare = () => {
-  return <Fragment>suspendedMiddleWare</Fragment>;
-};
+export default function SuspendedMiddleWare(props) {
+  const store = ConsumerStore();
 
-export default suspendedMiddleWare;
+  useEffect(() => {
+    store.checkStatueConsumer();
+  }, [store]);
+
+  if (store.isLoading) {
+    return (
+      <Container className="m-auto bg-white mt-5 signInWidth pt-3 pb-4 rounded shadow">
+        <p>Loading...</p>
+      </Container>
+    );
+  }
+
+  if (!store.isSuspended) {
+    return <Redirect to="/consumerProfile" />;
+  }
+
+  return <div>{props.children}</div>;
+}

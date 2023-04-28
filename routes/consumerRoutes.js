@@ -10,6 +10,8 @@ const apiLimiter = rateLimiter({
 });
 //middleware
 import { requireAuthConsumer } from "../middleware/requireAuth.js";
+import { checkStatueConsumer } from "../middleware/suspendedUser.js";
+
 //exports from the controller
 import {
   getConsumerProfile,
@@ -21,6 +23,7 @@ import {
   updateConsumer,
   deleteConsumer,
   checkAuthConsumer,
+  checkStatuesConsumer,
   findAll,
   sortDateConsumers,
   sortNameConsumers,
@@ -36,6 +39,10 @@ router.route("/registerConsumer").post(apiLimiter, createConsumer);
 router.route("/loginConsumer").post(apiLimiter, loginConsumer);
 router.route("/logoutConsumer").get(logoutConsumer);
 router.route("/checkAuthConsumer").get(requireAuthConsumer, checkAuthConsumer);
+router
+  .route("/checkStatueConsumer")
+  .get(checkStatueConsumer, checkStatuesConsumer);
+
 router.route("/consumers/:id").put(requireAuthConsumer, updateConsumer);
 router.route("/consumers/:id").delete(deleteConsumer);
 router.route("/sortDateConsumers").get(sortDateConsumers);

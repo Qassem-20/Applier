@@ -325,6 +325,18 @@ const ConsumerStore = create((set) => ({
     });
     set({ loggedIn: false });
   },
+  isLoading: false,
+  isSuspended: true,
+  checkStatueConsumer: async () => {
+    try {
+      await axios.get("http://localhost:4000/api/v1/checkStatueMedical", {
+        withCredentials: true,
+      });
+      set({ isSuspended: true });
+    } catch (err) {
+      set({ isSuspended: false });
+    }
+  },
 }));
 
 export default ConsumerStore;

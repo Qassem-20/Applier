@@ -173,6 +173,13 @@ function checkAuthCompany(req, res) {
     return res.sendStatus(400);
   }
 }
+function checkStatuesCompany(req, res) {
+  try {
+    res.sendStatus(200);
+  } catch (err) {
+    return res.sendStatus(400);
+  }
+}
 const updateCompany = async (req, res) => {
   try {
     const companyId = req.params.id;
@@ -250,6 +257,7 @@ export {
   loginCompany,
   logoutCompany,
   checkAuthCompany,
+  checkStatuesCompany,
   updateCompany,
   deleteCompany,
   activateCompany,

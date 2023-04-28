@@ -194,6 +194,13 @@ function checkAuthConsumer(req, res) {
     return res.sendStatus(400);
   }
 }
+function checkStatuesConsumer(req, res) {
+  try {
+    res.sendStatus(200);
+  } catch (err) {
+    return res.sendStatus(400);
+  }
+}
 
 const updateConsumer = async (req, res) => {
   try {
@@ -276,6 +283,7 @@ export {
   loginConsumer,
   logoutConsumer,
   checkAuthConsumer,
+  checkStatuesConsumer,
   updateConsumer,
   deleteConsumer,
   suspendConsumer,

@@ -10,6 +10,8 @@ const apiLimiter = rateLimiter({
 });
 //middleware
 import { requireAuthCompany } from "../middleware/requireAuth.js";
+import { checkStatueCompany } from "../middleware/activation.js";
+
 //exports from the controller
 import {
   fetchCompanies,
@@ -18,6 +20,7 @@ import {
   loginCompany,
   logoutCompany,
   checkAuthCompany,
+  checkStatuesCompany,
   updateCompany,
   deleteCompany,
   findCompany,
@@ -35,6 +38,10 @@ router.route("/registerCompany").post(apiLimiter, createCompany);
 router.route("/loginCompany").post(apiLimiter, loginCompany);
 router.route("/logoutCompany").get(logoutCompany);
 router.route("/checkAuthCompany").get(requireAuthCompany, checkAuthCompany);
+router
+  .route("/checkStatueCompany")
+  .get(checkStatueCompany, checkStatuesCompany);
+
 router.route("/companies/:id").put(requireAuthCompany, updateCompany);
 
 router.route("/companies/:id").delete(deleteCompany);

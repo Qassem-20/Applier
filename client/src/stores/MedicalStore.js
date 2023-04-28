@@ -236,15 +236,16 @@ const MedicalStore = create((set) => ({
     set({ loggedIn: false });
   },
 
-  isActive: false,
+  isLoading: false,
+  isActive: true,
   checkStatueMedical: async () => {
     try {
       await axios.get("http://localhost:4000/api/v1/checkStatueMedical", {
-        withCredentials: true, // Send cookies with the request
+        withCredentials: true,
       });
-      set({ isActive: true }); // Updated state variable name
-    } catch (error) {
-      set({ isActive: false }); // Updated state variable name
+      set({ isActive: true });
+    } catch (err) {
+      set({ isActive: false });
     }
   },
 }));

@@ -43,8 +43,7 @@ import RequireAuthAdmin from "./pages/middleware/RequireAuthAdmin";
 import RequireAuthConsumer from "./pages/middleware/RequireAuthConsumer";
 import RequireAuthMedical from "./pages/middleware/RequireAuthMedical";
 
-import activationMedicalMiddleware from "./pages/middleware/activationMedicalMiddleware";
-import MedicalActivation from "./pages/middleware/MedicalActivation";
+import ActivationMedicalMiddleware from "./pages/middleware/activationMedicalMiddleware";
 
 import WelcomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -107,10 +106,6 @@ const AppRoute = () => {
           <MedicalStudents />
         </Route>
 
-        <Route path="/medicalStudentsM">
-          <MedicalStudentsM />
-        </Route>
-
         <Route path="/addOpportunity">
           <RequireAuthCompany>
             <AddOpportunity />
@@ -145,6 +140,13 @@ const AppRoute = () => {
         <Route path="/medicalHomePage">
           <RequireAuthMedical>
             <MedicalHomePage />
+          </RequireAuthMedical>
+        </Route>
+        <Route path="/medicalStudentsM">
+          <RequireAuthMedical>
+            <ActivationMedicalMiddleware>
+              <MedicalStudentsM />
+            </ActivationMedicalMiddleware>
           </RequireAuthMedical>
         </Route>
 
@@ -208,7 +210,9 @@ const AppRoute = () => {
         </Route>
         <Route path="/feedBackMedical">
           <RequireAuthMedical>
-            <FeedBackMedical />
+            <ActivationMedicalMiddleware>
+              <FeedBackMedical />
+            </ActivationMedicalMiddleware>
           </RequireAuthMedical>
         </Route>
         <Route path="/feedBackCompany">

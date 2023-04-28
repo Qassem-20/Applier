@@ -1,26 +1,26 @@
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
-import AdminsStore from "../../stores/AdminsStore.js";
+import MedicalStore from "../../stores/MedicalStore";
 
 export default function ActivationMedicalMiddleware(props) {
-  const store = AdminsStore();
+  const store = MedicalStore();
 
   useEffect(() => {
-    if (store.statue === null) {
-      store.checkAuth();
-    }
+    store.checkStatueMedical();
   }, [store]);
 
-  if (store.statue === null) {
+  if (store.isLoading) {
     return (
       <Container className="m-auto bg-white mt-5 signInWidth pt-3 pb-4 rounded shadow">
         <p>Loading...</p>
       </Container>
     );
   }
-  if (store.statue === false) {
-    return <Redirect to="/adminSignIn" />;
+
+  if (!store.isActive) {
+    return <Redirect to="/medicalHomePage" />;
   }
+
   return <div>{props.children}</div>;
 }

@@ -262,6 +262,18 @@ const CompanyStore = create((set) => ({
     });
     set({ loggedIn: false });
   },
+  isLoading: false,
+  isActive: true,
+  checkStatueCompany: async () => {
+    try {
+      await axios.get("http://localhost:4000/api/v1/checkStatueMedical", {
+        withCredentials: true,
+      });
+      set({ isActive: true });
+    } catch (err) {
+      set({ isActive: false });
+    }
+  },
 }));
 
 export default CompanyStore;
