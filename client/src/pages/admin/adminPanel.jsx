@@ -13,19 +13,11 @@ const AdminPanel = () => {
     };
   });
 
-  const [userData, setUserData] = useState({ type: "" });
-
-  function handleUserDataChange(event) {
-    setUserData({
-      ...userData,
-      type: event.target.value,
-    });
-  }
-  async function updateType(_id) {
+  async function updateType(_id, newType) {
     try {
       const response = await axios.put(
         `http://localhost:4000/api/v1/admins/${_id}`,
-        userData,
+        { type: newType },
         { withCredentials: true }
       );
       console.log(response.data);
@@ -85,16 +77,21 @@ const AdminPanel = () => {
                 <Col xl={3} md={3} xs={2}>
                   <p className="opportunitiesTags">{admin.phone}</p>
                 </Col>
-                <Col xl={2} md={1} xs={1}>
-                  <select
-                    name="type"
-                    defaultValue={admin.type}
-                    onChange={handleUserDataChange}
-                    onClick={() => updateType(admin._id)}
+                <Col xl={2} md={1} xs={1} className="ml-2">
+                  <button
+                    className={`btn ${
+                      admin.type === "main-admin" ? "bg-green" : "bg-blue"
+                    }`}
+                    onClick={() => {
+                      const newType =
+                        admin.type === "main-admin"
+                          ? "sub-admin"
+                          : "main-admin";
+                      updateType(admin._id, newType);
+                    }}
                   >
-                    <option value="sub-admin">sub-admin</option>
-                    <option value="main-admin">main-admin</option>
-                  </select>
+                    {admin.type === "main-admin" ? "main admin" : "sub admin"}
+                  </button>
                 </Col>
                 <Col xl={1} md={1} xs={1}>
                   <button

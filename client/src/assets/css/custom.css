@@ -198,3 +198,17 @@ input:invalid[focused="true"] ~ span {
 .reomveSelection {
   cursor: pointer;
 }
+.btn {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.bg-green {
+  background-color: rgb(151, 99, 15);
+}
+
+.bg-blue {
+  background-color: rgb(19, 19, 154);
+}
