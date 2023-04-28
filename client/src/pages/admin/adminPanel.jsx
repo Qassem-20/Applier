@@ -80,7 +80,7 @@ const AdminPanel = () => {
                 <Col xl={2} md={1} xs={1} className="ml-2">
                   <button
                     className={`btn ${
-                      admin.type === "main-admin" ? "bg-green" : "bg-blue"
+                      admin.type === "main-admin" ? "btn-black" : "btn-success"
                     }`}
                     onClick={() => {
                       const newType =

@@ -204,11 +204,6 @@ input:invalid[focused="true"] ~ span {
   color: white;
   cursor: pointer;
 }
-
-.bg-green {
-  background-color: rgb(151, 99, 15);
-}
-
-.bg-blue {
-  background-color: rgb(19, 19, 154);
+.btn-black {
+  background-color: rgb(23, 23, 23);
 }

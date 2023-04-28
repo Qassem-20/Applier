@@ -74,7 +74,9 @@ const FeedBackMedical = () => {
               <div>
                 <button
                   onClick={() => handleReport(review._id)}
-                  className="btn btn-primary"
+                  className={`btn ${
+                    review.isReported === "yes" ? "btn-danger" : "btn-success"
+                  }`}
                 >
                   {review.isReported === "yes" ? "Reported" : "Not Reported"}
                 </button>

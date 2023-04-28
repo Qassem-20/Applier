@@ -101,12 +101,13 @@ const ReportedFeedBack = () => {
               <div>
                 <button
                   onClick={() => handleReport(review._id)}
-                  className="btn btn-primary"
+                  className={`btn ${
+                    review.isReported === "yes" ? "btn-warning" : "btn-success"
+                  }`}
                 >
                   {review.isReported === "yes" ? "Reported" : "Not Reported"}
                 </button>
               </div>
-
               <span>
                 {review.rate} <span>&#11088;</span>
               </span>
