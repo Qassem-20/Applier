@@ -11,7 +11,7 @@ export class services extends Component {
     return (
       <Fragment>
         <Container className="container-services" id="Services">
-          <h1 className="centerAlignment">Our Services</h1>
+          <h1 style={{lineHeight: 3}} className="centerAlignment">Our Services</h1>
           <Row>
             <Col xl={3} md={6} sm={12}>
               <div className="card" id="card1">
