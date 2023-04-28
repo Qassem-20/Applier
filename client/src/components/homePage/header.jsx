@@ -26,9 +26,9 @@ export class header extends Component {
       <Fragment>
         <Container className=" header_container">
           <p className={`textStyling ${this.state.showText ? "showText" : ""}`}>
-            A venue where university students can get opportunities with a
-            companies or patients, and where companies and patients found the
-            trainee.
+            A venue where university students can get opportunities with
+            companies or patients, and where companies and patients can find
+            trainees!
           </p>
           <div className=" d-flex justify-content-center">
             <a href="/routeSignUp" className="btn active" id="signInButton">
