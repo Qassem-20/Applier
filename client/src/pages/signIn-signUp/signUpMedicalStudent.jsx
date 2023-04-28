@@ -17,9 +17,10 @@ const SignUpMedicalStudent = () => {
     e.preventDefault();
 
     try {
+      setTimeout(() => {
+        history.push("/signIn");
+      }, 2000);
       await store.registerMedical();
-      //Navigate
-      history.push("/signIn");
     } catch (err) {
       console.error(err.response.data);
       alert(`this account already registered`);

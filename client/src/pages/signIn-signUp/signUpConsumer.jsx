@@ -29,11 +29,12 @@ const SignUpConsumer = () => {
   };
   const handleSignUp = async (e) => {
     e.preventDefault();
-
     try {
+      // added timer to execute {await store.registerConsumer();}
+      setTimeout(() => {
+        history.push("/signIn");
+      }, 2000);
       await store.registerConsumer();
-      //Navigate
-      history.push("/signIn");
     } catch (err) {
       console.error(err.response.data);
       alert(`this account already registered`);
@@ -73,7 +74,6 @@ const SignUpConsumer = () => {
                   value={store.values.nationality}
                   onChange={store.handleChange}
                   className="inputStyling mb-3"
-                  required={true}
                 >
                   <option>Please select</option>
                   <option value="saudi">Saudi</option>
