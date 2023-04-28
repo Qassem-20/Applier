@@ -16,7 +16,7 @@ const Companies = () => {
       statue: event.target.value,
     });
   }
-  async function updateStatue(_id) {
+  const updateStatue = async (_id) => {
     try {
       const response = await axios.put(
         `http://localhost:4000/api/v1/admins/activateCompanies/${_id}`,
@@ -27,7 +27,7 @@ const Companies = () => {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   useEffect(() => {
     store.fetchCompanies();
