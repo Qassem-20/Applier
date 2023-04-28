@@ -130,7 +130,6 @@ const SignUpConsumer = () => {
                         value={store.values.gpa}
                         onChange={store.handleChange}
                       />
-
                       <label className="labelStyling font-bold">Major</label>
                       <select
                         className="inputStyling mb-3"
@@ -146,13 +145,13 @@ const SignUpConsumer = () => {
                           </option>
                         ))}
                       </select>
-
-                      <label className="labelStyling font-bold">Minor</label>
+                      Minor
+                      <label className="labelStyling font-bold"></label>
                       <select
                         className="inputStyling mb-3"
-                        name="minor"
-                        placeholder="minor"
-                        value={store.values.minor}
+                        name="concentrated_major"
+                        placeholder="concentrated_major"
+                        value={store.values.concentrated_major}
                         onChange={store.handleChange}
                         required={true}
                       >
@@ -162,7 +161,6 @@ const SignUpConsumer = () => {
                           </option>
                         ))}
                       </select>
-
                       <Checkbox
                         label="Skills"
                         name="skills"
