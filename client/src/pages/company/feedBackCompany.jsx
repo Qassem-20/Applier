@@ -7,14 +7,6 @@ import axios from "axios";
 const FeedBackCompany = () => {
   const [reviews, setReviews] = useState([]);
 
-  const [userData, setUserData] = useState({ isReported: "" });
-
-  function handleUserDataChange(event) {
-    setUserData({
-      ...userData,
-      isReported: event.target.value,
-    });
-  }
   useEffect(() => {
     const fetchReviews = async () => {
       try {
@@ -34,19 +26,32 @@ const FeedBackCompany = () => {
     fetchReviews();
   }, []);
 
-  const handleReport = async (_id) => {
+  const handleReport = async (reviewId) => {
     try {
-      const response = await axios.put(
-        `http://localhost:4000/api/v1/companies/reportReview/${_id}`,
-        userData,
-        { withCredentials: true }
-      );
-      console.log(response.data);
+      const reviewToUpdate = reviews.find((review) => review._id === reviewId);
+      if (reviewToUpdate) {
+        const isReported = reviewToUpdate.isReported === "yes" ? "no" : "yes";
+        const response = await axios.put(
+          `http://localhost:4000/api/v1/companies/reportReview/${reviewId}`,
+          { isReported },
+          { withCredentials: true }
+        );
+        console.log(response.data);
+        const updatedReviews = reviews.map((review) => {
+          if (review._id === reviewId) {
+            return {
+              ...review,
+              isReported,
+            };
+          }
+          return review;
+        });
+        setReviews(updatedReviews);
+      }
     } catch (error) {
       console.error(error);
     }
   };
-
   return (
     <Fragment>
       <CompanyNav />
@@ -68,15 +73,12 @@ const FeedBackCompany = () => {
             </Col>
             <Col className="m-auto" sm={2}>
               <div>
-                <select
-                  name="isReported"
-                  defaultValue={review.isReported}
-                  onChange={handleUserDataChange}
+                <button
                   onClick={() => handleReport(review._id)}
+                  className="btn btn-primary"
                 >
-                  <option value="no">Not Reported</option>
-                  <option value="yes">Reported</option>
-                </select>
+                  {review.isReported === "yes" ? "Reported" : "Not Reported"}
+                </button>
               </div>
               <span>
                 {review.rate} <span>&#11088;</span>

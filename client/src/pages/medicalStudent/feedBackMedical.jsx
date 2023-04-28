@@ -25,32 +25,32 @@ const FeedBackMedical = () => {
     fetchReviews();
   }, []);
 
-  const [userData, setUserData] = useState({});
-
-  function handleUserDataChange(event) {
-    const newValue = event.target.value;
-    setUserData({
-      ...userData,
-      isReported: newValue,
-    });
-  }
-
-  const handleReport = async (_id) => {
+  const handleReport = async (reviewId) => {
     try {
-      if (userData.isReported !== undefined) {
+      const reviewToUpdate = reviews.find((review) => review._id === reviewId);
+      if (reviewToUpdate) {
+        const isReported = reviewToUpdate.isReported === "yes" ? "no" : "yes";
         const response = await axios.put(
-          `http://localhost:4000/api/v1/medicalStudents/reportReview/${_id}`,
-          { isReported: userData.isReported },
+          `http://localhost:4000/api/v1/medicalStudents/reportReview/${reviewId}`,
+          { isReported },
           { withCredentials: true }
         );
         console.log(response.data);
-        window.location.reload();
+        const updatedReviews = reviews.map((review) => {
+          if (review._id === reviewId) {
+            return {
+              ...review,
+              isReported,
+            };
+          }
+          return review;
+        });
+        setReviews(updatedReviews);
       }
     } catch (error) {
       console.error(error);
     }
   };
-
   return (
     <Fragment>
       <MedicalNav />
@@ -72,15 +72,12 @@ const FeedBackMedical = () => {
             </Col>
             <Col className="m-auto" sm={2}>
               <div>
-                <select
-                  name="isReported"
-                  defaultValue={review.isReported}
-                  onChange={handleUserDataChange}
+                <button
                   onClick={() => handleReport(review._id)}
+                  className="btn btn-primary"
                 >
-                  <option value="no">Not Reported</option>
-                  <option value="yes">Reported</option>
-                </select>
+                  {review.isReported === "yes" ? "Reported" : "Not Reported"}
+                </button>
               </div>
               <span>
                 {review.rate} <span>&#11088;</span>
