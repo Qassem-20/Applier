@@ -28,8 +28,8 @@ const adminSchema = new mongoose.Schema(
     type: {
       type: String,
       required: [true, "Please provide type of the admin"],
-      enum: ["main-admin", "sub-admin"],
-      default: "sub-admin",
+      enum: ["true", "false"],
+      default: "false",
     },
     phone: {
       type: String,

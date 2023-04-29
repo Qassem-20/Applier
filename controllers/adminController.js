@@ -105,6 +105,13 @@ function checkAuthAdmin(req, res) {
     return res.sendStatus(400);
   }
 }
+function checkTypeAdmin(req, res) {
+  try {
+    res.sendStatus(200);
+  } catch (err) {
+    return res.sendStatus(400);
+  }
+}
 
 const updateAdmin = async (req, res) => {
   try {
@@ -145,6 +152,7 @@ export {
   loginAdmin,
   logoutAdmin,
   checkAuthAdmin,
+  checkTypeAdmin,
   updateAdmin,
   deleteAdmin,
 };

@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import Consumer from "../models/Consumer.js";
+import Admin from "../models/Admin.js";
 
-async function checkStatueConsumer(req, res, next) {
+async function adminType(req, res, next) {
   try {
     // Read token off cookies or from headers
     const token =
@@ -14,13 +14,13 @@ async function checkStatueConsumer(req, res, next) {
     if (Date.now() > decoded.exp) return res.sendStatus(401);
 
     // Find user using decoded sub
-    const user = await Consumer.findById(decoded.sub);
+    const user = await Admin.findById(decoded.sub);
     if (!user) return res.sendStatus(401);
 
-    // Check user's status
-    if (user.statue === "false") {
+    // Check user's type
+    if (user.type === "false") {
       return res.status(401).json({
-        message: "Access denied. Your account has been suspended.",
+        message: "Access denied.",
       });
     } else {
       req.user = user;
@@ -34,4 +34,4 @@ async function checkStatueConsumer(req, res, next) {
   }
 }
 
-export { checkStatueConsumer };
+export { adminType };

@@ -23,7 +23,7 @@ const AddAdmin = () => {
         <Row>
           <Col>
             <form onSubmit={handleSignUp}>
-              <p className="mb-1">Name:</p>
+              <p className="labelStyling">Name:</p>
               <input
                 className="inputStyling"
                 type="text"
@@ -32,7 +32,7 @@ const AddAdmin = () => {
                 value={store.values.name}
                 onChange={store.handleChange}
               />
-              <p className="mb-1">Email:</p>
+              <p className="labelStyling">Email:</p>
               <input
                 className="inputStyling"
                 type="email"
@@ -41,7 +41,7 @@ const AddAdmin = () => {
                 value={store.values.email}
                 onChange={store.handleChange}
               />
-              <p className="mb-1">Phone Number:</p>
+              <p className="labelStyling">Phone Number:</p>
               <input
                 className="inputStyling"
                 type="number"
@@ -50,7 +50,7 @@ const AddAdmin = () => {
                 value={store.values.phone}
                 onChange={store.handleChange}
               />
-              <p className="mb-1">Password:</p>
+              <p className="labelStyling">Password:</p>
               <input
                 className="inputStyling"
                 type="password"
@@ -59,7 +59,7 @@ const AddAdmin = () => {
                 value={store.values.password}
                 onChange={store.handleChange}
               />
-              <p className="mb-1">Type of the admin:</p>
+              <p className="labelStyling">Type of the admin:</p>
               <select
                 className="inputStyling"
                 name="type"
@@ -68,10 +68,10 @@ const AddAdmin = () => {
                 onChange={store.handleChange}
               >
                 <option>Please select a type</option>
-                <option value="sub-admin">sub-admin</option>
-                <option value="main-admin">main-admin</option>
+                <option value="false">sub-admin</option>
+                <option value="true">main-admin</option>
               </select>
-              <button type="submit" className="btn login">
+              <button type="submit" className="btn btn-dark mt-4">
                 submit
               </button>
             </form>

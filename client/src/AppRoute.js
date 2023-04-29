@@ -20,9 +20,10 @@ import TraineeDetails from "./pages/company/traineeDetails";
 
 import MedicalHomePage from "./pages/medicalStudent/homePageMedicalStudent";
 import MedicalStudentsM from "./pages/medicalStudent/medicalStudentsM";
+import ActivationMedicalMiddleware from "./pages/middleware/activationMedicalMiddleware";
 
 import AdminHomePage from "./pages/admin/adminHomePage";
-import UnauthorizedMiddleWare from "./pages/admin/unauthorizedMiddleWare";
+import UnauthorizedAdminMiddleWare from "./pages/admin/unauthorizedAdminMiddleware";
 import Consumers from "./pages/admin/consumers";
 import Companies from "./pages/admin/companies";
 import OpportunitiesPanel from "./pages/admin/opportunities";
@@ -42,8 +43,6 @@ import RequireAuthCompany from "./pages/middleware/RequireAuthCompany";
 import RequireAuthAdmin from "./pages/middleware/RequireAuthAdmin";
 import RequireAuthConsumer from "./pages/middleware/RequireAuthConsumer";
 import RequireAuthMedical from "./pages/middleware/RequireAuthMedical";
-
-import ActivationMedicalMiddleware from "./pages/middleware/activationMedicalMiddleware";
 
 import WelcomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -158,8 +157,10 @@ const AppRoute = () => {
         <Route path="/adminSignIn">
           <AdminSignIn />
         </Route>
-        <Route path="/unauthorizedMiddleWare">
-          <UnauthorizedMiddleWare />
+        <Route path="/unauthorizedAdminMiddleWare">
+          <RequireAuthAdmin>
+            <UnauthorizedAdminMiddleWare />
+          </RequireAuthAdmin>
         </Route>
         <Route path="/adminForgottenPassword">
           <AdminForgottenPassword />

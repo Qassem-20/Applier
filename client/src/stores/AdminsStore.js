@@ -167,6 +167,18 @@ const AdminsStore = create((set) => ({
     });
     set({ loggedIn: false });
   },
+  isLoading: false,
+  isType: true,
+  checkStatueCompany: async () => {
+    try {
+      await axios.get("http://localhost:4000/api/v1/checkStatueAdmin", {
+        withCredentials: true,
+      });
+      set({ isType: true });
+    } catch (err) {
+      set({ isType: false });
+    }
+  },
 }));
 
 export default AdminsStore;

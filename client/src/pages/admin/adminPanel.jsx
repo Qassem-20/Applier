@@ -77,20 +77,17 @@ const AdminPanel = () => {
                 <Col xl={3} md={3} xs={2}>
                   <p className="opportunitiesTags">{admin.phone}</p>
                 </Col>
-                <Col xl={2} md={1} xs={1} className="ml-2">
+                <Col xl={2} md={1} xs={1}>
                   <button
                     className={`btn ${
-                      admin.type === "main-admin" ? "btn-black" : "btn-success"
+                      admin.type === "true" ? "btn-black" : "btn-success"
                     }`}
                     onClick={() => {
-                      const newType =
-                        admin.type === "main-admin"
-                          ? "sub-admin"
-                          : "main-admin";
+                      const newType = admin.type === "true" ? "false" : "true";
                       updateType(admin._id, newType);
                     }}
                   >
-                    {admin.type === "main-admin" ? "main admin" : "sub admin"}
+                    {admin.type === "true" ? "main admin" : "sub admin"}
                   </button>
                 </Col>
                 <Col xl={1} md={1} xs={1}>
