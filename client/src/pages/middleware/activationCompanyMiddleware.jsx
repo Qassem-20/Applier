@@ -19,7 +19,7 @@ export default function ActivationCompanyMiddleware(props) {
   }
 
   if (!store.isActive) {
-    return <Redirect to="/CompanyProfile" />;
+    return <Redirect to="/unauthorizedCompanyMiddleware" />;
   }
 
   return <div>{props.children}</div>;

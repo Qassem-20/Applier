@@ -36,12 +36,6 @@ const CompanyProfile = () => {
             <Row>
               <Col>
                 <p>Register number: {store.company.register_number}</p>
-                <p>Bio: {store.company.organization_bio}</p>
-                <p>Status of the Account: {store.company.statue}</p>
-              </Col>
-              <Col>
-                <p>Country: {store.company.country}</p>
-                <p>City: {store.company.city}</p>
 
                 <span>Organization website: </span>
                 <span>
@@ -49,6 +43,12 @@ const CompanyProfile = () => {
                     {store.company.organization_website}
                   </a>
                 </span>
+                <p>Country: {store.company.country}</p>
+                <p>City: {store.company.city}</p>
+              </Col>
+              <Col>
+                <p>Bio:</p>
+                <p>{store.company.organization_bio}</p>
               </Col>
               <div>
                 <ApplierButton

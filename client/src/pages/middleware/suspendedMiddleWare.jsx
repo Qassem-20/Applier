@@ -19,7 +19,7 @@ export default function SuspendedMiddleWare(props) {
   }
 
   if (!store.isSuspended) {
-    return <Redirect to="/consumerProfile" />;
+    return <Redirect to="/unauthorizedConsumerMiddleware" />;
   }
 
   return <div>{props.children}</div>;

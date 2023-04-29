@@ -1,5 +1,9 @@
 import { Switch, Route } from "react-router-dom";
 
+import WelcomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import CareersPage from "./pages/CareersPage";
+import ContactPage from "./pages/CareersPage";
 import SignIn from "./pages/signIn-signUp/signIn";
 import RouteSignUp from "./pages/signIn-signUp/routeSignUp";
 import SignUpMedicalStudent from "./pages/signIn-signUp/signUpMedicalStudent";
@@ -7,21 +11,35 @@ import SignUpCompany from "./pages/signIn-signUp/signUpCompany";
 import SignUpConsumer from "./pages/signIn-signUp/signUpConsumer";
 import ForgottenPassword from "./pages/signIn-signUp/forgottenPassword";
 
-import ConsumerProfile from "./pages/consumer/consumerProfile.jsx";
+import RequireAuthConsumer from "./pages/middleware/RequireAuthConsumer";
+import SuspendedMiddleWare from "./pages/middleware/suspendedMiddleWare";
+import UnauthorizedConsumerMiddleware from "./pages/consumer/unauthorizedConsumerMiddleware";
+import ConsumerProfile from "./pages/consumer/consumerProfile";
 import Opportunities from "./pages/consumer/opportunities";
 import MedicalStudents from "./pages/consumer/medicalStudents";
+import FeedBackConsumerCompany from "./pages/consumer/feedBackConsumerCompany";
+import FeedBackConsumerMedical from "./pages/consumer/feedBackConsumerMedical";
 
+import RequireAuthCompany from "./pages/middleware/RequireAuthCompany";
+import ActivationCompanyMiddleware from "./pages/middleware/activationCompanyMiddleware";
+import UnauthorizedCompanyMiddleware from "./pages/company/unauthorizedCompanyMiddleware";
 import AddOpportunity from "./pages/company/addOpportunity";
 import AppliedTrainee from "./pages/company/appliedTrainee";
 import CompanyHomePage from "./pages/company/companyHomePage";
 import CompanyProfile from "./pages/company/companyProfile";
 import EditOpportunity from "./pages/company/editOpportunity";
 import TraineeDetails from "./pages/company/traineeDetails";
+import FeedBackCompany from "./pages/company/feedBackCompany";
 
-import MedicalHomePage from "./pages/medicalStudent/homePageMedicalStudent";
-import MedicalStudentsM from "./pages/medicalStudent/medicalStudentsM";
+import RequireAuthMedical from "./pages/middleware/RequireAuthMedical";
 import ActivationMedicalMiddleware from "./pages/middleware/activationMedicalMiddleware";
+import MedicalHomePage from "./pages/medicalStudent/homePageMedicalStudent";
+import UnauthorizedCMedicalMiddleware from "./pages/medicalStudent/unauthorizedCMedicalMiddleware";
+import MedicalStudentsM from "./pages/medicalStudent/medicalStudentsM";
+import FeedBackMedical from "./pages/medicalStudent/feedBackMedical";
 
+import RequireAuthAdmin from "./pages/middleware/RequireAuthAdmin";
+import RequireTypeAdmin from "./pages/middleware/RequireTypeAdmin";
 import AdminHomePage from "./pages/admin/adminHomePage";
 import UnauthorizedAdminMiddleWare from "./pages/admin/unauthorizedAdminMiddleware";
 import Consumers from "./pages/admin/consumers";
@@ -34,20 +52,6 @@ import ReportedFeedBack from "./pages/admin/reportedFeedBack";
 import AdminForgottenPassword from "./pages/admin/adminForgottenPassword";
 import AdminPanel from "./pages/admin/adminPanel";
 
-import FeedBackConsumerCompany from "./pages/consumer/feedBackConsumerCompany";
-import FeedBackConsumerMedical from "./pages/consumer/feedBackConsumerMedical";
-import FeedBackMedical from "./pages/medicalStudent/feedBackMedical";
-import FeedBackCompany from "./pages/company/feedBackCompany";
-
-import RequireAuthCompany from "./pages/middleware/RequireAuthCompany";
-import RequireAuthAdmin from "./pages/middleware/RequireAuthAdmin";
-import RequireAuthConsumer from "./pages/middleware/RequireAuthConsumer";
-import RequireAuthMedical from "./pages/middleware/RequireAuthMedical";
-
-import WelcomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
-import CareersPage from "./pages/CareersPage";
-import ContactPage from "./pages/CareersPage";
 import React, { Fragment } from "react";
 
 const AppRoute = () => {
@@ -89,35 +93,78 @@ const AppRoute = () => {
           <ForgottenPassword />
         </Route>
 
+        <Route path="/unauthorizedConsumerMiddleware">
+          <RequireAuthConsumer>
+            <UnauthorizedConsumerMiddleware />
+          </RequireAuthConsumer>
+        </Route>
         <Route path="/consumerProfile">
           <RequireAuthConsumer>
-            <ConsumerProfile />
+            <SuspendedMiddleWare>
+              <ConsumerProfile />
+            </SuspendedMiddleWare>
           </RequireAuthConsumer>
         </Route>
-
         <Route path="/opportunities">
           <RequireAuthConsumer>
-            <Opportunities />
+            <SuspendedMiddleWare>
+              <Opportunities />
+            </SuspendedMiddleWare>
+          </RequireAuthConsumer>
+        </Route>
+        <Route path="/medicalStudents">
+          <RequireAuthConsumer>
+            <SuspendedMiddleWare>
+              <MedicalStudents />\
+            </SuspendedMiddleWare>
+          </RequireAuthConsumer>
+        </Route>
+        <Route path="/feedBackConsumerCompany/:companyId">
+          <RequireAuthConsumer>
+            <SuspendedMiddleWare>
+              <FeedBackConsumerCompany />
+            </SuspendedMiddleWare>
+          </RequireAuthConsumer>
+        </Route>
+        <Route path="/feedBackConsumerMedical/:medicalId">
+          <RequireAuthConsumer>
+            <SuspendedMiddleWare>
+              <FeedBackConsumerMedical />
+            </SuspendedMiddleWare>
           </RequireAuthConsumer>
         </Route>
 
-        <Route path="/medicalStudents">
-          <MedicalStudents />
+        <Route path="/unauthorizedCompanyMiddleware">
+          <RequireAuthCompany>
+            <UnauthorizedCompanyMiddleware />
+          </RequireAuthCompany>
         </Route>
-
+        <Route path="/feedBackCompany">
+          <RequireAuthCompany>
+            <ActivationCompanyMiddleware>
+              <FeedBackCompany />
+            </ActivationCompanyMiddleware>
+          </RequireAuthCompany>
+        </Route>
         <Route path="/addOpportunity">
           <RequireAuthCompany>
-            <AddOpportunity />
+            <ActivationCompanyMiddleware>
+              <AddOpportunity />
+            </ActivationCompanyMiddleware>
           </RequireAuthCompany>
         </Route>
         <Route path="/appliedTrainee/:opportunityId">
           <RequireAuthCompany>
-            <AppliedTrainee />
+            <ActivationCompanyMiddleware>
+              <AppliedTrainee />
+            </ActivationCompanyMiddleware>
           </RequireAuthCompany>
         </Route>
         <Route path="/companyHomePage">
           <RequireAuthCompany>
-            <CompanyHomePage />
+            <ActivationCompanyMiddleware>
+              <CompanyHomePage />
+            </ActivationCompanyMiddleware>
           </RequireAuthCompany>
         </Route>
         <Route path="/companyProfile">
@@ -127,24 +174,42 @@ const AppRoute = () => {
         </Route>
         <Route path="/editOpportunity/:opportunityId">
           <RequireAuthCompany>
-            <EditOpportunity />
+            <ActivationCompanyMiddleware>
+              <EditOpportunity />
+            </ActivationCompanyMiddleware>
           </RequireAuthCompany>
         </Route>
         <Route path="/traineeDetails/:consumerId">
           <RequireAuthCompany>
-            <TraineeDetails />
+            <ActivationCompanyMiddleware>
+              <TraineeDetails />
+            </ActivationCompanyMiddleware>
           </RequireAuthCompany>
         </Route>
 
-        <Route path="/medicalHomePage">
+        <Route path="/unauthorizedCMedicalMiddleware">
           <RequireAuthMedical>
-            <MedicalHomePage />
+            <UnauthorizedCMedicalMiddleware />
           </RequireAuthMedical>
+        </Route>
+        <Route path="/medicalHomePage">
+          <ActivationMedicalMiddleware>
+            <RequireAuthMedical>
+              <MedicalHomePage />
+            </RequireAuthMedical>
+          </ActivationMedicalMiddleware>
         </Route>
         <Route path="/medicalStudentsM">
           <RequireAuthMedical>
             <ActivationMedicalMiddleware>
               <MedicalStudentsM />
+            </ActivationMedicalMiddleware>
+          </RequireAuthMedical>
+        </Route>
+        <Route path="/feedBackMedical">
+          <RequireAuthMedical>
+            <ActivationMedicalMiddleware>
+              <FeedBackMedical />
             </ActivationMedicalMiddleware>
           </RequireAuthMedical>
         </Route>
@@ -195,31 +260,10 @@ const AppRoute = () => {
         </Route>
         <Route path="/adminPanel">
           <RequireAuthAdmin>
-            <AdminPanel />
+            <RequireTypeAdmin>
+              <AdminPanel />
+            </RequireTypeAdmin>
           </RequireAuthAdmin>
-        </Route>
-        <Route path="/feedBackConsumerCompany/:companyId">
-          <RequireAuthConsumer>
-            <FeedBackConsumerCompany />
-          </RequireAuthConsumer>
-        </Route>
-
-        <Route path="/feedBackConsumerMedical/:medicalId">
-          <RequireAuthConsumer>
-            <FeedBackConsumerMedical />
-          </RequireAuthConsumer>
-        </Route>
-        <Route path="/feedBackMedical">
-          <RequireAuthMedical>
-            <ActivationMedicalMiddleware>
-              <FeedBackMedical />
-            </ActivationMedicalMiddleware>
-          </RequireAuthMedical>
-        </Route>
-        <Route path="/feedBackCompany">
-          <RequireAuthCompany>
-            <FeedBackCompany />
-          </RequireAuthCompany>
         </Route>
       </Switch>
     </Fragment>

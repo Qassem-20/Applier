@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
-import CompanyStore from "../../stores/CompanyStore";
+import AdminsStore from "../../stores/AdminsStore";
 
-export default function ActivationCompanyMiddleware(props) {
-  const store = CompanyStore();
+export default function RequireTypeAdmin(props) {
+  const store = AdminsStore();
 
   useEffect(() => {
-    store.checkStatueCompany();
+    store.checkStatueAdmin();
   }, [store]);
 
   if (store.isLoading) {

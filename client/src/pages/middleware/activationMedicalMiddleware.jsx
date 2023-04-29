@@ -19,7 +19,7 @@ export default function ActivationMedicalMiddleware(props) {
   }
 
   if (!store.isActive) {
-    return <Redirect to="/medicalHomePage" />;
+    return <Redirect to="/unauthorizedCMedicalMiddleware" />;
   }
 
   return <div>{props.children}</div>;

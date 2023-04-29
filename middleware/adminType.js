@@ -5,7 +5,7 @@ async function adminType(req, res, next) {
   try {
     // Read token off cookies or from headers
     const token =
-      req.cookies.AuthorizationMedical || req.headers.AuthorizationMedical;
+      req.cookies.AuthorizationAdmin || req.headers.AuthorizationAdmin;
 
     // Decode the token
     const decoded = jwt.verify(token, process.env.SECRET);

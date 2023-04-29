@@ -81,7 +81,7 @@ const Consumers = () => {
                 <Col xl={1} className="ml-1">
                   <button
                     className={`btn ${
-                      consumer.statue === "true" ? "btn-danger" : "btn-success"
+                      consumer.statue === "true" ? "btn-success" : "btn-danger"
                     }`}
                     onClick={() => {
                       const newStatue =
@@ -89,7 +89,7 @@ const Consumers = () => {
                       updateStatue(consumer._id, { statue: newStatue });
                     }}
                   >
-                    {consumer.statue === "true" ? "Suspended" : "Unsuspend"}
+                    {consumer.statue === "true" ? "Unsuspend" : "Suspended"}
                   </button>
                 </Col>
               </Row>

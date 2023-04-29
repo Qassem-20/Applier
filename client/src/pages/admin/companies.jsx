@@ -41,7 +41,7 @@ const Companies = () => {
             <p className="opportunitiesMainTags">Phone Number</p>
           </Col>
           <Col xl={2}>
-            <p className="opportunitiesMainTags">Location</p>
+            <p className="opportunitiesMainTags">Email</p>
           </Col>
           <Col xl={2}>
             <p className="opportunitiesMainTags">Website</p>
@@ -68,7 +68,7 @@ const Companies = () => {
                   <p className="opportunitiesTags">{company.phone}</p>
                 </Col>
                 <Col xl={2}>
-                  <p className="opportunitiesTags">{company.city}</p>
+                  <p className="opportunitiesTags">{company.email}</p>
                 </Col>
                 <Col xl={2}>
                   <p className="opportunitiesTags">

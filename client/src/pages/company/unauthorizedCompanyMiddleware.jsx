@@ -14,12 +14,16 @@ const unauthorizedCompanyMiddleware = () => {
           still not active please contact us to review your account
         </h2>
         <div className="d-flex justify-content-center mt-3">
-          <p className="msgUn">
-            Check that you have entered your profile information correctly
-          </p>
-          <a className="btn btn-dark" href="/companyProfile">
-            My Profile
-          </a>
+          <div>
+            <p className="msgUn">
+              Check that you have entered your profile information correctly
+            </p>
+          </div>
+          <div>
+            <a className="btn btn-dark" href="/companyProfile">
+              My Profile
+            </a>
+          </div>
         </div>
       </Container>
     </Fragment>

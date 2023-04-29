@@ -169,7 +169,7 @@ const AdminsStore = create((set) => ({
   },
   isLoading: false,
   isType: true,
-  checkStatueCompany: async () => {
+  checkStatueAdmin: async () => {
     try {
       await axios.get("http://localhost:4000/api/v1/checkStatueAdmin", {
         withCredentials: true,

@@ -329,7 +329,7 @@ const ConsumerStore = create((set) => ({
   isSuspended: true,
   checkStatueConsumer: async () => {
     try {
-      await axios.get("http://localhost:4000/api/v1/checkStatueMedical", {
+      await axios.get("http://localhost:4000/api/v1/checkStatueConsumer", {
         withCredentials: true,
       });
       set({ isSuspended: true });

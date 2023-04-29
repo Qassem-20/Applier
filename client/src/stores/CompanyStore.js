@@ -266,7 +266,7 @@ const CompanyStore = create((set) => ({
   isActive: true,
   checkStatueCompany: async () => {
     try {
-      await axios.get("http://localhost:4000/api/v1/checkStatueMedical", {
+      await axios.get("http://localhost:4000/api/v1/checkStatueCompany", {
         withCredentials: true,
       });
       set({ isActive: true });

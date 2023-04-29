@@ -5,7 +5,7 @@ async function checkStatueConsumer(req, res, next) {
   try {
     // Read token off cookies or from headers
     const token =
-      req.cookies.AuthorizationMedical || req.headers.AuthorizationMedical;
+      req.cookies.AuthorizationConsumer || req.headers.AuthorizationConsumer;
 
     // Decode the token
     const decoded = jwt.verify(token, process.env.SECRET);
