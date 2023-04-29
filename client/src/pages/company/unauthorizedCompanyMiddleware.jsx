@@ -7,7 +7,7 @@ const unauthorizedCompanyMiddleware = () => {
   return (
     <Fragment>
       <CompanyNav />
-      <Container className="m-auto bg-white mt-5 signInWidth pt-3 pb-4 rounded shadow">
+      <Container className="m-auto bg-white mt-5 signInWidth pt-3 pb-4 rounded shadow border border-dark">
         <img src={timeIcon} alt="timeIcon" className="m-auto mb-3" />
         <h2 className="text-center">
           Your account hasn’t been activated yet, please wait 24 hours, if it is

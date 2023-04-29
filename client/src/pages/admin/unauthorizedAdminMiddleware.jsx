@@ -14,7 +14,7 @@ const UnauthorizedAdminMiddleware = () => {
   return (
     <Fragment>
       <AdminNav />
-      <Container className="m-auto bg-white mt-5 signInWidth pt-3 pb-4 rounded shadow">
+      <Container className="m-auto bg-white mt-5 signInWidth pt-3 pb-4 rounded shadow border border-dark">
         <img
           src={unauthorized}
           alt="unauthorized Admin"
