@@ -11,7 +11,7 @@ export class medicalStudentNav extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="/medicalHomePage">Home</Nav.Link>
+                <Nav.Link href="/medicalHomePage">Profile</Nav.Link>
                 <Nav.Link href="/medicalStudentsM">Medical Students</Nav.Link>
                 <Nav.Link href="/feedBackMedical">Feedback</Nav.Link>
                 <Nav.Link href="/"> Sign Out</Nav.Link>

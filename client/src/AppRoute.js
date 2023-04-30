@@ -193,11 +193,9 @@ const AppRoute = () => {
           </RequireAuthMedical>
         </Route>
         <Route path="/medicalHomePage">
-          <ActivationMedicalMiddleware>
-            <RequireAuthMedical>
-              <MedicalHomePage />
-            </RequireAuthMedical>
-          </ActivationMedicalMiddleware>
+          <RequireAuthMedical>
+            <MedicalHomePage />
+          </RequireAuthMedical>
         </Route>
         <Route path="/medicalStudentsM">
           <RequireAuthMedical>

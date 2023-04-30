@@ -20,6 +20,7 @@ const fetchMedicalStudents = async (req, res) => {
   try {
     const medicalStudents = await MedicalStudent.find({
       profile_visibility: "shown",
+      statue: "true",
     });
 
     res.json({ medicalStudents });
@@ -28,14 +29,11 @@ const fetchMedicalStudents = async (req, res) => {
     res.sendStatus(400);
   }
 };
-
 const fetchMedicalStudent = async (req, res) => {
   try {
-    const medicalStudentId = req.params.id;
+    const medicalStudents = await MedicalStudent.find({});
 
-    const medicalStudent = await MedicalStudent.findById(medicalStudentId);
-
-    res.json({ medicalStudent });
+    res.json({ medicalStudents });
   } catch (err) {
     console.log(err);
     res.sendStatus(400);

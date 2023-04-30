@@ -30,6 +30,17 @@ const MedicalStore = create((set) => ({
     // Set to state
     set({ medicalStudents: res.data.medicalStudents });
   },
+  fetchMedicalStudentsAdmin: async () => {
+    // Fetch the medicalStudents
+    const res = await axios.get(
+      "http://localhost:4000/api/v1/medicalStudentsAdmin",
+      {
+        withCredentials: true,
+      }
+    );
+    // Set to state
+    set({ medicalStudents: res.data.medicalStudents });
+  },
 
   deleteMedicalStudent: async (_id) => {
     await axios.delete("http://localhost:4000/api/v1/medicalStudents/" + _id, {

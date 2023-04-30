@@ -20,7 +20,7 @@ const MedicalStudents = () => {
     }
   }
   useEffect(() => {
-    store.fetchMedicalStudents();
+    store.fetchMedicalStudentsAdmin();
   }, [store]);
   return (
     <Fragment>

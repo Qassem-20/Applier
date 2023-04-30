@@ -34,7 +34,7 @@ router
   .get(requireAuthMedicalStudent, getMedicalStudentProfile);
 
 router.route("/medicalStudents").get(fetchMedicalStudents);
-router.route("/medicalStudents/:id").get(fetchMedicalStudent);
+router.route("/medicalStudentsAdmin").get(fetchMedicalStudent);
 router.route("/registerMedicalStudent").post(apiLimiter, createMedicalStudent);
 router.route("/loginMedicalStudent").post(apiLimiter, loginMedicalStudent);
 router.route("/logoutMedicalStudent").get(logoutMedicalStudent);
