@@ -36,6 +36,16 @@ const SignInCompany = () => {
           onChange={storeCompany.handleChangeLogin}
           required={true}
         />
+        <ApplierInputForm
+          label="Password"
+          type="password"
+          placeholder="**********"
+          name="password"
+          errorMessage="userPassword"
+          value={storeCompany.loginFormCompany.password}
+          onChange={storeCompany.handleChangeLogin}
+          required={true}
+        />
         <Row>
           <Col>
             <ApplierButton buttonType="Log In" />
