@@ -9,9 +9,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
 import React, { Fragment, useEffect, useState } from "react";
+import ConsumerStore from "../../stores/ConsumerStore";
 
 const Opportunities = () => {
   const store = OpportunityStore();
+  const consumerStore = ConsumerStore();
 
   const storeDelete = TraineeApplicationStore((storeDelete) => {
     return {
@@ -54,6 +56,10 @@ const Opportunities = () => {
     store.fetchOpportunities();
   }, []);
 
+  useEffect(() => {
+    consumerStore.fetchConsumerProfile();
+  }, []);
+
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -62,13 +68,23 @@ const Opportunities = () => {
     ? store.opportunities.filter((opportunity) =>
         opportunity.major_preferred
           .toLowerCase()
-          .includes(searchTerm.toLowerCase())
+          .includes(searchTerm ? searchTerm.toLowerCase() : "")
       )
     : [];
 
   return (
     <Fragment>
       <ConsumerNav />
+
+      <div>
+        <ApplierButton
+          buttonType={
+            consumerStore.consumer ? consumerStore.consumer.major : ""
+          }
+          value={consumerStore.consumer ? consumerStore.consumer.major : ""}
+          onClick={(value) => setSearchTerm(value)}
+        />
+      </div>
 
       <Container>
         <Row>
