@@ -29,7 +29,7 @@ const fetchMedicalStudents = async (req, res) => {
     res.sendStatus(400);
   }
 };
-const fetchMedicalStudent = async (req, res) => {
+const fetchMedicalStudentAdmin = async (req, res) => {
   try {
     const medicalStudents = await MedicalStudent.find({});
 
@@ -40,6 +40,18 @@ const fetchMedicalStudent = async (req, res) => {
   }
 };
 
+const fetchMedicalStudent = async (req, res) => {
+  try {
+    const medicalStudentId = req.params.id;
+
+    const medicalStudent = await MedicalStudent.findById(medicalStudentId);
+
+    res.json({ medicalStudent });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
+};
 const findMedicalStudent = async (req, res) => {
   try {
     const MedicalStudentName = req.params.name;
@@ -228,6 +240,7 @@ export {
   getMedicalStudentProfile,
   fetchMedicalStudents,
   fetchMedicalStudent,
+  fetchMedicalStudentAdmin,
   createMedicalStudent,
   loginMedicalStudent,
   logoutMedicalStudent,

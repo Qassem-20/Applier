@@ -16,6 +16,7 @@ import { checkStatueMedical } from "../middleware/activation.js";
 import {
   fetchMedicalStudents,
   fetchMedicalStudent,
+  fetchMedicalStudentAdmin,
   createMedicalStudent,
   loginMedicalStudent,
   logoutMedicalStudent,
@@ -34,7 +35,9 @@ router
   .get(requireAuthMedicalStudent, getMedicalStudentProfile);
 
 router.route("/medicalStudents").get(fetchMedicalStudents);
-router.route("/medicalStudentsAdmin").get(fetchMedicalStudent);
+router.route("/medicalStudentsAdmin").get(fetchMedicalStudentAdmin);
+router.route("/medicalStudents/:id").get(fetchMedicalStudent);
+
 router.route("/registerMedicalStudent").post(apiLimiter, createMedicalStudent);
 router.route("/loginMedicalStudent").post(apiLimiter, loginMedicalStudent);
 router.route("/logoutMedicalStudent").get(logoutMedicalStudent);
