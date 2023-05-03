@@ -71,6 +71,9 @@ const Opportunities = () => {
       )
     : [];
 
+  //consumer Id
+  console.log(consumerStore.consumer._id);
+
   return (
     <Fragment>
       <ConsumerNav />
