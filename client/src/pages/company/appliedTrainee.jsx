@@ -115,7 +115,45 @@ const AppliedTrainee = () => {
             </span>
             <span className="col-2 opportunitiesTags">{consumer.major}</span>
             <span className="col-1 opportunitiesTags">{consumer.gpa}</span>
-            <span className="col-2 opportunitiesTags">{consumer.status}</span>
+            <span className="col-2 opportunitiesTags">
+              <button
+                className={`btn ${
+                  consumer.status === "Hired"
+                    ? "btn-success"
+                    : consumer.status === "Rejected"
+                    ? "btn-danger"
+                    : "btn-secondary"
+                }`}
+                onClick={() => {
+                  const newStatus =
+                    consumer.status === "Hired" ? "Rejected" : "Hired";
+                  axios
+                    .put(
+                      `/api/v1/traineeApplications/${consumer.applicationStatusId}`,
+                      { statue: newStatus },
+                      { withCredentials: true }
+                    )
+                    .then((response) => {
+                      const updatedConsumer = response.data;
+                      setApplications((prevApplications) => ({
+                        ...prevApplications,
+                        consumerInfo: prevApplications.consumerInfo.map((c) =>
+                          c.applicationStatusId ===
+                          updatedConsumer.applicationStatusId
+                            ? updatedConsumer
+                            : c
+                        ),
+                      }));
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    });
+                  window.location.reload();
+                }}
+              >
+                {consumer.status}
+              </button>
+            </span>
             <div className="col-1 d-flex justify-content-center">
               <a href={`/traineeDetails/${consumer._id}`}>
                 <img className="iconSize" src={OptionIcon} alt="OptionIcon" />

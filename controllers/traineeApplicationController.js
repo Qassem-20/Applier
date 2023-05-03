@@ -67,6 +67,7 @@ const fetchApplicationsOpportunity = async (req, res) => {
         major: consumer.major,
         gpa: consumer.gpa,
         status: status ? status.statue : null,
+        applicationStatusId: status ? status._id : null,
       };
     });
 
@@ -79,8 +80,10 @@ const fetchApplicationsOpportunity = async (req, res) => {
 };
 const fetchOpportunityApplications = async (req, res) => {
   try {
-    // Find all opportunities in the database
-    const opportunities = await Opportunity.find({});
+    const consumerId = req.params.consumer;
+
+    // Find all opportunities in the database for the given consumer
+    const opportunities = await Opportunity.find({ consumer: consumerId });
 
     // For each opportunity, find its application statuses
     const opportunityInfo = await Promise.all(
@@ -164,7 +167,6 @@ const updateApplication = async (req, res) => {
 
     await ApplicationStatus.findByIdAndUpdate(applicationStatusId, {
       statue,
-      consumer: req.consumer._id,
     });
 
     const applicationStatus = await ApplicationStatus.findById(
