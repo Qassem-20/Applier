@@ -57,7 +57,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 // assign a port for the server
-const port = process.env.PORT || 4000;
+const port = process.env.PORT;
 
 // DB connection to mongoose atlas the URL in env file
 const start = async () => {

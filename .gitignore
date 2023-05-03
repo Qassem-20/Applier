@@ -1,6 +1,5 @@
 //this for explicity of the files
 /node_modules
-.env
 # eslint cache
 .eslintcache
 client/node_modules/.cache/.eslintcache
