@@ -79,23 +79,12 @@ const fetchApplicationsOpportunity = async (req, res) => {
 };
 const fetchOpportunityApplications = async (req, res) => {
   try {
-    const { consumer } = req.body; // Assuming consumer details are in the request body
-
     // Find all opportunities in the database
     const opportunities = await Opportunity.find({});
 
-    // Filter opportunities based on consumer's major and concentrated_major
-    const matchedOpportunities = opportunities.filter((opportunity) => {
-      const { major_preferred, department } = opportunity;
-      return (
-        major_preferred === consumer.major &&
-        department === consumer.concentrated_major
-      );
-    });
-
-    // For each matched opportunity, find its application statuses
-    const matchedOpportunityInfo = await Promise.all(
-      matchedOpportunities.map(async (opportunity) => {
+    // For each opportunity, find its application statuses
+    const opportunityInfo = await Promise.all(
+      opportunities.map(async (opportunity) => {
         const applicationStatuses = await ApplicationStatus.find({
           opportunity: opportunity._id,
         });
@@ -111,52 +100,14 @@ const fetchOpportunityApplications = async (req, res) => {
           duration: opportunity.duration,
           createdAt: opportunity.createdAt,
           job_type: opportunity.job_type,
-          applicationStatuses: applicationStatuses.map((status) => ({
-            _id: status._id,
-            consumer: status.consumer,
-            status:
-              status && status.status !== undefined ? status.status : "Apply",
+          applicationStatuses: applicationStatuses.map((statue) => ({
+            _id: statue._id,
+            consumer: statue.consumer,
+            statue:
+              statue && statue.statue !== undefined ? statue.statue : "Apply",
           })),
         };
       })
-    );
-
-    // Find the remaining opportunities that do not match the consumer
-    const remainingOpportunities = opportunities.filter(
-      (opportunity) => !matchedOpportunities.includes(opportunity)
-    );
-
-    // For each remaining opportunity, find its application statuses
-    const remainingOpportunityInfo = await Promise.all(
-      remainingOpportunities.map(async (opportunity) => {
-        const applicationStatuses = await ApplicationStatus.find({
-          opportunity: opportunity._id,
-        });
-
-        return {
-          _id: opportunity._id,
-          company: opportunity.company,
-          job_role: opportunity.job_role,
-          description: opportunity.description,
-          major_preferred: opportunity.major_preferred,
-          city: opportunity.city,
-          start_date: opportunity.start_date,
-          duration: opportunity.duration,
-          createdAt: opportunity.createdAt,
-          job_type: opportunity.job_type,
-          applicationStatuses: applicationStatuses.map((status) => ({
-            _id: status._id,
-            consumer: status.consumer,
-            status:
-              status && status.status !== undefined ? status.status : "Apply",
-          })),
-        };
-      })
-    );
-
-    // Concatenate the matched and remaining opportunities
-    const opportunityInfo = matchedOpportunityInfo.concat(
-      remainingOpportunityInfo
     );
 
     return res.status(200).json(opportunityInfo);
