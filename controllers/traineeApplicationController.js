@@ -80,10 +80,10 @@ const fetchApplicationsOpportunity = async (req, res) => {
 };
 const fetchOpportunityApplications = async (req, res) => {
   try {
-    const consumer = mongoose.Types.ObjectId(req.params.consumer);
+    const consumerId = req.params.consumer;
 
-    // Find all opportunities in the database
-    const opportunities = await Opportunity.find({ consumer });
+    // Find all opportunities in the database for the given consumer
+    const opportunities = await Opportunity.find({ consumer: consumerId });
 
     // For each opportunity, find its application statuses
     const opportunityInfo = await Promise.all(
