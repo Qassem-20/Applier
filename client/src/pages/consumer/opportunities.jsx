@@ -55,7 +55,7 @@ const Opportunities = () => {
 
   useEffect(() => {
     store.fetchOpportunities();
-  }, [store]);
+  }, []);
 
   useEffect(() => {
     consumerStore.fetchConsumerProfile();
@@ -80,7 +80,6 @@ const Opportunities = () => {
   return (
     <Fragment>
       <ConsumerNav />
-
       {consumerStore.consumer ? (
         <div>
           <ApplierButton
@@ -207,7 +206,7 @@ const Opportunities = () => {
 
                   className="infoImg" src={InfoIcon} alt="InfoIcon" />
               </Link>
-              {isShown && (<div> {opportunity.company} </div> )}
+              {isShown && (<div> {opportunity} </div> )}
 
             </div>
 
