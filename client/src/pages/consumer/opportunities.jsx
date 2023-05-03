@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
 import React, { Fragment, useEffect, useState } from "react";
 import ConsumerStore from "../../stores/ConsumerStore";
+import { useParams } from "react-router-dom";
+
 
 const Opportunities = () => {
   const store = OpportunityStore();
@@ -70,6 +72,14 @@ const Opportunities = () => {
           .includes(searchTerm ? searchTerm.toLowerCase() : "")
       )
     : [];
+
+
+    const [isShown, setIsShown] = useState(false);
+
+    const [userProfile, setUserProfile] = useState({});
+    const { companyId } = useParams();
+
+
 
   return (
     <Fragment>
@@ -186,11 +196,19 @@ const Opportunities = () => {
             <span className="col-2 opportunitiesTags">
               {opportunity.start_date}
             </span>
-            <div className="col-1 d-flex justify-content-center">
+
+            <div className="col-1 d-flex justify-content-center"
+                              onMouseEnter={() => setIsShown(true)}
+                              onMouseLeave={() => setIsShown(false)}>
               <Link to={`/feedBackConsumerCompany/${opportunity.company}`}>
-                <img className="infoImg" src={InfoIcon} alt="InfoIcon" />
+                <img
+
+                  className="infoImg" src={InfoIcon} alt="InfoIcon" />
               </Link>
+              {isShown && (<div> {opportunity.company} </div> )}
+
             </div>
+
           </div>
         );
       })}

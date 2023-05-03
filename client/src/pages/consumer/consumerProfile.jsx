@@ -20,6 +20,13 @@ const ConsumerProfile = () => {
   if (!store.consumer) {
     return <div>Loading...</div>;
   }
+
+
+
+
+
+  
+
   return (
     <Fragment>
       <ConsumerNav />
