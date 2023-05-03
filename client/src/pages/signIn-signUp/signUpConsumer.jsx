@@ -145,20 +145,23 @@ const SignUpConsumer = () => {
                           </option>
                         ))}
                       </select>
-                      
-                      <label className="labelStyling font-bold">Minor</label>
+
+                      <label className="labelStyling font-bold">
+                        Department
+                      </label>
                       <select
                         className="inputStyling mb-3"
                         name="concentrated_major"
+                        placeholder="department"
                         value={store.values.concentrated_major}
                         onChange={store.handleChange}
                       >
-                        {options.map((option) => (
-                          <option key={option} value={option}>
-                            {option}
-                          </option>
-                        ))}
+                        <option>Please select a Departments</option>
+                        <option value="Technical">Technical IT</option>
+                        <option value="Engineer">Engineer</option>
+                        <option value="Management">Management</option>
                       </select>
+
                       <Checkbox
                         label="Skills"
                         name="skills"

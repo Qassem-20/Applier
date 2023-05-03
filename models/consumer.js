@@ -61,7 +61,7 @@ const consumerSchema = new mongoose.Schema(
     concentrated_major: {
       type: String,
       required: [false, "concentrated_major"],
-      maxlength: 20,
+      enum: ["", "Technical", "Engineer", "Management"],
       trim: true,
       default: "",
     },
