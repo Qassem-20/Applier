@@ -43,7 +43,7 @@ const ConsumerProfile = () => {
                   <p>Experience: {store.consumer.experience}</p>
                 </Col>
                 <Col>
-                  <p>Department: {store.consumer.concentrated_major}</p>
+                  <p>Concentrated_major: {store.consumer.concentrated_major}</p>
                   <p>LinkedIn_profile: </p>
 
                   <p>
@@ -122,19 +122,14 @@ const ConsumerProfile = () => {
                   />
                 </Col>
                 <Col>
-                  <p className="labelStyling">Department:</p>
-                  <select
-                    className="inputStyling mb-3"
-                    name="concentrated_major"
-                    placeholder="duration"
-                    value={store.updateProfile.concentrated_major}
+                  <p className="labelStyling">Concentrated_major:</p>
+
+                  <input
+                    className="inputStyling"
                     onChange={store.handleUpdate}
-                  >
-                    <option>Please select a Departments</option>
-                    <option value="Technical">Technical IT</option>
-                    <option value="Engineer">Engineer</option>
-                    <option value="Management">Management</option>
-                  </select>
+                    value={store.updateProfile.concentrated_major}
+                    name="concentrated_major"
+                  />
                   <p className="labelStyling">Skills:</p>
 
                   <input

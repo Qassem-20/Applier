@@ -81,7 +81,6 @@ const fetchOpportunityApplications = async (req, res) => {
   try {
     // Find all opportunities in the database
     const opportunities = await Opportunity.find({});
-
     // For each opportunity, find its application statuses
     const opportunityInfo = await Promise.all(
       opportunities.map(async (opportunity) => {
