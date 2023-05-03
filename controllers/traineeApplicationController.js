@@ -80,16 +80,15 @@ const fetchApplicationsOpportunity = async (req, res) => {
 };
 const fetchOpportunityApplications = async (req, res) => {
   try {
-    const consumerId = req.params.consumer;
-
     // Find all opportunities in the database for the given consumer
-    const opportunities = await Opportunity.find({ consumer: consumerId });
+    const opportunities = await Opportunity.find({});
 
     // For each opportunity, find its application statuses
     const opportunityInfo = await Promise.all(
       opportunities.map(async (opportunity) => {
         const applicationStatuses = await ApplicationStatus.find({
           opportunity: opportunity._id,
+          consumer: req.consumer,
         });
 
         return {
@@ -103,16 +102,15 @@ const fetchOpportunityApplications = async (req, res) => {
           duration: opportunity.duration,
           createdAt: opportunity.createdAt,
           job_type: opportunity.job_type,
-          applicationStatuses: applicationStatuses.map((statue) => ({
-            _id: statue._id,
-            consumer: statue.consumer,
+          applicationStatuses: applicationStatuses.map((status) => ({
+            _id: status._id,
+            consumer: status.consumer,
             statue:
-              statue && statue.statue !== undefined ? statue.statue : "Apply",
+              status && status.statue !== undefined ? status.statue : "Apply",
           })),
         };
       })
     );
-
     return res.status(200).json(opportunityInfo);
   } catch (error) {
     console.error(error);

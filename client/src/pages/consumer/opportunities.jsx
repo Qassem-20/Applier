@@ -53,7 +53,7 @@ const Opportunities = () => {
 
   useEffect(() => {
     store.fetchOpportunities();
-  }, [store]);
+  }, []);
 
   useEffect(() => {
     consumerStore.fetchConsumerProfile();
@@ -72,12 +72,11 @@ const Opportunities = () => {
     : [];
 
   //consumer Id
-  console.log(consumerStore.consumer._id);
+  //console.log(consumerStore.consumer._id);
 
   return (
     <Fragment>
       <ConsumerNav />
-
       {consumerStore.consumer ? (
         <div>
           <ApplierButton
