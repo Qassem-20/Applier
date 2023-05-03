@@ -13,7 +13,7 @@ const MedicalStudents = () => {
 
   useEffect(() => {
     store.fetchMedicalStudents();
-  }, [store]);
+  }, []);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);

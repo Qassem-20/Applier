@@ -59,7 +59,7 @@ const Opportunities = () => {
   useEffect(() => {
     consumerStore.fetchConsumerProfile();
     console.log(consumerStore.consumer);
-  }, [consumerStore]);
+  }, []);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
