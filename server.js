@@ -1,5 +1,7 @@
 import express from "express";
-
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -14,12 +16,9 @@ app.use(cookieParser());
 //db authentication
 import connectDB from "./db/connect.js";
 
-// to handle the errors
-import "express-async-errors";
-
-app.get("", (req, res) => {
-  res.send("Welcome to Applier project");
-});
+const __dirname = dirname(fileURLToPath(import.meta.url));
+// only when ready to deploy
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 //company routes
 import companyRoutes from "./routes/companyRoutes.js";
@@ -53,6 +52,10 @@ app.use("/api/v1", opportunitiesRoutes);
 import traineeApplication from "./routes/traineeApplications.js";
 app.use("/api/v1", traineeApplication);
 
+// only when ready to deploy
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 // assign a port for the server
 const port = process.env.PORT || 4000;
 
