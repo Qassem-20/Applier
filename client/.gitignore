@@ -23,3 +23,5 @@
 hs_err_pid*
 # eslint cache
 .eslintcache
+
+/node_modules
