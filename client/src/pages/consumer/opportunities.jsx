@@ -76,19 +76,15 @@ const Opportunities = () => {
     <Fragment>
       <ConsumerNav />
 
-      {consumerStore.consumer.major === null ? (
-        <div>
-          <ApplierButton
-            buttonType={
-              consumerStore.consumer ? consumerStore.consumer.major : ""
-            }
-            value={consumerStore.consumer ? consumerStore.consumer.major : ""}
-            onClick={(value) => setSearchTerm(value)}
-          />
-        </div>
-      ) : (
-        ""
-      )}
+      <div>
+        <ApplierButton
+          buttonType={
+            consumerStore.consumer ? consumerStore.consumer.major : ""
+          }
+          value={consumerStore.consumer ? consumerStore.consumer.major : ""}
+          onClick={(value) => setSearchTerm(value)}
+        />
+      </div>
 
       <Container>
         <Row>
