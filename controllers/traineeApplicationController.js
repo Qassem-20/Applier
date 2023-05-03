@@ -86,31 +86,43 @@ const fetchOpportunityApplications = async (req, res) => {
     // For each opportunity, find its application statuses
     const opportunityInfo = await Promise.all(
       opportunities.map(async (opportunity) => {
-        const applicationStatuses = await ApplicationStatus.find({
-          opportunity: opportunity._id,
-          consumer: req.consumer,
-        });
+        try {
+          const applicationStatuses = await ApplicationStatus.find({
+            opportunity: opportunity._id,
+            consumer: req.consumer,
+          });
 
-        return {
-          _id: opportunity._id,
-          company: opportunity.company,
-          job_role: opportunity.job_role,
-          description: opportunity.description,
-          major_preferred: opportunity.major_preferred,
-          city: opportunity.city,
-          start_date: opportunity.start_date,
-          duration: opportunity.duration,
-          createdAt: opportunity.createdAt,
-          job_type: opportunity.job_type,
-          applicationStatuses: applicationStatuses.map((status) => ({
-            _id: status._id,
-            consumer: status.consumer,
-            statue:
-              status && status.statue !== undefined ? status.statue : "Apply",
-          })),
-        };
+          console.log("Application statuses:", applicationStatuses);
+
+          return {
+            _id: opportunity._id,
+            company: opportunity.company,
+            job_role: opportunity.job_role,
+            description: opportunity.description,
+            major_preferred: opportunity.major_preferred,
+            city: opportunity.city,
+            start_date: opportunity.start_date,
+            duration: opportunity.duration,
+            createdAt: opportunity.createdAt,
+            job_type: opportunity.job_type,
+            applicationStatuses: applicationStatuses.map((status) => ({
+              _id: status._id,
+              consumer: status.consumer,
+              statue:
+                status && status.statue !== undefined
+                  ? status.statue
+                  : "Applied",
+            })),
+          };
+        } catch (error) {
+          console.error(error);
+          throw error;
+        }
       })
     );
+
+    console.log("Opportunity info:", opportunityInfo);
+
     return res.status(200).json(opportunityInfo);
   } catch (error) {
     console.error(error);
