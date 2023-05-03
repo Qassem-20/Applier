@@ -65,21 +65,7 @@ app.use("/api/v1", traineeApplication);
 // assign a port for the server
 const port = process.env.PORT || 4000;
 
-/*connection to the front end
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import path from "path";
-const __dirname = dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.resolve(__dirname, "./client/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-});
-*/
-
 // DB connection to mongoose atlas the URL in env file
-// 1- npm i dotenv
-// 2- create file named (.env), then write MONGO_URL=your connection link
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL, {
