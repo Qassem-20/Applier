@@ -7,12 +7,9 @@ const MedicalStore = create((set) => ({
 
   fetchMedicalProfile: async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:4000/api/v1/medicalStudentProfile",
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get("/api/v1/medicalStudentProfile", {
+        withCredentials: true,
+      });
       set({ medicalStudent: response.data.medicalStudent });
     } catch (error) {
       console.error(error);
@@ -21,29 +18,23 @@ const MedicalStore = create((set) => ({
   },
   fetchMedicalStudents: async () => {
     // Fetch the medicalStudents
-    const res = await axios.get(
-      "http://localhost:4000/api/v1/medicalStudents",
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await axios.get("/api/v1/medicalStudents", {
+      withCredentials: true,
+    });
     // Set to state
     set({ medicalStudents: res.data.medicalStudents });
   },
   fetchMedicalStudentsAdmin: async () => {
     // Fetch the medicalStudents
-    const res = await axios.get(
-      "http://localhost:4000/api/v1/medicalStudentsAdmin",
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await axios.get("/api/v1/medicalStudentsAdmin", {
+      withCredentials: true,
+    });
     // Set to state
     set({ medicalStudents: res.data.medicalStudents });
   },
 
   deleteMedicalStudent: async (_id) => {
-    await axios.delete("http://localhost:4000/api/v1/medicalStudents/" + _id, {
+    await axios.delete("/api/v1/medicalStudents/" + _id, {
       withCredentials: true,
     });
 
@@ -109,7 +100,7 @@ const MedicalStore = create((set) => ({
 
     // Send the update request
     await axios.put(
-      `http://localhost:4000/api/v1/medicalStudents/${_id}`,
+      `/api/v1/medicalStudents/${_id}`,
       {
         name,
         phone_number,
@@ -168,13 +159,9 @@ const MedicalStore = create((set) => ({
     const { values } = MedicalStore.getState();
 
     // add medicalStudent
-    await axios.post(
-      "http://localhost:4000/api/v1/registerMedicalStudent",
-      values,
-      {
-        withCredentials: true,
-      }
-    );
+    await axios.post("/api/v1/registerMedicalStudent", values, {
+      withCredentials: true,
+    });
     set({
       values: {
         name: "",
@@ -220,19 +207,15 @@ const MedicalStore = create((set) => ({
   loginMedicalStudent: async () => {
     const { loginFormMedical } = MedicalStore.getState();
 
-    await axios.post(
-      "http://localhost:4000/api/v1/loginMedicalStudent",
-      loginFormMedical,
-      {
-        withCredentials: true,
-      }
-    );
+    await axios.post("/api/v1/loginMedicalStudent", loginFormMedical, {
+      withCredentials: true,
+    });
 
     set({ loggedIn: true });
   },
   checkAuth: async () => {
     try {
-      await axios.get("http://localhost:4000/api/v1/checkAuthMedicalStudent", {
+      await axios.get("/api/v1/checkAuthMedicalStudent", {
         withCredentials: true,
       });
       set({ loggedIn: true });
@@ -241,7 +224,7 @@ const MedicalStore = create((set) => ({
     }
   },
   logout: async () => {
-    await axios.get("http://localhost:4000/api/v1/logutMedicalStudent", {
+    await axios.get("/api/v1/logutMedicalStudent", {
       withCredentials: true,
     });
     set({ loggedIn: false });
@@ -251,7 +234,7 @@ const MedicalStore = create((set) => ({
   isActive: true,
   checkStatueMedical: async () => {
     try {
-      await axios.get("http://localhost:4000/api/v1/checkStatueMedical", {
+      await axios.get("/api/v1/checkStatueMedical", {
         withCredentials: true,
       });
       set({ isActive: true });

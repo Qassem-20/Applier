@@ -6,24 +6,18 @@ const ConsumerStore = create((set) => ({
   consumer: null,
   fetchConsumer: async (_id) => {
     // Fetch the consumers
-    const res = await axios.get(
-      `http://localhost:4000/api/v1/consumers/${_id}`,
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await axios.get(`/api/v1/consumers/${_id}`, {
+      withCredentials: true,
+    });
     // Set to state
     set({ consumers: res.data.consumers });
   },
 
   fetchConsumerProfile: async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:4000/api/v1/consumerProfile",
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get("/api/v1/consumerProfile", {
+        withCredentials: true,
+      });
       set({ consumer: response.data.consumer });
     } catch (error) {
       console.error(error);
@@ -32,7 +26,7 @@ const ConsumerStore = create((set) => ({
   },
   fetchConsumers: async () => {
     // Fetch the consumers
-    const res = await axios.get("http://localhost:4000/api/v1/consumers", {
+    const res = await axios.get("/api/v1/consumers", {
       withCredentials: true,
     });
     // Set to state
@@ -40,16 +34,12 @@ const ConsumerStore = create((set) => ({
   },
 
   sortNameConsumers: async () => {
-    const res = await axios.get(
-      "http://localhost:4000/api/v1/sortNameConsumers"
-    );
+    const res = await axios.get("/api/v1/sortNameConsumers");
 
     set({ consumers: res.data.consumers });
   },
   sortDateConsumers: async () => {
-    const res = await axios.get(
-      "http://localhost:4000/api/v1/sortDateConsumers"
-    );
+    const res = await axios.get("/api/v1/sortDateConsumers");
 
     set({ consumers: res.data.consumers });
   },
@@ -61,9 +51,7 @@ const ConsumerStore = create((set) => ({
   searchConsumers: async (e) => {
     const { searchForm } = ConsumerStore.getState().searchForm;
 
-    const res = await axios.get(
-      "http://localhost:4000/api/v1//findConsumer/" + searchForm.name
-    );
+    const res = await axios.get("/api/v1//findConsumer/" + searchForm.name);
 
     console.log(res);
     set((state) => {
@@ -79,7 +67,7 @@ const ConsumerStore = create((set) => ({
   },
 
   deleteConsumer: async (_id) => {
-    await axios.delete("http://localhost:4000/api/v1//findConsumer/" + _id, {
+    await axios.delete("/api/v1//findConsumer/" + _id, {
       withCredentials: true,
     });
 
@@ -160,7 +148,7 @@ const ConsumerStore = create((set) => ({
 
     // Send the update request
     await axios.put(
-      `http://localhost:4000/api/v1/consumers/${_id}`,
+      `/api/v1/consumers/${_id}`,
       {
         name,
         phone,
@@ -217,7 +205,7 @@ const ConsumerStore = create((set) => ({
     const { values } = ConsumerStore.getState();
 
     // add consumer
-    await axios.post("http://localhost:4000/api/v1/registerConsumer", values, {
+    await axios.post("/api/v1/registerConsumer", values, {
       withCredentials: true,
     });
     set({
@@ -299,19 +287,15 @@ const ConsumerStore = create((set) => ({
   loginConsumer: async () => {
     const { loginFormConsumer } = ConsumerStore.getState();
 
-    await axios.post(
-      "http://localhost:4000/api/v1/loginConsumer",
-      loginFormConsumer,
-      {
-        withCredentials: true,
-      }
-    );
+    await axios.post("/api/v1/loginConsumer", loginFormConsumer, {
+      withCredentials: true,
+    });
 
     set({ loggedIn: true });
   },
   checkAuth: async () => {
     try {
-      await axios.get("http://localhost:4000/api/v1/checkAuthConsumer", {
+      await axios.get("/api/v1/checkAuthConsumer", {
         withCredentials: true,
       });
       set({ loggedIn: true });
@@ -320,7 +304,7 @@ const ConsumerStore = create((set) => ({
     }
   },
   logout: async () => {
-    await axios.get("http://localhost:4000/api/v1/logutConsuemr", {
+    await axios.get("/api/v1/logutConsuemr", {
       withCredentials: true,
     });
     set({ loggedIn: false });
@@ -329,7 +313,7 @@ const ConsumerStore = create((set) => ({
   isSuspended: true,
   checkStatueConsumer: async () => {
     try {
-      await axios.get("http://localhost:4000/api/v1/checkStatueConsumer", {
+      await axios.get("/api/v1/checkStatueConsumer", {
         withCredentials: true,
       });
       set({ isSuspended: true });

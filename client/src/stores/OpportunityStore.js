@@ -6,10 +6,9 @@ const OpportunityStore = create((set) => ({
   opportunity: null,
   fetchOpportunities: async () => {
     // Fetch the opportunities
-    const res = await axios.get(
-      "http://localhost:4000/api/v1/OpportunitiesApplications",
-      { withCredentials: true }
-    );
+    const res = await axios.get("/api/v1/OpportunitiesApplications", {
+      withCredentials: true,
+    });
 
     // Set to state
     set({ opportunities: res.data });
@@ -17,22 +16,18 @@ const OpportunityStore = create((set) => ({
 
   fetchOpportunity: async (_id) => {
     // Fetch the consumers
-    const res = await axios.get(
-      `http://localhost:4000/api/v1/opportunities/${_id}`,
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await axios.get(`/api/v1/opportunities/${_id}`, {
+      withCredentials: true,
+    });
     // Set to state
     set({ opportunity: res.data.opportunity });
   },
 
   fetchOpportunitiesCompany: async () => {
     // Fetch the opportunities
-    const res = await axios.get(
-      "http://localhost:4000/api/v1/opportunitiesCompany",
-      { withCredentials: true }
-    );
+    const res = await axios.get("/api/v1/opportunitiesCompany", {
+      withCredentials: true,
+    });
     // Set to state
     set({ opportunities: res.data.opportunities });
   },
@@ -40,16 +35,15 @@ const OpportunityStore = create((set) => ({
   // fetchOpportunitiesCompanySorted
   fetchOpportunitiesCompanySorted: async () => {
     // Fetch the opportunities
-    const res = await axios.get(
-      "http://localhost:4000/api/v1/fetchOpportunitiesCompanySorted",
-      { withCredentials: true }
-    );
+    const res = await axios.get("/api/v1/fetchOpportunitiesCompanySorted", {
+      withCredentials: true,
+    });
     // Set to state
     set({ opportunities: res.data.opportunities });
   },
 
   deleteOpportunity: async (_id) => {
-    await axios.delete("http://localhost:4000/api/v1/opportunities/" + _id, {
+    await axios.delete("/api/v1/opportunities/" + _id, {
       withCredentials: true,
     });
 
@@ -131,7 +125,7 @@ const OpportunityStore = create((set) => ({
 
     // Send the update request
     await axios.put(
-      `http://localhost:4000/api/v1/opportunities/${_id}`,
+      `/api/v1/opportunities/${_id}`,
       {
         job_role,
         description,
@@ -186,11 +180,9 @@ const OpportunityStore = create((set) => ({
     const { values } = OpportunityStore.getState();
 
     // add opportunity
-    await axios.post(
-      "http://localhost:4000/api/v1/opportunities/registerOpportunity",
-      values,
-      { withCredentials: true }
-    );
+    await axios.post("/api/v1/opportunities/registerOpportunity", values, {
+      withCredentials: true,
+    });
     set({
       values: {
         job_role: "",
