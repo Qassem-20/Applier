@@ -58,6 +58,7 @@ const Opportunities = () => {
 
   useEffect(() => {
     consumerStore.fetchConsumerProfile();
+    console.log(consumerStore.consumer);
   }, []);
 
   const handleSearch = (event) => {
@@ -76,7 +77,7 @@ const Opportunities = () => {
     <Fragment>
       <ConsumerNav />
 
-      {consumerStore.consumer.major === null ? (
+      {consumerStore.consumer ? (
         <div>
           <ApplierButton
             buttonType={
