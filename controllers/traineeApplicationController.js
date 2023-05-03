@@ -67,6 +67,7 @@ const fetchApplicationsOpportunity = async (req, res) => {
         major: consumer.major,
         gpa: consumer.gpa,
         status: status ? status.statue : null,
+        applicationStatusId: status ? status._id : null,
       };
     });
 
@@ -164,7 +165,6 @@ const updateApplication = async (req, res) => {
 
     await ApplicationStatus.findByIdAndUpdate(applicationStatusId, {
       statue,
-      consumer: req.consumer._id,
     });
 
     const applicationStatus = await ApplicationStatus.findById(

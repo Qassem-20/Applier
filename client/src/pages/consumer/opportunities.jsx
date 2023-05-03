@@ -142,7 +142,13 @@ const Opportunities = () => {
                 opportunity.applicationStatuses.map((status) => (
                   <span key={status._id}>
                     <button
-                      className="deleteBtn"
+                      className={`btn ${
+                        status.statue === "Hired"
+                          ? "btn-success"
+                          : status.statue === "Rejected"
+                          ? "btn-danger"
+                          : "btn-secondary"
+                      }`}
                       onClick={() =>
                         storeDelete.deleteTraineeApplication(status._id)
                       }
