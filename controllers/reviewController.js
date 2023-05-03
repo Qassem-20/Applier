@@ -1,4 +1,4 @@
-import Review from "../models/review.js";
+import Review from "../models/Review.js";
 import mongoose from "mongoose";
 
 const fetchReviews = async (req, res) => {

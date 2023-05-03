@@ -1,4 +1,4 @@
-import ApplicationStatus from "../models/applicationStatus.js";
+import ApplicationStatus from "../models/ApplicationStatus.js";
 import Consumer from "../models/Consumer.js";
 import Opportunity from "../models/Opportunity.js";
 
