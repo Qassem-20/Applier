@@ -15,12 +15,9 @@ const ReportedFeedBack = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/v1/reportedReviews",
-          {
-            withCredentials: true,
-          }
-        );
+        const response = await axios.get("api/v1/reportedReviews", {
+          withCredentials: true,
+        });
 
         setReviews(response.data);
       } catch (error) {

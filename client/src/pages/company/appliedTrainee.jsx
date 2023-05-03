@@ -21,7 +21,7 @@ const AppliedTrainee = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/v1/opportunities/${opportunityId}`, {
+      .get(`api/v1/opportunities/${opportunityId}`, {
         withCredentials: true,
       })
       .then((response) => {

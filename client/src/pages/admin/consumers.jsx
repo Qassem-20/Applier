@@ -11,7 +11,7 @@ const Consumers = () => {
   async function updateStatue(_id, data) {
     try {
       const response = await axios.put(
-        `http://localhost:4000/api/v1/admins/suspendConsumer/${_id}`,
+        `api/v1/admins/suspendConsumer/${_id}`,
         data,
         { withCredentials: true }
       );

@@ -10,7 +10,7 @@ const Companies = () => {
   async function updateStatue(_id, newStatue) {
     try {
       const response = await axios.put(
-        `  http://localhost:4000/api/v1/admins/activateCompanies/${_id}`,
+        `api/v1/admins/activateCompanies/${_id}`,
         { statue: newStatue },
         { withCredentials: true }
       );

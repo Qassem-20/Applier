@@ -16,7 +16,7 @@ const AdminPanel = () => {
   async function updateType(_id, newType) {
     try {
       const response = await axios.put(
-        `http://localhost:4000/api/v1/admins/${_id}`,
+        `api/v1/admins/${_id}`,
         { type: newType },
         { withCredentials: true }
       );

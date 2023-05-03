@@ -13,7 +13,7 @@ const ReviewStore = create((set) => ({
 
   fetchReviewsCompany: async (_id) => {
     // Fetch the reviews
-    const res = await axios.get("/api/v1/reviewsCompany/" + _id, {
+    const res = await axios.get("api/v1/reviewsCompany/" + _id, {
       withCredentials: true,
     });
     // Set to state
@@ -21,7 +21,7 @@ const ReviewStore = create((set) => ({
   },
   fetchReviewsMedical: async () => {
     // Fetch the reviews
-    const res = await axios.get("/api/v1/reviewsMedical", {
+    const res = await axios.get("api/v1/reviewsMedical", {
       withCredentials: true,
     });
     // Set to state
@@ -29,7 +29,7 @@ const ReviewStore = create((set) => ({
   },
 
   deleteReview: async (_id) => {
-    await axios.delete("/api/v1/reviews/" + _id, {
+    await axios.delete("api/v1/reviews/" + _id, {
       withCredentials: true,
     });
 
@@ -57,7 +57,7 @@ const ReviewStore = create((set) => ({
 
     // Send the update request
     const res = await axios.put(
-      `/api/v1/admins/hideReview/${_id}`,
+      `api/v1/admins/hideReview/${_id}`,
       {
         statue,
       },
@@ -91,7 +91,7 @@ const ReviewStore = create((set) => ({
     const { values } = ReviewStore.getState();
 
     // add review
-    await axios.post("/api/v1/reviews/registerReviewCompany", values, {
+    await axios.post("api/v1/reviews/registerReviewCompany", values, {
       withCredentials: true,
     });
     set({
@@ -106,7 +106,7 @@ const ReviewStore = create((set) => ({
     const { values } = ReviewStore.getState();
 
     // add review
-    await axios.post("/api/v1/reviews/registerReviewMedical", values, {
+    await axios.post("api/v1/reviews/registerReviewMedical", values, {
       withCredentials: true,
     });
     set({

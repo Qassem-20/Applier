@@ -17,15 +17,6 @@ import connectDB from "./db/connect.js";
 // to handle the errors
 import "express-async-errors";
 
-//cors middleware
-import cors from "cors";
-const corsOptions = {
-  origin: true,
-  credentials: true,
-  optionSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
-
 app.get("", (req, res) => {
   res.send("Welcome to Applier project");
 });

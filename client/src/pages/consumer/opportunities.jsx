@@ -21,7 +21,7 @@ const Opportunities = () => {
     };
   });
 
-  const [traineeApplications, setTraineeApplications] = useState([]);
+  const [traineeApplications] = useState([]);
 
   // for searching opportunities
   const [searchTerm, setSearchTerm] = useState("");
@@ -42,7 +42,7 @@ const Opportunities = () => {
   async function Apply(_id) {
     try {
       const response = await axios.post(
-        `http://localhost:4000/api/v1/applications/registerApplication/${_id}`,
+        `api/v1/applications/registerApplication/${_id}`,
         userData,
         { withCredentials: true }
       );
@@ -54,12 +54,12 @@ const Opportunities = () => {
 
   useEffect(() => {
     store.fetchOpportunities();
-  }, []);
+  }, [store]);
 
   useEffect(() => {
     consumerStore.fetchConsumerProfile();
     console.log(consumerStore.consumer);
-  }, []);
+  }, [consumerStore]);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);

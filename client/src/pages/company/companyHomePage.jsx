@@ -4,7 +4,6 @@ import EditOpportunities from "../../assets/images/customizeIcon.png";
 import EyeIcon from "../../assets/images/eyeIcon.webp";
 import opportunityStore from "../../stores/OpportunityStore";
 import { Container, Row, Col } from "react-bootstrap";
-import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 
 const CompanyHomePage = () => {
   const store = opportunityStore();

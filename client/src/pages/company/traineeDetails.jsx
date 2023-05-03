@@ -11,13 +11,13 @@ const TraineeDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/v1/consumers/${consumerId}`, {
+      .get(`api/v1/consumers/${consumerId}`, {
         withCredentials: true,
       })
       .then((response) => {
         setUserProfile(response.data.consumer);
       });
-  }, []);
+  }, [consumerId]);
   return (
     <Fragment>
       <Nav />
@@ -35,7 +35,7 @@ const TraineeDetails = () => {
             <p>Major: {userProfile.major}</p>
           </Col>
           <Col>
-            <p>Concentrated_major: {userProfile.concentrated_major}</p>
+            <p>Department: {userProfile.concentrated_major}</p>
             <p>LinkedIn_profile: </p>
 
             <p>

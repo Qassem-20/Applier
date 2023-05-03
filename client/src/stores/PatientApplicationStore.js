@@ -6,7 +6,7 @@ const PatientApplicationStore = create((set) => ({
 
   fetchPatientApplications: async () => {
     // Fetch the patientApplications
-    const res = await axios.get("/api/v1/patientApplications", {
+    const res = await axios.get("api/v1/patientApplications", {
       withCredentials: true,
     });
     // Set to state
@@ -14,7 +14,7 @@ const PatientApplicationStore = create((set) => ({
   },
 
   deletePatientApplication: async (_id) => {
-    await axios.delete("/api/v1/patientApplications/" + _id, {
+    await axios.delete("api/v1/patientApplications/" + _id, {
       withCredentials: true,
     });
 
@@ -43,7 +43,7 @@ const PatientApplicationStore = create((set) => ({
     } = PatientApplicationStore.getState();
 
     // Send the update request
-    const res = await axios.put(`/api/v1/patientApplications/${_id}`, {
+    const res = await axios.put(`api/v1/patientApplications/${_id}`, {
       symptoms,
     });
 
@@ -75,7 +75,7 @@ const PatientApplicationStore = create((set) => ({
 
     // add PatientApplication
     await axios.post(
-      "/api/v1/patientApplications/registerPatientApplication",
+      "api/v1/patientApplications/registerPatientApplication",
       values,
       { withCredentials: true }
     );

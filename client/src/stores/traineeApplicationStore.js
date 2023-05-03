@@ -6,14 +6,14 @@ const TraineeApplicationStore = create((set) => ({
 
   fetchTraineeApplications: async () => {
     // Fetch the traineeApplications
-    const res = await axios.get("/api/v1/applications");
+    const res = await axios.get("api/v1/applications");
     // Set to state
     set({ traineeApplications: res.data.traineeApplications });
   },
 
   deleteTraineeApplication: async (_id) => {
     try {
-      await axios.delete("/api/v1/applications/" + _id, {
+      await axios.delete("api/v1/applications/" + _id, {
         withCredentials: true,
       });
       window.location.reload();
@@ -56,7 +56,7 @@ const TraineeApplicationStore = create((set) => ({
 
     // Send the update request
     const res = await axios.put(
-      `/api/v1/traineeApplications/${_id}`,
+      `api/v1/traineeApplications/${_id}`,
       {
         university,
         major,
@@ -99,7 +99,7 @@ const TraineeApplicationStore = create((set) => ({
 
     // add traineeApplication
     await axios.post(
-      "/api/v1/traineeApplications/registerTraineeApplications",
+      "api/v1/traineeApplications/registerTraineeApplications",
       values,
       { withCredentials: true }
     );
