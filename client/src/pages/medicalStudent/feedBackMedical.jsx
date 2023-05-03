@@ -10,7 +10,7 @@ const FeedBackMedical = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get("api/v1/medicalReviews", {
+        const response = await axios.get("/api/v1/medicalReviews", {
           withCredentials: true,
         });
         setReviews(response.data.reviews);
@@ -28,7 +28,7 @@ const FeedBackMedical = () => {
       if (reviewToUpdate) {
         const isReported = reviewToUpdate.isReported === "yes" ? "no" : "yes";
         const response = await axios.put(
-          `api/v1/medicalStudents/reportReview/${reviewId}`,
+          `/api/v1/medicalStudents/reportReview/${reviewId}`,
           { isReported },
           { withCredentials: true }
         );

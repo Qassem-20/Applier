@@ -10,7 +10,7 @@ const FeedBackCompany = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get("api/v1/companyReviews", {
+        const response = await axios.get("/api/v1/companyReviews", {
           withCredentials: true,
         });
 
@@ -29,7 +29,7 @@ const FeedBackCompany = () => {
       if (reviewToUpdate) {
         const isReported = reviewToUpdate.isReported === "yes" ? "no" : "yes";
         const response = await axios.put(
-          `api/v1/companies/reportReview/${reviewId}`,
+          `/api/v1/companies/reportReview/${reviewId}`,
           { isReported },
           { withCredentials: true }
         );

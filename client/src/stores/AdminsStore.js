@@ -6,7 +6,7 @@ const AdminsStore = create((set) => ({
 
   fetchAdmins: async () => {
     // Fetch the admins
-    const res = await axios.get("api/v1/admins", {
+    const res = await axios.get("/api/v1/admins", {
       withCredentials: true,
     });
     // Set to state
@@ -14,7 +14,7 @@ const AdminsStore = create((set) => ({
   },
 
   deleteAdmin: async (_id) => {
-    await axios.delete("api/v1/admins/" + _id, {
+    await axios.delete("/api/v1/admins/" + _id, {
       withCredentials: true,
     });
 
@@ -62,7 +62,7 @@ const AdminsStore = create((set) => ({
 
     // Send the update request
     const res = await axios.put(
-      `api/v1/admins/${_id}`,
+      `/api/v1/admins/${_id}`,
       {
         type,
       },
@@ -97,7 +97,7 @@ const AdminsStore = create((set) => ({
     const { values } = AdminsStore.getState();
 
     // add admin
-    await axios.post("api/v1/registerAdmin", values, {
+    await axios.post("/api/v1/registerAdmin", values, {
       withCredentials: true,
     });
     set({
@@ -145,7 +145,7 @@ const AdminsStore = create((set) => ({
   loginAdmin: async () => {
     const { loginForm } = AdminsStore.getState();
 
-    await axios.post("api/v1/loginAdmin", loginForm, {
+    await axios.post("/api/v1/loginAdmin", loginForm, {
       withCredentials: true,
     });
 
@@ -153,7 +153,7 @@ const AdminsStore = create((set) => ({
   },
   checkAuth: async () => {
     try {
-      await axios.get("api/v1/checkAuthAdmin", {
+      await axios.get("/api/v1/checkAuthAdmin", {
         withCredentials: true,
       });
       set({ loggedIn: true });
@@ -162,7 +162,7 @@ const AdminsStore = create((set) => ({
     }
   },
   logout: async () => {
-    await axios.get("api/v1/logoutAdmin", {
+    await axios.get("/api/v1/logoutAdmin", {
       withCredentials: true,
     });
     set({ loggedIn: false });
@@ -171,7 +171,7 @@ const AdminsStore = create((set) => ({
   isType: true,
   checkStatueAdmin: async () => {
     try {
-      await axios.get("api/v1/checkStatueAdmin", {
+      await axios.get("/api/v1/checkStatueAdmin", {
         withCredentials: true,
       });
       set({ isType: true });

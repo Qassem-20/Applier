@@ -22,14 +22,14 @@ const FeedBackConsumerMedical = () => {
 
   useEffect(() => {
     axios
-      .get(`api/v1/medicalStudents/${medicalId}`, {
+      .get(`/api/v1/medicalStudents/${medicalId}`, {
         withCredentials: true,
       })
       .then((response) => {
         setUserProfile(response.data.medicalStudent);
       });
     axios
-      .get(`api/v1/reviewsMedical/${medicalId}`, {
+      .get(`/api/v1/reviewsMedical/${medicalId}`, {
         withCredentials: true,
       })
       .then((response) => {

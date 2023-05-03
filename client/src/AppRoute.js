@@ -115,7 +115,7 @@ const AppRoute = () => {
         <Route path="/medicalStudents">
           <RequireAuthConsumer>
             <SuspendedMiddleWare>
-              <MedicalStudents />\
+              <MedicalStudents />
             </SuspendedMiddleWare>
           </RequireAuthConsumer>
         </Route>

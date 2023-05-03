@@ -21,19 +21,16 @@ const AppliedTrainee = () => {
 
   useEffect(() => {
     axios
-      .get(`api/v1/opportunities/${opportunityId}`, {
+      .get(`/api/v1/opportunities/${opportunityId}`, {
         withCredentials: true,
       })
       .then((response) => {
         setUserProfile(response.data.opportunity);
       });
     axios
-      .get(
-        `http://localhost:4000/api/v1/applicationsOpportunity/${opportunityId}`,
-        {
-          withCredentials: true,
-        }
-      )
+      .get(`/api/v1/applicationsOpportunity/${opportunityId}`, {
+        withCredentials: true,
+      })
       .then((response) => {
         setApplications(response.data);
       })

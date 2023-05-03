@@ -21,14 +21,14 @@ const FeedBackConsumerCompany = () => {
 
   useEffect(() => {
     axios
-      .get(`api/v1/companies/${companyId}`, {
+      .get(`/api/v1/companies/${companyId}`, {
         withCredentials: true,
       })
       .then((response) => {
         setUserProfile(response.data.company);
       });
     axios
-      .get(`api/v1/reviewsCompany/${companyId}`, {
+      .get(`/api/v1/reviewsCompany/${companyId}`, {
         withCredentials: true,
       })
       .then((response) => {

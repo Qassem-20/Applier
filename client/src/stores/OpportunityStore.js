@@ -6,7 +6,7 @@ const OpportunityStore = create((set) => ({
   opportunity: null,
   fetchOpportunities: async () => {
     // Fetch the opportunities
-    const res = await axios.get("api/v1/OpportunitiesApplications", {
+    const res = await axios.get("/api/v1/OpportunitiesApplications", {
       withCredentials: true,
     });
 
@@ -16,7 +16,7 @@ const OpportunityStore = create((set) => ({
 
   fetchOpportunity: async (_id) => {
     // Fetch the consumers
-    const res = await axios.get(`api/v1/opportunities/${_id}`, {
+    const res = await axios.get(`/api/v1/opportunities/${_id}`, {
       withCredentials: true,
     });
     // Set to state
@@ -25,7 +25,7 @@ const OpportunityStore = create((set) => ({
 
   fetchOpportunitiesCompany: async () => {
     // Fetch the opportunities
-    const res = await axios.get("api/v1/opportunitiesCompany", {
+    const res = await axios.get("/api/v1/opportunitiesCompany", {
       withCredentials: true,
     });
     // Set to state
@@ -35,7 +35,7 @@ const OpportunityStore = create((set) => ({
   // fetchOpportunitiesCompanySorted
   fetchOpportunitiesCompanySorted: async () => {
     // Fetch the opportunities
-    const res = await axios.get("api/v1/fetchOpportunitiesCompanySorted", {
+    const res = await axios.get("/api/v1/fetchOpportunitiesCompanySorted", {
       withCredentials: true,
     });
     // Set to state
@@ -43,7 +43,7 @@ const OpportunityStore = create((set) => ({
   },
 
   deleteOpportunity: async (_id) => {
-    await axios.delete("api/v1/opportunities/" + _id, {
+    await axios.delete("/api/v1/opportunities/" + _id, {
       withCredentials: true,
     });
 
@@ -125,7 +125,7 @@ const OpportunityStore = create((set) => ({
 
     // Send the update request
     await axios.put(
-      `api/v1/opportunities/${_id}`,
+      `/api/v1/opportunities/${_id}`,
       {
         job_role,
         description,
@@ -180,7 +180,7 @@ const OpportunityStore = create((set) => ({
     const { values } = OpportunityStore.getState();
 
     // add opportunity
-    await axios.post("api/v1/opportunities/registerOpportunity", values, {
+    await axios.post("/api/v1/opportunities/registerOpportunity", values, {
       withCredentials: true,
     });
     set({

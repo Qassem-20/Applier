@@ -11,7 +11,7 @@ const TraineeDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`api/v1/consumers/${consumerId}`, {
+      .get(`/api/v1/consumers/${consumerId}`, {
         withCredentials: true,
       })
       .then((response) => {

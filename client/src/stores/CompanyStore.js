@@ -7,7 +7,7 @@ const CompanyStore = create((set) => ({
 
   fetchCompanyProfile: async () => {
     try {
-      const response = await axios.get("api/v1/companyProfile", {
+      const response = await axios.get("/api/v1/companyProfile", {
         withCredentials: true,
       });
       set({ company: response.data.company });
@@ -18,7 +18,7 @@ const CompanyStore = create((set) => ({
   },
   fetchCompany: async (_id) => {
     try {
-      const res = await axios.get(`api/v1/companies/${_id}`, {
+      const res = await axios.get(`/api/v1/companies/${_id}`, {
         withCredentials: true,
       });
       set({ company: res.data.companies });
@@ -29,12 +29,12 @@ const CompanyStore = create((set) => ({
 
   // searchCompanies:async(e) => {
   //   e.preventDefault();
-  //   const res = await axios.get("api/v1/companies");
+  //   const res = await axios.get("/api/v1/companies");
   // },
 
   fetchCompanies: async () => {
     // Fetch the companies
-    const res = await axios.get("api/v1/companies", {
+    const res = await axios.get("/api/v1/companies", {
       withCredentials: true,
     });
     // Set to state
@@ -42,7 +42,7 @@ const CompanyStore = create((set) => ({
   },
 
   deleteCompany: async (_id) => {
-    await axios.delete("api/v1/companies/" + _id, {
+    await axios.delete("/api/v1/companies/" + _id, {
       withCredentials: true,
     });
 
@@ -108,12 +108,11 @@ const CompanyStore = create((set) => ({
         phone,
         _id,
       },
-      companies,
     } = CompanyStore.getState();
 
     // Send the update request
-    const res = await axios.put(
-      `api/v1/companies/${_id}`,
+    await axios.put(
+      `/api/v1/companies/${_id}`,
       {
         organization_name,
         register_number,
@@ -127,13 +126,6 @@ const CompanyStore = create((set) => ({
       },
       { withCredentials: true }
     );
-
-    // Update state
-    const newCompanies = [...companies];
-    const companyIndex = companies.findIndex((company) => {
-      return company._id === _id;
-    });
-    newCompanies[companyIndex] = res.data.company;
 
     set({
       updateProfile: {
@@ -179,7 +171,7 @@ const CompanyStore = create((set) => ({
     const { values } = CompanyStore.getState();
 
     // add company
-    await axios.post("api/v1/registerCompany", values, {
+    await axios.post("/api/v1/registerCompany", values, {
       withCredentials: true,
     });
     set({
@@ -232,7 +224,7 @@ const CompanyStore = create((set) => ({
   loginCompany: async () => {
     const { loginFormCompany } = CompanyStore.getState();
 
-    await axios.post("api/v1/loginCompany", loginFormCompany, {
+    await axios.post("/api/v1/loginCompany", loginFormCompany, {
       withCredentials: true,
     });
 
@@ -240,7 +232,7 @@ const CompanyStore = create((set) => ({
   },
   checkAuth: async () => {
     try {
-      await axios.get("api/v1/checkAuthCompany", {
+      await axios.get("/api/v1/checkAuthCompany", {
         withCredentials: true,
       });
       set({ loggedIn: true });
@@ -249,7 +241,7 @@ const CompanyStore = create((set) => ({
     }
   },
   logout: async () => {
-    await axios.get("api/v1/logutCompany", {
+    await axios.get("/api/v1/logoutCompany", {
       withCredentials: true,
     });
     set({ loggedIn: false });
@@ -258,7 +250,7 @@ const CompanyStore = create((set) => ({
   isActive: true,
   checkStatueCompany: async () => {
     try {
-      await axios.get("api/v1/checkStatueCompany", {
+      await axios.get("/api/v1/checkStatueCompany", {
         withCredentials: true,
       });
       set({ isActive: true });

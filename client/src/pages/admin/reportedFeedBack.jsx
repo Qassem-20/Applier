@@ -15,7 +15,7 @@ const ReportedFeedBack = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get("api/v1/reportedReviews", {
+        const response = await axios.get("/api/v1/reportedReviews", {
           withCredentials: true,
         });
 
