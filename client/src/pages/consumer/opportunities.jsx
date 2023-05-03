@@ -41,12 +41,11 @@ const Opportunities = () => {
 
   async function Apply(_id) {
     try {
-      const response = await axios.post(
+      await axios.post(
         `api/v1/applications/registerApplication/${_id}`,
         userData,
         { withCredentials: true }
       );
-      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -58,7 +57,6 @@ const Opportunities = () => {
 
   useEffect(() => {
     consumerStore.fetchConsumerProfile();
-    console.log(consumerStore.consumer);
   }, []);
 
   const handleSearch = (event) => {
