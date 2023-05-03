@@ -38,6 +38,7 @@ const AppliedTrainee = () => {
         console.log(error);
       });
   }, [opportunityId]);
+
   return (
     <Fragment>
       <Nav />
@@ -147,6 +148,7 @@ const AppliedTrainee = () => {
                     .catch((error) => {
                       console.log(error);
                     });
+                  window.location.reload();
                 }}
               >
                 {consumer.status}
