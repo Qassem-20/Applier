@@ -84,7 +84,7 @@ const Opportunities = () => {
     <Fragment>
       <ConsumerNav />
 
-      <Container>
+      <Container className="mb-2">
         <Row>
           <Col>
             <h1 id="opportunitiesHeader">Opportunities</h1>
@@ -92,14 +92,23 @@ const Opportunities = () => {
           </Col>
           <Col>
             <ApplierInputForm
-              className="row"
-              label="Search"
+              className="row mb-0"
+              label="Search "
               type="text"
               placeholder="Major"
               id="searchInput"
               value={searchTerm}
               onChange={handleSearch}
             />
+            <button
+              className="btn btn-secondary"
+              onClick={() => setSearchTerm("")}
+            >
+              Clear
+            </button>
+            <span id="msg">
+              (you can easily erase the search to show all opportunities)
+            </span>
           </Col>
         </Row>
       </Container>
