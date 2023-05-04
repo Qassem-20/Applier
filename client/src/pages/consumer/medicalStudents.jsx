@@ -1,7 +1,6 @@
 import "../../assets/css/consumer.css";
 import ConsumerNav from "../../components/Nav/consumerNav";
 import MedicalStore from "../../stores/MedicalStore";
-import { Link } from "react-router-dom";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 import ApplierPopUp from "../../components/applierComponents/applierPopUp/applierPopup";
 import React, { Fragment, useEffect, useState } from "react";
@@ -53,12 +52,12 @@ const MedicalStudents = () => {
           {filteredMedicalStudents.map((medicalStudent) => {
             return (
               <Col xl={4} md={6} sm={12} key={medicalStudent._id}>
-                <Link
+                <a
                   style={{ textDecoration: "none" }}
-                  to={`/feedBackConsumerMedical/${medicalStudent._id}`}
+                  href={`/feedBackConsumerMedical/${medicalStudent._id}`}
                 >
                   <ApplierPopUp medicalStudent={medicalStudent} />
-                </Link>
+                </a>
               </Col>
             );
           })}

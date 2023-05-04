@@ -64,7 +64,7 @@ const SignIn = () => {
               />
 
               <ApplierButton
-                buttonType="Medical Student"
+                buttonType="Medical"
                 className={activeLinkIndex === 1 ? `btnGp focused` : `btnGp `}
                 onClick={showMedical}
               />

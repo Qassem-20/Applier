@@ -24,7 +24,7 @@ export class header extends Component {
   render() {
     return (
       <Fragment>
-        <Container className=" header_container">
+        <Container className="header_container">
           <p className={`textStyling ${this.state.showText ? "showText" : ""}`}>
             A platform where university students can get opportunities with
             companies or patients, and where companies and patients can find
