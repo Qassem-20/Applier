@@ -21,12 +21,6 @@ const ConsumerProfile = () => {
     return <div>Loading...</div>;
   }
 
-
-
-
-
-  
-
   return (
     <Fragment>
       <ConsumerNav />

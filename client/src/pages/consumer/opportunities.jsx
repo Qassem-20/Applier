@@ -99,7 +99,7 @@ const Opportunities = () => {
               className="row"
               label="Search"
               type="text"
-              placeholder="Searching for which Major"
+              placeholder="Major"
               id="searchInput"
               value={searchTerm}
               onChange={handleSearch}
