@@ -20,6 +20,7 @@ const Opportunities = () => {
   });
 
   const [traineeApplications] = useState([]);
+  const [cleared, setCleared] = useState(false);
 
   // for searching opportunities
   const [searchTerm, setSearchTerm] = useState("");
@@ -91,24 +92,31 @@ const Opportunities = () => {
             <span id="msg">Make sure you completed your Profile</span>
           </Col>
           <Col>
-            <ApplierInputForm
-              className="row mb-0"
-              label="Search "
-              type="text"
-              placeholder="Major"
-              id="searchInput"
-              value={searchTerm}
-              onChange={handleSearch}
-            />
-            <button
-              className="btn btn-secondary"
-              onClick={() => setSearchTerm("")}
-            >
-              Clear
-            </button>
-            <span id="msg">
-              (you can easily erase the search to show all opportunities)
-            </span>
+            <Row>
+              <ApplierInputForm
+                className="row mb-0"
+                label="Search "
+                type="text"
+                placeholder="Major"
+                id="searchInput"
+                value={searchTerm}
+                onChange={handleSearch}
+              />
+            </Row>
+            <div className={cleared ? "d-none" : ""}>
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  return setSearchTerm(""), setCleared(true);
+                }}
+              >
+                Clear
+              </button>
+
+              <span id="msg" className="px-3">
+                (show all opportunities)
+              </span>
+            </div>
           </Col>
         </Row>
       </Container>
