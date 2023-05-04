@@ -18,7 +18,7 @@ const UnauthorizedAdminMiddleware = () => {
         <img
           src={unauthorized}
           alt="unauthorized Admin"
-          className="m-auto mb-3"
+          className="m-auto img-fluid mb-3"
         />
         <h2 className="text-center">
           Sorry you aren't authorized to access this page
