@@ -122,13 +122,21 @@ const Opportunities = () => {
       </Container>
 
       <div className="row opportunitiesTag">
-        <span className="col-2 opportunitiesMainTags">Role</span>
-        <span className="col-2 opportunitiesMainTags">Description</span>
-        <span className="col-2 opportunitiesMainTags">major</span>
-        <span className="col-1 opportunitiesMainTags">Statues</span>
-        <span className="col-2 opportunitiesMainTags">City</span>
-        <span className="col-2 opportunitiesMainTags">Started At</span>
-        <span className="col-1 opportunitiesMainTags">Company info</span>
+        <span className="col opportunitiesMainTags">Role</span>
+        <span className="col opportunitiesMainTags d-none d-sm-block">
+          Description
+        </span>
+        <span className="col opportunitiesMainTags d-none d-sm-block">
+          major
+        </span>
+        <span className="col opportunitiesMainTags">Statues</span>
+        <span className="col opportunitiesMainTags d-none d-sm-block">
+          City
+        </span>
+        <span className="col opportunitiesMainTags d-none d-sm-block">
+          Started At
+        </span>
+        <span className="col opportunitiesMainTags">Company</span>
       </div>
       {filterOpportunities.map((opportunity) => {
         // Check if the opportunity ID is in the traineeApplications array
@@ -139,16 +147,16 @@ const Opportunities = () => {
 
         return (
           <div className="row opportunitiesT" key={opportunity._id}>
-            <span className="col-2 opportunitiesTags">
+            <span className="col opportunitiesTags">
               {opportunity.job_role}
             </span>
-            <span className="col-2 opportunitiesTags">
+            <span className="col d-none d-sm-block opportunitiesTags">
               {opportunity.description}
             </span>
-            <span className="col-2 opportunitiesTags">
+            <span className="col opportunitiesTags d-none d-sm-block">
               {opportunity.major_preferred}
             </span>
-            <span className="col-1 opportunitiesTags">
+            <span className="col opportunitiesTags">
               {opportunity.applicationStatuses &&
               opportunity.applicationStatuses.length > 0 ? (
                 opportunity.applicationStatuses.map((status) => (
@@ -200,12 +208,14 @@ const Opportunities = () => {
                 </form>
               )}
             </span>
-            <span className="col-2 opportunitiesTags">{opportunity.city}</span>
-            <span className="col-2 opportunitiesTags">
+            <span className="col opportunitiesTags d-none d-sm-block">
+              {opportunity.city}
+            </span>
+            <span className="col  opportunitiesTags d-none d-sm-block">
               {opportunity.start_date}
             </span>
 
-            <div className="col-1 d-flex justify-content-center">
+            <div className="col  d-flex justify-content-center">
               <Link to={`/feedBackConsumerCompany/${opportunity.company}`}>
                 <img className="infoImg" src={InfoIcon} alt="InfoIcon" />
               </Link>

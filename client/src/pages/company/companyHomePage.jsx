@@ -58,13 +58,21 @@ const CompanyHomePage = () => {
       </Container>
 
       <div className="row opportunitiesTag">
-        <span className="col-2 opportunitiesMainTags">Role</span>
-        <span className="col-2 opportunitiesMainTags">Job Description</span>
-        <span className="col-2 opportunitiesMainTags">Available Seats</span>
-        <span className="col-2 opportunitiesMainTags">duration</span>
-        <span className="col-2 opportunitiesMainTags">Created at</span>
-        <span className="col-1 opportunitiesMainTags">Applications</span>
-        <span className="col-1 opportunitiesMainTags">Edit</span>
+        <span className="col opportunitiesMainTags">Role</span>
+        <span className="col opportunitiesMainTags d-none d-sm-block">
+          Job Description
+        </span>
+        <span className="col opportunitiesMainTags d-none d-sm-block">
+          Available Seats
+        </span>
+        <span className="col opportunitiesMainTags d-none d-sm-block">
+          duration
+        </span>
+        <span className="col opportunitiesMainTags d-none d-sm-block">
+          Created at
+        </span>
+        <span className="col opportunitiesMainTags">Applications</span>
+        <span className="col opportunitiesMainTags">Edit</span>
       </div>
       {store.opportunities &&
         store.opportunities
@@ -72,22 +80,22 @@ const CompanyHomePage = () => {
           .map((opportunity) => {
             return (
               <div className="row opportunitiesT" key={opportunity._id}>
-                <span className="col-2 opportunitiesTags">
+                <span className="col opportunitiesTags">
                   {opportunity.job_role}
                 </span>
-                <span className="col-2 opportunitiesTags">
+                <span className="col opportunitiesTags d-none d-sm-block">
                   {opportunity.description}
                 </span>
-                <span className="col-2 opportunitiesTags">
+                <span className="col opportunitiesTags d-none d-sm-block">
                   {opportunity.availability_seats}
                 </span>
-                <span className="col-2 opportunitiesTags">
+                <span className="col opportunitiesTags d-none d-sm-block">
                   {opportunity.duration}
                 </span>
-                <span className="col-2 opportunitiesTags">
+                <span className="col opportunitiesTags d-none d-sm-block">
                   {opportunity.createdAt.slice(0, 10)}
                 </span>
-                <div className="col-1 d-flex justify-content-center">
+                <div className="col d-flex justify-content-center">
                   <a href={`/appliedTrainee/${opportunity._id}`}>
                     <img
                       className="infoImg"
@@ -96,7 +104,7 @@ const CompanyHomePage = () => {
                     />
                   </a>
                 </div>
-                <div className="col-1 d-flex justify-content-center">
+                <div className="col d-flex justify-content-center">
                   <a href={`/editOpportunity/${opportunity._id}`}>
                     <img
                       className="infoImg"

@@ -56,88 +56,83 @@ const AppliedTrainee = () => {
       <Nav />
       <Container>
         <Row className="mb-3">
-          <Col className="mt-5">
+          <Col>
             <Row id="opportunitiesHeader">Candidates</Row>
+            <div className="mt-3 mb-3">
+              <form action="/companyHomePage/">
+                <button
+                  className="btn btn-danger"
+                  onClick={() => storeDelete.deleteOpportunity(opportunityId)}
+                >
+                  Delete
+                </button>
+              </form>
+            </div>
+            <p>
+              <strong>Job Role: </strong> {userProfile.job_role}
+            </p>
+            <p>
+              <strong>Major: </strong> {userProfile.major_preferred}
+            </p>
+            <p>
+              <strong>Type: </strong>
+              {userProfile.job_type}
+            </p>
+            <a href={`/editOpportunity/${opportunityId}`}>
+              <img src={CustomizeIcon} alt="editOpportunity" />
+            </a>
           </Col>
-
           <Col>
             <Row>
-              <h3 className="mb-3">Opportunity Details</h3>
-
-              <Col md={7}>
-                <p>
-                  <strong>Job Role: </strong> {userProfile.job_role}
-                </p>
-                <p>
-                  <strong>Major: </strong> {userProfile.major_preferred}
-                </p>
-                <p>
-                  <strong>Type: </strong>
-                  {userProfile.job_type}
-                </p>
-              </Col>
               <Col>
                 <Row>
-                  <a href={`/editOpportunity/${opportunityId}`}>
-                    <img src={CustomizeIcon} alt="editOpportunity" />
-                  </a>
-                </Row>
-                <Row className="mt-4">
-                  <form action="/companyHomePage/">
+                  <Row>
+                    <ApplierInputForm
+                      className="row mb-0"
+                      label="Search "
+                      type="text"
+                      placeholder="Major"
+                      id="searchInput"
+                      value={searchTerm}
+                      onChange={handleSearch}
+                    />
+                  </Row>
+                  <div className={cleared ? "d-none" : ""}>
                     <button
-                      className="btn btn-danger"
-                      onClick={() =>
-                        storeDelete.deleteOpportunity(opportunityId)
-                      }
+                      className="btn btn-secondary"
+                      onClick={() => {
+                        return setSearchTerm(""), setCleared(true);
+                      }}
                     >
-                      Delete
+                      Clear
                     </button>
-                  </form>
+
+                    <span id="msg" className="px-3">
+                      (show all applicants)
+                    </span>
+                  </div>
                 </Row>
               </Col>
             </Row>
           </Col>
-          <Col>
-            <Col>
-              <Row>
-                <ApplierInputForm
-                  className="row mb-0"
-                  label="Search "
-                  type="text"
-                  placeholder="Major"
-                  id="searchInput"
-                  value={searchTerm}
-                  onChange={handleSearch}
-                />
-              </Row>
-              <div className={cleared ? "d-none" : ""}>
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => {
-                    return setSearchTerm(""), setCleared(true);
-                  }}
-                >
-                  Clear
-                </button>
-
-                <span id="msg" className="px-3">
-                  (show all applicants)
-                </span>
-              </div>
-            </Col>
-          </Col>
         </Row>
       </Container>
       <div className="row opportunitiesTag">
-        <span className="col-1 opportunitiesTags">Name</span>
-        <span className="col-1 opportunitiesTags">LinkedIn</span>
-        <span className="col-1 opportunitiesTags">Email</span>
-        <span className="col-2 opportunitiesTags">Phone Number</span>
-        <span className="col-1 opportunitiesTags">University</span>
-        <span className="col-2 opportunitiesTags">Major</span>
-        <span className="col-1 opportunitiesTags">GPA </span>
-        <span className="col-2 opportunitiesTags">Statues</span>
-        <span className="col-1 opportunitiesTags">Info</span>
+        <span className="col opportunitiesTags">Name</span>
+        <span className="col opportunitiesTags d-none d-sm-block">
+          LinkedIn
+        </span>
+        <span className="col opportunitiesTags">Email</span>
+        <span className="col opportunitiesTags d-none d-sm-block">
+          Phone Number
+        </span>
+        <span className="col opportunitiesTags d-none d-sm-block">
+          University
+        </span>
+        <span className="col opportunitiesTags d-none d-sm-block">Major</span>
+        <span className="col opportunitiesTags d-none d-sm-block">GPA </span>
+        <span className="col opportunitiesTags">Statues</span>
+        <span className="col opportunitiesTags">Info</span>
       </div>
 
       {/*  {filterApplicants.map((consumer) => ( */}
@@ -148,10 +143,10 @@ const AppliedTrainee = () => {
           )
           .map((consumer) => (
             <div className="row  opportunitiesT" key={consumer._id}>
-              <div className="col-1 mx-auto  opportunitiesTags">
+              <div className="col mx-auto  opportunitiesTags">
                 {consumer.name}
               </div>
-              <div className="col-1 d-flex justify-content-center opportunitiesTags">
+              <div className="col d-flex justify-content-center opportunitiesTags d-none d-sm-block">
                 <a href={`${consumer.linkedin}`}>
                   <img
                     className="iconSize"
@@ -160,14 +155,20 @@ const AppliedTrainee = () => {
                   />
                 </a>
               </div>
-              <span className="col-1  opportunitiesTags">{consumer.email}</span>
-              <span className="col-2  opportunitiesTags">{consumer.phone}</span>
-              <span className="col-1 opportunitiesTags">
+              <span className="col opportunitiesTags">{consumer.email}</span>
+              <span className="col  opportunitiesTags d-none d-sm-block">
+                {consumer.phone}
+              </span>
+              <span className="col opportunitiesTags d-none d-sm-block">
                 {consumer.university}
               </span>
-              <span className="col-2 opportunitiesTags">{consumer.major}</span>
-              <span className="col-1 opportunitiesTags">{consumer.gpa}</span>
-              <span className="col-2 opportunitiesTags">
+              <span className="col opportunitiesTags d-none d-sm-block">
+                {consumer.major}
+              </span>
+              <span className="col opportunitiesTags d-none d-sm-block">
+                {consumer.gpa}
+              </span>
+              <span className="col opportunitiesTags">
                 <button
                   className={`btn ${
                     consumer.status === "Hired"
@@ -206,7 +207,7 @@ const AppliedTrainee = () => {
                   {consumer.status}
                 </button>
               </span>
-              <div className="col-1 d-flex justify-content-center">
+              <div className="col d-flex justify-content-center">
                 <a href={`/traineeDetails/${consumer._id}`}>
                   <img className="iconSize" src={OptionIcon} alt="OptionIcon" />
                 </a>
