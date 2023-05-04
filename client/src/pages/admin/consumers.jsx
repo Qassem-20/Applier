@@ -22,7 +22,7 @@ const Consumers = () => {
   }
   useEffect(() => {
     store.fetchConsumers();
-  }, []);
+  }, [store]);
 
   return (
     <Fragment>

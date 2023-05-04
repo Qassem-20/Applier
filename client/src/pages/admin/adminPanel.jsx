@@ -28,7 +28,7 @@ const AdminPanel = () => {
 
   useEffect(() => {
     store.fetchAdmins();
-  }, []);
+  }, [store]);
   return (
     <Fragment>
       <AdminNav />

@@ -26,7 +26,7 @@ const ReportedFeedBack = () => {
       }
     };
     fetchReviews();
-  }, []);
+  }, [setReviews]);
 
   const handleReport = async (reviewId) => {
     try {
@@ -35,12 +35,11 @@ const ReportedFeedBack = () => {
       );
       if (reviewToUpdate) {
         const isReported = reviewToUpdate.isReported === "yes" ? "no" : "yes";
-        const response = await axios.put(
-          `http://localhost:4000/api/v1/companies/reportReview/${reviewId}`,
+        await axios.put(
+          `/api/v1/companies/reportReview/${reviewId}`,
           { isReported },
           { withCredentials: true }
         );
-        console.log(response.data);
         const updatedReviews = reportedReviews.map((review) => {
           if (review._id === reviewId) {
             return {

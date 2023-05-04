@@ -13,7 +13,7 @@ const Opportunities = () => {
 
   useEffect(() => {
     store.fetchOpportunities();
-  }, []);
+  }, [store]);
 
   return (
     <Fragment>
