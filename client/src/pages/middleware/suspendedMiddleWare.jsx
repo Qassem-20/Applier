@@ -8,7 +8,7 @@ export default function SuspendedMiddleWare(props) {
 
   useEffect(() => {
     store.checkStatueConsumer();
-  }, [store]);
+  }, []);
 
   if (store.isLoading) {
     return (

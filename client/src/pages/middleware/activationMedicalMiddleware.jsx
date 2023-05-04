@@ -8,7 +8,7 @@ export default function ActivationMedicalMiddleware(props) {
 
   useEffect(() => {
     store.checkStatueMedical();
-  }, [store]);
+  }, []);
 
   if (store.isLoading) {
     return (

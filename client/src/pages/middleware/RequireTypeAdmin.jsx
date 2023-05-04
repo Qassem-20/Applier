@@ -8,7 +8,7 @@ export default function RequireTypeAdmin(props) {
 
   useEffect(() => {
     store.checkStatueAdmin();
-  }, [store]);
+  }, []);
 
   if (store.isLoading) {
     return (

@@ -8,7 +8,7 @@ export default function ActivationCompanyMiddleware(props) {
 
   useEffect(() => {
     store.checkStatueCompany();
-  }, [store]);
+  }, []);
 
   if (store.isLoading) {
     return (
