@@ -16,7 +16,7 @@ const CompanyProfile = () => {
 
   useEffect(() => {
     store.fetchCompanyProfile();
-  }, [store]);
+  }, []);
   if (!store.company) {
     return <div>Loading...</div>;
   }

@@ -10,7 +10,7 @@ const CompanyHomePage = () => {
 
   useEffect(() => {
     store.fetchOpportunitiesCompany();
-  }, [store]);
+  }, []);
 
   const [sorted, setSorted] = useState({});
 

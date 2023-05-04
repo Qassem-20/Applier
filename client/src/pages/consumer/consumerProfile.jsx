@@ -16,7 +16,7 @@ const ConsumerProfile = () => {
 
   useEffect(() => {
     store.fetchConsumerProfile();
-  }, [store]);
+  }, []);
   if (!store.consumer) {
     return <div>Loading...</div>;
   }

@@ -16,7 +16,7 @@ const HomePageMedicalStudent = () => {
 
   useEffect(() => {
     store.fetchMedicalProfile();
-  }, [store]);
+  }, []);
   if (!store.medicalStudent) {
     return <div>Loading...</div>;
   }

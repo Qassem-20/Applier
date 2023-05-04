@@ -17,7 +17,7 @@ const TraineeDetails = () => {
       .then((response) => {
         setUserProfile(response.data.consumer);
       });
-  }, [consumerId]);
+  }, []);
   return (
     <Fragment>
       <Nav />

@@ -22,7 +22,7 @@ const Companies = () => {
 
   useEffect(() => {
     store.fetchCompanies();
-  }, [store]);
+  }, []);
   return (
     <Fragment>
       <AdminNav />

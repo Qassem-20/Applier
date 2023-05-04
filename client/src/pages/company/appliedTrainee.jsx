@@ -37,7 +37,7 @@ const AppliedTrainee = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [opportunityId, setApplications]);
+  }, []);
 
   return (
     <Fragment>

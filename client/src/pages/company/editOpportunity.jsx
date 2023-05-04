@@ -18,7 +18,7 @@ const EditOpportunity = () => {
 
   useEffect(() => {
     store.fetchOpportunity(opportunityId);
-  }, [store, opportunityId]);
+  }, []);
 
   if (!store.opportunity) {
     return <div>Loading...</div>;
