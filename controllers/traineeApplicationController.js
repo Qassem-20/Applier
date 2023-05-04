@@ -29,7 +29,6 @@ const fetchApplication = async (req, res) => {
     res.sendStatus(400);
   }
 };
-
 const fetchApplicationsOpportunity = async (req, res) => {
   try {
     const opportunityId = mongoose.Types.ObjectId(req.params.opportunity);
@@ -47,28 +46,30 @@ const fetchApplicationsOpportunity = async (req, res) => {
     });
 
     // Get the consumer IDs from the application statuses
-    const consumerId = applicationStatuses.map((status) => status.consumer);
+    const consumerIds = applicationStatuses.map((status) => status.consumer);
 
     // Find all the consumers with the given IDs
-    const consumers = await Consumer.find({ _id: { $in: consumerId } });
+    const consumers = await Consumer.find({ _id: { $in: consumerIds } });
 
     // Extract the desired fields from the consumer documents
-    const consumerInfo = consumers.map((consumer) => {
-      const status = applicationStatuses.find((status) =>
-        status.consumer.equals(consumer._id)
-      );
-      return {
-        _id: consumer._id,
-        name: consumer.name,
-        email: consumer.email,
-        phone: consumer.phone,
-        linkedin: consumer.linkedIn_profile,
-        university: consumer.university,
-        major: consumer.major,
-        gpa: consumer.gpa,
-        status: status ? status.statue : null,
-        applicationStatusId: status ? status._id : null,
-      };
+    const consumerInfo = [];
+
+    applicationStatuses.forEach((status) => {
+      const consumer = consumers.find((c) => c._id.equals(status.consumer));
+      if (consumer) {
+        consumerInfo.push({
+          _id: consumer._id,
+          name: consumer.name,
+          email: consumer.email,
+          phone: consumer.phone,
+          linkedin: consumer.linkedIn_profile,
+          university: consumer.university,
+          major: consumer.major,
+          gpa: consumer.gpa,
+          status: status.statue,
+          applicationStatusId: status._id,
+        });
+      }
     });
 
     // Return the application statuses and consumer information
@@ -78,6 +79,7 @@ const fetchApplicationsOpportunity = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
 const fetchOpportunityApplications = async (req, res) => {
   try {
     // Find all opportunities in the database for the given consumer
@@ -89,10 +91,8 @@ const fetchOpportunityApplications = async (req, res) => {
         try {
           const applicationStatuses = await ApplicationStatus.find({
             opportunity: opportunity._id,
-            consumer: req.consumer,
+            consumer: req.consumer._id,
           });
-
-          console.log("Application statuses:", applicationStatuses);
 
           return {
             _id: opportunity._id,
@@ -120,8 +120,6 @@ const fetchOpportunityApplications = async (req, res) => {
         }
       })
     );
-
-    console.log("Opportunity info:", opportunityInfo);
 
     return res.status(200).json(opportunityInfo);
   } catch (error) {

@@ -37,7 +37,7 @@ const AppliedTrainee = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [opportunityId]);
+  }, [opportunityId, setApplications]);
 
   return (
     <Fragment>
@@ -140,7 +140,7 @@ const AppliedTrainee = () => {
                         consumerInfo: prevApplications.consumerInfo.map((c) =>
                           c.applicationStatusId ===
                           updatedConsumer.applicationStatusId
-                            ? updatedConsumer
+                            ? { ...c, status: updatedConsumer.status }
                             : c
                         ),
                       }));
@@ -148,7 +148,6 @@ const AppliedTrainee = () => {
                     .catch((error) => {
                       console.log(error);
                     });
-                  window.location.reload();
                 }}
               >
                 {consumer.status}

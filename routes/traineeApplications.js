@@ -23,10 +23,10 @@ router.route("/applications/:id").get(fetchApplication);
 router
   .route("/applicationsOpportunity/:opportunity")
   .get(requireAuthCompany, fetchApplicationsOpportunity);
-router
+router;
 router
   .route("/OpportunitiesApplications")
-  .get(fetchOpportunityApplications);
+  .get(requireAuthConsumer, fetchOpportunityApplications);
 router
   .route("/traineeApplications/:id")
   .put(requireAuthCompany, updateApplication);
