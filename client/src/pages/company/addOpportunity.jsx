@@ -6,6 +6,8 @@ import { useHistory } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 import ApplierButton from "../../components/applierComponents/applierButton";
+import { options } from "../../APIs/jobTitlesAPI.js";
+
 const AddOpportunity = () => {
   const store = OpportunityStore();
 
@@ -98,15 +100,22 @@ const AddOpportunity = () => {
                 <option value="hybrid">Hybrid</option>
               </select>
 
-              <ApplierInputForm
-                label="Major Looking for"
-                type="text"
+              <label className="labelStyling font-bold">
+                Major Looking for
+              </label>
+              <select
+                className="inputStyling mb-3"
                 name="major_preferred"
-                placeholder="Software Engineer"
+                placeholder="major"
                 value={store.values.major_preferred}
                 onChange={store.handleChange}
-              />
-
+              >
+                {options.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
               <ApplierInputForm
                 label="Number of seats available"
                 type="number"

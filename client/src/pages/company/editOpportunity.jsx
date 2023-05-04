@@ -6,6 +6,8 @@ import ApplierInputForm from "../../components/applierComponents/applierInputFor
 import ApplierButton from "../../components/applierComponents/applierButton";
 import Nav from "../../components/Nav/companyNav";
 import "../../assets/css/company.css";
+import { options } from "../../APIs/jobTitlesAPI.js";
+
 const EditOpportunity = () => {
   const store = OpportunityStore();
 
@@ -113,14 +115,21 @@ const EditOpportunity = () => {
                     value={store.updateStatue.salary}
                     onChange={store.handleUpdate}
                   />
-                  <ApplierInputForm
-                    label="Major Looking for"
-                    type="text"
+                  <label className="labelStyling font-bold">
+                    Major Looking for
+                  </label>
+                  <select
+                    className="inputStyling mb-3"
                     name="major_preferred"
-                    placeholder="Software Engineer"
                     value={store.updateStatue.major_preferred}
                     onChange={store.handleUpdate}
-                  />
+                  >
+                    {options.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
                 </Col>
                 <Col>
                   <ApplierInputForm

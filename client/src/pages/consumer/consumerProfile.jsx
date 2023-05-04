@@ -4,6 +4,7 @@ import ConsumerStore from "../../stores/ConsumerStore";
 import React, { Fragment, useEffect } from "react";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import { Container, Row, Col } from "react-bootstrap";
+import { options } from "../../APIs/jobTitlesAPI.js";
 
 const ConsumerProfile = () => {
   const store = ConsumerStore();
@@ -105,16 +106,21 @@ const ConsumerProfile = () => {
                     value={store.updateProfile.university}
                     name="university"
                   />
-                  <p className="labelStyling">Major:</p>
-
-                  <input
+                  <label className="labelStyling font-bold">Major</label>
+                  <select
                     className="inputStyling"
+                    name="major"
+                    placeholder="major"
                     onChange={store.handleUpdate}
                     value={store.updateProfile.major}
-                    name="major"
-                  />
+                  >
+                    {options.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
                   <p className="labelStyling">Gpa:</p>
-
                   <input
                     className="inputStyling"
                     onChange={store.handleUpdate}
@@ -125,7 +131,7 @@ const ConsumerProfile = () => {
                 <Col>
                   <p className="labelStyling">Department:</p>
                   <select
-                    className="inputStyling mb-3"
+                    className="inputStyling"
                     name="concentrated_major"
                     placeholder="duration"
                     value={store.updateProfile.concentrated_major}
