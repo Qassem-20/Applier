@@ -127,7 +127,7 @@ const Opportunities = () => {
           Description
         </span>
         <span className="col opportunitiesMainTags d-none d-sm-block">
-          major
+          Major
         </span>
         <span className="col opportunitiesMainTags">Statues</span>
         <span className="col opportunitiesMainTags d-none d-sm-block">

@@ -21,7 +21,7 @@ export class routeSignUp extends Component {
                 src={traineeBackground}
                 alt="User img"
               />
-              <h2 className="align">User</h2>
+              <h2 className="align">Universiy Student</h2>
             </a>
             <a className="col-4 align" href="/signUpMedicalStudent">
               <img
