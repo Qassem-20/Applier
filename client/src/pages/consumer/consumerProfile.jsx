@@ -177,10 +177,10 @@ const ConsumerProfile = () => {
                     defaultValue={store.updateProfile.degree}
                     onChange={store.handleUpdate}
                   >
-                    <option value="High school">high school</option>
-                    <option value="Bachelor">bachelor</option>
-                    <option value="Diploma">diploma</option>
-                    <option value="Master">master</option>
+                    <option value="High school">High school</option>
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="Master">Master</option>
                   </select>
                 </Col>
               </Row>
