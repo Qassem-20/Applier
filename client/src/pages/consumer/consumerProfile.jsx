@@ -120,7 +120,7 @@ const ConsumerProfile = () => {
                       </option>
                     ))}
                   </select>
-                  <p className="labelStyling">Gpa:</p>
+                  <p className="labelStyling">GPA:</p>
                   <input
                     className="inputStyling"
                     onChange={store.handleUpdate}
