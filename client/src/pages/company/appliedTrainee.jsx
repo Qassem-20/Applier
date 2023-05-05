@@ -135,11 +135,10 @@ const AppliedTrainee = () => {
         <span className="col opportunitiesTags">Info</span>
       </div>
 
-      {/*  {filterApplicants.map((consumer) => ( */}
       {applications.consumerInfo &&
         applications.consumerInfo
           .filter((consumer) =>
-            consumer.major.toLowerCase().includes(searchTerm)
+            consumer.major.toLowerCase().includes(searchTerm.toLowerCase())
           )
           .map((consumer) => (
             <div className="row  opportunitiesT" key={consumer._id}>
