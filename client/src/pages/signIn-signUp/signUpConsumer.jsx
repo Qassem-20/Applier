@@ -172,7 +172,7 @@ const SignUpConsumer = () => {
                         onChange={store.handleChange}
                       />
 
-                      <label className="labelStyling font-bold">City</label>
+                      {/* <label className="labelStyling font-bold">City</label>
                       <select
                         className="inputStyling mb-3"
                         name="city"
@@ -186,7 +186,7 @@ const SignUpConsumer = () => {
                             {city}
                           </option>
                         ))}
-                      </select>
+                      </select> */}
                     </div>
                     <div className="col-sm-12 col-md-6">
                       <label className="labelStyling font-bold">Degree</label>

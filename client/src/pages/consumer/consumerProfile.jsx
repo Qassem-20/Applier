@@ -36,7 +36,7 @@ const ConsumerProfile = () => {
               <p>Email: {store.consumer.email}</p>
               <p>Phone: {store.consumer.phone}</p>
               <p>Nationality: {store.consumer.nationality}</p>
-              <p>City: {store.consumer.city}</p>
+              {/* <p>City: {store.consumer.city}</p> */}
               <hr />
               <h4>Application (CV)</h4>
               <Row>
@@ -185,7 +185,7 @@ const ConsumerProfile = () => {
                     <option value="Master">Master</option>
                   </select>
 
-                  <label className="labelStyling font-bold">City</label>
+                  {/* <label className="labelStyling font-bold">City</label>
                   <select
                     className="inputStyling mb-3"
                     name="city"
@@ -199,7 +199,7 @@ const ConsumerProfile = () => {
                         {city}
                       </option>
                     ))}
-                  </select>
+                  </select> */}
                 </Col>
               </Row>
               <ApplierButton
