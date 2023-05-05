@@ -180,6 +180,7 @@ const Opportunities = () => {
                       }
                     >
                       {status.statue}
+                      {status.statue === "Applied" && <span>| X</span>}
                     </button>
                   </span>
                 ))
