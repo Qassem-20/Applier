@@ -1,13 +1,23 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import React, { Fragment } from "react";
+import Logo from "../../assets/images/newLogo.png";
+
 
 const AdminNav = () => {
   return (
     <Fragment>
       <Navbar bg="white" expand="lg" className="pt-2 pb-3 mb-5">
         <Container>
-          <Navbar.Brand>Applier</Navbar.Brand>
+        <Navbar.Brand>
+              <img 
+              src={Logo}
+              height="32"
+              className="d-inline-block align-center" 
+              alt="Owl brand logo" 
+              />{' '}
+              Applier
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
