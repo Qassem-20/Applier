@@ -170,10 +170,16 @@ const Opportunities = () => {
                           : "btn-secondary"
                       }`}
                       onClick={() =>
+                        status.statue !== "Hired" &&
+                        status.statue !== "Rejected" &&
                         storeDelete.deleteTraineeApplication(status._id)
                       }
+                      disabled={
+                        status.statue === "Hired" ||
+                        status.statue === "Rejected"
+                      }
                     >
-                      {status.statue} | X
+                      {status.statue}
                     </button>
                   </span>
                 ))
