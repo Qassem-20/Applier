@@ -34,19 +34,19 @@ const CompanyProfile = () => {
             <p>Phone Number: {store.company.phone}</p>
             <hr />
             <Row>
-              <Col>
+              <Col md={6} sm={12}>
                 <p>Register number: {store.company.register_number}</p>
 
                 <span>Organization website: </span>
-                <span>
+                <p>
                   <a href={store.company.organization_website}>
                     {store.company.organization_website}
                   </a>
-                </span>
+                </p>
                 <p>Country: {store.company.country}</p>
                 <p>City: {store.company.city}</p>
               </Col>
-              <Col>
+              <Col md={6} sm={12}>
                 <p>Bio:</p>
                 <p>{store.company.organization_bio}</p>
               </Col>

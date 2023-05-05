@@ -30,22 +30,24 @@ const MedicalStudents = () => {
       </Container>
       <Container fluid>
         <Row className="opportunitiesTag">
-          <Col xl={2}>
+          <Col>
             <p className="opportunitiesMainTags">Name</p>
           </Col>
-          <Col xl={3}>
-            <p className="opportunitiesMainTags">Specialty</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">Specialty</p>
           </Col>
-          <Col xl={2}>
+          <Col>
             <p className="opportunitiesMainTags">Phone Number</p>
           </Col>
-          <Col xl={2}>
-            <p className="opportunitiesMainTags">Location</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">Location</p>
           </Col>
-          <Col xl={2}>
-            <p className="opportunitiesMainTags">Identification Letter</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">
+              Joined Date
+            </p>
           </Col>
-          <Col xl={1}>
+          <Col>
             <p className="opportunitiesMainTags">Status</p>
           </Col>
         </Row>
@@ -55,26 +57,30 @@ const MedicalStudents = () => {
           return (
             <Container fluid key={medicalStudent._id}>
               <Row className="opportunitiesT">
-                <Col xl={2}>
+                <Col>
                   <p className="opportunitiesTags">{medicalStudent.name}</p>
                 </Col>
-                <Col xl={3}>
-                  <p className="opportunitiesTags">
+                <Col>
+                  <p className="opportunitiesTags d-none d-sm-block">
                     {medicalStudent.specialty}
                   </p>
                 </Col>
-                <Col xl={2}>
+                <Col>
                   <p className="opportunitiesTags">
                     {medicalStudent.phone_number}
                   </p>
                 </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">{medicalStudent.city}</p>
+                <Col>
+                  <p className="opportunitiesTags d-none d-sm-block">
+                    {medicalStudent.city}
+                  </p>
                 </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">Identification Letter</p>
+                <Col>
+                  <p className="opportunitiesTags d-none d-sm-block">
+                    {medicalStudent.createdAt.slice(0, 10)}
+                  </p>
                 </Col>
-                <Col xl={1}>
+                <Col className="d-flex justify-content-center">
                   <button
                     className={`btn ${
                       medicalStudent.statue === "true"

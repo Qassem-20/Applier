@@ -26,7 +26,6 @@ const SignInMedical = () => {
 
   return (
     <Col xl={5} sm={12} className="mx-3">
-      <h4>Medical Student</h4>
       <form onSubmit={handleLoginMedical}>
         <ApplierInputForm
           label="Email"

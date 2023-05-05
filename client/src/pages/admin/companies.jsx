@@ -31,22 +31,26 @@ const Companies = () => {
       </Container>
       <Container fluid>
         <Row className="opportunitiesTag">
-          <Col xl={2}>
+          <Col>
             <p className="opportunitiesMainTags">Company</p>
           </Col>
-          <Col xl={3}>
+          <Col>
             <p className="opportunitiesMainTags">Register Number</p>
           </Col>
-          <Col xl={2}>
-            <p className="opportunitiesMainTags">Phone Number</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">
+              Phone Number
+            </p>
           </Col>
-          <Col xl={2}>
-            <p className="opportunitiesMainTags">Email</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">Email</p>
           </Col>
-          <Col xl={2}>
-            <p className="opportunitiesMainTags">Website</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">
+              Joined Date
+            </p>
           </Col>
-          <Col xl={1}>
+          <Col>
             <p className="opportunitiesMainTags">Status</p>
           </Col>
         </Row>
@@ -56,26 +60,30 @@ const Companies = () => {
           return (
             <Container fluid key={company._id}>
               <Row className="opportunitiesT">
-                <Col xl={2}>
+                <Col>
                   <p className="opportunitiesTags">
                     {company.organization_name}
                   </p>
                 </Col>
-                <Col xl={3}>
+                <Col>
                   <p className="opportunitiesTags">{company.register_number}</p>
                 </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">{company.phone}</p>
-                </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">{company.email}</p>
-                </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">
-                    {company.organization_website}
+                <Col>
+                  <p className="opportunitiesTags d-none d-sm-block">
+                    {company.phone}
                   </p>
                 </Col>
-                <Col xl={1}>
+                <Col>
+                  <p className="opportunitiesTags d-none d-sm-block">
+                    {company.email}
+                  </p>
+                </Col>
+                <Col>
+                  <p className="opportunitiesTags d-none d-sm-block">
+                    {company.createdAt.slice(0, 10)}
+                  </p>
+                </Col>
+                <Col className="d-flex justify-content-center">
                   <button
                     className={`btn ${
                       company.statue === "true" ? "btn-success" : "btn-danger"

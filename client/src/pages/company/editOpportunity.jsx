@@ -79,7 +79,7 @@ const EditOpportunity = () => {
           <div className="container backgroundProfile">
             <form onSubmit={editOpportunity}>
               <Row>
-                <Col>
+                <Col md={6} sm={12}>
                   <ApplierInputForm
                     label="Job Role"
                     type="text"
@@ -131,7 +131,7 @@ const EditOpportunity = () => {
                     ))}
                   </select>
                 </Col>
-                <Col>
+                <Col md={6} sm={12}>
                   <ApplierInputForm
                     label="City"
                     type="text"

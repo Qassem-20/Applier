@@ -23,22 +23,24 @@ const Opportunities = () => {
       </Container>
       <Container fluid>
         <Row className="opportunitiesTag">
-          <Col xl={2}>
+          <Col>
             <p className="opportunitiesMainTags">Job Role</p>
           </Col>
-          <Col xl={2}>
-            <p className="opportunitiesMainTags">Duration</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">Duration</p>
           </Col>
-          <Col xl={2}>
-            <p className="opportunitiesMainTags">CreatedAt</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">
+              Created At
+            </p>
           </Col>
-          <Col xl={3}>
+          <Col>
             <p className="opportunitiesMainTags">Location</p>
           </Col>
-          <Col xl={2}>
-            <p className="opportunitiesMainTags">type</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">type</p>
           </Col>
-          <Col xl={1}>
+          <Col>
             <p className="opportunitiesMainTags">Status</p>
           </Col>
         </Row>
@@ -48,22 +50,28 @@ const Opportunities = () => {
           return (
             <Container fluid key={opportunity._id}>
               <Row className="opportunitiesT">
-                <Col xl={2}>
+                <Col>
                   <p className="opportunitiesTags">{opportunity.job_role}</p>
                 </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">{opportunity.duration}</p>
+                <Col>
+                  <p className="opportunitiesTags d-none d-sm-block">
+                    {opportunity.duration}
+                  </p>
                 </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">{opportunity.createdAt}</p>
+                <Col>
+                  <p className="opportunitiesTags d-none d-sm-block">
+                    {opportunity.createdAt.slice(0, 10)}
+                  </p>
                 </Col>
-                <Col xl={3}>
-                  <p className="opportunitiesTags">{opportunity.city}</p>
+                <Col>
+                  <p className="opportunitiesTags ">{opportunity.city}</p>
                 </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">{opportunity.job_type}</p>
+                <Col>
+                  <p className="opportunitiesTags d-none d-sm-block">
+                    {opportunity.job_type}
+                  </p>
                 </Col>
-                <Col xl={1}>
+                <Col className="d-flex justify-content-center">
                   <button
                     className="deleteBtn"
                     onClick={() =>

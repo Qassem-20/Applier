@@ -32,28 +32,28 @@ const Consumers = () => {
       </Container>
       <Container fluid>
         <Row className="opportunitiesTag">
-          <Col xl={2}>
-            <p
-              className="opportunitiesMainTags"
-              id="btnNmae"
-              onClick={store.sortNameConsumers}
-            >
-              Name
-            </p>
+          <Col>
+            <p className="opportunitiesMainTags">Name</p>
           </Col>
-          <Col xl={3}>
+          <Col>
             <p className="opportunitiesMainTags">Email</p>
           </Col>
-          <Col xl={2}>
-            <p className="opportunitiesMainTags">Phone Number</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">
+              Phone Number
+            </p>
           </Col>
-          <Col xl={2}>
-            <p className="opportunitiesMainTags">nationality</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">
+              nationality
+            </p>
           </Col>
-          <Col xl={2}>
-            <p className="opportunitiesMainTags">Joined Date</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">
+              Joined Date
+            </p>
           </Col>
-          <Col xl={1}>
+          <Col>
             <p className="opportunitiesMainTags">Status</p>
           </Col>
         </Row>
@@ -63,22 +63,28 @@ const Consumers = () => {
           return (
             <Container fluid key={consumer._id}>
               <Row className="opportunitiesT">
-                <Col xl={2}>
+                <Col>
                   <p className="opportunitiesTags">{consumer.name}</p>
                 </Col>
-                <Col xl={3}>
+                <Col>
                   <p className="opportunitiesTags">{consumer.email}</p>
                 </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">{consumer.phone}</p>
+                <Col>
+                  <p className="opportunitiesTags  d-none d-sm-block">
+                    {consumer.phone}
+                  </p>
                 </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">{consumer.nationality}</p>
+                <Col>
+                  <p className="opportunitiesTags  d-none d-sm-block">
+                    {consumer.nationality}
+                  </p>
                 </Col>
-                <Col xl={2}>
-                  <p className="opportunitiesTags">{consumer.createdAt}</p>
+                <Col>
+                  <p className="opportunitiesTags  d-none d-sm-block">
+                    {consumer.createdAt.slice(0, 10)}
+                  </p>
                 </Col>
-                <Col xl={1} className="ml-1">
+                <Col className="d-flex justify-content-center">
                   <button
                     className={`btn ${
                       consumer.statue === "true" ? "btn-success" : "btn-danger"

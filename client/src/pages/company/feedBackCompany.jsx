@@ -64,7 +64,7 @@ const FeedBackCompany = () => {
           className="mt-4 rounded bg-white border border-dark p-2"
           key={review._id}
         >
-          <Row className="rounded p-5">
+          <Row className="rounded p-2">
             <Col sm={7}>
               <p className="pt-5">{review.description}</p>
             </Col>
