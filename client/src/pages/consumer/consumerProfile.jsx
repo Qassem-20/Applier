@@ -5,6 +5,7 @@ import React, { Fragment, useEffect } from "react";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import { Container, Row, Col } from "react-bootstrap";
 import { options } from "../../APIs/jobTitlesAPI.js";
+import { cities } from "../../APIs/cities";
 
 const ConsumerProfile = () => {
   const store = ConsumerStore();
@@ -35,6 +36,7 @@ const ConsumerProfile = () => {
               <p>Email: {store.consumer.email}</p>
               <p>Phone: {store.consumer.phone}</p>
               <p>Nationality: {store.consumer.nationality}</p>
+              <p>City: {store.consumer.city}</p>
               <hr />
               <h4>Application (CV)</h4>
               <Row>
@@ -53,7 +55,7 @@ const ConsumerProfile = () => {
                       {store.consumer.linkedIn_profile}
                     </a>
                   </p>
-                  <p>Gpa: {store.consumer.gpa}</p>
+                  <p>GPA: {store.consumer.gpa}</p>
                 </Col>
                 <div>
                   <ApplierButton
@@ -182,6 +184,22 @@ const ConsumerProfile = () => {
                     <option value="Diploma">Diploma</option>
                     <option value="Master">Master</option>
                   </select>
+
+                  <label className="labelStyling font-bold">City</label>
+                      <select
+                        className="inputStyling mb-3"
+                        name="city"
+                        placeholder="city"
+                        value={store.values.city}
+                        onChange={store.handleChange}
+                        required={true}
+                      >
+                        {cities.map((city) => (
+                          <option key={city} value={city}>
+                            {city}
+                          </option>
+                        ))}
+                      </select>
                 </Col>
               </Row>
               <ApplierButton

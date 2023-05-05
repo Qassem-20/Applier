@@ -53,6 +53,11 @@ const consumerSchema = new mongoose.Schema(
       required: [false, "Provide your major"],
       default: "",
     },
+    city: {
+      type: String,
+      required: [false, "Please enter your city"],
+      default: "",
+    },
     gpa: {
       type: String,
       required: [false, "Please provide your gpa"],
