@@ -28,15 +28,14 @@ const HomePageMedicalStudent = () => {
           <h1 className="opportunitiesHeader">My Profile</h1>
           <div className="container backgroundProfile">
             <Row>
-              <Col>
+              <Col md={6} sm={12}>
                 <p>Name: {store.medicalStudent.name}</p>
                 <p>Email: {store.medicalStudent.email}</p>
                 <p>Gender: {store.medicalStudent.gender}</p>
                 <p>Nationality: {store.medicalStudent.nationality}</p>
                 <p>Phone: {store.medicalStudent.phone_number}</p>
               </Col>
-
-              <Col>
+              <Col md={6} sm={12}>
                 <p>
                   Profile Visibility: {store.medicalStudent.profile_visibility}
                 </p>
@@ -62,7 +61,7 @@ const HomePageMedicalStudent = () => {
           <div className="container backgroundProfile">
             <form onSubmit={handleUpdate}>
               <Row>
-                <Col>
+                <Col md={6} sm={12}>
                   <p className="labelStyling">Name:</p>
                   <input
                     className="inputStyling"
@@ -96,7 +95,7 @@ const HomePageMedicalStudent = () => {
                     name="gender"
                   />
                 </Col>
-                <Col>
+                <Col md={6} sm={12}>
                   <p className="labelStyling">Major:</p>
 
                   <input

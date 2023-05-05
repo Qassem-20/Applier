@@ -24,7 +24,6 @@ const SignInCompany = () => {
   };
   return (
     <Col xl={5} sm={12} className="mx-3">
-      <h4>Company</h4>
       <form onSubmit={handleLoginCompany}>
         <ApplierInputForm
           label="Email"

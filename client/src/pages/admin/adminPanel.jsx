@@ -46,19 +46,21 @@ const AdminPanel = () => {
       </Container>
       <Container fluid>
         <Row className="opportunitiesTag">
-          <Col xl={3} md={2} xs={3}>
+          <Col>
             <p className="opportunitiesMainTags">Name</p>
           </Col>
-          <Col xl={3} md={3} xs={3}>
-            <p className="opportunitiesMainTags">Email</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">Email</p>
           </Col>
-          <Col xl={3} md={3} xs={2}>
-            <p className="opportunitiesMainTags">Phone Number</p>
+          <Col>
+            <p className="opportunitiesMainTags d-none d-sm-block">
+              Phone Number
+            </p>
           </Col>
-          <Col xl={1} md={1} xs={1}>
+          <Col>
             <p className="opportunitiesMainTags">type</p>
           </Col>
-          <Col xl={2} md={1} xs={1}>
+          <Col>
             <p className="opportunitiesMainTags">Status</p>
           </Col>
         </Row>
@@ -68,16 +70,20 @@ const AdminPanel = () => {
           return (
             <Container fluid key={admin._id}>
               <Row className="opportunitiesT">
-                <Col xl={3} md={2} xs={3}>
+                <Col>
                   <p className="opportunitiesTags">{admin.name}</p>
                 </Col>
-                <Col xl={3} md={3} xs={3}>
-                  <p className="opportunitiesTags">{admin.email}</p>
+                <Col>
+                  <p className="opportunitiesTags d-none d-sm-block">
+                    {admin.email}
+                  </p>
                 </Col>
-                <Col xl={3} md={3} xs={2}>
-                  <p className="opportunitiesTags">{admin.phone}</p>
+                <Col>
+                  <p className="opportunitiesTags d-none d-sm-block">
+                    {admin.phone}
+                  </p>
                 </Col>
-                <Col xl={2} md={1} xs={1}>
+                <Col className="d-flex justify-content-center">
                   <button
                     className={`btn ${
                       admin.type === "true" ? "btn-black" : "btn-success"
@@ -90,7 +96,7 @@ const AdminPanel = () => {
                     {admin.type === "true" ? "main admin" : "sub admin"}
                   </button>
                 </Col>
-                <Col xl={1} md={1} xs={1}>
+                <Col className="d-flex justify-content-center">
                   <button
                     className="deleteBtn"
                     onClick={() => storeDeleteAndUpdate.deleteAdmin(admin._id)}

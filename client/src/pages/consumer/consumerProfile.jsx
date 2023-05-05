@@ -75,7 +75,7 @@ const ConsumerProfile = () => {
           <div className="container backgroundProfile">
             <form onSubmit={handleUpdate}>
               <Row>
-                <Col>
+                <Col md={6} sm={12}>
                   <p className="labelStyling">Name:</p>
                   <input
                     className="inputStyling"
@@ -130,7 +130,7 @@ const ConsumerProfile = () => {
                     name="gpa"
                   />
                 </Col>
-                <Col>
+                <Col md={6} sm={12}>
                   <p className="labelStyling">Department:</p>
                   <select
                     className="inputStyling"
@@ -186,20 +186,20 @@ const ConsumerProfile = () => {
                   </select>
 
                   <label className="labelStyling font-bold">City</label>
-                      <select
-                        className="inputStyling mb-3"
-                        name="city"
-                        placeholder="city"
-                        value={store.values.city}
-                        onChange={store.handleChange}
-                        required={true}
-                      >
-                        {cities.map((city) => (
-                          <option key={city} value={city}>
-                            {city}
-                          </option>
-                        ))}
-                      </select>
+                  <select
+                    className="inputStyling mb-3"
+                    name="city"
+                    placeholder="city"
+                    value={store.values.city}
+                    onChange={store.handleChange}
+                    required={true}
+                  >
+                    {cities.map((city) => (
+                      <option key={city} value={city}>
+                        {city}
+                      </option>
+                    ))}
+                  </select>
                 </Col>
               </Row>
               <ApplierButton
