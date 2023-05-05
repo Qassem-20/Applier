@@ -131,7 +131,7 @@ const AppliedTrainee = () => {
         </span>
         <span className="col opportunitiesTags d-none d-sm-block">Major</span>
         <span className="col opportunitiesTags d-none d-sm-block">GPA </span>
-        <span className="col opportunitiesTags">Statues</span>
+        <span className="col opportunitiesTags">Status</span>
         <span className="col opportunitiesTags">Info</span>
       </div>
 
