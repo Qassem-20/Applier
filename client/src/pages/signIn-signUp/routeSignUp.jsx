@@ -16,7 +16,7 @@ export class routeSignUp extends Component {
         <Container className="mt-2">
           <Stack className="col-md-5 mx-auto">
          
-          <Card style={{minHeight: 439}}>
+          <Card>
             <Card.Img variant="top" src={traineeBackground} />
             <Card.Body>
               <Card.Text>
@@ -25,7 +25,7 @@ export class routeSignUp extends Component {
             </Card.Body>
           </Card>
           
-          <Card style={{minHeight: 439}}>
+          <Card>
             <Card.Img variant="top" src={medicalStudentBackground} />
             <Card.Body>
               <Card.Text>
@@ -34,7 +34,7 @@ export class routeSignUp extends Component {
             </Card.Body>
           </Card>
           
-          <Card style={{minHeight: 439}}>
+          <Card>
             <Card.Img variant="top" src={companyBackground} />
             <Card.Body>
               <Card.Text>
