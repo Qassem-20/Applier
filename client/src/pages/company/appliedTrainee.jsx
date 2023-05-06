@@ -154,7 +154,10 @@ const AppliedTrainee = () => {
                 {consumer.name}
               </div>
               <div className="col d-flex justify-content-center opportunitiesTags d-none d-sm-block">
-                <a href={`${consumer.linkedin}`}>
+                <a
+                  href={`${consumer.linkedin}`}
+                  className="d-flex justify-content-center"
+                >
                   <img
                     className="iconSize"
                     src={EyeIcon}
