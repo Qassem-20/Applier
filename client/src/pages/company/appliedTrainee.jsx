@@ -57,17 +57,28 @@ const AppliedTrainee = () => {
       <Container>
         <Row className="mb-3">
           <Col>
-            <Row id="opportunitiesHeader">Candidates</Row>
-            <div className="mt-3 mb-3">
-              <form action="/companyHomePage/">
-                <button
-                  className="btn btn-danger"
-                  onClick={() => storeDelete.deleteOpportunity(opportunityId)}
-                >
-                  Delete
-                </button>
-              </form>
-            </div>
+            <p id="opportunitiesHeader">Candidates</p>
+            <Row>
+              <Col className="mt-3 mb-3">
+                <div>
+                  <form action="/companyHomePage/">
+                    <button
+                      className="btn btn-danger"
+                      onClick={() =>
+                        storeDelete.deleteOpportunity(opportunityId)
+                      }
+                    >
+                      Delete
+                    </button>
+                  </form>
+                </div>
+              </Col>
+              <Col>
+                <a href={`/editOpportunity/${opportunityId}`}>
+                  <img src={CustomizeIcon} alt="editOpportunity" />
+                </a>
+              </Col>
+            </Row>
             <p>
               <strong>Job Role: </strong> {userProfile.job_role}
             </p>
@@ -78,9 +89,6 @@ const AppliedTrainee = () => {
               <strong>Type: </strong>
               {userProfile.job_type}
             </p>
-            <a href={`/editOpportunity/${opportunityId}`}>
-              <img src={CustomizeIcon} alt="editOpportunity" />
-            </a>
           </Col>
           <Col>
             <Row>

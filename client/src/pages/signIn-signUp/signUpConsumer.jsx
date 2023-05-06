@@ -9,7 +9,6 @@ import ApplierInputForm from "../../components/applierComponents/applierInputFor
 import { options } from "../../APIs/jobTitlesAPI.js";
 import Checkbox from "../../components/applierComponents/applierSelect.jsx";
 import { skillsList } from "../../APIs/skillSets";
-import { cities } from "../../APIs/cities";
 
 const initialState = {
   isApplication: true,
@@ -51,7 +50,10 @@ const SignUpConsumer = () => {
           </Col>
           <Col>
             <h6 className="mt-4">
-              Already have an account? <a href="/signIn">Sign In</a>
+              Already have an account?{" "}
+              <a href="/signIn" className="btn btn-secondary">
+                Sign In
+              </a>
             </h6>
           </Col>
         </Row>
@@ -115,13 +117,9 @@ const SignUpConsumer = () => {
                 />
               </div>
               <div>
-                <button
-                  className="mt-3"
-                  onClick={showApplication}
-                  buttonType=""
-                >
+                <p className="mt-3" id="show" onClick={showApplication}>
                   Looking for internship?
-                </button>
+                </p>
               </div>
               {!values.isApplication && (
                 <div>

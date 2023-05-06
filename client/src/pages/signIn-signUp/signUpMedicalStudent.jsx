@@ -36,7 +36,10 @@ const SignUpMedicalStudent = () => {
           </Col>
           <Col>
             <h6 className="mt-4">
-              Already have an account? <a href="/signIn">Sign In</a>
+              Already have an account?{" "}
+              <a href="/signIn" className="btn btn-secondary">
+                Sign In
+              </a>
             </h6>
           </Col>
         </Row>

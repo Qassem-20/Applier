@@ -3,7 +3,7 @@ import traineeBackground from "../../assets/images/uniBackground.jpg";
 import companyBackground from "../../assets/images/companyBack.png";
 import medicalStudentBackground from "../../assets/images/medStudent.jpg";
 import WelcomeNav from "../../components/Nav/welcomeNav";
-import { Container, Stack, Card, Button, Row, Col } from "react-bootstrap";
+import { Container, Card, Button, Row, Col } from "react-bootstrap";
 
 import React, { Component, Fragment } from "react";
 
