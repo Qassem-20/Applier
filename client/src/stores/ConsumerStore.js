@@ -93,6 +93,7 @@ const ConsumerStore = create((set) => ({
     cv: "",
     linkedIn_profile: "",
     experience: "",
+    city: "",
   },
   toggleUpdate: ({
     _id,
@@ -108,6 +109,7 @@ const ConsumerStore = create((set) => ({
     linkedIn_profile,
     experience,
     degree,
+    city,
   }) => {
     set({
       updateProfile: {
@@ -124,6 +126,7 @@ const ConsumerStore = create((set) => ({
         experience,
         degree,
         _id,
+        city,
       },
     });
   },
@@ -143,6 +146,7 @@ const ConsumerStore = create((set) => ({
         linkedIn_profile,
         experience,
         degree,
+        city,
       },
     } = ConsumerStore.getState();
 
@@ -162,6 +166,7 @@ const ConsumerStore = create((set) => ({
         linkedIn_profile,
         experience,
         degree,
+        city,
       },
       { withCredentials: true }
     );
@@ -181,6 +186,7 @@ const ConsumerStore = create((set) => ({
         linkedIn_profile: "",
         experience: "",
         degree: "",
+        city: "",
       },
     });
   },
@@ -199,6 +205,7 @@ const ConsumerStore = create((set) => ({
     linkedIn_profile: "",
     experience: "",
     degree: "",
+    city: "",
   },
 
   registerConsumer: async () => {
@@ -223,6 +230,7 @@ const ConsumerStore = create((set) => ({
         linkedIn_profile: "",
         experience: "",
         degree: "",
+        city: "",
       },
     });
   },

@@ -127,7 +127,7 @@ const Opportunities = () => {
           Description
         </span>
         <span className="col opportunitiesMainTags d-none d-sm-block">
-          major
+          Major
         </span>
         <span className="col opportunitiesMainTags">Statues</span>
         <span className="col opportunitiesMainTags d-none d-sm-block">
@@ -170,10 +170,17 @@ const Opportunities = () => {
                           : "btn-secondary"
                       }`}
                       onClick={() =>
+                        status.statue !== "Hired" &&
+                        status.statue !== "Rejected" &&
                         storeDelete.deleteTraineeApplication(status._id)
                       }
+                      disabled={
+                        status.statue === "Hired" ||
+                        status.statue === "Rejected"
+                      }
                     >
-                      {status.statue} | X
+                      {status.statue}
+                      {status.statue === "Applied" && <span>| X</span>}
                     </button>
                   </span>
                 ))

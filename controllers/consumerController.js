@@ -114,6 +114,7 @@ const createConsumer = async (req, res) => {
       linkedIn_profile,
       experience,
       degree,
+      city,
     } = req.body;
 
     //hash the password
@@ -133,6 +134,7 @@ const createConsumer = async (req, res) => {
       linkedIn_profile,
       experience,
       degree,
+      city,
       statue: "true",
     });
   } catch (err) {
@@ -218,6 +220,7 @@ const updateConsumer = async (req, res) => {
       linkedIn_profile,
       experience,
       degree,
+      city,
     } = req.body;
 
     await Consumer.findByIdAndUpdate(consumerId, {
@@ -232,6 +235,7 @@ const updateConsumer = async (req, res) => {
       linkedIn_profile,
       experience,
       degree,
+      city,
     });
 
     const consumer = await Consumer.findById(consumerId);

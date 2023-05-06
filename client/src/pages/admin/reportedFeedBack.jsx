@@ -36,7 +36,7 @@ const ReportedFeedBack = () => {
       if (reviewToUpdate) {
         const isReported = reviewToUpdate.isReported === "yes" ? "no" : "yes";
         await axios.put(
-          `/api/v1/companies/reportReview/${reviewId}`,
+          `/api/v1/admins/reportReview/${reviewId}`,
           { isReported },
           { withCredentials: true }
         );
@@ -71,7 +71,7 @@ const ReportedFeedBack = () => {
           className="mt-4 rounded bg-white border border-dark p-2"
           key={review._id}
         >
-          <Row className="rounded p-5">
+          <Row className="rounded p-1">
             <Col sm={7}>
               <p className="pt-5">{review.description}</p>
               <div>
