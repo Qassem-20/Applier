@@ -115,11 +115,13 @@ const SignUpConsumer = () => {
                 />
               </div>
               <div>
-                <ApplierButton
+                <button
                   className="mt-3"
                   onClick={showApplication}
-                  buttonType="Looking for internship?"
-                />
+                  buttonType=""
+                >
+                  Looking for internship?
+                </button>
               </div>
               {!values.isApplication && (
                 <div>
@@ -171,22 +173,6 @@ const SignUpConsumer = () => {
                         value={store.values.skills}
                         onChange={store.handleChange}
                       />
-
-                      {/* <label className="labelStyling font-bold">City</label>
-                      <select
-                        className="inputStyling mb-3"
-                        name="city"
-                        placeholder="city"
-                        value={store.values.city}
-                        onChange={store.handleChange}
-                        required={true}
-                      >
-                        {cities.map((city) => (
-                          <option key={city} value={city}>
-                            {city}
-                          </option>
-                        ))}
-                      </select> */}
                     </div>
                     <div className="col-sm-12 col-md-6">
                       <label className="labelStyling font-bold">Degree</label>
