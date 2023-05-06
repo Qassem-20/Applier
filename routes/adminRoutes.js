@@ -13,6 +13,8 @@ const apiLimiter = rateLimiter({
 import { requireAuthAdmin } from "../middleware/requireAuth.js";
 import { adminType } from "../middleware/adminType.js";
 
+import { reportReview } from "../controllers/reviewController.js";
+
 //exports from the controller
 import {
   fetchAdmins,
@@ -65,4 +67,5 @@ router
   .route("/admins/opportunities/:id")
   .delete(requireAuthAdmin, deleteOpportunity);
 
+router.route("/admins/reportReview/:id").put(requireAuthAdmin, reportReview);
 export default router;

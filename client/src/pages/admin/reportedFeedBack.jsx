@@ -36,7 +36,7 @@ const ReportedFeedBack = () => {
       if (reviewToUpdate) {
         const isReported = reviewToUpdate.isReported === "yes" ? "no" : "yes";
         await axios.put(
-          `/api/v1/companies/reportReview/${reviewId}`,
+          `/api/v1/admins/reportReview/${reviewId}`,
           { isReported },
           { withCredentials: true }
         );
