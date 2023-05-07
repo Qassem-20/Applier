@@ -70,6 +70,12 @@
   color: white;
   background-color: black;
 }
+
+
+#signInButton {
+  background-color: rgb(76, 57, 93, .5);
+}
+
 .achievementsImgs {
   width: 7rem;
   height: 7rem;
