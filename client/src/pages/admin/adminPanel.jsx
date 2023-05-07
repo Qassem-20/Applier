@@ -1,6 +1,7 @@
 import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
+
 import adminsStore from "../../stores/AdminsStore.js";
 import React, { Fragment, useEffect } from "react";
 import axios from "axios";
@@ -44,9 +45,9 @@ const AdminPanel = () => {
           </Col>
         </Row>
       </Container>
-      <Container fluid>
-        <Row className="opportunitiesTag">
-          <Col>
+    <Container fluid>
+       <Row className="opportunitiesTag">
+            {/*  <Col>
             <p className="opportunitiesMainTags">Name</p>
           </Col>
           <Col>
@@ -62,50 +63,85 @@ const AdminPanel = () => {
           </Col>
           <Col>
             <p className="opportunitiesMainTags">Status</p>
-          </Col>
+          </Col> */}
         </Row>
-      </Container>
+      </Container> 
       {store.admins &&
         store.admins.map((admin) => {
           return (
+            // <Container fluid key={admin._id}>
+            //   <Row className="opportunitiesT">
+            //     <Col>
+            //       <p className="opportunitiesTags">{admin.name}</p>
+            //     </Col>
+            //     <Col>
+            //       <p className="opportunitiesTags d-none d-sm-block">
+            //         {admin.email}
+            //       </p>
+            //     </Col>
+            //     <Col>
+            //       <p className="opportunitiesTags d-none d-sm-block">
+            //         {admin.phone}
+            //       </p>
+            //     </Col>
+            //     <Col className="d-flex justify-content-center">
+            //       <button
+            //         className={`btn ${
+            //           admin.type === "true" ? "btn-black" : "btn-success"
+            //         }`}
+            //         onClick={() => {
+            //           const newType = admin.type === "true" ? "false" : "true";
+            //           updateType(admin._id, newType);
+            //         }}
+            //       >
+            //         {admin.type === "true" ? "main admin" : "sub admin"}
+            //       </button>
+            //     </Col>
+            //     <Col className="d-flex justify-content-center">
+            //       <button
+            //         className="deleteBtn"
+            //         onClick={() => storeDeleteAndUpdate.deleteAdmin(admin._id)}
+            //       >
+            //         Delete
+            //       </button>
+            //     </Col>
+            //   </Row>
+            // </Container>
+
             <Container fluid key={admin._id}>
-              <Row className="opportunitiesT">
-                <Col>
-                  <p className="opportunitiesTags">{admin.name}</p>
-                </Col>
-                <Col>
-                  <p className="opportunitiesTags d-none d-sm-block">
-                    {admin.email}
-                  </p>
-                </Col>
-                <Col>
-                  <p className="opportunitiesTags d-none d-sm-block">
-                    {admin.phone}
-                  </p>
-                </Col>
-                <Col className="d-flex justify-content-center">
-                  <button
-                    className={`btn ${
-                      admin.type === "true" ? "btn-black" : "btn-success"
-                    }`}
-                    onClick={() => {
-                      const newType = admin.type === "true" ? "false" : "true";
-                      updateType(admin._id, newType);
-                    }}
-                  >
-                    {admin.type === "true" ? "main admin" : "sub admin"}
-                  </button>
-                </Col>
-                <Col className="d-flex justify-content-center">
-                  <button
-                    className="deleteBtn"
-                    onClick={() => storeDeleteAndUpdate.deleteAdmin(admin._id)}
-                  >
-                    Delete
-                  </button>
-                </Col>
-              </Row>
+            <Row className="opportunitiesT">
+              <Col  xl={3} md={6} sm={12} key={admin._id}>
+                <Card>
+                  <dt>
+                    <span className="jobRole" >
+                    {admin.name}
+                    </span>
+                  </dt>
+                  <dd>
+                  <span > <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >Duration:  </h5>  {admin.name}</p> </span>
+                  <span> <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >CreatedAt:  </h5>  {admin.email}</p> </span>
+                  <span> <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >Location:  </h5>  {admin.email}</p> </span>
+                  <span> <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >Type:  </h5>  {admin.email}</p> </span>
+                  <span>   
+                    <button 
+                      className="deleteBtn opportunitiesTags"
+                        onClick={() =>
+                          storeDeleteAndUpdate.deleteAdmin(admin._id)}> Delete 
+                    </button>
+                  </span>
+                  </dd>
+
+                </Card>
+              </Col>     
+              <Col  xl={3} md={6} sm={12}>
+                <h1>f</h1>
+              </Col>
+         
+            </Row>
+
+
             </Container>
+
           );
         })}
     </Fragment>

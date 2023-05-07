@@ -48,41 +48,70 @@ const Opportunities = () => {
       {store.opportunities &&
         store.opportunities.map((opportunity) => {
           return (
-            <Container fluid key={opportunity._id}>
-              <Row className="opportunitiesT">
-                <Col>
-                  <p className="opportunitiesTags">{opportunity.job_role}</p>
-                </Col>
-                <Col>
-                  <p className="opportunitiesTags d-none d-sm-block">
-                    {opportunity.duration}
-                  </p>
-                </Col>
-                <Col>
-                  <p className="opportunitiesTags d-none d-sm-block">
-                    {opportunity.createdAt.slice(0, 10)}
-                  </p>
-                </Col>
-                <Col>
-                  <p className="opportunitiesTags ">{opportunity.city}</p>
-                </Col>
-                <Col>
-                  <p className="opportunitiesTags d-none d-sm-block">
-                    {opportunity.job_type}
-                  </p>
-                </Col>
-                <Col className="d-flex justify-content-center">
-                  <button
-                    className="deleteBtn"
-                    onClick={() =>
-                      storeDelete.deleteOpportunity(opportunity._id)
-                    }
-                  >
-                    Delete
+            // <Container fluid key={opportunity._id}>
+            //   <Row className="opportunitiesT">
+            //     <Col>
+            //       <p className="opportunitiesTags">{opportunity.job_role}</p>
+            //     </Col>
+            //     <Col>
+            //       <p className="opportunitiesTags d-none d-sm-block">
+            //         {opportunity.duration}
+            //       </p>
+            //     </Col>
+            //     <Col>
+            //       <p className="opportunitiesTags d-none d-sm-block">
+            //         {opportunity.createdAt.slice(0, 10)}
+            //       </p>
+            //     </Col>
+            //     <Col>
+            //       <p className="opportunitiesTags ">{opportunity.city}</p>
+            //     </Col>
+            //     <Col>
+            //       <p className="opportunitiesTags d-none d-sm-block">
+            //         {opportunity.job_type}
+            //       </p>
+            //     </Col>
+            //     <Col className="d-flex justify-content-center">
+            //       <button
+            //         className="deleteBtn"
+            //         onClick={() =>
+            //           storeDelete.deleteOpportunity(opportunity._id)
+            //         }
+            //       >
+            //         Delete
+            //       </button>
+            //     </Col>
+            //   </Row>
+            // </Container>
+            <section className="section">
+            <div className="dictionary">
+              <div className="term ">
+                <dt>
+                  <span className="jobRole"  aria-label="Tense Biceps">
+                    {opportunity.job_role}
+                  </span>
+                </dt>
+                <dd>
+                <span> <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >Duration:  </h5>  {opportunity.duration}</p> </span>
+                <span> <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >CreatedAt:  </h5>  {opportunity.start_date}</p> </span>
+                <span> <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >Location:  </h5>  {opportunity.city}</p> </span>
+                <span> <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >Type:  </h5>  {opportunity.job_type}</p> </span>
+                <span>   
+                  <button 
+                    className="deleteBtn opportunitiesTags"
+                      onClick={() =>
+                        storeDelete.deleteOpportunity(opportunity._id)}> Delete 
                   </button>
-                </Col>
-              </Row>
-            </Container>
+                </span>
+
+                </dd>
+              </div>
+
+            </div>
+
+          </section>
+
+
           );
         })}
     </Fragment>
