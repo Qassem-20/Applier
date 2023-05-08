@@ -35,7 +35,7 @@ export class about extends Component {
             </div> 
           </div>
 
-          <hr></hr>
+          <hr style={{color: 'white'}}></hr>
 
           <div className="sb_footer-below">
             <div className="sb_footer-copyright">

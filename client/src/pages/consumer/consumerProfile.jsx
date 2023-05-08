@@ -37,7 +37,7 @@ const ConsumerProfile = () => {
               <p>Phone: {store.consumer.phone}</p>
               <p>Nationality: {store.consumer.nationality}</p>
               {/* <p>City: {store.consumer.city}</p> */}
-              <hr />
+              <hr/>
               <h4>Application (CV)</h4>
               <Row>
                 <Col>
@@ -152,6 +152,7 @@ const ConsumerProfile = () => {
                     value={store.updateProfile.skills}
                     name="skills"
                   />
+                  
                   <p className="labelStyling">LinkedIn Profile:</p>
                   <input
                     className="inputStyling"
