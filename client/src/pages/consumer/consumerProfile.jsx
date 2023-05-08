@@ -23,6 +23,8 @@ const ConsumerProfile = () => {
     return <div>Loading...</div>;
   }
 
+  const linkedInIcon = '<?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M21 8v8a5 5 0 01-5 5H8a5 5 0 01-5-5V8a5 5 0 015-5h8a5 5 0 015 5zM7 17v-7" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11 17v-3.25M11 10v3.75m0 0c0-3.75 6-3.75 6 0V17M7 7.01l.01-.011" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+
   return (
     <Fragment>
       <ConsumerNav />
@@ -32,10 +34,17 @@ const ConsumerProfile = () => {
             <h1 className="opportunitiesHeader">My Profile</h1>
 
             <div className="container backgroundProfile">
-              <p>Name: {store.consumer.name}</p>
+              <Row>
+                <Col>
+                <p>Name: {store.consumer.name}</p>
               <p>Email: {store.consumer.email}</p>
-              <p>Phone: {store.consumer.phone}</p>
+                </Col>
+                <Col>
+                <p>Phone: {store.consumer.phone}</p>
               <p>Nationality: {store.consumer.nationality}</p>
+                </Col>
+              </Row>
+              
               {/* <p>City: {store.consumer.city}</p> */}
               <hr/>
               <h4>Application (CV)</h4>
@@ -48,13 +57,13 @@ const ConsumerProfile = () => {
                 </Col>
                 <Col>
                   <p>Department: {store.consumer.concentrated_major}</p>
-                  <p>LinkedIn_profile: </p>
-
-                  <p>
-                    <a href={store.linkedIn_profile}>
-                      {store.consumer.linkedIn_profile}
+                  <p>LinkedIn Profile: 
+                  <a style={{marginLeft: ".5rem"}} href={store.consumer.linkedIn_profile}>
+                      {/* {store.consumer.linkedIn_profile} */}
+                      <span dangerouslySetInnerHTML={{__html: linkedInIcon}}/>
                     </a>
                   </p>
+                  
                   <p>GPA: {store.consumer.gpa}</p>
                 </Col>
                 <div>
