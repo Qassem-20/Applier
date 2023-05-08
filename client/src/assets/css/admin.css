@@ -12,16 +12,15 @@
     display: inline-flex;  
     align-items: center;
     max-width: 100%;
-}  */
 
-
+  /*name a class ---
 body {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     line-height: 1.666;
     
   }
-  
+
   h1 {
     font-weight: 900;
     font-size: 500%;
@@ -34,35 +33,7 @@ body {
     padding: 5px 15px;
     background: #2ec2b0;
   } 
-  
-  /* .dictionary {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 1rem ;
-    max-width: 90%;
-    display: inline-flex;  
-
-
-  } */
-
-  
-  /* .dictionary > .term {
-    text-align: center;
-    max-width: 28rem;
-    margin-bottom: 3rem;
-    padding: 2rem;
-    border-radius: 3px;
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05), 0 5px 20px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    transition: all 100ms ease-in-out;
-
-  } */
-  
-  /* .dictionary > .term > dt {
-    margin-bottom: 1rem;
-  } */
-  
+    
  dt {
     color: #2ec2b0;
     line-height: 1;
@@ -71,12 +42,6 @@ body {
   dt span {
     font-size: 200%;
     font-weight: 900;
-  }
-  
-  .jobRole {
-    margin: 0 auto 20px;
-    display: inline-flex;
-    font-size: 300%;
   }
 
   dd {
@@ -108,9 +73,43 @@ body {
 
     span{      align-items: center;
     } 
+    */
 
-
+.jobRole {
+    margin: 0 auto 20px;
+    display: inline-flex;
+    font-size: 300%;
+  }
 
 .deleteBtn:hover{
     background: #F45050;
 } 
+
+  /* .dictionary {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 1rem ;
+    max-width: 90%;
+    display: inline-flex;  
+
+
+  }
+
+  
+  .dictionary > .term {
+    text-align: center;
+    max-width: 28rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border-radius: 3px;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05), 0 5px 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: all 100ms ease-in-out;
+
+  } 
+  
+  .dictionary > .term > dt {
+    margin-bottom: 1rem;
+  } 
+   */
