@@ -123,7 +123,7 @@ const FeedBackConsumerMedical = () => {
           <textarea
             className="inputStyling description"
             type="text"
-            placeholder="Type your experiment (interview or job as trainee) here [max 500 character]"
+            placeholder="Type your experiment here [max 500 character]"
             maxLength="500"
             name="description"
             value={store.values.description}
