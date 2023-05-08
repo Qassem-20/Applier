@@ -28,10 +28,23 @@ const Consumers = () => {
     <Fragment>
       <AdminNav />
       <Container className="mt-3 mb-2">
-        <h1>Consumers</h1>
+
+    <h1 style={{marginBottom:"30px" }}>Consumers</h1>
+
+    <hr
+   style={{
+   background: "#6F38C5",
+   height: "5px",
+   border: "none",
+   marginBottom:"30px",
+   }}
+/>
       </Container>
       <Container fluid>
-        <Row className="opportunitiesTag" style={{marginBottom:"15px"}}>
+        {/* <Row className="opportunitiesTag" style={{marginBottom:"15px"}}> */}
+
+
+
           {/* <Col>
             <p className="opportunitiesMainTags">Name</p>
           </Col>
@@ -56,7 +69,7 @@ const Consumers = () => {
           <Col> */}
             {/* <p className="opportunitiesMainTags">Status</p>
           </Col> */}
-        </Row>
+        {/* </Row> */}
       </Container>
 
       <Container fluid >
