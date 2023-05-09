@@ -28,86 +28,20 @@ const MedicalStudents = () => {
       <Container className="mt-3 mb-2" >
         <h1 style={{marginBottom:"30px" }}>Medical Students</h1>
         <hr
-   style={{
-   background: "#6F38C5",
-   height: "5px",
-   border: "none",
-   marginBottom:"30px",
-   }}
-/>
+          style={{
+          background: "#6F38C5",
+          height: "5px",
+          border: "none",
+          marginBottom:"30px",
+          }}
+        />
       </Container>
+
+
       <Container fluid style={{marginBottom:"15px"}}>
-        {/* <Row className="opportunitiesTag">
-          <Col>
-            <p className="opportunitiesMainTags">Name</p>
-          </Col>
-          <Col>
-            <p className="opportunitiesMainTags d-none d-sm-block">Specialty</p>
-          </Col>
-          <Col>
-            <p className="opportunitiesMainTags">Phone Number</p>
-          </Col>
-          <Col>
-            <p className="opportunitiesMainTags d-none d-sm-block">Location</p>
-          </Col>
-          <Col>
-            <p className="opportunitiesMainTags d-none d-sm-block">
-              Joined Date
-            </p>
-          </Col>
-          <Col>
-            <p className="opportunitiesMainTags">Status</p>
-          </Col>
-        </Row> */}
+
       </Container>
-      {/* {store.medicalStudents &&
-        store.medicalStudents.map((medicalStudent) => {
-          return (
-            <Container fluid key={medicalStudent._id}>
-              <Row className="opportunitiesT">
-                <Col>
-                  <p className="opportunitiesTags">{medicalStudent.name}</p>
-                </Col>
-                <Col>
-                  <p className="opportunitiesTags d-none d-sm-block">
-                    {medicalStudent.specialty}
-                  </p>
-                </Col>
-                <Col>
-                  <p className="opportunitiesTags">
-                    {medicalStudent.phone_number}
-                  </p>
-                </Col>
-                <Col>
-                  <p className="opportunitiesTags d-none d-sm-block">
-                    {medicalStudent.city}
-                  </p>
-                </Col>
-                <Col>
-                  <p className="opportunitiesTags d-none d-sm-block">
-                    {medicalStudent.createdAt.slice(0, 10)}
-                  </p>
-                </Col>
-                <Col className="d-flex justify-content-center">
-                  <button
-                    className={`btn ${
-                      medicalStudent.statue === "true"
-                        ? "btn-success"
-                        : "btn-danger"
-                    }`}
-                    onClick={() => {
-                      const newStatue =
-                        medicalStudent.statue === "true" ? "false" : "true";
-                      updateStatue(medicalStudent._id, newStatue);
-                    }}
-                  >
-                    {medicalStudent.statue === "true" ? "Active" : "Inactive"}
-                  </button>
-                </Col>
-              </Row>
-            </Container>
-          );
-        })} */}
+     
 
 <Container fluid >
         <Row >

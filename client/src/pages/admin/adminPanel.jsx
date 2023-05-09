@@ -35,7 +35,7 @@ const AdminPanel = () => {
       <AdminNav />
       <Container className="mb-2">
         <Row>
-          <Col md={6} xs={12}>
+          <Col  md={6} xs={12}>
             <h1>Admin Panel</h1>
           </Col>
           <Col md={6} xs={12}>
@@ -43,74 +43,30 @@ const AdminPanel = () => {
               add new admin
             </a>
           </Col>
+          
         </Row>
+        <hr
+          style={{
+          background: "#6F38C5",
+          height: "5px",
+          border: "none",
+          marginBottom:"30px",
+          }}
+        />
       </Container>
     <Container fluid>
-       <Row className="opportunitiesTag">
-            {/*  <Col>
-            <p className="opportunitiesMainTags">Name</p>
-          </Col>
-          <Col>
-            <p className="opportunitiesMainTags d-none d-sm-block">Email</p>
-          </Col>
-          <Col>
-            <p className="opportunitiesMainTags d-none d-sm-block">
-              Phone Number
-            </p>
-          </Col>
-          <Col>
-            <p className="opportunitiesMainTags">type</p>
-          </Col>
-          <Col>
-            <p className="opportunitiesMainTags">Status</p>
-          </Col> */}
-        </Row>
+
       </Container> 
+
+      <Container fluid >
+        <Row >
       {store.admins &&
         store.admins.map((admin) => {
           return (
-            // <Container fluid key={admin._id}>
-            //   <Row className="opportunitiesT">
-            //     <Col>
-            //       <p className="opportunitiesTags">{admin.name}</p>
-            //     </Col>
-            //     <Col>
-            //       <p className="opportunitiesTags d-none d-sm-block">
-            //         {admin.email}
-            //       </p>
-            //     </Col>
-            //     <Col>
-            //       <p className="opportunitiesTags d-none d-sm-block">
-            //         {admin.phone}
-            //       </p>
-            //     </Col>
-            //     <Col className="d-flex justify-content-center">
-            //       <button
-            //         className={`btn ${
-            //           admin.type === "true" ? "btn-black" : "btn-success"
-            //         }`}
-            //         onClick={() => {
-            //           const newType = admin.type === "true" ? "false" : "true";
-            //           updateType(admin._id, newType);
-            //         }}
-            //       >
-            //         {admin.type === "true" ? "main admin" : "sub admin"}
-            //       </button>
-            //     </Col>
-            //     <Col className="d-flex justify-content-center">
-            //       <button
-            //         className="deleteBtn"
-            //         onClick={() => storeDeleteAndUpdate.deleteAdmin(admin._id)}
-            //       >
-            //         Delete
-            //       </button>
-            //     </Col>
-            //   </Row>
-            // </Container>
+    
 
-            <Container fluid key={admin._id}>
-            <Row className="opportunitiesT">
-              <Col  xl={3} md={6} sm={12} key={admin._id}>
+   
+              <Col  xl={4} md={6} sm={12} key={admin._id}>
                 <Card>
                   <dt>
                     <span className="jobRole" >
@@ -118,10 +74,21 @@ const AdminPanel = () => {
                     </span>
                   </dt>
                   <dd>
-                  <span > <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >Duration:  </h5>  {admin.name}</p> </span>
-                  <span> <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >CreatedAt:  </h5>  {admin.email}</p> </span>
-                  <span> <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >Location:  </h5>  {admin.email}</p> </span>
-                  <span> <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >Type:  </h5>  {admin.email}</p> </span>
+                  <span > <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >Email:  </h5>  {admin.email}</p> </span>
+                  <span> <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >Phone Number:  </h5>  {admin.phone}</p> </span>
+                  <span> <p className="opportunitiesTags"> <h5 style={{ 'margin-right': '10px'}} >  </h5>  
+                    <button
+                      className={`btn ${
+                        admin.type === "true" ? "btn-black" : "btn-success"
+                      }`}
+                      onClick={() => {
+                        const newType = admin.type === "true" ? "false" : "true";
+                        updateType(admin._id, newType);
+                      }}
+                    >
+                      {admin.type === "true" ? "main admin" : "sub admin"}
+                    </button></p> 
+                  </span>
                   <span>   
                     <button 
                       className="deleteBtn opportunitiesTags"
@@ -133,18 +100,17 @@ const AdminPanel = () => {
 
                 </Card>
               </Col>     
-              <Col  xl={3} md={6} sm={12}>
-                <h1>f</h1>
-              </Col>
+
+
          
-            </Row>
 
-
-            </Container>
 
           );
         })}
+          </Row>
+      </Container>
     </Fragment>
+    
   );
 };
 
