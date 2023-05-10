@@ -7,6 +7,7 @@ import CompanyStore from "../../stores/CompanyStore";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 import { cities } from "../../APIs/cities.js";
+import AppplierBackToSignIn from "../../components/applierComponents/applierToSignIn";
 
 const SignUpCompany = () => {
   const store = CompanyStore();
@@ -35,12 +36,7 @@ const SignUpCompany = () => {
             <h1>Create Your Orgnization Account</h1>
           </Col>
           <Col>
-            <h6 className="mt-4">
-              Already have an account?{" "}
-              <a href="/signIn" className="btn btn-secondary">
-                Sign In
-              </a>
-            </h6>
+            <AppplierBackToSignIn />
           </Col>
         </Row>
         <hr />

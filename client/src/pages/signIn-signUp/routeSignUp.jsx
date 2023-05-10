@@ -16,53 +16,47 @@ export class routeSignUp extends Component {
         <Container className="mt-2">
           <Row>
             <Col sm={12} lg={4}>
-              <Card>
-                <Card.Img variant="top" src={traineeBackground} />
-                <Card.Body>
-                  <Card.Text>
-                    <Button
-                      variant="dark"
-                      href="/signUpConsumer"
-                      style={{ minWidth: 153 }}
-                    >
-                      University Student
-                    </Button>
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <a href="/signUpConsumer">
+                <Card>
+                  <Card.Img variant="top" src={traineeBackground} />
+                  <Card.Body>
+                    <Card.Text>
+                      <Button variant="dark" style={{ minWidth: 153 }}>
+                        University Student
+                      </Button>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </a>
             </Col>
 
             <Col sm={12} lg={4}>
-              <Card>
-                <Card.Img variant="top" src={medicalStudentBackground} />
-                <Card.Body>
-                  <Card.Text>
-                    <Button
-                      variant="dark"
-                      href="/signUpMedicalStudent"
-                      style={{ minWidth: 153 }}
-                    >
-                      Medical Student
-                    </Button>
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <a href="/signUpMedicalStudent">
+                <Card>
+                  <Card.Img variant="top" src={medicalStudentBackground} />
+                  <Card.Body>
+                    <Card.Text>
+                      <Button variant="dark" style={{ minWidth: 153 }}>
+                        Medical Student
+                      </Button>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </a>
             </Col>
             <Col sm={12} lg={4}>
-              <Card>
-                <Card.Img variant="top" src={companyBackground} />
-                <Card.Body>
-                  <Card.Text>
-                    <Button
-                      variant="dark"
-                      href="signUpCompany"
-                      style={{ minWidth: 153 }}
-                    >
-                      Company
-                    </Button>
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <a href="signUpCompany">
+                <Card>
+                  <Card.Img variant="top" src={companyBackground} />
+                  <Card.Body>
+                    <Card.Text>
+                      <Button variant="dark" style={{ minWidth: 153 }}>
+                        Company
+                      </Button>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </a>
             </Col>
           </Row>
         </Container>

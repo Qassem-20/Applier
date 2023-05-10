@@ -7,6 +7,7 @@ import MedicalStore from "../../stores/MedicalStore";
 import ApplierButton from "../../components/applierComponents/applierButton";
 import ApplierInputForm from "../../components/applierComponents/applierInputForm";
 import { cities } from "../../APIs/cities.js";
+import AppplierBackToSignIn from "../../components/applierComponents/applierToSignIn";
 
 const SignUpMedicalStudent = () => {
   const store = MedicalStore();
@@ -35,12 +36,7 @@ const SignUpMedicalStudent = () => {
             <h1>Create Your Medical Account</h1>
           </Col>
           <Col>
-            <h6 className="mt-4">
-              Already have an account?{" "}
-              <a href="/signIn" className="btn btn-secondary">
-                Sign In
-              </a>
-            </h6>
+            <AppplierBackToSignIn />
           </Col>
         </Row>
         <hr />
