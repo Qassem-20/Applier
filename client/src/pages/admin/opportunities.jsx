@@ -1,7 +1,7 @@
 import "../../assets/css/admin.css";
 import AdminNav from "../../components/Nav/adminNav";
 import React, { Fragment, useEffect } from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import OpportunityStore from "../../stores/OpportunityStore.js";
 
 const Opportunities = () => {
@@ -11,12 +11,11 @@ const Opportunities = () => {
     return { deleteOpportunity: storeDelete.deleteOpportunity };
   });
 
-
   useEffect(() => {
     store.fetchOpportunities();
   }, [store]);
 
-  console.log(    store.fetchOpportunities);
+  console.log(store.fetchOpportunities);
   return (
     <Fragment>
       <AdminNav />

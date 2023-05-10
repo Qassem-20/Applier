@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import Logo from "../../assets/images/newLogo.png";
 import MedicalStore from "../../stores/MedicalStore";
 

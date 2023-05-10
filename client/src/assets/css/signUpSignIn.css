@@ -84,6 +84,17 @@
   }
 }
 
+@media (max-width: 505px) {
+  .btnGp:nth-child(1) {
+    border-radius: 10px 0 0 10px;
+    border-width: 2px 0px 2px 2px;
+  }
+  .btnGp:last-child {
+    border-radius: 0 10px 10px 0;
+    border-width: 2px 2px 2px 0px;
+  }
+}
+
 .align {
   text-align: center;
   text-decoration: none;
